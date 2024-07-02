@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.ui.chips
+package com.example.wbtechnoschoollesson2.atoms.chips
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,7 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.wbtechnoschoollesson2.ui.theme.UiTheme
+import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 
 
 @Composable

@@ -1,6 +1,5 @@
-package com.example.wbtechnoschoollesson2.ui.buttons
+package com.example.wbtechnoschoollesson2.atoms.buttons
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -13,15 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.wbtechnoschoollesson2.ui.theme.UiTheme
-import com.example.wbtechnoschoollesson2.ui.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
+import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun WbOutlineButton(
-    text: String,
+    content: @Composable () -> Unit = { DefaultButtonContent() },
     btnColor: Color,
     textColor: Color,
     enabled: Boolean = false,
@@ -37,19 +35,18 @@ fun WbOutlineButton(
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = Color.Transparent,
             contentColor = textColor,
-            disabledContentColor = disabledTextColor
+            disabledContentColor = disabledTextColor,
+
         ),
         border = BorderStroke(
             width = 1.dp,
-            color = btnColor
+            color = disabledBorderColor,
+
         ),
         enabled = enabled,
 
     ) {
-        Text(
-            text = text,
-            color = if (enabled) textColor else disabledTextColor
-        )
+        content()
     }
 }
 @Composable
@@ -87,13 +84,23 @@ fun WbOutlineIconButton(
     }
 }
 
+@Composable
+fun DefaultButtonContent() {
+    Text(
+        text = "text",
+        style = UiTheme.typography.subheading2
+    )
+}
+
+
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingOutlinePreview() {
     WBTechnoschoolLesson2Theme {
         Row {
             WbOutlineButton(
-                text = "Button",
+                content = { Text(text = "Button")},
                 btnColor = UiTheme.colors.brandColorDefault,
                 textColor = UiTheme.colors.brandColorDefault,
                 onClick = { /*TODO*/ }

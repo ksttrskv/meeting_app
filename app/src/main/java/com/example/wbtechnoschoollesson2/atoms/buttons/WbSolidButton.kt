@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.ui.buttons
+package com.example.wbtechnoschoollesson2.atoms.buttons
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.wbtechnoschoollesson2.ui.theme.UiTheme
-import com.example.wbtechnoschoollesson2.ui.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
+import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun WbSolidButton(

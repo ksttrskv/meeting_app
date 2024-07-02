@@ -1,20 +1,19 @@
-import Molecules.TopBar1
+import com.example.wbtechnoschoollesson2.organism.TopBar1
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
+import com.example.wbtechnoschoollesson2.organism.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.Screen1
 import com.example.wbtechnoschoollesson2.navigation.Screen2
 import com.example.wbtechnoschoollesson2.navigation.Screen3
-import com.example.wbtechnoschoollesson2.ui.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun MainScreen() {

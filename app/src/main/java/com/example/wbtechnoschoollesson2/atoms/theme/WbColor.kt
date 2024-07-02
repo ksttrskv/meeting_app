@@ -1,6 +1,5 @@
-package com.example.wbtechnoschoollesson2
+package com.example.wbtechnoschoollesson2.atoms.theme
 
-import android.graphics.drawable.GradientDrawable
 import androidx.compose.ui.graphics.Color
 
 data class WbColor(

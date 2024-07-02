@@ -1,6 +1,5 @@
-package com.example.wbtechnoschoollesson2.ui.theme
+package com.example.wbtechnoschoollesson2.atoms.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -9,12 +8,8 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.example.wbtechnoschoollesson2.WbColor
-import com.example.wbtechnoschoollesson2.color
-import com.example.wbtechnoschoollesson2.ui.typography.WbTypography
+import com.example.wbtechnoschoollesson2.atoms.typography.WbTypography
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,

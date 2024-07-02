@@ -3,7 +3,7 @@ package com.example.wbtechnoschoollesson2.uiKitScreen
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.wbtechnoschoollesson2.ui.theme.UiTheme
+import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 
 @Composable
 fun Heading(

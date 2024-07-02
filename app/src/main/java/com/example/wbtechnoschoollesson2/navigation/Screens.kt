@@ -2,10 +2,10 @@
 
 package com.example.wbtechnoschoollesson2.navigation
 
-import Molecules.MeetingCard
-import Molecules.ProfileAvatar
-import Molecules.TopBar1
-import Molecules.TopBar2
+import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
+import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
+import com.example.wbtechnoschoollesson2.organism.TopBar1
+import com.example.wbtechnoschoollesson2.organism.TopBar2
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -36,8 +36,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.ui.theme.UiTheme
-import com.example.wbtechnoschoollesson2.ui.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
+import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import com.example.wbtechnoschoollesson2.uiKitScreen.ButtonIconLine
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 import com.example.wbtechnoschoollesson2.uiKitScreen.TypographyLine1

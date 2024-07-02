@@ -1,7 +1,7 @@
 package com.example.wbtechnoschoollesson2.uiKitScreen
 
-import Molecules.AvatarRow
-import Molecules.CommunityCard
+import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
+import com.example.wbtechnoschoollesson2.Molecules.CommunityCard
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,14 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import Molecules.MeetingCard
-import Molecules.ProfileAvatar
+import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
+import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.ui.chips.CustomFilterChip
-import com.example.wbtechnoschoollesson2.ui.theme.UiTheme
-import com.example.wbtechnoschoollesson2.ui.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.atoms.chips.CustomFilterChip
+import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
+import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun UiKitScreen(modifier: Modifier = Modifier) {

@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.ui.theme
+package com.example.wbtechnoschoollesson2.atoms.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
