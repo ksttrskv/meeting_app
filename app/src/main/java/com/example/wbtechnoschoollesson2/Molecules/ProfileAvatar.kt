@@ -54,7 +54,7 @@ fun ProfileAvatar(
                     painter = painterResource(id = R.drawable.plus),
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier.size(24.dp)
                 )
             }
         }

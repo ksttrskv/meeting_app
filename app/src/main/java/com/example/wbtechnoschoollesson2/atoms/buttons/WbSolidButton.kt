@@ -15,15 +15,15 @@ import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun WbSolidButton(
-    text: String,
+    content: @Composable () -> Unit = { DefaultButtonContent() },
     btnColor: Color,
     textColor: Color,
     enabled: Boolean = false,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val disabledColor = btnColor.copy(alpha = 0.5f) // Цвет для неактивной кнопки
-    val disabledTextColor = textColor.copy(alpha = 0.5f) // Цвет текста для неактивной кнопки
+    val disabledColor = btnColor.copy(alpha = 0.5f)
+    val disabledTextColor = textColor.copy(alpha = 0.5f)
 
     Button(
         modifier = modifier
@@ -37,10 +37,7 @@ fun WbSolidButton(
         ),
         enabled = enabled,
     ) {
-        Text(
-            text = text,
-            color = Color.White
-        )
+        content()
     }
 }
 
@@ -50,7 +47,7 @@ fun GreetingPreview() {
     WBTechnoschoolLesson2Theme {
         Row {
             WbSolidButton(
-                text = "Button",
+                content = { Text(text = "Button")},
                 btnColor = UiTheme.colors.brandColorDefault,
                 textColor = Color.White,
                 onClick = { /*TODO*/ }

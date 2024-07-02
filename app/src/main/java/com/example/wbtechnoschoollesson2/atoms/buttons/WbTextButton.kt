@@ -16,7 +16,7 @@ import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun WbTextButton(
-    text: String,
+    content: @Composable () -> Unit = { DefaultButtonContent() },
     btnColor: Color,
     textColor: Color,
     enabled: Boolean = false,
@@ -37,10 +37,7 @@ fun WbTextButton(
         ),
         enabled = enabled,
     ) {
-        Text(
-            text = text,
-            color = if (enabled) textColor else disabledTextColor
-        )
+        content()
     }
 }
 
@@ -50,7 +47,7 @@ fun GreetingTextPreview() {
     WBTechnoschoolLesson2Theme {
         Row {
             WbTextButton(
-                text = "Button",
+                content = { Text(text = "Button")},
                 btnColor = UiTheme.colors.brandColorDefault,
                 textColor = UiTheme.colors.brandColorDefault,
                 onClick = { /*TODO*/ }

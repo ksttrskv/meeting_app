@@ -25,7 +25,7 @@ fun ButtonLine(color: Color, enabled: Boolean, modifier: Modifier = Modifier) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         WbSolidButton(
-            text = "Button",
+            content = { Text(text = "Button")},
             btnColor = color,
             onClick = {},
             textColor = Color.White,
@@ -42,7 +42,7 @@ fun ButtonLine(color: Color, enabled: Boolean, modifier: Modifier = Modifier) {
             modifier = Modifier.weight(1f)
         )
         WbTextButton(
-            text = "Button",
+            content = { Text(text = "Button")},
             btnColor = color,
             textColor = color,
             onClick = { },

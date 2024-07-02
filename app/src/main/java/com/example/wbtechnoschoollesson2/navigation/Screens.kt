@@ -35,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
@@ -137,7 +138,11 @@ fun Screen2() {
     Scaffold(
         topBar = {
             TopAppBar(title = {
-                Text(text = "Профиль")
+                Text(
+                    text = "Профиль",
+                    style = UiTheme.typography.subheading1,
+                    fontSize = 24.sp
+                )
             },
                 navigationIcon = {
                     IconButton(onClick = { }) {

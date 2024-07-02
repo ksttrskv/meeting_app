@@ -1,5 +1,6 @@
 package com.example.wbtechnoschoollesson2
 
+import MainScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,7 +13,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             WBTechnoschoolLesson2Theme {
-                UiKitScreen()
+                MainScreen()
             }
         }
     }

@@ -23,13 +23,14 @@ fun TopBar1(title: String, onAddClick: () -> Unit) {
     TopAppBar(
             title = {
                 Text(
-                    text = "Встречи",
+                    text = title,
                     fontSize = 24.sp,
-                    color = Color.Black
+                    color = Color.Black,
+                    style = UiTheme.typography.subheading1
                 )
             },
             actions = {
-                IconButton(onClick = { /* TODO: Добавьте обработчик клика */ }) {
+                IconButton(onClick = { }) {
                     Icon(
                         painter = painterResource(id = R.drawable.add_plus),
                         contentDescription = "Добавить",
@@ -50,13 +51,13 @@ fun TopBar2(title: String, onAddClick: () -> Unit) {
         title = {
             Text(
                 text = title,
-                fontSize = 18.sp,
+                fontSize = 24.sp,
                 color = Color.Black,
                 style = UiTheme.typography.subheading1,
             )
         },
         navigationIcon = {
-            IconButton(onClick = { /* TODO: Добавьте обработчик клика */ }) {
+            IconButton(onClick = {  }) {
                 Icon(
                     painter = painterResource(id = R.drawable.back_icon),
                     contentDescription = "Добавить",
