@@ -17,6 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
@@ -27,6 +28,7 @@ import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 fun ProfileAvatar(
     avatarResId: Int,
     isEditing: Boolean,
+    size : Dp = 100.dp,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -39,14 +41,15 @@ fun ProfileAvatar(
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(112.dp)
+                .size(size)
 
         )
 
         if (isEditing) {
             Box(
                 modifier = Modifier
-                    .size(18.dp)
+                    .padding(size * 0.02f)
+                    .size(size * 0.25f)
                     .clip(CircleShape)
                     .align(Alignment.BottomEnd)
             ) {
