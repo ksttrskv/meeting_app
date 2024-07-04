@@ -4,8 +4,6 @@ package com.example.wbtechnoschoollesson2.navigation
 
 import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
-import com.example.wbtechnoschoollesson2.organism.TopBar1
-import com.example.wbtechnoschoollesson2.organism.TopBar2
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,17 +16,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -40,7 +32,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
@@ -74,20 +65,17 @@ fun Screen1() {
     var selectedTabIndex by remember { mutableStateOf(0) }
     val allMeetings = meetings
     val activeMeetings = meetings.filter { !it.isFinished }
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.White)
-        ) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+    ) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(start = 24.dp, end = 24.dp)
                 .background(Color.White)
         ) {
-            item {
-                TopBar1(title = "Встречи") {}
-                Spacer(modifier = Modifier.size(10.dp))
-            }
 
             item {
                 SearchView()
@@ -144,71 +132,32 @@ fun Screen1() {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Screen2() {
-    Box(modifier = Modifier.background(Color.White),) {
-        Scaffold(modifier = Modifier.background(Color.White),
-            topBar = {
-                TopAppBar(
-                    title = {
-                        Text(
-                            text = "Профиль",
-                            style = UiTheme.typography.subheading1,
-                            fontSize = 24.sp
-                        )
-                    },
-                    colors = TopAppBarDefaults.topAppBarColors(Color.White),
-                    navigationIcon = {
-                        IconButton(onClick = { }) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.back_icon),
-                                contentDescription = "Back",
-                                modifier = Modifier.size(24.dp)
-                            )
-                        }
-                    },
-                    actions = {
-                        IconButton(
-                            onClick = { }
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.icon_edit),
-                                contentDescription = "Добавить",
-                                modifier = Modifier.size(24.dp)
-                            )
-                        }
-
-                    }
-                )
-
-
-            }
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 46.dp)
+                .background(Color.White)
         ) {
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
+            Spacer(modifier = Modifier.size(46.dp))
+            ProfileAvatar(
+                avatarResId = R.drawable.avatarpw1,
+                isEditing = false,
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 46.dp)
-                    .background(Color.White)
-            ) {
-                Spacer(modifier = Modifier.size(46.dp))
-                ProfileAvatar(
-                    avatarResId = R.drawable.avatarpw1,
-                    isEditing = false,
-                    modifier = Modifier
-                        .size(200.dp)
-                )
-                Spacer(modifier = Modifier.size(20.dp))
-                TypographyLine1(
-                    title = "Иван Иванов",
-                    subTitle = "+7 952 812-22-00"
-                )
-                Spacer(modifier = Modifier.size(20.dp))
-                ButtonIconLine(color = UiTheme.colors.brandColorDefault, enabled = true)
-            }
-
+                    .size(200.dp)
+            )
+            Spacer(modifier = Modifier.size(20.dp))
+            TypographyLine1(
+                title = "Иван Иванов",
+                subTitle = "+7 952 812-22-00"
+            )
+            Spacer(modifier = Modifier.size(20.dp))
+            ButtonIconLine(color = UiTheme.colors.brandColorDefault, enabled = true)
         }
+
     }
-}
+
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -216,20 +165,12 @@ fun Screen3() {
     var selectedTabIndex by remember { mutableStateOf(0) }
     val plannedMeetings = meetings.filter { !it.isFinished }
     val finishedMeetings = meetings.filter { it.isFinished }
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.White)) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(start = 24.dp, end = 24.dp)
                 .background(Color.White)
         ) {
-            item {
-                TopBar2(title = "Мои встречи") {}
-                Spacer(modifier = Modifier.size(10.dp))
-            }
-
             item {
                 TabRow(
                     selectedTabIndex = selectedTabIndex,
@@ -281,7 +222,7 @@ fun Screen3() {
         }
     }
 
-}
+
 
 
 @Preview(showBackground = true)
