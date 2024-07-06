@@ -28,11 +28,11 @@ import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 fun ProfileAvatar(
     avatarResId: Int,
     isEditing: Boolean,
-    size : Dp = 100.dp,
+    size : Dp,
     modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = modifier.size(200.dp)
+        modifier = modifier.size(size*2)
             .background(color = UiTheme.colors.neutralOffWhite, shape = CircleShape),
         contentAlignment = Alignment.Center
     ) {
@@ -68,16 +68,20 @@ fun ProfileAvatar(
 fun PreviewProfileAvatar() {
     WBTechnoschoolLesson2Theme {
         Row(verticalAlignment = Alignment.CenterVertically) {
+
             ProfileAvatar(
                 avatarResId = R.drawable.avatarpw1,
                 isEditing = false,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp),
+                size = 100.dp
             )
+
             Spacer(modifier = Modifier.size(16.dp))
             ProfileAvatar(
                 avatarResId = R.drawable.avatarpw1,
                 isEditing = true,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp),
+                size = 100.dp
             )
         }
     }

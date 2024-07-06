@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.wbtechnoschoollesson2.navigation
+package com.example.wbtechnoschoollesson2.screens
 
 import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
@@ -59,7 +59,6 @@ val meetings = listOf(
     Meeting("Third meeting", "20.11.2024", "Новосибирск", false)
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Screen1() {
     var selectedTabIndex by remember { mutableStateOf(0) }
@@ -143,8 +142,7 @@ fun Screen2() {
             ProfileAvatar(
                 avatarResId = R.drawable.avatarpw1,
                 isEditing = false,
-                modifier = Modifier
-                    .size(200.dp)
+                size= 100.dp
             )
             Spacer(modifier = Modifier.size(20.dp))
             TypographyLine1(

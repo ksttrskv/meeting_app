@@ -1,35 +1,41 @@
-package com.example.wbtechnoschoollesson2.organism
+package com.example.wbtechnoschoollesson2.navigation
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.navigation.BottomItem
+import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
+
+data class BottomItem(val title:String, val iconId:Int, val route:String)
 
 @Composable
 fun BottomNavigation(navController: NavController) {
     val listItems = listOf(
-        BottomItem("Встречи", R.drawable.meeting_ic, "screen_1"),
-        BottomItem("Профиль", R.drawable.ic_group, "screen_2"),
-        BottomItem("Мои встречи", R.drawable.more_eshe, "screen_3")
+        BottomItem("Сообщества", R.drawable.ic_group, "communities"),
+        BottomItem("Еще", R.drawable.more_horizontal, "more_screen"),
+        BottomItem("Встречи", R.drawable.meeting_ic, "all_meetings")
     )
 
     NavigationBar(
         containerColor = Color.White,
-        contentColor = Color.Black,
+        contentColor = UiTheme.colors.neutralActive,
         tonalElevation = 8.dp,
         modifier = Modifier.height(60.dp)
     ) {
@@ -43,17 +49,28 @@ fun BottomNavigation(navController: NavController) {
                         Icon(
                             painterResource(id = item.iconId),
                             contentDescription = item.title,
-                            modifier = Modifier.size(32.dp)
+                            modifier = Modifier.size(32.dp),
+                            tint = UiTheme.colors.neutralActive
                         )
                     }
                 },
                 label = {
                     if (currentRoute == item.route) {
-                        Text(
-                            text = item.title,
-                            fontSize = 10.sp,
-                            color = Color.Black
-                        )
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Text(
+                                text = item.title,
+                                style = UiTheme.typography.bodyText1,
+                                color = Color.Black
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .padding(top = 4.dp)
+                                    .size(4.dp)
+                                    .background(UiTheme.colors.neutralActive, shape = CircleShape)
+
+                            )
+                        }
+
                     }
                 },
                 selected = currentRoute == item.route,
@@ -68,13 +85,9 @@ fun BottomNavigation(navController: NavController) {
                         }
                     }
                 },
-                colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = Color.Black,
-                    unselectedIconColor = Color.Gray,
-                    selectedTextColor = Color.Black,
-                    unselectedTextColor = Color.Gray
-                )
+                alwaysShowLabel = false
             )
         }
     }
 }
+

@@ -161,7 +161,8 @@ fun UiKitScreen(modifier: Modifier = Modifier) {
             )
             CommunityCard(
                 title = "Developer meeting",
-                painter = painterResource(id = R.drawable.communityavatar),
+                subtitle = "10 000 человек",
+                imageRes = R.drawable.communityavatar,
             )
         }
         item {
@@ -171,12 +172,14 @@ fun UiKitScreen(modifier: Modifier = Modifier) {
             ProfileAvatar(
                 avatarResId = R.drawable.avatarpw1,
                 isEditing = false,
+                size = 24.dp,
                 modifier = Modifier.padding(16.dp)
             )
             Spacer(modifier = Modifier.size(16.dp))
             ProfileAvatar(
                 avatarResId = R.drawable.avatarpw1,
                 isEditing = true,
+                size = 24.dp,
                 modifier = Modifier.padding(16.dp)
             )
         }

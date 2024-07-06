@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.organism
+package com.example.wbtechnoschoollesson2.navigation
 
 
 import androidx.compose.foundation.layout.Column
