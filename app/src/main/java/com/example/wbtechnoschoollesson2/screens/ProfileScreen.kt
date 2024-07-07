@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
@@ -39,94 +40,6 @@ import com.example.wbtechnoschoollesson2.uiKitScreen.ButtonIconLine
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 import com.example.wbtechnoschoollesson2.uiKitScreen.TypographyLine1
 
-
-data class Meeting(
-    val title: String,
-    val date: String,
-    val location: String,
-    val isFinished: Boolean
-)
-
-val meetings = listOf(
-    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
-    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
-    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-    Meeting("Third meeting", "20.11.2024", "Новосибирск", false)
-)
-
-@Composable
-fun Screen1() {
-    var selectedTabIndex by remember { mutableStateOf(0) }
-    val allMeetings = meetings
-    val activeMeetings = meetings.filter { !it.isFinished }
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-    ) {
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(start = 24.dp, end = 24.dp)
-                .background(Color.White)
-        ) {
-
-            item {
-                SearchView()
-            }
-            item {
-                TabRow(
-                    selectedTabIndex = selectedTabIndex,
-                    indicator = { tabPositions ->
-                        TabRowDefaults.Indicator(
-                            Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
-                            color = UiTheme.colors.brandColorDefault
-                        )
-                    }
-                ) {
-                    Tab(modifier = Modifier.background(Color.White),
-                        selected = selectedTabIndex == 0,
-                        onClick = { selectedTabIndex = 0 },
-                        text = {
-                            Text(
-                                "ВСЕ ВСТРЕЧИ",
-                                color = if (selectedTabIndex == 0) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
-                            )
-                        }
-                    )
-                    Tab(modifier = Modifier.background(Color.White),
-                        selected = selectedTabIndex == 1,
-                        onClick = { selectedTabIndex = 1 },
-                        text = {
-                            Text(
-                                "АКТИВНЫЕ",
-                                style = UiTheme.typography.bodyText1,
-                                color = if (selectedTabIndex == 1) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
-                            )
-                        }
-                    )
-                }
-            }
-
-            val itemsToShow = if (selectedTabIndex == 0) allMeetings else activeMeetings
-            items(itemsToShow) { meeting ->
-                MeetingCard(
-                    title = meeting.title,
-                    painter = painterResource(id = R.drawable.avatar),
-                    date = meeting.date,
-                    location = meeting.location,
-                    isFinished = meeting.isFinished
-                )
-                Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
-            }
-        }
-    }
-}
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -213,7 +126,8 @@ fun Screen3() {
                     painter = painterResource(id = R.drawable.avatar),
                     date = meeting.date,
                     location = meeting.location,
-                    isFinished = meeting.isFinished
+                    isFinished = meeting.isFinished,
+                    onClick = {}
                 )
                 Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
             }
