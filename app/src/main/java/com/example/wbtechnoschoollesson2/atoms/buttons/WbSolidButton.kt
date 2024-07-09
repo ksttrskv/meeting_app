@@ -45,13 +45,13 @@ fun WbSolidButton(
 @Composable
 fun GreetingPreview() {
     WBTechnoschoolLesson2Theme {
-        Row {
+
             WbSolidButton(
                 content = { Text(text = "Button")},
                 btnColor = UiTheme.colors.brandColorDefault,
                 textColor = Color.White,
                 onClick = { /*TODO*/ }
             )
-        }
+
     }
 }

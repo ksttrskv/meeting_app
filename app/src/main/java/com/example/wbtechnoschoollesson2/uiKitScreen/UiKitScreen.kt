@@ -130,7 +130,8 @@ fun UiKitScreen(modifier: Modifier = Modifier) {
                 painter = painterResource(id = R.drawable.avatar),
                 date = "13.09.2024",
                 location = "Москва",
-                isFinished = true
+                isFinished = true,
+                onClick = {}
             )
 
             MeetingCard(
@@ -138,7 +139,8 @@ fun UiKitScreen(modifier: Modifier = Modifier) {
                 painter = painterResource(id = R.drawable.ic_group),
                 date = "13.09.2024",
                 location = "Москва",
-                isFinished = false
+                isFinished = false,
+                onClick = {}
             )
 
 
@@ -163,6 +165,7 @@ fun UiKitScreen(modifier: Modifier = Modifier) {
                 title = "Developer meeting",
                 subtitle = "10 000 человек",
                 imageRes = R.drawable.communityavatar,
+                onClick = {}
             )
         }
         item {

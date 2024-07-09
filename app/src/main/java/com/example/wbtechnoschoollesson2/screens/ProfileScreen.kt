@@ -43,7 +43,7 @@ import com.example.wbtechnoschoollesson2.uiKitScreen.TypographyLine1
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun Screen2() {
+fun ProfileScreen() {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -70,80 +70,10 @@ fun Screen2() {
 
 
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Composable
-fun Screen3() {
-    var selectedTabIndex by remember { mutableStateOf(0) }
-    val plannedMeetings = meetings.filter { !it.isFinished }
-    val finishedMeetings = meetings.filter { it.isFinished }
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(start = 24.dp, end = 24.dp)
-                .background(Color.White)
-        ) {
-            item {
-                TabRow(
-                    selectedTabIndex = selectedTabIndex,
-                    indicator = { tabPositions ->
-                        TabRowDefaults.Indicator(
-                            Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
-                            color = UiTheme.colors.brandColorDefault,
-
-                            )
-                    }
-                ) {
-                    Tab(modifier = Modifier.background(Color.White),
-                        selected = selectedTabIndex == 0,
-                        onClick = { selectedTabIndex = 0 },
-                        text = {
-                            Text(
-                                "ЗАПЛАНИРОВАНО",
-                                style = UiTheme.typography.bodyText1,
-                                color = if (selectedTabIndex == 0) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
-                            )
-                        }
-                    )
-                    Tab(modifier = Modifier.background(Color.White),
-                        selected = selectedTabIndex == 1,
-                        onClick = { selectedTabIndex = 1 },
-                        text = {
-                            Text(
-                                "УЖЕ ПРОШЛИ",
-                                style = UiTheme.typography.bodyText1,
-                                color = if (selectedTabIndex == 1) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
-                            )
-                        }
-                    )
-                }
-                Spacer(modifier = Modifier.size(40.dp))
-            }
-
-            val itemsToShow = if (selectedTabIndex == 0) plannedMeetings else finishedMeetings
-            items(itemsToShow) { meeting ->
-                MeetingCard(
-                    title = meeting.title,
-                    painter = painterResource(id = R.drawable.avatar),
-                    date = meeting.date,
-                    location = meeting.location,
-                    isFinished = meeting.isFinished,
-                    onClick = {}
-                )
-                Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
-            }
-        }
-    }
 
 
 
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewScreen() {
-    WBTechnoschoolLesson2Theme {
-        Screen2()
-    }
-}
 
 
 

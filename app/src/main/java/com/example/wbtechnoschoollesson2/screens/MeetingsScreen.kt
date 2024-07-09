@@ -3,15 +3,10 @@
 package com.example.wbtechnoschoollesson2.screens
 
 import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
-import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
@@ -26,19 +21,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
-import com.example.wbtechnoschoollesson2.uiKitScreen.ButtonIconLine
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
-import com.example.wbtechnoschoollesson2.uiKitScreen.TypographyLine1
 
 
 data class Meeting(
@@ -61,7 +51,7 @@ val meetings = listOf(
 )
 
 @Composable
-fun Screen1(navController: NavController) {
+fun AllMeetingScreen(navController: NavController) {
     var selectedTabIndex by remember { mutableStateOf(0) }
     val allMeetings = meetings
     val activeMeetings = meetings.filter { !it.isFinished }
@@ -134,109 +124,7 @@ fun Screen1(navController: NavController) {
     }
 }
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Composable
-fun Screen2() {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 46.dp)
-                .background(Color.White)
-        ) {
-            Spacer(modifier = Modifier.size(46.dp))
-            ProfileAvatar(
-                avatarResId = R.drawable.avatarpw1,
-                isEditing = false,
-                size= 100.dp
-            )
-            Spacer(modifier = Modifier.size(20.dp))
-            TypographyLine1(
-                title = "Иван Иванов",
-                subTitle = "+7 952 812-22-00"
-            )
-            Spacer(modifier = Modifier.size(20.dp))
-            ButtonIconLine(color = UiTheme.colors.brandColorDefault, enabled = true)
-        }
 
-    }
-
-
-
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Composable
-fun Screen3() {
-    var selectedTabIndex by remember { mutableStateOf(0) }
-    val plannedMeetings = meetings.filter { !it.isFinished }
-    val finishedMeetings = meetings.filter { it.isFinished }
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(start = 24.dp, end = 24.dp)
-                .background(Color.White)
-        ) {
-            item {
-                TabRow(
-                    selectedTabIndex = selectedTabIndex,
-                    indicator = { tabPositions ->
-                        TabRowDefaults.Indicator(
-                            Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
-                            color = UiTheme.colors.brandColorDefault,
-
-                            )
-                    }
-                ) {
-                    Tab(modifier = Modifier.background(Color.White),
-                        selected = selectedTabIndex == 0,
-                        onClick = { selectedTabIndex = 0 },
-                        text = {
-                            Text(
-                                "ЗАПЛАНИРОВАНО",
-                                style = UiTheme.typography.bodyText1,
-                                color = if (selectedTabIndex == 0) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
-                            )
-                        }
-                    )
-                    Tab(modifier = Modifier.background(Color.White),
-                        selected = selectedTabIndex == 1,
-                        onClick = { selectedTabIndex = 1 },
-                        text = {
-                            Text(
-                                "УЖЕ ПРОШЛИ",
-                                style = UiTheme.typography.bodyText1,
-                                color = if (selectedTabIndex == 1) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
-                            )
-                        }
-                    )
-                }
-                Spacer(modifier = Modifier.size(40.dp))
-            }
-
-            val itemsToShow = if (selectedTabIndex == 0) plannedMeetings else finishedMeetings
-            items(itemsToShow) { meeting ->
-                MeetingCard(
-                    title = meeting.title,
-                    painter = painterResource(id = R.drawable.avatar),
-                    date = meeting.date,
-                    location = meeting.location,
-                    isFinished = meeting.isFinished,
-                    onClick = {}
-                )
-                Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
-            }
-        }
-    }
-
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewScreen() {
-    WBTechnoschoolLesson2Theme {
-        Screen2()
-    }
-}
 
 
 

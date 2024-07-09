@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,14 +24,14 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 
-data class BottomItem(val title:String, val iconId:Int, val route:String)
+data class BottomItem(val title: String, val iconId: Int, val route: String)
 
 @Composable
 fun BottomNavigation(navController: NavController) {
     val listItems = listOf(
+        BottomItem("Встречи", R.drawable.meeting_ic, "all_meetings"),
         BottomItem("Сообщества", R.drawable.ic_group, "communities"),
         BottomItem("Еще", R.drawable.more_horizontal, "more_screen"),
-        BottomItem("Встречи", R.drawable.meeting_ic, "all_meetings")
     )
 
     NavigationBar(
@@ -74,6 +75,7 @@ fun BottomNavigation(navController: NavController) {
                     }
                 },
                 selected = currentRoute == item.route,
+                colors = NavigationBarItemDefaults.colors(indicatorColor = Color.White),
                 onClick = {
                     if (currentRoute != item.route) {
                         navController.navigate(item.route) {
@@ -85,7 +87,8 @@ fun BottomNavigation(navController: NavController) {
                         }
                     }
                 },
-                alwaysShowLabel = false
+                alwaysShowLabel = false,
+
             )
         }
     }

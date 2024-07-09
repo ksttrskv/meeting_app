@@ -30,14 +30,14 @@ fun AvatarRow(avatarResIds: List<Int>) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy((-16).dp),
-        modifier = Modifier.padding(start = 16.dp)
+
     ) {
         avatarResIds.forEachIndexed { index, resId ->
             Image(
                 painter = painterResource(id = resId),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(40.dp)
+                    .size(48.dp)
                     .clip(RoundedCornerShape(8.dp))
                     .zIndex(avatarCount - index.toFloat())
             )

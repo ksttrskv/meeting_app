@@ -2,10 +2,12 @@ package com.example.wbtechnoschoollesson2.Molecules
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -33,20 +35,17 @@ import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 fun CommunityCard(
     imageRes: Int,
     title: String,
-    subtitle: String
+    subtitle: String,
+    onClick: () -> Unit
 ) {
-    Card(
-        onClick = {},
-        modifier = Modifier
-            .padding(4.dp)
-            .fillMaxWidth(),
-        colors = CardDefaults.cardColors(Color.Transparent)
-    ) {
+    Card(onClick = onClick,
+        modifier = Modifier.fillMaxSize(), colors = CardDefaults.cardColors(Color.White)) {
         Box(
             modifier = Modifier
                 .clip(RoundedCornerShape(8.dp))
                 .height(68.dp)
                 .padding(bottom = 12.dp)
+
         ) {
             Column {
                 Row {
@@ -79,6 +78,7 @@ fun CommunityCard(
 
         }
     }
+
 }
 
 @Preview(showBackground = true)
@@ -89,6 +89,7 @@ fun PreviewCommunityCard() {
             title = "Developer meeting",
             subtitle = "10 000 человек",
             imageRes = R.drawable.communityavatar,
+            onClick = {}
         )
     }
 }

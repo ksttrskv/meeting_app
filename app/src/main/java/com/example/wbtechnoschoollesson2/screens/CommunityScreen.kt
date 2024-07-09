@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.wbtechnoschoollesson2.Molecules.CommunityCard
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
@@ -23,12 +25,12 @@ import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 data class Community(
     val title: String,
     val subtitle: String,
-    val imageRes: Int
+    val imageRes: Int,
 )
 
 
 @Composable
-fun CommunityScreen() {
+fun CommunityScreen(navController: NavController) {
 
     Box(
         modifier = Modifier
@@ -49,11 +51,16 @@ fun CommunityScreen() {
 
             items(communities) { community ->
                 CommunityCard(
+                    imageRes = community.imageRes,
                     title = community.title,
                     subtitle = community.subtitle,
-                    imageRes = community.imageRes,
+                    onClick = {
+                        navController.navigate("community_detail/${community.title}") {
+                            launchSingleTop = true
+                        }
+                    }
+                )
 
-                    )
                 Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -129,6 +136,7 @@ val communities = listOf(
 @Composable
 fun PreviewCommunityScreen() {
     WBTechnoschoolLesson2Theme {
-        CommunityScreen()
+        val navController = rememberNavController()
+        CommunityScreen(navController = navController)
     }
 }

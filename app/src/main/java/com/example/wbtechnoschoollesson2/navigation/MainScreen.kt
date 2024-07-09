@@ -1,3 +1,5 @@
+package com.example.wbtechnoschoollesson2
+
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -9,35 +11,29 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
-import com.example.wbtechnoschoollesson2.screens.Screen1
-import com.example.wbtechnoschoollesson2.screens.Screen2
-import com.example.wbtechnoschoollesson2.screens.Screen3
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
+import com.example.wbtechnoschoollesson2.screens.AllMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.CommunityDetailScreen
 import com.example.wbtechnoschoollesson2.screens.CommunityScreen
-import com.example.wbtechnoschoollesson2.screens.Meeting
 import com.example.wbtechnoschoollesson2.screens.MeetingDetailScreen
 import com.example.wbtechnoschoollesson2.screens.MoreScreen
+import com.example.wbtechnoschoollesson2.screens.MyMeetingScreen
+import com.example.wbtechnoschoollesson2.screens.ProfileScreen
 import com.example.wbtechnoschoollesson2.screens.meetings
-
-
-@SuppressLint("SuspiciousIndentation")
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavController) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route ?: "all_meetings"
+    val currentRoute = navBackStackEntry?.destination?.route ?: ""
 
     Scaffold(
         topBar = {
@@ -133,21 +129,29 @@ fun MainScreen() {
                 currentRoute == "communities" -> TopBar3(
                     title = "Сообщества",
                 )
+                currentRoute == "splash" -> TopBar3(
+                    title = "",
+                )
             }
         },
         bottomBar = {
-            BottomNavigation(navController = navController)
+            if (currentRoute != "splash") {
+                BottomNavigation(navController = navController)
+            }
         },
         containerColor = Color.White
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = "all_meetings",
+            startDestination = "splash",
             modifier = Modifier.padding(paddingValues)
         ) {
-            composable("my_meetings") { Screen1(navController = navController) }
-            composable("profile") { Screen2() }
-            composable("all_meetings") { Screen3() }
+            composable("splash") {
+                SplashScreen(navController = navController)
+            }
+            composable("my_meetings") { AllMeetingScreen(navController = navController) }
+            composable("profile") { ProfileScreen() }
+            composable("all_meetings") { MyMeetingScreen() }
             composable("more_screen") { MoreScreen(navController = navController) }
             composable("communities") { CommunityScreen(navController = navController) }
             composable(
@@ -155,9 +159,7 @@ fun MainScreen() {
                 arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })
             ) { backStackEntry ->
                 val communityTitle = backStackEntry.arguments?.getString("communityTitle") ?: ""
-
                 CommunityDetailScreen(communityTitle)
-
             }
             composable(
                 route = "meeting_detail/{meeting}",
@@ -165,19 +167,10 @@ fun MainScreen() {
             ) { backStackEntry ->
                 val meetingId = backStackEntry.arguments?.getString("meeting") ?: ""
                 val meeting = meetings.find { it.title == meetingId }
-
                 if (meeting != null) {
                     MeetingDetailScreen(meeting)
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewScreen() {
-    WBTechnoschoolLesson2Theme {
-        MainScreen()
     }
 }

@@ -1,6 +1,7 @@
 package com.example.wbtechnoschoollesson2.Molecules
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,10 +39,10 @@ fun MeetingCard(
     date: String,
     location: String,
     isFinished: Boolean,
+    onClick: () -> Unit
 ) {
     Card(
-        onClick = {},
-
+        onClick = onClick,
         modifier = Modifier.padding(4.dp),
         colors = CardDefaults.cardColors(Color.Transparent)
     ) {
@@ -106,6 +107,8 @@ fun PreviewMeetingCard() {
             painter = painterResource(id = R.drawable.avatar),
             date = "13.09.2024" ,
             location = "Москва",
-            isFinished = true)
+            isFinished = true,
+            onClick = {})
+
     }
 }
