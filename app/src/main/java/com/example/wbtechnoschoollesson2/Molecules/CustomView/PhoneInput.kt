@@ -35,6 +35,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 
+private const val PHONE_NUMBER_SIZE = 10
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PhoneInput(modifier: Modifier = Modifier, actionNext: (phone: String) -> Unit) {
@@ -50,7 +52,7 @@ fun PhoneInput(modifier: Modifier = Modifier, actionNext: (phone: String) -> Uni
 
         Row(
             modifier = Modifier
-                .clip(RoundedCornerShape(5.dp))
+                .clip(RoundedCornerShape(6.dp))
                 .background(UiTheme.colors.neutralSecondaryBg)
                 .padding(vertical = 16.dp)
                 .clickable { expanded = !expanded },
@@ -108,12 +110,12 @@ fun PhoneInput(modifier: Modifier = Modifier, actionNext: (phone: String) -> Uni
 
         BasicTextField(
             modifier = Modifier
-                .clip(RoundedCornerShape(5.dp))
+                .clip(RoundedCornerShape(6.dp))
                 .background(UiTheme.colors.neutralSecondaryBg)
                 .fillMaxWidth()
                 .padding(vertical = 8.dp),
             value = phone,
-            onValueChange = { phone = it.take(10) },
+            onValueChange = { phone = it.take(PHONE_NUMBER_SIZE) },
             textStyle = UiTheme.typography.bodyText1,
             decorationBox = {
                 Row(

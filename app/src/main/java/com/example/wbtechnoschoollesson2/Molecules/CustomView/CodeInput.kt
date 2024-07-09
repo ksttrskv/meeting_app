@@ -71,7 +71,9 @@ fun NumberOrCircle(code: String, index: Int) {
         }
     } else {
         Box(modifier = Modifier.width(24.dp), contentAlignment = Alignment.Center) {
-            Text(text = code[index].toString(), style = UiTheme.typography.heading1)
+            Text(
+                text = code[index].toString(),
+                style = UiTheme.typography.heading1)
         }
 
     }
