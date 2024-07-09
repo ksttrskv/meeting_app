@@ -24,6 +24,7 @@ import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.AllMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.CommunityDetailScreen
 import com.example.wbtechnoschoollesson2.screens.CommunityScreen
+import com.example.wbtechnoschoollesson2.screens.CustomViewScreen
 import com.example.wbtechnoschoollesson2.screens.MeetingDetailScreen
 import com.example.wbtechnoschoollesson2.screens.MoreScreen
 import com.example.wbtechnoschoollesson2.screens.MyMeetingScreen
@@ -129,8 +130,17 @@ fun MainScreen(navController: NavController) {
                 currentRoute == "communities" -> TopBar3(
                     title = "Сообщества",
                 )
-                currentRoute == "splash" -> TopBar3(
+                currentRoute == "custom_view" -> TopBar3(
                     title = "",
+                    navigationIcon = {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.back_icon),
+                                contentDescription = "Back",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    }
                 )
             }
         },
@@ -171,6 +181,7 @@ fun MainScreen(navController: NavController) {
                     MeetingDetailScreen(meeting)
                 }
             }
+            composable("custom_view") { CustomViewScreen() }
         }
     }
 }

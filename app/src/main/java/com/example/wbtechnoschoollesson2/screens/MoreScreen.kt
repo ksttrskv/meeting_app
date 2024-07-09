@@ -41,7 +41,7 @@ fun MoreScreen(navController: NavController) {
     val menuItems = listOf(
         MenuItem("Мои встречи", painterResource(R.drawable.meeting_ic), "my_meetings"),
         MenuItem("Профиль", painterResource(R.drawable.avatarpw), "profile"),
-        MenuItem("Тема", painterResource(R.drawable.theme_ic), ""),
+        MenuItem("Тема", painterResource(R.drawable.theme_ic), "custom_view"),
         MenuItem("Уведомления", painterResource(R.drawable.notifications_ic), ""),
         MenuItem("Безопасность", painterResource(R.drawable.security_ic), ""),
         MenuItem("Память и ресурсы", painterResource(R.drawable.resourse_ic), ""),
