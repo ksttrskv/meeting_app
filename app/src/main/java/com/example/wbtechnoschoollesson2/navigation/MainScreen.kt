@@ -7,11 +7,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -19,6 +24,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.AllMeetingScreen
@@ -26,6 +32,7 @@ import com.example.wbtechnoschoollesson2.screens.CommunityDetailScreen
 import com.example.wbtechnoschoollesson2.screens.CommunityScreen
 import com.example.wbtechnoschoollesson2.screens.CustomViewScreen
 import com.example.wbtechnoschoollesson2.screens.MeetingDetailScreen
+import com.example.wbtechnoschoollesson2.screens.MeetingViewModel
 import com.example.wbtechnoschoollesson2.screens.MoreScreen
 import com.example.wbtechnoschoollesson2.screens.MyMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.ProfileScreen
@@ -35,6 +42,7 @@ fun MainScreen(navController: NavController) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route ?: ""
+    val meetingViewModel = remember { MeetingViewModel() }
 
     Scaffold(
         topBar = {
@@ -67,6 +75,16 @@ fun MainScreen(navController: NavController) {
                                     painter = painterResource(id = R.drawable.back_icon),
                                     contentDescription = "Back",
                                     modifier = Modifier.size(24.dp)
+                                )
+                            }
+                        },
+                        actions = {
+                            if (meetingViewModel.isGoing.collectAsState().value) {
+                                Icon(
+                                    imageVector = ImageVector.vectorResource(id = R.drawable.check_ic),
+                                    contentDescription = null,
+                                    tint = UiTheme.colors.brandColorDefault,
+                                    modifier = Modifier.size(18.dp)
                                 )
                             }
                         }
@@ -103,7 +121,7 @@ fun MainScreen(navController: NavController) {
                                 painter = painterResource(id = R.drawable.icon_edit),
                                 contentDescription = "Редактировать",
                                 tint = Color.Black,
-                                modifier = Modifier.size(24.dp)
+                                modifier = Modifier.size(18.dp)
                             )
                         }
                     },
@@ -117,7 +135,7 @@ fun MainScreen(navController: NavController) {
                                 painter = painterResource(id = R.drawable.add_plus),
                                 contentDescription = "Добавить",
                                 tint = Color.Black,
-                                modifier = Modifier.size(24.dp)
+                                modifier = Modifier.size(14.dp)
                             )
                         }
                     },
@@ -178,7 +196,7 @@ fun MainScreen(navController: NavController) {
                 val meetingId = backStackEntry.arguments?.getString("meeting") ?: ""
                 val meeting = meetings.find { it.title == meetingId }
                 if (meeting != null) {
-                    MeetingDetailScreen(meeting)
+                    MeetingDetailScreen(meeting, navController, meetingViewModel)
                 }
             }
             composable("custom_view") { CustomViewScreen() }

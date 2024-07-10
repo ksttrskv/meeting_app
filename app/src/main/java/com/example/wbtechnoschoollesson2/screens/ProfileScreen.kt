@@ -44,29 +44,36 @@ import com.example.wbtechnoschoollesson2.uiKitScreen.TypographyLine1
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ProfileScreen() {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 46.dp)
-                .background(Color.White)
-        ) {
+    LazyColumn(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 46.dp)
+            .background(Color.White)
+    ) {
+        item {
             Spacer(modifier = Modifier.size(46.dp))
             ProfileAvatar(
                 avatarResId = R.drawable.avatarpw1,
                 isEditing = false,
-                size= 100.dp
+                size = 100.dp
             )
+        }
+        item {
             Spacer(modifier = Modifier.size(20.dp))
             TypographyLine1(
                 title = "Иван Иванов",
                 subTitle = "+7 952 812-22-00"
             )
+        }
+        item {
             Spacer(modifier = Modifier.size(20.dp))
             ButtonIconLine(color = UiTheme.colors.brandColorDefault, enabled = true)
         }
 
     }
+
+}
 
 
 

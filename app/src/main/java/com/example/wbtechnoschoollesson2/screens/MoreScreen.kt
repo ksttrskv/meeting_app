@@ -40,7 +40,6 @@ data class MenuItem(
 fun MoreScreen(navController: NavController) {
     val menuItems = listOf(
         MenuItem("Мои встречи", painterResource(R.drawable.meeting_ic), "my_meetings"),
-        MenuItem("Профиль", painterResource(R.drawable.avatarpw), "profile"),
         MenuItem("Тема", painterResource(R.drawable.theme_ic), "custom_view"),
         MenuItem("Уведомления", painterResource(R.drawable.notifications_ic), ""),
         MenuItem("Безопасность", painterResource(R.drawable.security_ic), ""),
@@ -55,11 +54,11 @@ fun MoreScreen(navController: NavController) {
             .padding(16.dp)
     ) {
         item {
-            ProfileCard()
+            ProfileCard(navController=navController)
         }
 
         itemsIndexed(menuItems) { index, item ->
-            if (index == 6) { // Индекс элемента
+            if (index == 5) { // Индекс элемента меню для разделителя
                 Divider(
                     color = UiTheme.colors.neutralLine,
                     thickness = 1.dp,
@@ -78,12 +77,12 @@ fun MoreScreen(navController: NavController) {
 
 
 @Composable
-fun ProfileCard() {
+fun ProfileCard(navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable { /* Переход на экран профиля */ }
+            .clickable { navController.navigate("profile") }
     ) {
         ProfileAvatar(
             avatarResId = R.drawable.avatarpw1,
