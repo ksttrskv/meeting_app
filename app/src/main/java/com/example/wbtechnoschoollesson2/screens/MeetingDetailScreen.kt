@@ -30,7 +30,6 @@ import androidx.compose.ui.window.Dialog
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
-import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbOutlineButton
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbSolidButton
@@ -39,6 +38,7 @@ import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
+import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

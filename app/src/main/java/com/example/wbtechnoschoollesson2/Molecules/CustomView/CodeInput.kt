@@ -26,18 +26,25 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
+import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme.colors
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun CodeInput(modifier: Modifier = Modifier, actionDone: (code: String) -> Unit) {
-    var pin by remember {
-        mutableStateOf("")
-    }
+    var pin by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
     BasicTextField(
         modifier = modifier.padding(vertical = 16.dp),
         value = pin,
-        onValueChange = { pin = it.take(4) },
+        onValueChange = {
+            if (it.length <= 4) {
+                pin = it
+                if (it.length == 4) {
+                    focusManager.clearFocus()
+                    actionDone(it)
+                }
+            }
+        },
         decorationBox = {
             Row(
                 modifier = Modifier.height(34.dp),
@@ -56,8 +63,10 @@ fun CodeInput(modifier: Modifier = Modifier, actionDone: (code: String) -> Unit)
         ),
         keyboardActions = KeyboardActions(
             onDone = {
-                focusManager.clearFocus()
-                actionDone(pin)
+                if (pin.length == 4) {
+                    focusManager.clearFocus()
+                    actionDone(pin)
+                }
             }
         )
     )

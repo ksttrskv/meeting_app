@@ -2,6 +2,7 @@ package com.example.wbtechnoschoollesson2.Molecules
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,21 +50,27 @@ fun ProfileAvatar(
         if (isEditing) {
             Box(
                 modifier = Modifier
-                    .padding(size * 0.02f)
-                    .size(size * 0.25f)
+                    .padding(size * 0.14f)
+                    .size(size * 0.26f)
                     .clip(CircleShape)
                     .align(Alignment.BottomEnd)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.plus),
+                    painter = painterResource(id = R.drawable.edit_plus_ic),
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary,
+                    tint = UiTheme.colors.neutralActive,
                     modifier = Modifier.size(24.dp)
                 )
             }
         }
     }
 }
+
+
+
+
+
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewProfileAvatar() {

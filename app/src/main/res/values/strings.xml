@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">WB technoschool lesson 2</string>
+    <!-- Profile create screen -->
+    <string name="enter_name">Имя (обязательно)</string>
+    <string name="enter_surname">Фамилия (опционально)</string>
+    <string name="button_save">Сохранить</string>
+    <string name="save_button">Сохранить</string>
+    <string name="continue_button">Продолжить</string>
+    <string name="loginscreen_text2">Мы вышлем код подтверждения\nна указаный номер</string>
+    <string name="loginscreen_text1">Введите номер телефона</string>
+    <string name="codescreen_text1">Введите код</string>
+    <string name="all_meetings_tabrow">ВСЕ ВСТРЕЧИ</string>
+    <string name="active_tabrow">АКТИВНЫЕ</string>
+
 </resources>
