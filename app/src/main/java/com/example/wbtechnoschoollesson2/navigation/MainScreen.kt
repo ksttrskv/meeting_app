@@ -163,6 +163,42 @@ fun MainScreen(navController: NavController) {
                         }
                     }
                 )
+                currentRoute == "loginScreen" -> TopBar3(
+                    title = "",
+                    navigationIcon = {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.back_icon),
+                                contentDescription = "Back",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    },
+                )
+                currentRoute == "codeInputScreen" -> TopBar3(
+                    title = "",
+                    navigationIcon = {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.back_icon),
+                                contentDescription = "Back",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    },
+                )
+                currentRoute == "profileCreateScreen" -> TopBar3(
+                    title = "Профиль",
+                    navigationIcon = {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.back_icon),
+                                contentDescription = "Back",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    },
+                )
             }
         },
         bottomBar = {

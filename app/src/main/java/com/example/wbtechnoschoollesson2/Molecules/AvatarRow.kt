@@ -23,10 +23,11 @@ import androidx.compose.ui.zIndex
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
+const val MAX_VISIBLE_AVATARS = 5
 
 @Composable
 fun AvatarRow(avatarResIds: List<Int>) {
-    val maxVisibleAvatars = 5
+    val maxVisibleAvatars = MAX_VISIBLE_AVATARS
     val randomAvatars = avatarResIds.shuffled()
 
     Row(

@@ -38,6 +38,7 @@ fun LoginScreen(navController: NavController) {
     var phone by remember { mutableStateOf("") }
     Box(
         modifier = Modifier
+            .padding(start = 24.dp, end = 24.dp)
             .fillMaxSize()
             .background(Color.White),
         contentAlignment = Alignment.TopStart
@@ -51,7 +52,7 @@ fun LoginScreen(navController: NavController) {
         ) {
             item {
                 Text(
-                    text = stringResource(R.string.loginscreen_text1),
+                    text = stringResource(R.string.loginscreen_inputphone),
                     style = UiTheme.typography.subheading2,
                     fontSize = 24.sp,
                     color = UiTheme.colors.neutralActive,
@@ -62,7 +63,7 @@ fun LoginScreen(navController: NavController) {
 
             item {
                 Text(
-                    text = stringResource(R.string.loginscreen_text2),
+                    text = stringResource(R.string.loginscreen_we_send_code),
                     style = UiTheme.typography.bodyText2,
                     color = UiTheme.colors.neutralActive,
                     textAlign = TextAlign.Center
@@ -110,25 +111,25 @@ fun GreetingPreview() {
 }
 
 
-@Composable
-fun ScreenScaffold(
-    modifier: Modifier = Modifier,
-    topBar: @Composable () -> Unit = {},
-    bottomBar: @Composable () -> Unit = {},
-    showBottomBar: Boolean = true,
-    content: @Composable (PaddingValues) -> Unit
-) {
-    Scaffold(
-        topBar = { topBar() },
-        bottomBar = if (showBottomBar) {
-            { bottomBar() }
-        } else {
-            {}
-        },
-        modifier = modifier,
-    ) { paddingValues ->
-        content(paddingValues)
-    }
-}
+//@Composable
+//fun ScreenScaffold(
+//    modifier: Modifier = Modifier,
+//    topBar: @Composable () -> Unit = {},
+//    bottomBar: @Composable () -> Unit = {},
+//    showBottomBar: Boolean = true,
+//    content: @Composable (PaddingValues) -> Unit
+//) {
+//    Scaffold(
+//        topBar = { topBar() },
+//        bottomBar = if (showBottomBar) {
+//            { bottomBar() }
+//        } else {
+//            {}
+//        },
+//        modifier = modifier,
+//    ) { paddingValues ->
+//        content(paddingValues)
+//    }
+//}
 
 
