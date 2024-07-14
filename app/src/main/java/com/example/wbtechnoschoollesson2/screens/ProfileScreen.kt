@@ -79,7 +79,13 @@ fun ProfileScreen() {
 
 
 
-
+@Preview(showBackground = true)
+@Composable
+fun PreviewProfileAvatar() {
+    WBTechnoschoolLesson2Theme {
+        ProfileScreen()
+    }
+    }
 
 
 

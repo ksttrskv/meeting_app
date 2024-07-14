@@ -39,14 +39,10 @@ private const val PHONE_NUMBER_SIZE = 10
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun PhoneInput(modifier: Modifier = Modifier, actionNext: (phone: String) -> Unit) {
+fun PhoneInput(modifier: Modifier = Modifier, onPhoneChange: (String) -> Unit) {
     var selectedCountry by remember { mutableStateOf(Country.Russia) }
-    var phone by remember {
-        mutableStateOf("")
-    }
-    var expanded by remember {
-        mutableStateOf(false)
-    }
+    var phone by remember { mutableStateOf("") }
+    var expanded by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
     Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
 
@@ -115,7 +111,10 @@ fun PhoneInput(modifier: Modifier = Modifier, actionNext: (phone: String) -> Uni
                 .fillMaxWidth()
                 .padding(vertical = 8.dp),
             value = phone,
-            onValueChange = { phone = it.take(PHONE_NUMBER_SIZE) },
+            onValueChange = {
+                phone = it.take(PHONE_NUMBER_SIZE)
+                onPhoneChange(selectedCountry.phoneCode + phone)
+            },
             textStyle = UiTheme.typography.bodyText1,
             decorationBox = {
                 Row(
@@ -144,7 +143,7 @@ fun PhoneInput(modifier: Modifier = Modifier, actionNext: (phone: String) -> Uni
             keyboardActions = KeyboardActions(
                 onNext = {
                     focusManager.clearFocus()
-                    actionNext(selectedCountry.phoneCode + phone)
+                    onPhoneChange(selectedCountry.phoneCode + phone)
                 }
             ),
         )
@@ -153,6 +152,6 @@ fun PhoneInput(modifier: Modifier = Modifier, actionNext: (phone: String) -> Uni
 
 @Composable
 @Preview
-fun PhoneInputPreview(){
-    PhoneInput(){}
+fun PhoneInputPreview() {
+    PhoneInput() {}
 }

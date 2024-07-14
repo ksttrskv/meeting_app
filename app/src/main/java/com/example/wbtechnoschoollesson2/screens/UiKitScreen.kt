@@ -1,6 +1,5 @@
 package com.example.wbtechnoschoollesson2.screens
 
-import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
 import com.example.wbtechnoschoollesson2.Molecules.CommunityCard
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +17,7 @@ import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.chips.CustomFilterChip
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme

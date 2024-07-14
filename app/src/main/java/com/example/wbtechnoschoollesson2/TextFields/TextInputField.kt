@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.atoms.search
+package com.example.wbtechnoschoollesson2.TextFields
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -10,7 +10,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,39 +18,33 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.SoftwareKeyboardController
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
-import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
+
+
 
 @Composable
-fun SearchBar(
+fun TextInputField(
     focusRequester: FocusRequester,
     query: TextFieldValue,
     onQueryChange: (TextFieldValue) -> Unit,
-    onQuerySearch: (TextFieldValue) -> Unit,
-    placeholderText: String = "Поиск",
+    placeholderText: String,
     keyboardController: SoftwareKeyboardController? = LocalSoftwareKeyboardController.current,
     localFocusManager: FocusManager = LocalFocusManager.current,
-    searchIconColor: Color = UiTheme.colors.neutralDisabled,
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier
             .height(36.dp)
             .clip(RoundedCornerShape(4.dp))
-            .background(UiTheme.colors.neutralLine)
+            .background(UiTheme.colors.neutralOffWhite)
             .padding(start = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
@@ -61,11 +54,6 @@ fun SearchBar(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Icon(
-                painter = painterResource(R.drawable.vector),
-                contentDescription = null,
-                tint = searchIconColor
-            )
 
             BasicTextField(
                 value = query,
@@ -87,12 +75,11 @@ fun SearchBar(
                     innerTextField()
                 },
                 keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Search,
+                    imeAction = ImeAction.Next,
                     keyboardType = KeyboardType.Text,
                 ),
                 keyboardActions = KeyboardActions(
-                    onSearch = {
-                        onQuerySearch(query)
+                    onNext = {
                         keyboardController?.hide()
                         localFocusManager.clearFocus()
                     }
@@ -101,6 +88,7 @@ fun SearchBar(
         }
     }
 }
+
 
 @Composable
 private fun Placeholder(
@@ -112,7 +100,7 @@ private fun Placeholder(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
 
-    ) {
+        ) {
         if (isVisible) {
             Text(
                 text = placeholderText,
@@ -126,11 +114,3 @@ private fun Placeholder(
 }
 
 
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewSearch() {
-    WBTechnoschoolLesson2Theme {
-       SearchView()
-    }
-}

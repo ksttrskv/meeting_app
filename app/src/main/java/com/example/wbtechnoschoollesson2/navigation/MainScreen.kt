@@ -28,13 +28,16 @@ import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.AllMeetingScreen
+import com.example.wbtechnoschoollesson2.screens.CodeInputScreen
 import com.example.wbtechnoschoollesson2.screens.CommunityDetailScreen
 import com.example.wbtechnoschoollesson2.screens.CommunityScreen
 import com.example.wbtechnoschoollesson2.screens.CustomViewScreen
+import com.example.wbtechnoschoollesson2.screens.LoginScreen
 import com.example.wbtechnoschoollesson2.screens.MeetingDetailScreen
 import com.example.wbtechnoschoollesson2.screens.MeetingViewModel
 import com.example.wbtechnoschoollesson2.screens.MoreScreen
 import com.example.wbtechnoschoollesson2.screens.MyMeetingScreen
+import com.example.wbtechnoschoollesson2.screens.ProfileCreateScreen
 import com.example.wbtechnoschoollesson2.screens.ProfileScreen
 import com.example.wbtechnoschoollesson2.screens.meetings
 @Composable
@@ -160,10 +163,46 @@ fun MainScreen(navController: NavController) {
                         }
                     }
                 )
+                currentRoute == "loginScreen" -> TopBar3(
+                    title = "",
+                    navigationIcon = {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.back_icon),
+                                contentDescription = "Back",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    },
+                )
+                currentRoute == "codeInputScreen" -> TopBar3(
+                    title = "",
+                    navigationIcon = {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.back_icon),
+                                contentDescription = "Back",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    },
+                )
+                currentRoute == "profileCreateScreen" -> TopBar3(
+                    title = "Профиль",
+                    navigationIcon = {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.back_icon),
+                                contentDescription = "Back",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    },
+                )
             }
         },
         bottomBar = {
-            if (currentRoute != "splash") {
+            if (currentRoute != "splash" && currentRoute != "loginScreen" && currentRoute != "codeInputScreen" && currentRoute != "profileCreateScreen") {
                 BottomNavigation(navController = navController)
             }
         },
@@ -200,6 +239,9 @@ fun MainScreen(navController: NavController) {
                 }
             }
             composable("custom_view") { CustomViewScreen() }
+            composable("loginScreen") { LoginScreen(navController = navController) }
+            composable("codeInputScreen") { CodeInputScreen(navController = navController) }
+            composable("profileCreateScreen") { ProfileCreateScreen(navController = navController) }
         }
     }
 }
