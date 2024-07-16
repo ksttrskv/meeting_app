@@ -46,6 +46,7 @@ fun MainScreen(navController: NavController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route ?: ""
     val meetingViewModel = remember { MeetingViewModel() }
+    val isGoing by meetingViewModel.isGoing.collectAsState()
 
     Scaffold(
         topBar = {
@@ -82,9 +83,9 @@ fun MainScreen(navController: NavController) {
                             }
                         },
                         actions = {
-                            if (meetingViewModel.isGoing.collectAsState().value) {
+                            if (isGoing) {
                                 Icon(
-                                    imageVector = ImageVector.vectorResource(id = R.drawable.check_ic),
+                                    painter = painterResource(id = R.drawable.check_ic),
                                     contentDescription = null,
                                     tint = UiTheme.colors.brandColorDefault,
                                     modifier = Modifier.size(18.dp)

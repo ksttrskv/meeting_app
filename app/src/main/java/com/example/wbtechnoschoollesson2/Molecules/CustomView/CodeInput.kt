@@ -36,12 +36,16 @@ fun CodeInput(modifier: Modifier = Modifier, actionDone: (code: String) -> Unit)
     BasicTextField(
         modifier = modifier.padding(vertical = 16.dp),
         value = pin,
-        onValueChange = {
-            if (it.length <= 4) {
-                pin = it
-                if (it.length == 4) {
-                    focusManager.clearFocus()
-                    actionDone(it)
+        onValueChange = {  newValue ->
+            when {
+                newValue.length <= 4 -> {
+                    pin = newValue
+                    when (newValue.length) {
+                        4 -> {
+                            focusManager.clearFocus()
+                            actionDone(newValue)
+                        }
+                    }
                 }
             }
         },
@@ -82,7 +86,8 @@ fun NumberOrCircle(code: String, index: Int) {
         Box(modifier = Modifier.width(24.dp), contentAlignment = Alignment.Center) {
             Text(
                 text = code[index].toString(),
-                style = UiTheme.typography.heading1)
+                style = UiTheme.typography.heading1
+            )
         }
 
     }

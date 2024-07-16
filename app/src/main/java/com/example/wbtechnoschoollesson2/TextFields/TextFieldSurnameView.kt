@@ -19,15 +19,15 @@ fun TextFieldSurnameView() {
     val focusRequester = remember { FocusRequester() }
     var query by remember { mutableStateOf(TextFieldValue("")) }
 
-    // Функция для обработки изменений в поле
-    val onQueryChange: (TextFieldValue) -> Unit = { newQuery ->
-        query = newQuery
-    }
+//    // Функция для обработки изменений в поле
+//    val onQueryChange: (TextFieldValue) -> Unit = { newQuery ->
+//        query = newQuery
+//    }
 
     TextInputField(
         focusRequester = focusRequester,
         query = query,
-        onQueryChange = onQueryChange,
+        onQueryChange = { newQuery -> query = newQuery },
         placeholderText = stringResource(id = R.string.enter_surname),
         modifier = Modifier
             .fillMaxWidth()
