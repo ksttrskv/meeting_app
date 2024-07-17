@@ -34,18 +34,21 @@ import com.example.wbtechnoschoollesson2.screens.CommunityScreen
 import com.example.wbtechnoschoollesson2.screens.CustomViewScreen
 import com.example.wbtechnoschoollesson2.screens.LoginScreen
 import com.example.wbtechnoschoollesson2.screens.MeetingDetailScreen
-import com.example.wbtechnoschoollesson2.screens.MeetingViewModel
 import com.example.wbtechnoschoollesson2.screens.MoreScreen
 import com.example.wbtechnoschoollesson2.screens.MyMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.ProfileCreateScreen
 import com.example.wbtechnoschoollesson2.screens.ProfileScreen
-import com.example.wbtechnoschoollesson2.screens.meetings
+import com.example.wbtechnoschoollesson2.screens.ViewModels.AllMeetingViewModel
+import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityViewModel
+import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
+import org.koin.androidx.compose.koinViewModel
+
 @Composable
 fun MainScreen(navController: NavController) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route ?: ""
-    val meetingViewModel = remember { MeetingViewModel() }
+    val meetingViewModel: MeetingViewModel = koinViewModel()
     val isGoing by meetingViewModel.isGoing.collectAsState()
 
     Scaffold(
@@ -217,11 +220,11 @@ fun MainScreen(navController: NavController) {
             composable("splash") {
                 SplashScreen(navController = navController)
             }
-            composable("my_meetings") { AllMeetingScreen(navController = navController) }
+            composable("my_meetings") { AllMeetingScreen(navController = navController, viewModel = AllMeetingViewModel()) }
             composable("profile") { ProfileScreen() }
             composable("all_meetings") { MyMeetingScreen() }
             composable("more_screen") { MoreScreen(navController = navController) }
-            composable("communities") { CommunityScreen(navController = navController) }
+            composable("communities") { CommunityScreen(navController = navController, viewModel = CommunityViewModel()) }
             composable(
                 route = "community_detail/{communityTitle}",
                 arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })
@@ -234,9 +237,10 @@ fun MainScreen(navController: NavController) {
                 arguments = listOf(navArgument("meeting") { type = NavType.StringType })
             ) { backStackEntry ->
                 val meetingId = backStackEntry.arguments?.getString("meeting") ?: ""
-                val meeting = meetings.find { it.title == meetingId }
+                val meetingViewModel = viewModel<MeetingViewModel>()
+                val meeting = meetingViewModel.getAllMeetings().find { it.title == meetingId }
                 if (meeting != null) {
-                    MeetingDetailScreen(meeting, navController, meetingViewModel)
+                    MeetingDetailScreen(meeting, navController, MeetingViewModel())
                 }
             }
             composable("custom_view") { CustomViewScreen() }

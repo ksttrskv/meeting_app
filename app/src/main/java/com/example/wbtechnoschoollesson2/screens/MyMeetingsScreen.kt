@@ -17,6 +17,7 @@ import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,14 +30,20 @@ import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.screens.ViewModels.MyMeetingViewModel
+import org.koin.androidx.compose.getViewModel
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MyMeetingScreen() {
     var selectedTabIndex by remember { mutableStateOf(0) }
-    val plannedMeetings = meetings.filter { !it.isFinished }
-    val finishedMeetings = meetings.filter { it.isFinished }
+//    val plannedMeetings = meetings.filter { !it.isFinished }
+//    val finishedMeetings = meetings.filter { it.isFinished }
+    val viewModel: MyMeetingViewModel = getViewModel()
+    val plannedMeetings by viewModel.plannedMeetings.collectAsState(initial = emptyList())
+    val finishedMeetings by viewModel.finishedMeetings.collectAsState(initial = emptyList())
+
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()

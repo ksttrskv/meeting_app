@@ -9,21 +9,30 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 
 @Composable
-fun CommunityDetailScreen(communityTitle: String) {
+fun CommunityDetailScreen(communityTitle: String, meetingViewModel: MeetingViewModel = viewModel()) {
+
+    val meetings: List<Meeting> by remember {
+        mutableStateOf(meetingViewModel.getAllMeetings())
+    }
 
     LazyColumn(modifier = Modifier.padding(16.dp)) {
 

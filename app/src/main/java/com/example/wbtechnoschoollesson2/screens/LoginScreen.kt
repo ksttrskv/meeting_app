@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.wbtechnoschoollesson2.Molecules.CustomView.PhoneInput
@@ -31,11 +33,15 @@ import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbSolidButton
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.screens.ViewModels.LoginScreenViewModel
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun LoginScreen(navController: NavController) {
-    var phone by remember { mutableStateOf("") }
+fun LoginScreen(navController: NavController, viewModel: LoginScreenViewModel = koinViewModel()) {
+//    var phone by remember { mutableStateOf("") }
+    val userPhoneInput by viewModel.userPhoneInput.collectAsState()
+
     Box(
         modifier = Modifier
             .padding(start = 24.dp, end = 24.dp)
@@ -71,9 +77,7 @@ fun LoginScreen(navController: NavController) {
                 Spacer(modifier = Modifier.size(48.dp))
             }
             item {
-                PhoneInput{
-                    inputPhone ->
-                    phone = inputPhone}
+                PhoneInput(onPhoneChange = viewModel::onPhoneChanged)
                 Spacer(modifier = Modifier.size(68.dp))
             }
             item {
@@ -91,7 +95,7 @@ fun LoginScreen(navController: NavController) {
                     onClick = {
                         navController.navigate("codeInputScreen")
                     },
-                    enabled = phone.isNotBlank()
+                    enabled = userPhoneInput.isNotBlank()
                 )
             }
         }
@@ -100,36 +104,15 @@ fun LoginScreen(navController: NavController) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    WBTechnoschoolLesson2Theme {
-        val navContoller = rememberNavController()
-        LoginScreen(navController = navContoller)
-
-    }
-}
-
-
+//@Preview(showBackground = true)
 //@Composable
-//fun ScreenScaffold(
-//    modifier: Modifier = Modifier,
-//    topBar: @Composable () -> Unit = {},
-//    bottomBar: @Composable () -> Unit = {},
-//    showBottomBar: Boolean = true,
-//    content: @Composable (PaddingValues) -> Unit
-//) {
-//    Scaffold(
-//        topBar = { topBar() },
-//        bottomBar = if (showBottomBar) {
-//            { bottomBar() }
-//        } else {
-//            {}
-//        },
-//        modifier = modifier,
-//    ) { paddingValues ->
-//        content(paddingValues)
+//fun GreetingPreview() {
+//    WBTechnoschoolLesson2Theme {
+//        val navContoller = rememberNavController()
+//        LoginScreen(navController = navContoller)
+//
 //    }
 //}
+
 
 

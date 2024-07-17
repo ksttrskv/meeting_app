@@ -22,6 +22,7 @@ import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,18 +33,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.screens.ViewModels.ProfileViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.ButtonIconLine
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 import com.example.wbtechnoschoollesson2.uiKitScreen.TypographyLine1
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import org.koin.androidx.compose.koinViewModel
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(viewModel: ProfileViewModel = koinViewModel()) {
+    val userName by viewModel.userName.collectAsState()
+    val userPhone by viewModel.userPhone.collectAsState()
+
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -62,8 +71,8 @@ fun ProfileScreen() {
         item {
             Spacer(modifier = Modifier.size(20.dp))
             TypographyLine1(
-                title = "Иван Иванов",
-                subTitle = "+7 952 812-22-00"
+                title = userName,
+                subTitle = userPhone
             )
         }
         item {
@@ -74,7 +83,6 @@ fun ProfileScreen() {
     }
 
 }
-
 
 
 
