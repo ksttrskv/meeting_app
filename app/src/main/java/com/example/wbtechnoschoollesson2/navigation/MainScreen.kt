@@ -34,24 +34,29 @@ import com.example.wbtechnoschoollesson2.screens.CommunityScreen
 import com.example.wbtechnoschoollesson2.screens.CustomViewScreen
 import com.example.wbtechnoschoollesson2.screens.LoginScreen
 import com.example.wbtechnoschoollesson2.screens.MeetingDetailScreen
-import com.example.wbtechnoschoollesson2.screens.MeetingViewModel
 import com.example.wbtechnoschoollesson2.screens.MoreScreen
 import com.example.wbtechnoschoollesson2.screens.MyMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.ProfileCreateScreen
 import com.example.wbtechnoschoollesson2.screens.ProfileScreen
-import com.example.wbtechnoschoollesson2.screens.meetings
+import com.example.wbtechnoschoollesson2.screens.Screens
+import com.example.wbtechnoschoollesson2.screens.ViewModels.AllMeetingViewModel
+import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityViewModel
+import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
+import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
+
 @Composable
 fun MainScreen(navController: NavController) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route ?: ""
-    val meetingViewModel = remember { MeetingViewModel() }
+    val meetingViewModel: MeetingViewModel = koinViewModel()
     val isGoing by meetingViewModel.isGoing.collectAsState()
 
     Scaffold(
         topBar = {
             when {
-                currentRoute.startsWith("community_detail/") -> {
+                currentRoute.startsWith("${Screens.CommunityDetail}/") -> {
                     val communityTitle =
                         navBackStackEntry?.arguments?.getString("communityTitle") ?: "Сообщество"
                     TopBar3(
@@ -68,7 +73,7 @@ fun MainScreen(navController: NavController) {
                     )
                 }
 
-                currentRoute.startsWith("meeting_detail/") -> {
+                currentRoute.startsWith("${Screens.MeetingDetail}/") -> {
                     val meeting =
                         navBackStackEntry?.arguments?.getString("meeting") ?: "Встреча"
                     TopBar3(
@@ -88,14 +93,14 @@ fun MainScreen(navController: NavController) {
                                     painter = painterResource(id = R.drawable.check_ic),
                                     contentDescription = null,
                                     tint = UiTheme.colors.brandColorDefault,
-                                    modifier = Modifier.size(18.dp)
+                                    modifier = Modifier.size(30.dp)
                                 )
                             }
                         }
                     )
                 }
 
-                currentRoute == "my_meetings" -> TopBar3(
+                currentRoute == Screens.MyMeetings -> TopBar3(
                     title = "Мои встречи",
                     navigationIcon = {
                         IconButton(onClick = { navController.navigateUp() }) {
@@ -108,7 +113,7 @@ fun MainScreen(navController: NavController) {
                     },
                 )
 
-                currentRoute == "profile" -> TopBar3(
+                currentRoute == Screens.Profile -> TopBar3(
                     title = "Профиль",
                     navigationIcon = {
                         IconButton(onClick = { navController.navigateUp() }) {
@@ -131,7 +136,7 @@ fun MainScreen(navController: NavController) {
                     },
                 )
 
-                currentRoute == "all_meetings" -> TopBar3(
+                currentRoute == Screens.AllMeetings -> TopBar3(
                     title = "Встречи",
                     actions = {
                         IconButton(onClick = { }) {
@@ -145,11 +150,11 @@ fun MainScreen(navController: NavController) {
                     },
                 )
 
-                currentRoute == "more_screen" -> TopBar3(
+                currentRoute == Screens.MoreScreen -> TopBar3(
                     title = "Еще",
                 )
 
-                currentRoute == "communities" -> TopBar3(
+                currentRoute == Screens.Communitites -> TopBar3(
                     title = "Сообщества",
                 )
                 currentRoute == "custom_view" -> TopBar3(
@@ -164,7 +169,7 @@ fun MainScreen(navController: NavController) {
                         }
                     }
                 )
-                currentRoute == "loginScreen" -> TopBar3(
+                currentRoute == Screens.Login -> TopBar3(
                     title = "",
                     navigationIcon = {
                         IconButton(onClick = { navController.navigateUp() }) {
@@ -176,7 +181,7 @@ fun MainScreen(navController: NavController) {
                         }
                     },
                 )
-                currentRoute == "codeInputScreen" -> TopBar3(
+                currentRoute == Screens.CodeInput -> TopBar3(
                     title = "",
                     navigationIcon = {
                         IconButton(onClick = { navController.navigateUp() }) {
@@ -188,7 +193,7 @@ fun MainScreen(navController: NavController) {
                         }
                     },
                 )
-                currentRoute == "profileCreateScreen" -> TopBar3(
+                currentRoute == Screens.ProfileCreate -> TopBar3(
                     title = "Профиль",
                     navigationIcon = {
                         IconButton(onClick = { navController.navigateUp() }) {
@@ -203,7 +208,7 @@ fun MainScreen(navController: NavController) {
             }
         },
         bottomBar = {
-            if (currentRoute != "splash" && currentRoute != "loginScreen" && currentRoute != "codeInputScreen" && currentRoute != "profileCreateScreen") {
+            if (currentRoute != Screens.Splash && currentRoute != Screens.Login && currentRoute != Screens.CodeInput && currentRoute != Screens.ProfileCreate) {
                 BottomNavigation(navController = navController)
             }
         },
@@ -211,38 +216,39 @@ fun MainScreen(navController: NavController) {
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = "splash",
+            startDestination = Screens.Splash,
             modifier = Modifier.padding(paddingValues)
         ) {
-            composable("splash") {
+            composable(Screens.Splash) {
                 SplashScreen(navController = navController)
             }
-            composable("my_meetings") { AllMeetingScreen(navController = navController) }
-            composable("profile") { ProfileScreen() }
-            composable("all_meetings") { MyMeetingScreen() }
-            composable("more_screen") { MoreScreen(navController = navController) }
-            composable("communities") { CommunityScreen(navController = navController) }
+            composable(Screens.MyMeetings) { AllMeetingScreen(navController = navController, viewModel = AllMeetingViewModel()) }
+            composable(Screens.Profile) { ProfileScreen() }
+            composable(Screens.AllMeetings) { MyMeetingScreen() }
+            composable(Screens.MoreScreen) { MoreScreen(navController = navController) }
+            composable(Screens.Communitites) { CommunityScreen(navController = navController, viewModel = CommunityViewModel()) }
             composable(
-                route = "community_detail/{communityTitle}",
+                route = "${Screens.CommunityDetail}/{communityTitle}",
                 arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })
             ) { backStackEntry ->
                 val communityTitle = backStackEntry.arguments?.getString("communityTitle") ?: ""
                 CommunityDetailScreen(communityTitle)
             }
             composable(
-                route = "meeting_detail/{meeting}",
+                route = "${Screens.MeetingDetail}/{meeting}",
                 arguments = listOf(navArgument("meeting") { type = NavType.StringType })
             ) { backStackEntry ->
                 val meetingId = backStackEntry.arguments?.getString("meeting") ?: ""
-                val meeting = meetings.find { it.title == meetingId }
+                val meetingViewModel: MeetingViewModel = getViewModel()
+                val meeting = meetingViewModel.getAllMeetings().find { it.title == meetingId }
                 if (meeting != null) {
                     MeetingDetailScreen(meeting, navController, meetingViewModel)
                 }
             }
             composable("custom_view") { CustomViewScreen() }
-            composable("loginScreen") { LoginScreen(navController = navController) }
-            composable("codeInputScreen") { CodeInputScreen(navController = navController) }
-            composable("profileCreateScreen") { ProfileCreateScreen(navController = navController) }
+            composable(Screens.Login) { LoginScreen(navController = navController) }
+            composable(Screens.CodeInput) { CodeInputScreen(navController = navController) }
+            composable(Screens.ProfileCreate) { ProfileCreateScreen(navController = navController) }
         }
     }
 }

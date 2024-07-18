@@ -17,6 +17,7 @@ import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,9 +27,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
+import com.example.wbtechnoschoollesson2.screens.ViewModels.AllMeetingViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 
 
@@ -39,23 +42,26 @@ data class Meeting(
     val isFinished: Boolean
 )
 
-val meetings = listOf(
-    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
-    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
-    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-    Meeting("Third meeting", "20.11.2024", "Новосибирск", false)
-)
+//val meetings = listOf(
+//    Meeting("Developer meeting", "13.09.2024", "Москва", true),
+//    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
+//    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
+//    Meeting("Developer meeting", "13.09.2024", "Москва", true),
+//    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
+//    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
+//    Meeting("Developer meeting", "13.09.2024", "Москва", true),
+//    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
+//    Meeting("Third meeting", "20.11.2024", "Новосибирск", false)
+//)
 
 @Composable
-fun AllMeetingScreen(navController: NavController) {
+fun AllMeetingScreen(navController: NavController, viewModel: AllMeetingViewModel) {
     var selectedTabIndex by remember { mutableStateOf(0) }
-    val allMeetings = meetings
-    val activeMeetings = meetings.filter { !it.isFinished }
+    val viewModel: AllMeetingViewModel = viewModel()
+    val allMeetings by viewModel.allMeetings.collectAsState(initial = emptyList())
+    val activeMeetings by viewModel.activeMeetings.collectAsState(initial = emptyList())
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()

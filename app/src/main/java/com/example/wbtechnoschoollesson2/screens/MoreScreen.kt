@@ -17,36 +17,27 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
-
-data class MenuItem(
-    val title: String,
-    val icon: Painter,
-    val route: String
-)
-
+import com.example.wbtechnoschoollesson2.screens.ViewModels.MenuItem
+import com.example.wbtechnoschoollesson2.screens.ViewModels.MoreScreenViewModel
 
 @Composable
 fun MoreScreen(navController: NavController) {
-    val menuItems = listOf(
-        MenuItem("Мои встречи", painterResource(R.drawable.meeting_ic), "my_meetings"),
-        MenuItem("Тема", painterResource(R.drawable.theme_ic), "custom_view"),
-        MenuItem("Уведомления", painterResource(R.drawable.notifications_ic), ""),
-        MenuItem("Безопасность", painterResource(R.drawable.security_ic), ""),
-        MenuItem("Память и ресурсы", painterResource(R.drawable.resourse_ic), ""),
-        MenuItem("Помощь", painterResource(R.drawable.help_ic), ""),
-        MenuItem("Пригласи друга", painterResource(R.drawable.invite_ic), "")
-    )
+
+    val viewModel: MoreScreenViewModel = viewModel()
+    val menuItems by viewModel.menuItems.collectAsState()
 
     LazyColumn(
         modifier = Modifier
@@ -106,7 +97,7 @@ fun MenuItemRow(item: MenuItem, onClick: () -> Unit) {
             .padding(16.dp)
     ) {
         Icon(
-            painter = item.icon,
+            painter = painterResource(id = item.iconResId),
             contentDescription = item.title,
             modifier = Modifier.size(24.dp)
         )

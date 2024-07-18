@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -24,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -35,13 +38,10 @@ import com.example.wbtechnoschoollesson2.atoms.buttons.WbOutlineButton
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbSolidButton
 import com.example.wbtechnoschoollesson2.atoms.chips.CustomFilterChip
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
+import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
+
 
 
 @Composable
@@ -113,7 +113,7 @@ fun MeetingDetailScreen(meeting: Meeting, navController: NavController, meetingV
                         content = { Text(text = "Схожу в другой раз") },
                         btnColor = UiTheme.colors.brandColorDefault,
                         textColor = UiTheme.colors.brandColorDefault,
-                        onClick = { meetingViewModel.toggleIsGoing() },
+                        onClick = { meetingViewModel.setIsGoing(false) },
                         enabled = true
                     )
                 } else {
@@ -122,7 +122,7 @@ fun MeetingDetailScreen(meeting: Meeting, navController: NavController, meetingV
                         content = { Text(text = "Пойду на встречу!") },
                         btnColor = UiTheme.colors.brandColorDefault,
                         textColor = Color.White,
-                        onClick = { meetingViewModel.toggleIsGoing() },
+                        onClick = { meetingViewModel.setIsGoing(true) },
                         enabled = true
                     )
                 }
@@ -130,7 +130,6 @@ fun MeetingDetailScreen(meeting: Meeting, navController: NavController, meetingV
         }
     }
 }
-
 
 @Composable
 fun FullScreenImageDialog(
@@ -190,32 +189,3 @@ fun ImageWithFullScreenPreview(
     )
 }
 
-
-
-class MeetingViewModel : ViewModel() {
-    private val _isGoing = MutableStateFlow(false)
-    val isGoing: StateFlow<Boolean> get() = _isGoing
-
-    fun toggleIsGoing() {
-        viewModelScope.launch {
-            _isGoing.value = !_isGoing.value
-        }
-    }
-}
-
-
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewMeetingDetailScreen() {
-//    val meeting = Meeting(
-//        title = "Developer meeting",
-//        date = "13.09.2024",
-//        location = "Москва",
-//        isFinished = true
-//    )
-//    val isGoing = remember { mutableStateOf(false) }
-//    WBTechnoschoolLesson2Theme {
-//        MeetingDetailScreen(meeting = meeting, isGoing = isGoing.value,
-//            toggleIsGoing = { isGoing.value = !isGoing.value })
-//    }
-//}

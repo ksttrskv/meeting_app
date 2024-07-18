@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,14 +32,19 @@ import com.example.wbtechnoschoollesson2.TextFields.TextFieldSurnameView
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbSolidButton
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.screens.ViewModels.ProfileCreateViewModel
+import org.koin.androidx.compose.koinViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileCreateScreen(navController: NavController) {
+fun ProfileCreateScreen(navController: NavController,  viewModel: ProfileCreateViewModel = koinViewModel()) {
     var query by remember { mutableStateOf(TextFieldValue("")) }
 
     val isNameFilled = query.text.isNotEmpty()
+    val name by viewModel.name.collectAsState()
+    val surname by viewModel.surname.collectAsState()
+
 
     Box(
         modifier = Modifier
@@ -81,7 +87,7 @@ fun ProfileCreateScreen(navController: NavController) {
                     },
                     btnColor = UiTheme.colors.brandColorDefault,
                     textColor = UiTheme.colors.neutralOffWhite,
-                    onClick = { navController.navigate("all_meetings") },
+                    onClick = { navController.navigate(Screens.AllMeetings) },
                     enabled = isNameFilled
                 )
             }

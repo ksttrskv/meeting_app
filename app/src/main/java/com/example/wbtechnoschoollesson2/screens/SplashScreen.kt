@@ -13,13 +13,14 @@ import androidx.navigation.NavController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.wbtechnoschoollesson2.screens.Screens
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true) {
         delay(3000)
-        navController.navigate("loginScreen") {
+        navController.navigate(Screens.Login) {
             popUpTo("splash") { inclusive = true }
         }
     }
