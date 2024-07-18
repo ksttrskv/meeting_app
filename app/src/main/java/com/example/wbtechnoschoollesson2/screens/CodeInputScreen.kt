@@ -38,15 +38,15 @@ import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import com.example.wbtechnoschoollesson2.screens.ViewModels.CodeInputViewModel
 import org.koin.androidx.compose.koinViewModel
 
+const val CODE_LENGTH = 4
 
 @Composable
 fun CodeInputScreen(navController: NavController, viewModel: CodeInputViewModel = koinViewModel()) {
-//    var code by remember { mutableStateOf("") }
     val code by viewModel.code.collectAsState()
 
     LaunchedEffect(code) {
-        if (code.length == 4) {
-            navController.navigate("profileCreateScreen")
+        if (code.length == CODE_LENGTH) {
+            navController.navigate(Screens.ProfileCreate)
         }
     }
     Box(
@@ -120,4 +120,3 @@ fun CodeInputScreenPreview() {
 
     }
 }
-

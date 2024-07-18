@@ -87,7 +87,7 @@ fun ProfileCreateScreen(navController: NavController,  viewModel: ProfileCreateV
                     },
                     btnColor = UiTheme.colors.brandColorDefault,
                     textColor = UiTheme.colors.neutralOffWhite,
-                    onClick = { navController.navigate("all_meetings") },
+                    onClick = { navController.navigate(Screens.AllMeetings) },
                     enabled = isNameFilled
                 )
             }

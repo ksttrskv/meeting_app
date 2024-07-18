@@ -2,52 +2,32 @@
 
 package com.example.wbtechnoschoollesson2.screens
 
-import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
-import androidx.compose.material3.TabRowDefaults
-import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
-import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import com.example.wbtechnoschoollesson2.screens.ViewModels.ProfileViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.ButtonIconLine
-import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 import com.example.wbtechnoschoollesson2.uiKitScreen.TypographyLine1
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import org.koin.androidx.compose.koinViewModel
 
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+//@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ProfileScreen(viewModel: ProfileViewModel = koinViewModel()) {
     val userName by viewModel.userName.collectAsState()
@@ -84,16 +64,13 @@ fun ProfileScreen(viewModel: ProfileViewModel = koinViewModel()) {
 
 }
 
-
-
-
 @Preview(showBackground = true)
 @Composable
 fun PreviewProfileAvatar() {
     WBTechnoschoolLesson2Theme {
         ProfileScreen()
     }
-    }
+}
 
 
 

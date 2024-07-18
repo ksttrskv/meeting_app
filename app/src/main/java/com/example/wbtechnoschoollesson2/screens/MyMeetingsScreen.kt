@@ -34,7 +34,7 @@ import com.example.wbtechnoschoollesson2.screens.ViewModels.MyMeetingViewModel
 import org.koin.androidx.compose.getViewModel
 
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "SuspiciousIndentation")
 @Composable
 fun MyMeetingScreen() {
     var selectedTabIndex by remember { mutableStateOf(0) }

@@ -93,7 +93,7 @@ fun LoginScreen(navController: NavController, viewModel: LoginScreenViewModel = 
                     btnColor = UiTheme.colors.brandColorDefault,
                     textColor = UiTheme.colors.neutralOffWhite,
                     onClick = {
-                        navController.navigate("codeInputScreen")
+                        navController.navigate(Screens.CodeInput)
                     },
                     enabled = userPhoneInput.isNotBlank()
                 )

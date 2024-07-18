@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -24,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -110,7 +113,7 @@ fun MeetingDetailScreen(meeting: Meeting, navController: NavController, meetingV
                         content = { Text(text = "Схожу в другой раз") },
                         btnColor = UiTheme.colors.brandColorDefault,
                         textColor = UiTheme.colors.brandColorDefault,
-                        onClick = { meetingViewModel.toggleIsGoing() },
+                        onClick = { meetingViewModel.setIsGoing(false) },
                         enabled = true
                     )
                 } else {
@@ -119,7 +122,7 @@ fun MeetingDetailScreen(meeting: Meeting, navController: NavController, meetingV
                         content = { Text(text = "Пойду на встречу!") },
                         btnColor = UiTheme.colors.brandColorDefault,
                         textColor = Color.White,
-                        onClick = { meetingViewModel.toggleIsGoing() },
+                        onClick = { meetingViewModel.setIsGoing(true) },
                         enabled = true
                     )
                 }
@@ -127,7 +130,6 @@ fun MeetingDetailScreen(meeting: Meeting, navController: NavController, meetingV
         }
     }
 }
-
 
 @Composable
 fun FullScreenImageDialog(

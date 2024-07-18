@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 data class MenuItem(
     val title: String,
-    val icon: Int, // Изменено на Int для хранения идентификатора ресурса
+    val iconResId: Int,
     val route: String
 )
 
@@ -24,7 +24,7 @@ class MoreScreenViewModel : ViewModel() {
 
     private fun loadMenuItems() {
         viewModelScope.launch {
-            // Здесь загрузите или создайте список пунктов меню
+            // Здесь загружаем список пунктов меню
             val items = listOf(
                 MenuItem("Мои встречи", R.drawable.meeting_ic, "my_meetings"),
                 MenuItem("Тема", R.drawable.theme_ic, "custom_view"),

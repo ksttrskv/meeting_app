@@ -33,13 +33,6 @@ import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MenuItem
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MoreScreenViewModel
 
-//data class MenuItem(
-//    val title: String,
-//    val icon: Painter,
-//    val route: String
-//)
-
-
 @Composable
 fun MoreScreen(navController: NavController) {
 
@@ -104,7 +97,7 @@ fun MenuItemRow(item: MenuItem, onClick: () -> Unit) {
             .padding(16.dp)
     ) {
         Icon(
-            painter = painterResource(id = item.icon),
+            painter = painterResource(id = item.iconResId),
             contentDescription = item.title,
             modifier = Modifier.size(24.dp)
         )

@@ -65,7 +65,7 @@ fun CommunityScreen(navController: NavController, viewModel: CommunityViewModel)
                     title = community.title,
                     subtitle = community.subtitle,
                     onClick = {
-                        navController.navigate("community_detail/${community.title}") {
+                        navController.navigate("${Screens.CommunityDetail}/${community.title}") {
                             launchSingleTop = true
                         }
                     }
@@ -78,75 +78,3 @@ fun CommunityScreen(navController: NavController, viewModel: CommunityViewModel)
         }
     }
 }
-
-//val communities = listOf(
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    ),
-//    Community(
-//        title = "Designa",
-//        subtitle = "10 000 человек",
-//        imageRes = R.drawable.communityavatar
-//    )
-//)
-
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewCommunityScreen() {
-//    WBTechnoschoolLesson2Theme {
-//        val navController = rememberNavController()
-//        CommunityScreen(navController = navController)
-//    }
-//}
