@@ -168,7 +168,7 @@ fun UiKitScreen(modifier: Modifier = Modifier) {
             CommunityCard(
                 title = "Developer meeting",
                 subtitle = "10 000 человек",
-                imageRes = R.drawable.communityavatar,
+                imageUrl = "https://i.postimg.cc/GmsT4jPq/map-image.png",
                 onClick = {}
             )
         }

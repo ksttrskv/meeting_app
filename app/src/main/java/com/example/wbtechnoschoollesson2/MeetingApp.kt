@@ -1,6 +1,8 @@
 package com.example.wbtechnoschoollesson2
 
 import android.app.Application
+import com.example.wbtechnoschoollesson2.di.appModule
+import com.example.domain.di.domainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
@@ -11,7 +13,8 @@ class MeetingApp : Application() {
         // Инициализируем Koin
         startKoin {
             androidContext(this@MeetingApp)
-            modules(appModule)
+            modules(
+                listOf(appModule, domainModule))
         }
     }
 }

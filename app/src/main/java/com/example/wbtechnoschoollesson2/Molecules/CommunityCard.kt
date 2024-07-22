@@ -2,13 +2,11 @@ package com.example.wbtechnoschoollesson2.Molecules
 
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,17 +21,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.wbtechnoschoollesson2.R
+import coil.compose.rememberAsyncImagePainter
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 
 @Composable
 fun CommunityCard(
-    imageRes: Int,
+    imageUrl: String,
     title: String,
     subtitle: String,
     onClick: () -> Unit
@@ -50,7 +47,7 @@ fun CommunityCard(
             Column {
                 Row {
                     Image(
-                        painter = painterResource(id = imageRes),
+                        painter = rememberAsyncImagePainter(imageUrl),
                         contentDescription = null,
                         modifier = Modifier.size(48.dp),
                         contentScale = ContentScale.Crop,
@@ -88,7 +85,7 @@ fun PreviewCommunityCard() {
         CommunityCard(
             title = "Developer meeting",
             subtitle = "10 000 человек",
-            imageRes = R.drawable.communityavatar,
+            imageUrl = "https://i.postimg.cc/GmsT4jPq/map-image.png",
             onClick = {}
         )
     }

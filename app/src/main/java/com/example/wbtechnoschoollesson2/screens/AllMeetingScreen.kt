@@ -27,40 +27,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.screens.ViewModels.AllMeetingViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
+import org.koin.androidx.compose.getViewModel
 
-
-data class Meeting(
-    val title: String,
-    val date: String,
-    val location: String,
-    val isFinished: Boolean
-)
-
-//val meetings = listOf(
-//    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-//    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-//    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
-//    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-//    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-//    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
-//    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-//    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-//    Meeting("Third meeting", "20.11.2024", "Новосибирск", false)
-//)
 
 @Composable
-fun AllMeetingScreen(navController: NavController, viewModel: AllMeetingViewModel) {
+fun AllMeetingScreen(navController: NavController) {
     var selectedTabIndex by remember { mutableStateOf(0) }
-    val viewModel: AllMeetingViewModel = viewModel()
+    val viewModel: AllMeetingViewModel = getViewModel()
     val allMeetings by viewModel.allMeetings.collectAsState(initial = emptyList())
     val activeMeetings by viewModel.activeMeetings.collectAsState(initial = emptyList())
-
 
     Box(
         modifier = Modifier
@@ -73,7 +53,6 @@ fun AllMeetingScreen(navController: NavController, viewModel: AllMeetingViewMode
                 .padding(start = 24.dp, end = 24.dp)
                 .background(Color.White)
         ) {
-
             item {
                 SearchView()
             }
@@ -130,6 +109,7 @@ fun AllMeetingScreen(navController: NavController, viewModel: AllMeetingViewMode
         }
     }
 }
+//}
 
 
 
