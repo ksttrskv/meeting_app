@@ -2,7 +2,7 @@ package com.example.wbtechnoschoollesson2
 
 import android.app.Application
 import com.example.wbtechnoschoollesson2.di.appModule
-import com.example.wbtechnoschoollesson2.di.domainModule
+import com.example.domain.di.domainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 

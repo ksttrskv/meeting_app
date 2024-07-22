@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.di
+package com.example.domain.di
 
 import MeetingRepository
 import com.example.domain.usecases.implementation.GetCommunityUseCaseImpl

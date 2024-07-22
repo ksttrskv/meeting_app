@@ -29,11 +29,11 @@ import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
-
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun CommunityDetailScreen(communityTitle: String,navController: NavController, meetingViewModel: MeetingViewModel = viewModel()) {
+fun CommunityDetailScreen(communityTitle: String,navController: NavController,  meetingViewModel: MeetingViewModel = koinViewModel()) {
 //    val navController = rememberNavController()
     val meetings: List<Meeting> by remember { mutableStateOf(meetingViewModel.getAllMeetings()) }
     val navBackStackEntry by navController.currentBackStackEntryAsState()

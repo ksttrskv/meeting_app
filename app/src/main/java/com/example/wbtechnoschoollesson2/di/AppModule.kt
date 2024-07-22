@@ -16,13 +16,13 @@ import org.koin.dsl.module
 
 val appModule = module {
     // Определяем ViewModel
-    viewModelOf(:: MeetingViewModel)
-    viewModelOf(::ProfileViewModel)
-    viewModelOf(::MoreScreenViewModel)
+    viewModel{MeetingViewModel()}
+    viewModel{ProfileViewModel()}
+    viewModel{MoreScreenViewModel()}
     viewModel { AllMeetingViewModel(get()) }
     viewModel { CommunityViewModel(get()) }
-    viewModelOf(::LoginScreenViewModel)
-    viewModelOf(::CodeInputViewModel)
-    viewModelOf(::ProfileCreateViewModel)
+    viewModel{LoginScreenViewModel()}
+    viewModel{CodeInputViewModel()}
+    viewModel{ProfileCreateViewModel()}
     viewModel { MyMeetingViewModel(get()) }
 }

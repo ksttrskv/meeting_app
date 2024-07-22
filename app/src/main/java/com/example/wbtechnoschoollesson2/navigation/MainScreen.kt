@@ -185,7 +185,7 @@ fun MainScreen(navController: NavController) {
             composable(Screens.Profile) { ProfileScreen() }
             composable(Screens.AllMeetings) { MyMeetingScreen() }
             composable(Screens.MoreScreen) { MoreScreen(navController = navController) }
-            composable(Screens.Communitites) { CommunityScreen(navController = navController, viewModel = viewModel) }
+            composable(Screens.Communitites) { CommunityScreen(navController = navController) }
             composable(
                 route = "${Screens.CommunityDetail}/{communityTitle}",
                 arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })

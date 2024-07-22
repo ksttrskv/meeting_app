@@ -46,13 +46,14 @@ import com.example.domain.model.Meeting
 import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun MeetingDetailScreen(
     meeting: Meeting,
     navController: NavController,
-    meetingViewModel: MeetingViewModel
+    meetingViewModel: MeetingViewModel = koinViewModel()
 ) {
     val isGoing by meetingViewModel.isGoing.collectAsState()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
