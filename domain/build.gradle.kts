@@ -10,6 +10,7 @@ java {
 
 dependencies {
     implementation (project(":repository"))
-    implementation("io.insert-koin:koin-android:3.4.0")
-    implementation("io.insert-koin:koin-androidx-compose:3.4.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+    implementation("io.insert-koin:koin-core:3.4.0")
+
 }

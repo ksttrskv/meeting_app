@@ -51,6 +51,8 @@ android {
 }
 
 dependencies {
+    implementation (project(":domain"))
+    implementation (project(":repository"))
     implementation(libs.androidx.room.ktx)
     val nav_version = "2.7.7"
     implementation ("androidx.compose.material3:material3:1.1.0-alpha06")

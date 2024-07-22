@@ -1,7 +1,7 @@
 //package com.example.repository.mock
 //
+//import MeetingRepository
 //import com.example.domain.model.Meeting
-//import com.example.domain.repository.MeetingRepository
 //import java.util.concurrent.Flow
 //
 //class MockMeetingRepository : MeetingRepository {

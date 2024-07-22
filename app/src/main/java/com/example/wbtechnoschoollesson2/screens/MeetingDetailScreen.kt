@@ -42,8 +42,8 @@ import com.example.wbtechnoschoollesson2.atoms.chips.CustomFilterChip
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.domain.model.Meeting
 import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
-import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
 

@@ -1,4 +1,4 @@
-package com.example.repository.repositories
+//package com.example.repository.repositories
 
 //import MeetingRepository
 //import com.example.domain.model.Meeting

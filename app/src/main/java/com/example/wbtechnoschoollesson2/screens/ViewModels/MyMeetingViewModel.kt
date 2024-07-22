@@ -1,17 +1,15 @@
 package com.example.wbtechnoschoollesson2.screens.ViewModels
 
+import MeetingRepository
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.wbtechnoschoollesson2.screens.Meeting
+import com.example.domain.model.Meeting
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class MyMeetingViewModel : ViewModel(), KoinComponent {
 
-    private val meetingRepository: MeetingRepository by inject()
+class MyMeetingViewModel(private val meetingRepository: MeetingRepository) : ViewModel() {
 
     private val _plannedMeetings = MutableStateFlow<List<Meeting>>(emptyList())
     val plannedMeetings: StateFlow<List<Meeting>> = _plannedMeetings
@@ -25,7 +23,7 @@ class MyMeetingViewModel : ViewModel(), KoinComponent {
 
     private fun loadMeetings() {
         viewModelScope.launch {
-            val meetings = meetingRepository.getAllMeetings()
+            val meetings = meetingRepository.getMeetings()
             _plannedMeetings.value = meetings.filter { !it.isFinished }
             _finishedMeetings.value = meetings.filter { it.isFinished }
         }

@@ -24,6 +24,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.domain.usecases.interfaces.GetCommunityUseCase
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
@@ -52,6 +53,7 @@ fun MainScreen(navController: NavController) {
     val currentRoute = navBackStackEntry?.destination?.route ?: ""
     val meetingViewModel: MeetingViewModel = koinViewModel()
     val isGoing by meetingViewModel.isGoing.collectAsState()
+    val viewModel: CommunityViewModel = getViewModel()
 
     Scaffold(
         topBar = {
@@ -183,7 +185,7 @@ fun MainScreen(navController: NavController) {
             composable(Screens.Profile) { ProfileScreen() }
             composable(Screens.AllMeetings) { MyMeetingScreen() }
             composable(Screens.MoreScreen) { MoreScreen(navController = navController) }
-            composable(Screens.Communitites) { CommunityScreen(navController = navController, viewModel = CommunityViewModel()) }
+            composable(Screens.Communitites) { CommunityScreen(navController = navController, viewModel = viewModel) }
             composable(
                 route = "${Screens.CommunityDetail}/{communityTitle}",
                 arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })

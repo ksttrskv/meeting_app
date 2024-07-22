@@ -1,28 +1,13 @@
-package com.example.wbtechnoschoollesson2.screens.ViewModels
+package com.example.domain.usecases.implementation
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import MeetingRepository
 import com.example.domain.model.Meeting
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
+import com.example.domain.responses.GetMeetingsResponse
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
-class MeetingViewModel : ViewModel() {
-    private val _isGoing = MutableStateFlow(false)
-    val isGoing: StateFlow<Boolean> get() = _isGoing
-
-    fun updateIsGoing() {
-        _isGoing.value = !_isGoing.value
-    }
-
-    fun setIsGoing(value: Boolean) {
-        viewModelScope.launch {
-            _isGoing.value = value
-        }
-
-    }
-    fun getAllMeetings(): List<Meeting> {
-            // Здесь можно загрузить данные о встречах из сети, БД или другого источника
+class MeetingRepositoryImpl : MeetingRepository {
+    override fun getMeetings(): List<Meeting> {
         return listOf(
             Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true),
             Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
@@ -33,7 +18,6 @@ class MeetingViewModel : ViewModel() {
             Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
             Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
             Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true),
-        )
-        }
-
+            )
     }
+}

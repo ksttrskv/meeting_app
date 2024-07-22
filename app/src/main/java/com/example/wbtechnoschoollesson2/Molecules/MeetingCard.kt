@@ -30,12 +30,13 @@ import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.chips.CustomFilterChip
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.domain.model.Meeting
 
 
 @Composable
 fun MeetingCard(
-    painter: Painter,
     title: String,
+    painter: Painter,
     date: String,
     location: String,
     isFinished: Boolean,

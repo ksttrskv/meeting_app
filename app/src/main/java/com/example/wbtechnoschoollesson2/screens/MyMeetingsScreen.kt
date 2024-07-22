@@ -34,6 +34,7 @@ import com.example.wbtechnoschoollesson2.screens.ViewModels.MyMeetingViewModel
 import org.koin.androidx.compose.getViewModel
 
 
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "SuspiciousIndentation")
 @Composable
 fun MyMeetingScreen() {
@@ -99,8 +100,6 @@ fun MyMeetingScreen() {
             }
         }
     }
-
-
 
 
 @Preview(showBackground = true)
