@@ -38,8 +38,6 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun MyMeetingScreen() {
     var selectedTabIndex by remember { mutableStateOf(0) }
-//    val plannedMeetings = meetings.filter { !it.isFinished }
-//    val finishedMeetings = meetings.filter { it.isFinished }
     val viewModel: MyMeetingViewModel = getViewModel()
     val plannedMeetings by viewModel.plannedMeetings.collectAsState(initial = emptyList())
     val finishedMeetings by viewModel.finishedMeetings.collectAsState(initial = emptyList())

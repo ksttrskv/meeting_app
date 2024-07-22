@@ -10,12 +10,17 @@ import kotlinx.coroutines.launch
 
 class MeetingViewModel : ViewModel() {
     private val _isGoing = MutableStateFlow(false)
-    val isGoing: StateFlow<Boolean> = _isGoing.asStateFlow()
+    val isGoing: StateFlow<Boolean> get() = _isGoing
+
+    fun updateIsGoing() {
+        _isGoing.value = !_isGoing.value
+    }
 
     fun setIsGoing(value: Boolean) {
         viewModelScope.launch {
             _isGoing.value = value
         }
+
     }
     fun getAllMeetings(): List<Meeting> {
             // Здесь можно загрузить данные о встречах из сети, БД или другого источника

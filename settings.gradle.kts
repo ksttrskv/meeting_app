@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "WB technoschool lesson 2"
 include(":app")
- 
+include(":ui")
+include(":domain")
+include(":repository")

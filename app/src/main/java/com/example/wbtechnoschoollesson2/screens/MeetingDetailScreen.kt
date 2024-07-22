@@ -14,6 +14,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -39,97 +41,137 @@ import com.example.wbtechnoschoollesson2.atoms.buttons.WbSolidButton
 import com.example.wbtechnoschoollesson2.atoms.chips.CustomFilterChip
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
+import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
+import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
 
 
-
 @Composable
-fun MeetingDetailScreen(meeting: Meeting, navController: NavController, meetingViewModel: MeetingViewModel) {
+fun MeetingDetailScreen(
+    meeting: Meeting,
+    navController: NavController,
+    meetingViewModel: MeetingViewModel
+) {
     val isGoing by meetingViewModel.isGoing.collectAsState()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val meetingTitle = navBackStackEntry?.arguments?.getString("meeting") ?: ""
 
-    Box(modifier = Modifier.padding(start = 24.dp, end = 24.dp)) {
-        LazyColumn(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxSize()
-        ) {
-            item {
-                Text(
-                    text = "${meeting.date} - ${meeting.location} ул. Громова, 4",
-                    style = UiTheme.typography.bodyText1,
-                    color = UiTheme.colors.neutralWeak
-                )
-                Spacer(modifier = Modifier.height(2.dp))
-            }
-
-            item {
-                LazyRow {
-                    item{
-                        CustomFilterChip(text = "Python")
-                        CustomFilterChip(text = "Junior")
-                        CustomFilterChip(text = "Moscow")
+    Scaffold(
+        topBar = {
+            TopBar3(
+                title = meetingTitle,
+                navigationIcon = {
+                    IconButton(onClick = { navController.navigateUp() }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.back_icon),
+                            contentDescription = "Back",
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
+                },
+                actions = {
+                    if (isGoing) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.check_ic),
+                            contentDescription = null,
+                            tint = UiTheme.colors.brandColorDefault,
+                            modifier = Modifier.size(30.dp)
+                        )
                     }
                 }
-                Spacer(modifier = Modifier.height(12.dp))
-            }
+            )
+        },
+        bottomBar = {  },
+        containerColor = Color.White
 
-            item {
-                ImageWithFullScreenPreview(
-                    imageUrl = "https://i.postimg.cc/GmsT4jPq/map-image.png",
-                    placeholderResId = R.drawable.map_image
-                )
-                Spacer(modifier = Modifier.height(20.dp))
-            }
+    ) { contentPadding ->
+        Box(modifier = Modifier.padding(contentPadding).padding(start = 24.dp, end = 24.dp)) {
+            LazyColumn(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxSize()
+            ) {
 
-            item {
-                Text(
-                    maxLines = 13,
-                    text = LoremIpsum(120).values.first(),
-                    style = UiTheme.typography.metadata1,
-                    color = UiTheme.colors.neutralWeak
-                )
-                Spacer(modifier = Modifier.height(20.dp))
-            }
-
-            item {
-                AvatarRow(
-                    avatarResIds = listOf(
-                        R.drawable.frame_3293,
-                        R.drawable.frame_3293,
-                        R.drawable.frame_3293,
-                        R.drawable.frame_3293,
-                        R.drawable.frame_3293,
-                        R.drawable.frame_3293
+                item {
+                    Text(
+                        text = "${meeting.date} - ${meeting.location} ул. Громова, 4",
+                        style = UiTheme.typography.bodyText1,
+                        color = UiTheme.colors.neutralWeak
                     )
-                )
-                Spacer(modifier = Modifier.height(13.dp))
-            }
+                    Spacer(modifier = Modifier.height(2.dp))
+                }
 
-            item {
-                if (isGoing) {
-                    WbOutlineButton(
-                        modifier = Modifier.fillMaxWidth(),
-                        content = { Text(text = "Схожу в другой раз") },
-                        btnColor = UiTheme.colors.brandColorDefault,
-                        textColor = UiTheme.colors.brandColorDefault,
-                        onClick = { meetingViewModel.setIsGoing(false) },
-                        enabled = true
+                item {
+                    LazyRow {
+                        item {
+                            CustomFilterChip(text = "Python")
+                            CustomFilterChip(text = "Junior")
+                            CustomFilterChip(text = "Moscow")
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(12.dp))
+                }
+
+                item {
+                    ImageWithFullScreenPreview(
+                        imageUrl = "https://i.postimg.cc/GmsT4jPq/map-image.png",
+                        placeholderResId = R.drawable.map_image
                     )
-                } else {
-                    WbSolidButton(
-                        modifier = Modifier.fillMaxWidth(),
-                        content = { Text(text = "Пойду на встречу!") },
-                        btnColor = UiTheme.colors.brandColorDefault,
-                        textColor = Color.White,
-                        onClick = { meetingViewModel.setIsGoing(true) },
-                        enabled = true
+                    Spacer(modifier = Modifier.height(20.dp))
+                }
+
+                item {
+                    Text(
+                        maxLines = 13,
+                        text = LoremIpsum(120).values.first(),
+                        style = UiTheme.typography.metadata1,
+                        color = UiTheme.colors.neutralWeak
                     )
+                    Spacer(modifier = Modifier.height(20.dp))
+                }
+
+                item {
+                    AvatarRow(
+                        avatarResIds = listOf(
+                            R.drawable.frame_3293,
+                            R.drawable.frame_3293,
+                            R.drawable.frame_3293,
+                            R.drawable.frame_3293,
+                            R.drawable.frame_3293,
+                            R.drawable.frame_3293
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(13.dp))
+                }
+
+                item {
+                    if (isGoing) {
+                        WbOutlineButton(
+                            modifier = Modifier.fillMaxWidth(),
+                            content = { Text(text = "Схожу в другой раз") },
+                            btnColor = UiTheme.colors.brandColorDefault,
+                            textColor = UiTheme.colors.brandColorDefault,
+                            onClick = { meetingViewModel.updateIsGoing() },
+                            enabled = true
+                        )
+                    } else {
+                        WbSolidButton(
+                            modifier = Modifier.fillMaxWidth(),
+                            content = { Text(text = "Пойду на встречу!") },
+                            btnColor = UiTheme.colors.brandColorDefault,
+                            textColor = Color.White,
+                            onClick = { meetingViewModel.updateIsGoing() },
+                            enabled = true
+                        )
+                    }
                 }
             }
         }
     }
 }
+
 
 @Composable
 fun FullScreenImageDialog(
@@ -188,4 +230,3 @@ fun ImageWithFullScreenPreview(
             }
     )
 }
-

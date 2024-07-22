@@ -7,10 +7,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
@@ -31,6 +35,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
+import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
+import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.AllMeetingViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 
@@ -42,28 +48,36 @@ data class Meeting(
     val isFinished: Boolean
 )
 
-//val meetings = listOf(
-//    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-//    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-//    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
-//    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-//    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-//    Meeting("Third meeting", "20.11.2024", "Новосибирск", false),
-//    Meeting("Developer meeting", "13.09.2024", "Москва", true),
-//    Meeting("Another meeting", "15.10.2024", "Санкт-Петербург", false),
-//    Meeting("Third meeting", "20.11.2024", "Новосибирск", false)
-//)
-
 @Composable
-fun AllMeetingScreen(navController: NavController, viewModel: AllMeetingViewModel) {
+fun AllMeetingScreen(navController: NavController) {
     var selectedTabIndex by remember { mutableStateOf(0) }
     val viewModel: AllMeetingViewModel = viewModel()
     val allMeetings by viewModel.allMeetings.collectAsState(initial = emptyList())
     val activeMeetings by viewModel.activeMeetings.collectAsState(initial = emptyList())
-
+//    Scaffold(
+//        topBar = {
+//            TopBar3(
+//                title = "Встречи",
+//                actions = {
+//                    IconButton(onClick = { }) {
+//                        Icon(
+//                            painter = painterResource(id = R.drawable.add_plus),
+//                            contentDescription = "Добавить",
+//                            tint = Color.Black,
+//                            modifier = Modifier.size(14.dp)
+//                        )
+//                    }
+//                }
+//            )
+//        },
+//        bottomBar = {
+////            BottomNavigation(navController = navController)
+//        }
+//    ) { contentPadding ->
 
     Box(
         modifier = Modifier
+//                .padding(contentPadding)
             .fillMaxSize()
             .background(Color.White)
     ) {
@@ -130,6 +144,7 @@ fun AllMeetingScreen(navController: NavController, viewModel: AllMeetingViewMode
         }
     }
 }
+//}
 
 
 

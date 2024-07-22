@@ -56,49 +56,6 @@ fun MainScreen(navController: NavController) {
     Scaffold(
         topBar = {
             when {
-                currentRoute.startsWith("${Screens.CommunityDetail}/") -> {
-                    val communityTitle =
-                        navBackStackEntry?.arguments?.getString("communityTitle") ?: "Сообщество"
-                    TopBar3(
-                        title = communityTitle,
-                        navigationIcon = {
-                            IconButton(onClick = { navController.navigateUp() }) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.back_icon),
-                                    contentDescription = "Back",
-                                    modifier = Modifier.size(24.dp)
-                                )
-                            }
-                        }
-                    )
-                }
-
-                currentRoute.startsWith("${Screens.MeetingDetail}/") -> {
-                    val meeting =
-                        navBackStackEntry?.arguments?.getString("meeting") ?: "Встреча"
-                    TopBar3(
-                        title = meeting,
-                        navigationIcon = {
-                            IconButton(onClick = { navController.navigateUp() }) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.back_icon),
-                                    contentDescription = "Back",
-                                    modifier = Modifier.size(24.dp)
-                                )
-                            }
-                        },
-                        actions = {
-                            if (isGoing) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.check_ic),
-                                    contentDescription = null,
-                                    tint = UiTheme.colors.brandColorDefault,
-                                    modifier = Modifier.size(30.dp)
-                                )
-                            }
-                        }
-                    )
-                }
 
                 currentRoute == Screens.MyMeetings -> TopBar3(
                     title = "Мои встречи",
@@ -208,7 +165,7 @@ fun MainScreen(navController: NavController) {
             }
         },
         bottomBar = {
-            if (currentRoute != Screens.Splash && currentRoute != Screens.Login && currentRoute != Screens.CodeInput && currentRoute != Screens.ProfileCreate) {
+            if (currentRoute != Screens.Splash && currentRoute != Screens.Login && currentRoute != Screens.CodeInput && currentRoute != Screens.ProfileCreate && currentRoute != Screens.MeetingDetail) {
                 BottomNavigation(navController = navController)
             }
         },
@@ -222,7 +179,7 @@ fun MainScreen(navController: NavController) {
             composable(Screens.Splash) {
                 SplashScreen(navController = navController)
             }
-            composable(Screens.MyMeetings) { AllMeetingScreen(navController = navController, viewModel = AllMeetingViewModel()) }
+            composable(Screens.MyMeetings) { AllMeetingScreen(navController = navController) }
             composable(Screens.Profile) { ProfileScreen() }
             composable(Screens.AllMeetings) { MyMeetingScreen() }
             composable(Screens.MoreScreen) { MoreScreen(navController = navController) }
@@ -232,7 +189,7 @@ fun MainScreen(navController: NavController) {
                 arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })
             ) { backStackEntry ->
                 val communityTitle = backStackEntry.arguments?.getString("communityTitle") ?: ""
-                CommunityDetailScreen(communityTitle)
+                CommunityDetailScreen(communityTitle,navController)
             }
             composable(
                 route = "${Screens.MeetingDetail}/{meeting}",
