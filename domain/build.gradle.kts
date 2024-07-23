@@ -9,7 +9,7 @@ java {
 }
 
 dependencies {
-    implementation (project(":repository"))
+//    implementation (project(":repository"))
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
     implementation("io.insert-koin:koin-core:3.4.0")
 
