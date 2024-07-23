@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
@@ -27,9 +30,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
+import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MyMeetingViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -37,15 +44,37 @@ import org.koin.androidx.compose.getViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "SuspiciousIndentation")
 @Composable
-fun MyMeetingScreen() {
+fun MyMeetingScreen(navController: NavController) {
     var selectedTabIndex by remember { mutableStateOf(0) }
     val viewModel: MyMeetingViewModel = getViewModel()
     val plannedMeetings by viewModel.plannedMeetings.collectAsState(initial = emptyList())
     val finishedMeetings by viewModel.finishedMeetings.collectAsState(initial = emptyList())
+    Scaffold(
+        topBar = {
+            TopBar3(
+                title = "Мои встречи",
+                navigationIcon = {
+                    IconButton(onClick = { navController.navigateUp() }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.back_icon),
+                            contentDescription = "Back",
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
+                },
+            )
 
+        },
+        bottomBar = {
+            BottomNavigation(navController = navController)
+        },
+        containerColor = Color.White
+
+    ) { contentPadding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(contentPadding)
                 .padding(start = 24.dp, end = 24.dp)
                 .background(Color.White)
         ) {
@@ -94,19 +123,24 @@ fun MyMeetingScreen() {
                     date = meeting.date,
                     location = meeting.location,
                     isFinished = meeting.isFinished,
-                    onClick = {}
+                    onClick = {
+                        navController.navigate("meeting_detail/${meeting.title}") {
+                            launchSingleTop = true
+                        }
+                    }
                 )
                 Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
             }
         }
     }
 
-
+}
 @Preview(showBackground = true)
 @Composable
 fun PreviewScreen() {
     WBTechnoschoolLesson2Theme {
-        MyMeetingScreen()
+        val navController = rememberNavController()
+        MyMeetingScreen(navController=navController)
     }
 }
 

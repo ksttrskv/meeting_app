@@ -3,7 +3,6 @@ package com.example.wbtechnoschoollesson2.screens
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -84,89 +83,88 @@ fun MeetingDetailScreen(
                 }
             )
         },
-        bottomBar = {  },
+        bottomBar = { },
         containerColor = Color.White
 
     ) { contentPadding ->
-        Box(modifier = Modifier.padding(contentPadding).padding(start = 24.dp, end = 24.dp)) {
-            LazyColumn(
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxSize()
-            ) {
+        LazyColumn(
+            modifier = Modifier
+                .padding(contentPadding)
+                .padding(start = 24.dp, end = 24.dp)
+                .fillMaxSize()
+        ) {
 
-                item {
-                    Text(
-                        text = "${meeting.date} - ${meeting.location} ул. Громова, 4",
-                        style = UiTheme.typography.bodyText1,
-                        color = UiTheme.colors.neutralWeak
-                    )
-                    Spacer(modifier = Modifier.height(2.dp))
-                }
+            item {
+                Text(
+                    text = "${meeting.date} - ${meeting.location} ул. Громова, 4",
+                    style = UiTheme.typography.bodyText1,
+                    color = UiTheme.colors.neutralWeak
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+            }
 
-                item {
-                    LazyRow {
-                        item {
-                            CustomFilterChip(text = "Python")
-                            CustomFilterChip(text = "Junior")
-                            CustomFilterChip(text = "Moscow")
-                        }
+            item {
+                LazyRow {
+                    item {
+                        CustomFilterChip(text = "Python")
+                        CustomFilterChip(text = "Junior")
+                        CustomFilterChip(text = "Moscow")
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
                 }
+                Spacer(modifier = Modifier.height(12.dp))
+            }
 
-                item {
-                    ImageWithFullScreenPreview(
-                        imageUrl = "https://i.postimg.cc/GmsT4jPq/map-image.png",
-                        placeholderResId = R.drawable.map_image
+            item {
+                ImageWithFullScreenPreview(
+                    imageUrl = "https://i.postimg.cc/GmsT4jPq/map-image.png",
+                    placeholderResId = R.drawable.map_image
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+
+            item {
+                Text(
+                    maxLines = 13,
+                    text = LoremIpsum(120).values.first(),
+                    style = UiTheme.typography.metadata1,
+                    color = UiTheme.colors.neutralWeak
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+
+            item {
+                AvatarRow(
+                    avatarResIds = listOf(
+                        R.drawable.frame_3293,
+                        R.drawable.frame_3293,
+                        R.drawable.frame_3293,
+                        R.drawable.frame_3293,
+                        R.drawable.frame_3293,
+                        R.drawable.frame_3293
                     )
-                    Spacer(modifier = Modifier.height(20.dp))
-                }
+                )
+                Spacer(modifier = Modifier.height(13.dp))
+            }
 
-                item {
-                    Text(
-                        maxLines = 13,
-                        text = LoremIpsum(120).values.first(),
-                        style = UiTheme.typography.metadata1,
-                        color = UiTheme.colors.neutralWeak
+            item {
+                if (isGoing) {
+                    WbOutlineButton(
+                        modifier = Modifier.fillMaxWidth(),
+                        content = { Text(text = "Схожу в другой раз") },
+                        btnColor = UiTheme.colors.brandColorDefault,
+                        textColor = UiTheme.colors.brandColorDefault,
+                        onClick = { meetingViewModel.updateIsGoing() },
+                        enabled = true
                     )
-                    Spacer(modifier = Modifier.height(20.dp))
-                }
-
-                item {
-                    AvatarRow(
-                        avatarResIds = listOf(
-                            R.drawable.frame_3293,
-                            R.drawable.frame_3293,
-                            R.drawable.frame_3293,
-                            R.drawable.frame_3293,
-                            R.drawable.frame_3293,
-                            R.drawable.frame_3293
-                        )
+                } else {
+                    WbSolidButton(
+                        modifier = Modifier.fillMaxWidth(),
+                        content = { Text(text = "Пойду на встречу!") },
+                        btnColor = UiTheme.colors.brandColorDefault,
+                        textColor = Color.White,
+                        onClick = { meetingViewModel.updateIsGoing() },
+                        enabled = true
                     )
-                    Spacer(modifier = Modifier.height(13.dp))
-                }
-
-                item {
-                    if (isGoing) {
-                        WbOutlineButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            content = { Text(text = "Схожу в другой раз") },
-                            btnColor = UiTheme.colors.brandColorDefault,
-                            textColor = UiTheme.colors.brandColorDefault,
-                            onClick = { meetingViewModel.updateIsGoing() },
-                            enabled = true
-                        )
-                    } else {
-                        WbSolidButton(
-                            modifier = Modifier.fillMaxWidth(),
-                            content = { Text(text = "Пойду на встречу!") },
-                            btnColor = UiTheme.colors.brandColorDefault,
-                            textColor = Color.White,
-                            onClick = { meetingViewModel.updateIsGoing() },
-                            enabled = true
-                        )
-                    }
                 }
             }
         }
