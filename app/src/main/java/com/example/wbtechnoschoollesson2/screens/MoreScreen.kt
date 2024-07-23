@@ -15,11 +15,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,6 +33,8 @@ import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
+import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MenuItem
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MoreScreenViewModel
 
@@ -38,35 +43,47 @@ fun MoreScreen(navController: NavController) {
 
     val viewModel: MoreScreenViewModel = viewModel()
     val menuItems by viewModel.menuItems.collectAsState()
+    Scaffold(
+        topBar = {
+            TopBar3(
+                title = "Еще",
+            )
+        },
+        bottomBar = {
+            BottomNavigation(navController = navController)
+        },
+        containerColor = Color.White
 
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        item {
-            ProfileCard(navController=navController)
-        }
-
-        itemsIndexed(menuItems) { index, item ->
-            if (index == 5) { // Индекс элемента меню для разделителя
-                Divider(
-                    color = UiTheme.colors.neutralLine,
-                    thickness = 1.dp,
-                    modifier = Modifier.padding(vertical = 8.dp)
-                )
+    ) { contentPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .padding(contentPadding)
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            item {
+                ProfileCard(navController = navController)
             }
 
-            MenuItemRow(item, onClick = {
-                if (item.route.isNotEmpty()) {
-                    navController.navigate(item.route)
+            itemsIndexed(menuItems) { index, item ->
+                if (index == 5) { // Индекс элемента меню для разделителя
+                    Divider(
+                        color = UiTheme.colors.neutralLine,
+                        thickness = 1.dp,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
                 }
-            })
+
+                MenuItemRow(item, onClick = {
+                    if (item.route.isNotEmpty()) {
+                        navController.navigate(item.route)
+                    }
+                })
+            }
         }
     }
+
 }
-
-
 @Composable
 fun ProfileCard(navController: NavController) {
     Row(

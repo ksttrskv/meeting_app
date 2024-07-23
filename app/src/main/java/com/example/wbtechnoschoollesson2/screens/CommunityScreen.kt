@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -18,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wbtechnoschoollesson2.Molecules.CommunityCard
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
+import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
+import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 import org.koin.androidx.compose.getViewModel
@@ -27,41 +30,54 @@ import org.koin.androidx.compose.getViewModel
 fun CommunityScreen(navController: NavController, viewModel: CommunityViewModel = getViewModel()) {
 //    val viewModel: CommunityViewModel = viewModel()
     val communities by viewModel.communities.collectAsState(initial = emptyList())
+    Scaffold(
+        topBar = {
+            TopBar3(
+                title = "Сообщества",
+            )
+        },
+        bottomBar = {
+            BottomNavigation(navController = navController)
+        },
+        containerColor = Color.White
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-    ) {
-        LazyColumn(
+    ) { contentPadding ->
+        Box(
             modifier = Modifier
+                .padding(contentPadding)
                 .fillMaxSize()
-                .padding(start = 24.dp, end = 24.dp)
                 .background(Color.White)
         ) {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 24.dp, end = 24.dp)
+                    .background(Color.White)
+            ) {
 
-            item {
-                SearchView()
-                Spacer(modifier = Modifier.height(16.dp))
-            }
+                item {
+                    SearchView()
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
 
 
 
-            items(communities) { community ->
-                CommunityCard(
-                    imageUrl = community.imageUrl,
-                    title = community.title,
-                    subtitle = community.subtitle,
-                    onClick = {
-                        navController.navigate("${Screens.CommunityDetail}/${community.title}") {
-                            launchSingleTop = true
+                items(communities) { community ->
+                    CommunityCard(
+                        imageUrl = community.imageUrl,
+                        title = community.title,
+                        subtitle = community.subtitle,
+                        onClick = {
+                            navController.navigate("${Screens.CommunityDetail}/${community.title}") {
+                                launchSingleTop = true
+                            }
                         }
-                    }
-                )
+                    )
 
-                Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
-                Spacer(modifier = Modifier.height(16.dp))
+                    Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
+                    Spacer(modifier = Modifier.height(16.dp))
 
+                }
             }
         }
     }

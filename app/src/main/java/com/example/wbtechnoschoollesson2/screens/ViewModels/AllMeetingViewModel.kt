@@ -7,10 +7,8 @@ import com.example.domain.model.Meeting
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class AllMeetingViewModel(private val meetingRepository: MeetingRepository) : ViewModel(), KoinComponent {
+class AllMeetingViewModel(private val meetingRepository: MeetingRepository) : ViewModel() {
 
     private val _allMeetings = MutableStateFlow<List<Meeting>>(emptyList())
     val allMeetings: StateFlow<List<Meeting>> = _allMeetings
@@ -30,5 +28,3 @@ class AllMeetingViewModel(private val meetingRepository: MeetingRepository) : Vi
         }
     }
 }
-
-
