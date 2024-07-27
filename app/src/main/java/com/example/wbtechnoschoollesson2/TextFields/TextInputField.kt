@@ -33,8 +33,8 @@ import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 @Composable
 fun TextInputField(
     focusRequester: FocusRequester,
-    query: TextFieldValue,
-    onQueryChange: (TextFieldValue) -> Unit,
+    query: String,
+    onQueryChange: (String) -> Unit,
     placeholderText: String,
     keyboardController: SoftwareKeyboardController? = LocalSoftwareKeyboardController.current,
     localFocusManager: FocusManager = LocalFocusManager.current,
@@ -69,7 +69,7 @@ fun TextInputField(
                 textStyle = UiTheme.typography.body1,
                 decorationBox = { innerTextField ->
                     Placeholder(
-                        isVisible = query.text.isEmpty(),
+                        isVisible = query.isEmpty(),
                         placeholderText = placeholderText
                     )
                     innerTextField()

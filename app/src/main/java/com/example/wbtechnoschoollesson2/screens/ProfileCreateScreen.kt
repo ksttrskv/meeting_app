@@ -13,6 +13,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,27 +24,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.TextFields.TextFieldNameView
 import com.example.wbtechnoschoollesson2.TextFields.TextFieldSurnameView
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbSolidButton
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.ProfileCreateViewModel
+import com.example.wbtechnoschoollesson2.screens.ViewModels.ProfileViewModel
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun ProfileCreateScreen(navController: NavController,  viewModel: ProfileCreateViewModel = koinViewModel()) {
-    var query by remember { mutableStateOf(TextFieldValue("")) }
-    val isNameFilled = query.text.isNotEmpty()
-
+fun ProfileCreateScreen(navController: NavController, profileViewModel: ProfileViewModel = koinViewModel(), viewModel: ProfileCreateViewModel = koinViewModel()) {
+//    var query by remember { mutableStateOf(TextFieldValue("")) }
+    val name by viewModel.name.collectAsState()
+    val surname by viewModel.surname.collectAsState()
+    val isNameFilled = name.isNotEmpty()
     Scaffold(
         topBar = {
             TopBar3(
@@ -88,13 +88,19 @@ fun ProfileCreateScreen(navController: NavController,  viewModel: ProfileCreateV
                 }
                 item {
                     TextFieldNameView(
-                        query = query,
-                        onQueryChange = { newQuery -> query = newQuery },
+                        name = name,
+                        onNameChange = { newName -> viewModel.onNameChanged(newName) }
                     )
+
                     Spacer(modifier = Modifier.size(12.dp))
                 }
                 item {
-                    TextFieldSurnameView()
+                    TextFieldSurnameView(
+                        surname = surname,
+                        onSurnameChange = { newSurname -> viewModel.onSurnameChanged(newSurname) }
+                    )
+
+
                     Spacer(modifier = Modifier.size(56.dp))
                 }
                 item {
@@ -109,7 +115,13 @@ fun ProfileCreateScreen(navController: NavController,  viewModel: ProfileCreateV
                         },
                         btnColor = UiTheme.colors.brandColorDefault,
                         textColor = UiTheme.colors.neutralOffWhite,
-                        onClick = { navController.navigate(Screens.AllMeetings) },
+                        onClick = {
+                            viewModel.saveUserProfile()
+                            profileViewModel.updateUserProfile(name, surname)
+                            navController.navigate(Screens.AllMeetings) {
+                                popUpTo(Screens.ProfileCreate) { inclusive = true }
+                            }
+                             },
                         enabled = isNameFilled
                     )
                 }
@@ -118,13 +130,3 @@ fun ProfileCreateScreen(navController: NavController,  viewModel: ProfileCreateV
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-fun ProfileCreateScreenPreview() {
-    WBTechnoschoolLesson2Theme {
-        val navContoller = rememberNavController()
-        ProfileCreateScreen(navController = navContoller)
-
-    }
-}

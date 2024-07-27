@@ -38,6 +38,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ProfileScreen(navController: NavController, viewModel: ProfileViewModel = koinViewModel()) {
     val userName by viewModel.userName.collectAsState()
+    val userSurname by viewModel.userSurname.collectAsState()
     val userPhone by viewModel.userPhone.collectAsState()
     Scaffold(
         topBar = {
@@ -89,7 +90,7 @@ fun ProfileScreen(navController: NavController, viewModel: ProfileViewModel = ko
             item {
                 Spacer(modifier = Modifier.size(20.dp))
                 TypographyLine1(
-                    title = userName,
+                    title = "$userName $userSurname",
                     subTitle = userPhone
                 )
             }
@@ -110,11 +111,3 @@ fun PreviewProfileAvatar() {
         ProfileScreen(navController=navController)
     }
 }
-
-
-
-
-
-
-
-

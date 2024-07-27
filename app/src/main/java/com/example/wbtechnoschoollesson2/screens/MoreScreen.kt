@@ -100,7 +100,7 @@ fun ProfileCard(navController: NavController) {
         Column {
             Text("Иван Иванов", style = UiTheme.typography.bodyText1,)
             Spacer(modifier = Modifier.height(8.dp))
-            Text("+7 999 999-99-99", style = UiTheme.typography.metadata1)
+            Text("+7 999-99-99", style = UiTheme.typography.metadata1)
         }
     }
 }

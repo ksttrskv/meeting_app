@@ -23,6 +23,6 @@ val appModule = module {
     viewModel { CommunityViewModel(get()) }
     viewModel{LoginScreenViewModel()}
     viewModel{CodeInputViewModel()}
-    viewModel{ProfileCreateViewModel()}
+    viewModel { ProfileCreateViewModel(get(), get()) }
     viewModel { MyMeetingViewModel(get()) }
 }

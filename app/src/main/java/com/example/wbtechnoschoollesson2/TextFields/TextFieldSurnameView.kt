@@ -15,23 +15,19 @@ import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschoollesson2.R
 
 @Composable
-fun TextFieldSurnameView() {
+fun TextFieldSurnameView(
+    surname: String,
+    onSurnameChange: (String) -> Unit
+) {
     val focusRequester = remember { FocusRequester() }
-    var query by remember { mutableStateOf(TextFieldValue("")) }
-
-//    // Функция для обработки изменений в поле
-//    val onQueryChange: (TextFieldValue) -> Unit = { newQuery ->
-//        query = newQuery
-//    }
 
     TextInputField(
         focusRequester = focusRequester,
-        query = query,
-        onQueryChange = { newQuery -> query = newQuery },
+        query = surname,
+        onQueryChange = { newSurname -> onSurnameChange(newSurname) },
         placeholderText = stringResource(id = R.string.enter_surname),
         modifier = Modifier
             .fillMaxWidth()
             .height(36.dp)
-
     )
 }
