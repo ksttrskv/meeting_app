@@ -24,11 +24,11 @@ import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun CommunityScreen(navController: NavController, viewModel: CommunityViewModel = getViewModel()) {
-//    val viewModel: CommunityViewModel = viewModel()
+fun CommunityScreen(navController: NavController, viewModel: CommunityViewModel = koinViewModel()) {
     val communities by viewModel.communities.collectAsState(initial = emptyList())
     Scaffold(
         topBar = {

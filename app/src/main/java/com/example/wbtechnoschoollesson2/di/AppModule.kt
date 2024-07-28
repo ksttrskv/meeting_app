@@ -3,6 +3,7 @@ package com.example.wbtechnoschoollesson2.di
 
 import com.example.wbtechnoschoollesson2.screens.ViewModels.AllMeetingViewModel
 import com.example.wbtechnoschoollesson2.screens.ViewModels.CodeInputViewModel
+import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityDetailViewModel
 import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityViewModel
 import com.example.wbtechnoschoollesson2.screens.ViewModels.LoginScreenViewModel
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
@@ -20,9 +21,10 @@ val appModule = module {
     viewModel{ProfileViewModel()}
     viewModel{MoreScreenViewModel()}
     viewModel { AllMeetingViewModel(get()) }
-    viewModel { CommunityViewModel(get()) }
+    viewModel { CommunityViewModel(get(), get(), get()) }
     viewModel{LoginScreenViewModel()}
     viewModel{CodeInputViewModel()}
     viewModel { ProfileCreateViewModel(get(), get()) }
     viewModel { MyMeetingViewModel(get()) }
+    viewModel { CommunityDetailViewModel(get(), get()) }
 }

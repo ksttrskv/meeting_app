@@ -12,6 +12,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,16 +31,21 @@ import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
+import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityDetailViewModel
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun CommunityDetailScreen(communityTitle: String,navController: NavController,  meetingViewModel: MeetingViewModel = koinViewModel()) {
-//    val navController = rememberNavController()
-    val meetings: List<Meeting> by remember { mutableStateOf(meetingViewModel.getAllMeetings()) }
+fun CommunityDetailScreen(communityTitle: String,navController: NavController,  viewModel: CommunityDetailViewModel = koinViewModel()) {
+    val meetings by viewModel.meetings.collectAsState()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val communityTitle = navBackStackEntry?.arguments?.getString("communityTitle") ?: "Сообщество"
+
+    LaunchedEffect(communityTitle) {
+        viewModel.loadCommunityDetail(communityTitle)
+        viewModel.loadMeetings(communityTitle)
+    }
 
     Scaffold(
         topBar = {
