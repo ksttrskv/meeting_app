@@ -13,16 +13,16 @@ import com.example.wbtechnoschoollesson2.R
 
 @Composable
 fun TextFieldNameView(
-    onQueryChange: (TextFieldValue) -> Unit,
-    query: TextFieldValue
+    name: String,
+    onNameChange: (String) -> Unit
 ) {
 
     val focusRequester = remember { FocusRequester() }
 
     TextInputField(
         focusRequester = focusRequester,
-        query = query,
-        onQueryChange = onQueryChange,
+        query = name,
+        onQueryChange = { newSurname -> onNameChange(newSurname) },
         placeholderText = stringResource(id = R.string.enter_name),
         modifier = Modifier
             .fillMaxWidth()
