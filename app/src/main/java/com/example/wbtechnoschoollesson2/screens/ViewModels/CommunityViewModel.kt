@@ -35,7 +35,9 @@ class CommunityViewModel(
     fun saveCommunity(community: Community) {
         viewModelScope.launch {
             saveCommunityUseCase.execute(community).collect { success ->
-                if (success) loadCommunities() // Reload communities after save
+                if (success){
+                    loadCommunities()
+                } // Reload communities after save
             }
         }
     }

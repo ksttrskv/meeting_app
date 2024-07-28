@@ -11,17 +11,10 @@ class GetCommunityUseCaseStub : GetCommunityUseCase {
     override fun execute(): Flow<List<Community>> {
         return flow {
             emit(
-                listOf(
-                    Community("https://i.postimg.cc/GmsT4jPq/map-image.png","Designa", "10 000 человек"),
-                    Community("https://i.postimg.cc/GmsT4jPq/map-image.png","Designa", "10 000 человек"),
-                    Community("https://i.postimg.cc/GmsT4jPq/map-image.png","Designa", "16 000 человек"),
-                    Community("https://i.postimg.cc/GmsT4jPq/map-image.png","Designa", "10 000 человек"),
-                    Community("https://i.postimg.cc/GmsT4jPq/map-image.png","Designa", "12 000 человек"),
-                    Community("https://i.postimg.cc/GmsT4jPq/map-image.png","Designa", "10 000 человек"),
-                    Community("https://i.postimg.cc/GmsT4jPq/map-image.png","Designa", "10 000 человек"),
-                    Community("https://i.postimg.cc/GmsT4jPq/map-image.png","Designa", "11 000 человек"),
+                List(10) {
                     Community("https://i.postimg.cc/GmsT4jPq/map-image.png","Designa", "10 000 человек")
-                )
+                }
+
             )
         }
     }
