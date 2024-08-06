@@ -8,9 +8,6 @@ import kotlinx.coroutines.flow.flow
 class MeetingRepositoryStub : MeetingRepository {
     override fun getMeetings(): List<Meeting> {
         return listOf(
-            Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true),
-            Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
-            Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
             Meeting(
                 title = "Developer meeting",
                 location = "Москва",
@@ -29,7 +26,30 @@ class MeetingRepositoryStub : MeetingRepository {
                 date = "15.10.2025",
                 isFinished = false
             ),
-            Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true)
+            Meeting(
+                title = "Developer meeting",
+                location = "Москва",
+                date = "15.10.2025",
+                isFinished = true
+            ),
+            Meeting(
+                title = "Developer meeting",
+                location = "Москва",
+                date = "15.10.2025",
+                isFinished = false
+            ),
+            Meeting(
+                title = "Developer meeting",
+                location = "Москва",
+                date = "15.10.2025",
+                isFinished = false
+            ),
+            Meeting(
+                title = "Developer meeting",
+                location = "Москва",
+                date = "15.10.2025",
+                isFinished = true
+            )
         )
     }
 
@@ -37,9 +57,6 @@ class MeetingRepositoryStub : MeetingRepository {
         return flow {
             emit(
                 listOf(
-                    Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true),
-                    Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
-                    Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
                     Meeting(
                         title = "Developer meeting",
                         location = "Москва",
@@ -58,7 +75,30 @@ class MeetingRepositoryStub : MeetingRepository {
                         date = "15.10.2025",
                         isFinished = false
                     ),
-                    Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true)
+                    Meeting(
+                        title = "Developer meeting",
+                        location = "Москва",
+                        date = "15.10.2025",
+                        isFinished = true
+                    ),
+                    Meeting(
+                        title = "Developer meeting",
+                        location = "Москва",
+                        date = "15.10.2025",
+                        isFinished = false
+                    ),
+                    Meeting(
+                        title = "Developer meeting",
+                        location = "Москва",
+                        date = "15.10.2025",
+                        isFinished = false
+                    ),
+                    Meeting(
+                        title = "Developer meeting",
+                        location = "Москва",
+                        date = "15.10.2025",
+                        isFinished = true
+                    )
                 )
             )
         }

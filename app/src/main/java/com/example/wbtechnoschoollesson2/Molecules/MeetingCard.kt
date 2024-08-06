@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -47,7 +48,8 @@ fun MeetingCard(
             modifier = Modifier
                 .clip(RoundedCornerShape(8.dp))
                 .padding(top = 16.dp, bottom = 16.dp)
-                .height(76.dp)
+//                .height(76.dp)
+                .wrapContentHeight()
         ) {
             Column {
                 Row {

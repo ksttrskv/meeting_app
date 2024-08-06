@@ -7,7 +7,7 @@ import com.example.domain.usecases.interfaces.UpdateCommunityUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetCommunityUseCaseImpl : GetCommunityUseCase {
+class CommunityStub : GetCommunityUseCase {
     override fun execute(): Flow<List<Community>> {
         return flow {
             emit(

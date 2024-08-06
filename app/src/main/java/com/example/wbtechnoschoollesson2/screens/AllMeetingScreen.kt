@@ -2,7 +2,6 @@
 
 package com.example.wbtechnoschoollesson2.screens
 
-import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,14 +9,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.SecondaryIndicator
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,19 +32,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.AllMeetingViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun AllMeetingScreen(navController: NavController) {
     var selectedTabIndex by remember { mutableStateOf(0) }
-    val viewModel: AllMeetingViewModel = getViewModel()
+    val viewModel: AllMeetingViewModel = koinViewModel()
     val allMeetings by viewModel.allMeetings.collectAsState(initial = emptyList())
     val activeMeetings by viewModel.activeMeetings.collectAsState(initial = emptyList())
     Scaffold(
@@ -88,7 +89,7 @@ fun AllMeetingScreen(navController: NavController) {
                     TabRow(
                         selectedTabIndex = selectedTabIndex,
                         indicator = { tabPositions ->
-                            TabRowDefaults.Indicator(
+                            SecondaryIndicator(
                                 Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
                                 color = UiTheme.colors.brandColorDefault
                             )
@@ -132,7 +133,7 @@ fun AllMeetingScreen(navController: NavController) {
                             }
                         }
                     )
-                    Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
+                    HorizontalDivider(thickness = 1.dp, color = UiTheme.colors.neutralLine)
                 }
             }
         }

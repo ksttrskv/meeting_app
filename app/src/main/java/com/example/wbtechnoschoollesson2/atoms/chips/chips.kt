@@ -39,7 +39,7 @@ fun CustomFilterChip(text : String) {
             .padding(end = 2.dp),
         shape = RoundedCornerShape(40.dp),
         selected = selected,
-        leadingIcon = if (selected) {
+        leadingIcon = selected.takeIf { it }?.let {
             {
                 Icon(
                     imageVector = Icons.Filled.Done,
@@ -47,8 +47,6 @@ fun CustomFilterChip(text : String) {
                     modifier = Modifier.size(FilterChipDefaults.IconSize)
                 )
             }
-        } else {
-            null
         },
         colors = FilterChipDefaults.filterChipColors(
             containerColor = UiTheme.colors.brandColorBg,

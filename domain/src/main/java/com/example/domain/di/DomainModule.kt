@@ -3,7 +3,7 @@ package com.example.domain.di
 //import com.example.domain.stubs.ProfileRepositoryStub
 import MeetingRepository
 import com.example.domain.repository.ProfileRepository
-import com.example.domain.stubs.GetCommunityUseCaseImpl
+import com.example.domain.stubs.CommunityStub
 import com.example.domain.stubs.MeetingRepositoryStub
 import com.example.domain.stubs.ProfileRepositoryStub
 import com.example.domain.stubs.SaveCommunityUseCaseStub
@@ -21,7 +21,7 @@ import com.example.domain.usecases.interfaces.UpdateCommunityUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
-    single<GetCommunityUseCase> { GetCommunityUseCaseImpl() }
+    single<GetCommunityUseCase> { CommunityStub() }
     single<SaveCommunityUseCase> { SaveCommunityUseCaseStub() }
     single<UpdateCommunityUseCase> { UpdateCommunityUseCaseStub() }
     single<MeetingRepository> { MeetingRepositoryStub() }

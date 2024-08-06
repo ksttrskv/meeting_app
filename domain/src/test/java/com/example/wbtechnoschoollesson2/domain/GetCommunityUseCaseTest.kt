@@ -1,6 +1,6 @@
 package com.example.wbtechnoschoollesson2.domain
 
-import com.example.domain.stubs.GetCommunityUseCaseImpl
+import com.example.domain.stubs.CommunityStub
 import com.example.domain.usecases.interfaces.GetCommunityUseCase
 import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,7 +17,7 @@ class GetCommunityUseCaseTest {
     @Before
     fun setUp() {
         // Replace with the real implementation when testing actual use cases
-        getCommunityUseCase = GetCommunityUseCaseImpl()
+        getCommunityUseCase = CommunityStub()
     }
 
     @Test

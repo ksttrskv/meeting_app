@@ -44,39 +44,66 @@ fun PhoneInput(modifier: Modifier = Modifier, onPhoneChange: (String) -> Unit) {
     var phone by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
-    Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
 
-        Row(
-            modifier = Modifier
-                .clip(RoundedCornerShape(6.dp))
-                .background(UiTheme.colors.neutralSecondaryBg)
-                .padding(vertical = 16.dp)
-                .clickable { expanded = !expanded },
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                modifier = Modifier.padding(horizontal = 8.dp),
-                painter = painterResource(id = selectedCountry.flagPainterId),
-                contentDescription = null
-            )
-            Text(
-                modifier = Modifier.padding(end = 8.dp),
-                text = selectedCountry.phoneCode,
-                style = UiTheme.typography.bodyText1,
-                color = UiTheme.colors.neutralDisabled
-            )
-        }
+    Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        CountrySelector(
+            selectedCountry = selectedCountry,
+            expanded = expanded,
+            onExpandChange = { expanded = it },
+            onCountrySelected = { selectedCountry = it }
+        )
+
+        Spacer(modifier = Modifier.size(8.dp))
+
+        PhoneNumberInput(
+            phone = phone,
+            onPhoneChange = {
+                phone = it.take(PHONE_NUMBER_SIZE)
+                onPhoneChange(selectedCountry.phoneCode + phone)
+            },
+            onImeAction = {
+                focusManager.clearFocus()
+                onPhoneChange(selectedCountry.phoneCode + phone)
+            }
+        )
+    }
+}
+
+@Composable
+fun CountrySelector(
+    selectedCountry: Country,
+    expanded: Boolean,
+    onExpandChange: (Boolean) -> Unit,
+    onCountrySelected: (Country) -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .clip(RoundedCornerShape(6.dp))
+            .background(UiTheme.colors.neutralSecondaryBg)
+            .padding(vertical = 16.dp)
+            .clickable { onExpandChange(!expanded) },
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            modifier = Modifier.padding(horizontal = 8.dp),
+            painter = painterResource(id = selectedCountry.flagPainterId),
+            contentDescription = null
+        )
+        Text(
+            modifier = Modifier.padding(end = 8.dp),
+            text = selectedCountry.phoneCode,
+            style = UiTheme.typography.bodyText1,
+            color = UiTheme.colors.neutralDisabled
+        )
 
         DropdownMenu(
-            modifier = Modifier
-                .background(UiTheme.colors.neutralSecondaryBg),
+            modifier = Modifier.background(UiTheme.colors.neutralSecondaryBg),
             expanded = expanded,
-            onDismissRequest = { expanded = false }
+            onDismissRequest = { onExpandChange(false) }
         ) {
             Country.entries.forEach { country ->
                 DropdownMenuItem(
-                    modifier = Modifier
-                        .background(UiTheme.colors.neutralSecondaryBg),
+                    modifier = Modifier.background(UiTheme.colors.neutralSecondaryBg),
                     text = {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -95,63 +122,61 @@ fun PhoneInput(modifier: Modifier = Modifier, onPhoneChange: (String) -> Unit) {
                         }
                     },
                     onClick = {
-                        selectedCountry = country
-                        expanded = false
+                        onCountrySelected(country)
+                        onExpandChange(false)
                     }
                 )
             }
         }
-
-        Spacer(modifier = Modifier.size(8.dp))
-
-        BasicTextField(
-            modifier = Modifier
-                .clip(RoundedCornerShape(6.dp))
-                .background(UiTheme.colors.neutralSecondaryBg)
-                .fillMaxWidth()
-                .padding(vertical = 8.dp),
-            value = phone,
-            onValueChange = {
-                phone = it.take(PHONE_NUMBER_SIZE)
-                onPhoneChange(selectedCountry.phoneCode + phone)
-            },
-            textStyle = UiTheme.typography.bodyText1,
-            decorationBox = {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                        .clip(RoundedCornerShape(5.dp))
-                        .background(UiTheme.colors.neutralSecondaryBg)
-                ) {
-                    if (phone.isEmpty())
-                        Text(
-                            modifier = Modifier.padding(start = 8.dp),
-                            text = "999 999-99-99",
-                            style = UiTheme.typography.bodyText1,
-                            color = UiTheme.colors.neutralDisabled
-                        )
-                    it()
-                }
-            },
-            visualTransformation = PhoneNumberTransformation(),
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Go
-            ),
-            keyboardActions = KeyboardActions(
-                onNext = {
-                    focusManager.clearFocus()
-                    onPhoneChange(selectedCountry.phoneCode + phone)
-                }
-            ),
-        )
     }
+}
+
+@Composable
+fun PhoneNumberInput(
+    phone: String,
+    onPhoneChange: (String) -> Unit,
+    onImeAction: () -> Unit
+) {
+    BasicTextField(
+        modifier = Modifier
+            .clip(RoundedCornerShape(6.dp))
+            .background(UiTheme.colors.neutralSecondaryBg)
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        value = phone,
+        onValueChange = onPhoneChange,
+        textStyle = UiTheme.typography.bodyText1,
+        decorationBox = { innerTextField ->
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+                    .clip(RoundedCornerShape(5.dp))
+                    .background(UiTheme.colors.neutralSecondaryBg)
+            ) {
+                if (phone.isEmpty()) {
+                    Text(
+                        modifier = Modifier.padding(start = 8.dp),
+                        text = "999 999-99-99",
+                        style = UiTheme.typography.bodyText1,
+                        color = UiTheme.colors.neutralDisabled
+                    )
+                }
+                innerTextField()
+            }
+        },
+        visualTransformation = PhoneNumberTransformation(),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Number,
+            imeAction = ImeAction.Go
+        ),
+        keyboardActions = KeyboardActions(onNext = { onImeAction() })
+    )
 }
 
 @Composable
 @Preview
 fun PhoneInputPreview() {
-    PhoneInput() {}
+    PhoneInput(onPhoneChange = {})
 }
