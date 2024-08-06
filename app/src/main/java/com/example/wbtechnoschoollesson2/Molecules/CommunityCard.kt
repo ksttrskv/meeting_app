@@ -39,28 +39,29 @@ fun CommunityCard(
         modifier = Modifier.fillMaxSize(), colors = CardDefaults.cardColors(Color.White)) {
         Box(
             modifier = Modifier
-                .clip(RoundedCornerShape(8.dp))
                 .height(68.dp)
                 .padding(bottom = 12.dp)
-
         ) {
             Column {
                 Row {
                     Image(
                         painter = rememberAsyncImagePainter(imageUrl),
                         contentDescription = null,
-                        modifier = Modifier.size(48.dp),
+                        modifier = Modifier
+                            .size(48.dp)
+                            .padding(4.dp)
+                            .clip(RoundedCornerShape(8.dp)),
                         contentScale = ContentScale.Crop,
                         alignment = Alignment.TopStart
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
+                    Spacer(modifier = Modifier.width(14.dp))
                     Column {
                         Text(
                             text = title,
                             style = UiTheme.typography.bodyText1,
                             color = UiTheme.colors.neutralActive,
                         )
-                        Spacer(modifier = Modifier.height(4.dp))
+                        Spacer(modifier = Modifier.height(8.dp))
                         Text(
                             text = subtitle,
                             style = UiTheme.typography.metadata1,

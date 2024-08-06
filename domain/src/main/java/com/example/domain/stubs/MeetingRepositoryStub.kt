@@ -11,6 +11,24 @@ class MeetingRepositoryStub : MeetingRepository {
             Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true),
             Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
             Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
+            Meeting(
+                title = "Developer meeting",
+                location = "Москва",
+                date = "15.10.2025",
+                isFinished = true
+            ),
+            Meeting(
+                title = "Developer meeting",
+                location = "Москва",
+                date = "15.10.2025",
+                isFinished = false
+            ),
+            Meeting(
+                title = "Developer meeting",
+                location = "Москва",
+                date = "15.10.2025",
+                isFinished = false
+            ),
             Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true)
         )
     }
@@ -22,6 +40,24 @@ class MeetingRepositoryStub : MeetingRepository {
                     Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true),
                     Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
                     Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = false),
+                    Meeting(
+                        title = "Developer meeting",
+                        location = "Москва",
+                        date = "15.10.2025",
+                        isFinished = true
+                    ),
+                    Meeting(
+                        title = "Developer meeting",
+                        location = "Москва",
+                        date = "15.10.2025",
+                        isFinished = false
+                    ),
+                    Meeting(
+                        title = "Developer meeting",
+                        location = "Москва",
+                        date = "15.10.2025",
+                        isFinished = false
+                    ),
                     Meeting(title = "Developer meeting", location = "Москва", date = "15.10.2025", isFinished = true)
                 )
             )

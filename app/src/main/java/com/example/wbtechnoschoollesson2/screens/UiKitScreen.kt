@@ -1,10 +1,10 @@
 package com.example.wbtechnoschoollesson2.screens
 
-import com.example.wbtechnoschoollesson2.Molecules.CommunityCard
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Icon
@@ -13,16 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
+import com.example.wbtechnoschoollesson2.Molecules.CommunityCard
 import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import com.example.wbtechnoschoollesson2.Molecules.ProfileAvatar
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
-import com.example.wbtechnoschoollesson2.Molecules.AvatarRow
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.chips.CustomFilterChip
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import com.example.wbtechnoschoollesson2.uiKitScreen.ButtonLine
+import com.example.wbtechnoschoollesson2.uiKitScreen.ChipsLine
 import com.example.wbtechnoschoollesson2.uiKitScreen.Heading
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 import com.example.wbtechnoschoollesson2.uiKitScreen.TypographyLine
@@ -120,11 +119,7 @@ fun UiKitScreen(modifier: Modifier = Modifier) {
         }
         item {
             Heading(text = "Chips")
-            Row {
-                CustomFilterChip(text = "Python")
-                CustomFilterChip(text = "Junior")
-                CustomFilterChip(text = "Moscow")
-            }
+            ChipsLine()
 
         }
         item {

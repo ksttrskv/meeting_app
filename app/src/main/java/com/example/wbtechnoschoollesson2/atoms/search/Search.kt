@@ -51,7 +51,7 @@ fun SearchBar(
         modifier = modifier
             .height(36.dp)
             .clip(RoundedCornerShape(4.dp))
-            .background(UiTheme.colors.neutralLine)
+            .background(UiTheme.colors.neutralOffWhite)
             .padding(start = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start

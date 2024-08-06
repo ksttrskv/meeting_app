@@ -1,14 +1,14 @@
 package com.example.domain.di
 
+//import com.example.domain.stubs.ProfileRepositoryStub
 import MeetingRepository
 import com.example.domain.repository.ProfileRepository
+import com.example.domain.stubs.GetCommunityUseCaseImpl
 import com.example.domain.stubs.MeetingRepositoryStub
 import com.example.domain.stubs.ProfileRepositoryStub
 import com.example.domain.stubs.SaveCommunityUseCaseStub
 import com.example.domain.stubs.UpdateCommunityUseCaseStub
 import com.example.domain.usecases.implementation.GetCommunityDetailUseCaseImpl
-//import com.example.domain.stubs.ProfileRepositoryStub
-import com.example.domain.usecases.implementation.GetCommunityUseCaseImpl
 import com.example.domain.usecases.implementation.GetMeetingsByCommunityUseCaseImpl
 import com.example.domain.usecases.implementation.MeetingRepositoryImpl
 import com.example.domain.usecases.interfaces.GetCommunityDetailUseCase

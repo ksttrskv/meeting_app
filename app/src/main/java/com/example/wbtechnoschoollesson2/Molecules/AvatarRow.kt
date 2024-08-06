@@ -32,12 +32,12 @@ fun AvatarRow(avatarResIds: List<Int>) {
 
     Row(
         modifier = Modifier
-            .padding(24.dp)
+            .padding(4.dp)
             .background(Color.Transparent),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy((-24).dp),
+            horizontalArrangement = Arrangement.spacedBy((-18).dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             if (randomAvatars.isNotEmpty()) {
@@ -45,7 +45,7 @@ fun AvatarRow(avatarResIds: List<Int>) {
                     painter = painterResource(id = randomAvatars.first()),
                     contentDescription = null,
                     modifier = Modifier
-                        .size(70.dp)
+                        .size(56.dp)
                         .clip(RoundedCornerShape(16.dp))
                         .zIndex((maxVisibleAvatars + 1).toFloat())
                 )
@@ -56,7 +56,7 @@ fun AvatarRow(avatarResIds: List<Int>) {
                             painter = painterResource(id = avatarRes),
                             contentDescription = null,
                             modifier = Modifier
-                                .size(70.dp)
+                                .size(56.dp)
                                 .clip(RoundedCornerShape(16.dp))
                                 .zIndex((maxVisibleAvatars - index).toFloat()) // Уменьшение zIndex для наложения
                         )

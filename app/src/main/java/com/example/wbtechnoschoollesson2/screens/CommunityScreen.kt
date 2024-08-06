@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -23,7 +23,6 @@ import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
-import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -51,7 +50,7 @@ fun CommunityScreen(navController: NavController, viewModel: CommunityViewModel 
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 24.dp, end = 24.dp)
+                    .padding(start = 24.dp, end = 24.dp, top = 16.dp)
                     .background(Color.White)
             ) {
 
@@ -74,7 +73,7 @@ fun CommunityScreen(navController: NavController, viewModel: CommunityViewModel 
                         }
                     )
 
-                    Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
+                    HorizontalDivider(thickness = 1.dp, color = UiTheme.colors.neutralLine)
                     Spacer(modifier = Modifier.height(16.dp))
 
                 }

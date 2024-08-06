@@ -1,6 +1,6 @@
 package com.example.wbtechnoschoollesson2.domain
 
-import com.example.domain.usecases.implementation.GetCommunityUseCaseImpl
+import com.example.domain.stubs.GetCommunityUseCaseImpl
 import com.example.domain.usecases.interfaces.GetCommunityUseCase
 import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.ExperimentalCoroutinesApi

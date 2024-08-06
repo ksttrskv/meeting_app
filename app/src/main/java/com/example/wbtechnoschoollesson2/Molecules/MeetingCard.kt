@@ -1,8 +1,6 @@
 package com.example.wbtechnoschoollesson2.Molecules
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,12 +23,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.chips.CustomFilterChip
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
-import com.example.domain.model.Meeting
+import com.example.wbtechnoschoollesson2.uiKitScreen.ChipsLine
 
 
 @Composable
@@ -69,25 +65,20 @@ fun MeetingCard(
                             style = UiTheme.typography.bodyText1,
                             color = UiTheme.colors.neutralActive
                         )
-                        Spacer(modifier = Modifier.height(4.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
                         Text(
                             text = "$date - $location",
                             style = UiTheme.typography.metadata1,
                             color = UiTheme.colors.neutralWeak,
                         )
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            CustomFilterChip(text = "Python")
-                            CustomFilterChip(text = "Junior")
-                            CustomFilterChip(text = "Moscow")
-                        }
+                        Spacer(modifier = Modifier.height(10.dp))
+                        ChipsLine()
                     }
                     Spacer(modifier = Modifier.weight(1f))
                     if (isFinished) {
                         Text(
                             text = "Закончилась",
                             style = UiTheme.typography.metadata2,
-                            fontSize = 10.sp,
-                            lineHeight = 16.sp,
                             color = UiTheme.colors.neutralWeak
                         )
                     }

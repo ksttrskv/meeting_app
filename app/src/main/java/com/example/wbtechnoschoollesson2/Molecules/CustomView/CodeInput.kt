@@ -26,8 +26,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme.colors
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+
+const val CODE_LENGHT = 4
 
 @Composable
 fun CodeInput(modifier: Modifier = Modifier, actionDone: (code: String) -> Unit) {
@@ -38,10 +39,10 @@ fun CodeInput(modifier: Modifier = Modifier, actionDone: (code: String) -> Unit)
         value = pin,
         onValueChange = {  newValue ->
             when {
-                newValue.length <= 4 -> {
+                newValue.length <= CODE_LENGHT -> {
                     pin = newValue
                     when (newValue.length) {
-                        4 -> {
+                        CODE_LENGHT -> {
                             focusManager.clearFocus()
                             actionDone(newValue)
                         }
@@ -55,7 +56,7 @@ fun CodeInput(modifier: Modifier = Modifier, actionDone: (code: String) -> Unit)
                 horizontalArrangement = Arrangement.spacedBy(40.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                repeat(4) {
+                repeat(CODE_LENGHT) {
                     NumberOrCircle(code = pin, index = it)
                 }
             }
@@ -67,7 +68,7 @@ fun CodeInput(modifier: Modifier = Modifier, actionDone: (code: String) -> Unit)
         ),
         keyboardActions = KeyboardActions(
             onDone = {
-                if (pin.length == 4) {
+                if (pin.length == CODE_LENGHT) {
                     focusManager.clearFocus()
                     actionDone(pin)
                 }
@@ -97,6 +98,6 @@ fun NumberOrCircle(code: String, index: Int) {
 @Composable
 fun DefaultPreview() {
     WBTechnoschoolLesson2Theme {
-        CodeInput() {}
+        CodeInput {}
     }
 }
