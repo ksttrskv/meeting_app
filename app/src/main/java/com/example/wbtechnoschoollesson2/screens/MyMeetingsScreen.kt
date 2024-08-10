@@ -1,7 +1,6 @@
 
 package com.example.wbtechnoschoollesson2.screens
 
-import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
@@ -10,13 +9,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.SecondaryIndicator
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
@@ -39,7 +40,6 @@ import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MyMeetingViewModel
 import org.koin.androidx.compose.getViewModel
-
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "SuspiciousIndentation")
@@ -75,18 +75,17 @@ fun MyMeetingScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(contentPadding)
-                .padding(start = 24.dp, end = 24.dp)
+                .padding(horizontal = 24.dp)
                 .background(Color.White)
         ) {
             item {
                 TabRow(
                     selectedTabIndex = selectedTabIndex,
                     indicator = { tabPositions ->
-                        TabRowDefaults.Indicator(
+                        SecondaryIndicator(
                             Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
-                            color = UiTheme.colors.brandColorDefault,
-
-                            )
+                            color = UiTheme.colors.brandColorDefault
+                        )
                     }
                 ) {
                     Tab(modifier = Modifier.background(Color.White),
@@ -129,7 +128,7 @@ fun MyMeetingScreen(navController: NavController) {
                         }
                     }
                 )
-                Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
+                HorizontalDivider(thickness = 1.dp, color = UiTheme.colors.neutralLine)
             }
         }
     }

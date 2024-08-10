@@ -16,7 +16,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
-import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.SecondaryIndicator
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
@@ -41,6 +40,8 @@ import com.example.wbtechnoschoollesson2.screens.ViewModels.AllMeetingViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView
 import org.koin.androidx.compose.koinViewModel
 
+const val ACTIVEMEETINGS = 1
+const val ALLMEETINGS = 0
 
 @Composable
 fun AllMeetingScreen(navController: NavController) {
@@ -79,7 +80,7 @@ fun AllMeetingScreen(navController: NavController) {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 24.dp, end = 24.dp)
+                    .padding(horizontal = 24.dp)
                     .background(Color.White)
             ) {
                 item {
@@ -96,30 +97,31 @@ fun AllMeetingScreen(navController: NavController) {
                         }
                     ) {
                         Tab(modifier = Modifier.background(Color.White),
-                            selected = selectedTabIndex == 0,
-                            onClick = { selectedTabIndex = 0 },
+                            selected = selectedTabIndex == ALLMEETINGS,
+                            onClick = { selectedTabIndex = ALLMEETINGS },
                             text = {
                                 Text(
                                     stringResource(R.string.all_meetings_tabrow),
-                                    color = if (selectedTabIndex == 0) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
+                                    color = if (selectedTabIndex == ALLMEETINGS) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
                                 )
                             }
                         )
                         Tab(modifier = Modifier.background(Color.White),
-                            selected = selectedTabIndex == 1,
-                            onClick = { selectedTabIndex = 1 },
+                            selected = selectedTabIndex == ACTIVEMEETINGS,
+                            onClick = { selectedTabIndex = ACTIVEMEETINGS },
                             text = {
                                 Text(
                                     stringResource(R.string.active_tabrow),
                                     style = UiTheme.typography.bodyText1,
-                                    color = if (selectedTabIndex == 1) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
+                                    color = if (selectedTabIndex == ACTIVEMEETINGS) UiTheme.colors.brandColorDefault else UiTheme.colors.neutralWeak
                                 )
                             }
                         )
                     }
                 }
 
-                val itemsToShow = if (selectedTabIndex == 0) allMeetings else activeMeetings
+                val itemsToShow =
+                    if (selectedTabIndex == ALLMEETINGS) allMeetings else activeMeetings
                 items(itemsToShow) { meeting ->
                     MeetingCard(
                         title = meeting.title,

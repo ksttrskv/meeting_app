@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.screens
+package com.example.wbtechnoschoollesson2.navigation
 
 object Screens {
     const val Splash = "splash"

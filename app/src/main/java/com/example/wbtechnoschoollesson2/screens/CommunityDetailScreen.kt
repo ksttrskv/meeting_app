@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -15,24 +15,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.domain.model.Meeting
 import com.example.wbtechnoschoollesson2.Molecules.MeetingCard
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityDetailViewModel
-import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -67,7 +62,9 @@ fun CommunityDetailScreen(communityTitle: String,navController: NavController,  
         },
         containerColor = Color.White
     ) { contentPadding ->
-        LazyColumn(modifier = Modifier.padding(16.dp).padding(contentPadding)) {
+        LazyColumn(modifier = Modifier
+            .padding(16.dp)
+            .padding(contentPadding)) {
 
             item {
                 Text(
@@ -93,9 +90,13 @@ fun CommunityDetailScreen(communityTitle: String,navController: NavController,  
                     date = meeting.date,
                     location = meeting.location,
                     isFinished = meeting.isFinished,
-                    onClick = {}
+                    onClick = {
+                        navController.navigate("meeting_detail/${meeting.title}") {
+                            launchSingleTop = true
+                        }
+                    }
                 )
-                Divider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
+                HorizontalDivider(color = UiTheme.colors.neutralLine, thickness = 1.dp)
             }
 
 

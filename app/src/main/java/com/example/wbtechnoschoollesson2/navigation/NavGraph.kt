@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.wbtechnoschoollesson2.navigation.Screens
 import com.example.wbtechnoschoollesson2.screens.AllMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.CodeInputScreen
 import com.example.wbtechnoschoollesson2.screens.CommunityDetailScreen
@@ -16,7 +17,6 @@ import com.example.wbtechnoschoollesson2.screens.MoreScreen
 import com.example.wbtechnoschoollesson2.screens.MyMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.ProfileCreateScreen
 import com.example.wbtechnoschoollesson2.screens.ProfileScreen
-import com.example.wbtechnoschoollesson2.screens.Screens
 import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
 import org.koin.androidx.compose.getViewModel
 

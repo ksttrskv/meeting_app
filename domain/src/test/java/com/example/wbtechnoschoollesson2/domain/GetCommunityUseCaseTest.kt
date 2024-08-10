@@ -16,7 +16,7 @@ class GetCommunityUseCaseTest {
 
     @Before
     fun setUp() {
-        // Replace with the real implementation when testing actual use cases
+        // Подмена реальной реализации для тестирования
         getCommunityUseCase = CommunityStub()
     }
 
@@ -27,11 +27,25 @@ class GetCommunityUseCaseTest {
     }
 
     @Test
-    fun `execute should return a list of communities with valid data`() = runTest {
+    fun `each community should have a non-empty title`() = runTest {
         val communities = getCommunityUseCase.execute().first()
         communities.forEach { community ->
             assertTrue("Expected community title to be non-empty", community.title.isNotEmpty())
+        }
+    }
+
+    @Test
+    fun `each community should have a non-empty subtitle`() = runTest {
+        val communities = getCommunityUseCase.execute().first()
+        communities.forEach { community ->
             assertTrue("Expected community subtitle to be non-empty", community.subtitle.isNotEmpty())
+        }
+    }
+
+    @Test
+    fun `each community should have a non-empty imageUrl`() = runTest {
+        val communities = getCommunityUseCase.execute().first()
+        communities.forEach { community ->
             assertTrue("Expected community imageUrl to be non-empty", community.imageUrl.isNotEmpty())
         }
     }

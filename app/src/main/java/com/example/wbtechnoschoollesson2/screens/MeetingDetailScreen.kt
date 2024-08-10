@@ -96,7 +96,7 @@ fun MeetingDetailScreen(
         LazyColumn(
             modifier = Modifier
                 .padding(contentPadding)
-                .padding(start = 24.dp, end = 24.dp)
+                .padding(horizontal = 24.dp)
                 .fillMaxSize()
         ) {
 

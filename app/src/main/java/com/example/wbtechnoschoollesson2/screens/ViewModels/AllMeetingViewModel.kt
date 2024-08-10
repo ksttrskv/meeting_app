@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Meeting
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class AllMeetingViewModel(private val meetingRepository: MeetingRepository) : ViewModel() {
@@ -23,8 +24,8 @@ class AllMeetingViewModel(private val meetingRepository: MeetingRepository) : Vi
     private fun loadMeetings() {
         viewModelScope.launch {
             val meetings = meetingRepository.getMeetings()
-            _allMeetings.value = meetings
-            _activeMeetings.value = meetings.filter { !it.isFinished }
+            _allMeetings.update { meetings }
+            _activeMeetings.update { meetings.filter { !it.isFinished } }
         }
     }
 }

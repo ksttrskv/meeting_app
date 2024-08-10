@@ -29,10 +29,20 @@ class GetCommunityDetailUseCaseTest {
     }
 
     @Test
-    fun `execute should return a community with valid data`() = runTest {
+    fun `community should have a non-empty title`() = runTest {
         val community = getCommunityDetailUseCase.execute("someCommunityTitle").first()
         assertTrue(community.title.isNotEmpty(), "Expected community title to be non-empty")
+    }
+
+    @Test
+    fun `community should have a non-empty subtitle`() = runTest {
+        val community = getCommunityDetailUseCase.execute("someCommunityTitle").first()
         assertTrue(community.subtitle.isNotEmpty(), "Expected community subtitle to be non-empty")
+    }
+
+    @Test
+    fun `community should have a non-empty imageUrl`() = runTest {
+        val community = getCommunityDetailUseCase.execute("someCommunityTitle").first()
         assertTrue(community.imageUrl.isNotEmpty(), "Expected community imageUrl to be non-empty")
     }
 }
