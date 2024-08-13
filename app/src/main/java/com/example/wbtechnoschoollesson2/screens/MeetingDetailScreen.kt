@@ -102,7 +102,7 @@ fun MeetingDetailScreen(
 
             item {
                 Text(
-                    text = "${meeting.date} - ${meeting.location} ул. Громова, 4",
+                    text = "${meeting.date} - ${meeting.location} ул. Громова,  4",
                     style = UiTheme.typography.bodyText1,
                     color = UiTheme.colors.neutralWeak,
                 )
