@@ -12,4 +12,5 @@ object Screens {
     const val MyMeetings = "my_meetings"
     const val MeetingDetail = "meeting_detail"
     const val CommunityDetail = "community_detail"
+    const val NewUiKitScreen = "new_uikitscreeen"
 }

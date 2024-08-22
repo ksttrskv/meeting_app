@@ -27,7 +27,7 @@ class MoreScreenViewModel : ViewModel() {
             // Здесь загружаем список пунктов меню
             val items = listOf(
                 MenuItem("Мои встречи", R.drawable.meeting_ic, "my_meetings"),
-                MenuItem("Тема", R.drawable.theme_ic, ""),
+                MenuItem("Тема", R.drawable.theme_ic, "new_uikitscreeen"),
                 MenuItem("Уведомления", R.drawable.notifications_ic, ""),
                 MenuItem("Безопасность", R.drawable.security_ic, ""),
                 MenuItem("Память и ресурсы", R.drawable.resourse_ic, ""),

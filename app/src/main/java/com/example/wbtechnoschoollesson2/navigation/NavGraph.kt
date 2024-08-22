@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.newUiKit.newScreens.NewUiKitScreen
 import com.example.wbtechnoschoollesson2.navigation.Screens
 import com.example.wbtechnoschoollesson2.screens.AllMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.CodeInputScreen
@@ -56,6 +57,7 @@ fun NavGraph() {
         composable(Screens.Login) { LoginScreen(navController = navController) }
         composable(Screens.CodeInput) { CodeInputScreen(navController = navController) }
         composable(Screens.ProfileCreate) { ProfileCreateScreen(navController = navController) }
+        composable(Screens.NewUiKitScreen) { NewUiKitScreen(navController = navController) }
     }
 }
 
