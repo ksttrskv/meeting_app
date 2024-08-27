@@ -66,18 +66,18 @@ data class MyTypography(
         fontSize = 18.sp,
         lineHeight = 22.sp
     ),
-//    val metadata2: TextStyle = TextStyle(
-//        fontFamily = fontFamily,
-//        fontWeight = FontWeight.Normal,
-//        fontSize = 10.sp,
-//        lineHeight = 16.sp
-//    ),
-//    val metadata3: TextStyle = TextStyle(
-//        fontFamily = fontFamily,
-//        fontWeight = FontWeight.SemiBold,
-//        fontSize = 10.sp,
-//        lineHeight = 16.sp
-//    )
+    val H5: TextStyle = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp,
+        lineHeight = 20.sp
+    ),
+    val H6: TextStyle = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 22.sp,
+        lineHeight = 26.sp
+    )
 ) {
 //    val body1: TextStyle= TextStyle(
 //        fontFamily = fontFamily,

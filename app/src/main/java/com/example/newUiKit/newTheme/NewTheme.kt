@@ -68,21 +68,21 @@ object MyUiTheme {
 }
 
 data class MyColors(
-    val brandColorDark: Color,
+    val newBorderColor: Color,
     val newBrandDefault: Color,
-    val brandColorDarkMode: Color,
-    val brandColorLight: Color,
-    val brandColorBg: Color,
+    val newSecondaryColor: Color,
+    val newErrorBgColor: Color,
+    val newBlackColor: Color,
 
     val neutralActive: Color,
     val neutralDark: Color,
     val neutralBody: Color,
     val neutralWeak: Color,
-    val neutralDisabled: Color,
+    val newNeutralDisabled: Color,
     val neutralLine: Color,
     val neutralSecondaryBg: Color,
-    val neutralWhite: Color,
-    val neutralOffWhite: Color,
+    val newBrandWhite: Color,
+    val newOffWhite: Color,
 
     val accentDanger: Color,
     val accentWarning: Color,
@@ -93,23 +93,23 @@ data class MyColors(
 
 val color1 = MyColors(
     newBrandDefault = Color(0xFF9A10F0),
-    brandColorDark = Color(0xFF660EC8),
-    brandColorLight = Color(0xFFECDAFF),
-    brandColorDarkMode = Color(0xFF8207E8),
-    brandColorBg = Color(0xFFF5ECFF),
+    newBorderColor = Color(0xFF9A41FE),
+    newErrorBgColor = Color(0xFFFFEEF4),
+    newSecondaryColor = Color(0xFF76778E),
+    newBlackColor = Color(0xFF000000),
     neutralActive = Color(0xFF29183B),
     neutralDark = Color(0xFF190E26),
     neutralBody = Color(0xFF1D0835),
     neutralWeak = Color(0xFFA4A4A4),
-    neutralWhite = Color(0xFFFFFFFF),
-    neutralDisabled = Color(0xFFADB5BD),
+    newBrandWhite = Color(0xFFF6F6FA),
+    newNeutralDisabled = Color(0xFFADB5BD),
     neutralLine = Color(0xFFEDEDED),
     neutralSecondaryBg = Color(0xFFF7F7FC),
     accentDanger = Color(0xFFE94242),
     accentWarning = Color(0xFFFDCF41),
     accentSuccess = Color(0xFF2CC069),
     accentSafe = Color(0xFF7BCBCF),
-    neutralOffWhite = Color(0xFFF7F7FC)
+    newOffWhite = Color(0xFFF6F6FA)
 )
 
 
@@ -124,6 +124,21 @@ fun multiColorGradient(): Brush {
             Color(0xFF9A10F0),
             Color(0xFF8306F7),
             Color(0xFF6600FF),
+        )
+    )
+}
+
+fun multiColorGradientWhite(): Brush {
+    return Brush.horizontalGradient(
+        colors = listOf(
+            Color(0xFFFEF1FB),
+            Color(0xFFFDF1FC),
+            Color(0xFFFCF0FC),
+            Color(0xFFFBF0FD),
+            Color(0xFFF9EFFD),
+            Color(0xFFF8EEFE),
+            Color(0xFFF6EEFE),
+            Color(0xFFF4EDFF),
         )
     )
 }
