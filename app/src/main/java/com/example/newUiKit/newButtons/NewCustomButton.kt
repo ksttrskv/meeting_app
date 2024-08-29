@@ -1,9 +1,9 @@
 package com.example.wbtechnoschoollesson2.atoms.buttons
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -18,11 +18,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorGradient
 import com.example.newUiKit.newTheme.multiColorGradientWhite
+import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 
@@ -38,7 +40,7 @@ fun NewCustomButton(
     modifier: Modifier = Modifier
 ) {
     val buttonModifier = modifier
-        .padding(8.dp)
+//        .padding(8.dp)
         .fillMaxWidth()
         .let {
             if (enabled) {
@@ -66,7 +68,7 @@ fun NewCustomButton(
             CircularProgressIndicator(
                 color = textColor,
                 strokeWidth = 2.dp,
-                modifier = Modifier.size(24.dp)
+//                modifier = Modifier.size(24.dp)
             )
         } else {
             content()
@@ -81,18 +83,19 @@ fun CustomButtonPreview() {
         var isLoading by remember { mutableStateOf(false) }
         Column {
             NewCustomButton(
-                content = { Text(text = "Оплатить") },
+                content = {
+                    Image(
+                        painter = painterResource(id = R.drawable.plus_new),
+                        contentDescription = null,
+                        modifier = Modifier.size(24.dp)
+                    )
+                },
                 textColor = Color.White,
                 enabledGradient = multiColorGradient(),
                 disabledColor = Color.Gray,
                 enabled = true,
                 isLoading = isLoading,
-                onClick = {
-                    isLoading = true
-//                LaunchedEffect(Unit) {
-//                    delay(2000)
-                    isLoading = false
-                }
+                onClick = {},
 
             )
             NewCustomButton(
@@ -102,12 +105,7 @@ fun CustomButtonPreview() {
                 disabledColor = MyUiTheme.colors.newOffWhite,
                 enabled = false,
                 isLoading = isLoading,
-                onClick = {
-                    isLoading = true
-//                LaunchedEffect(Unit) {
-//                    delay(2000)
-                    isLoading = false
-                }
+                onClick = {},
 
             )
         }

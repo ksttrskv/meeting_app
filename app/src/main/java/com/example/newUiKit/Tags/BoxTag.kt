@@ -99,7 +99,7 @@ fun BigTag(
 fun TagsPreview() {
     WBTechnoschoolLesson2Theme {
         Column {
-            MediumTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
+            MediumTag(text = "Subscribe", isSelected = false, onSelectedChange = {})
             BigTag(text = "Дизайн", isSelected = true, onSelectedChange = {})
             SmallTag(text = "Тестирование", isSelected = true, onSelectedChange = {})
         }
