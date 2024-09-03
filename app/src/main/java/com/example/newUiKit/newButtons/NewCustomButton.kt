@@ -22,8 +22,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorGradient
-import com.example.newUiKit.newTheme.multiColorGradientWhite
+import com.example.newUiKit.newTheme.multiColorLinearGradient
+import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
@@ -91,7 +91,7 @@ fun CustomButtonPreview() {
                     )
                 },
                 textColor = Color.White,
-                enabledGradient = multiColorGradient(),
+                enabledGradient = multiColorLinearGradient(),
                 disabledColor = Color.Gray,
                 enabled = true,
                 isLoading = isLoading,
@@ -101,7 +101,7 @@ fun CustomButtonPreview() {
             NewCustomButton(
                 content = { Text(text = "Оплатить") },
                 textColor = MyUiTheme.colors.newBrandDefault,
-                enabledGradient = multiColorGradientWhite(),
+                enabledGradient = multiColorLinearGradientWhite(),
                 disabledColor = MyUiTheme.colors.newOffWhite,
                 enabled = false,
                 isLoading = isLoading,

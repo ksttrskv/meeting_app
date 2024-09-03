@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.Molecules.CustomView
+package com.example.newUiKit.newInputFields.PhoneInputField
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image

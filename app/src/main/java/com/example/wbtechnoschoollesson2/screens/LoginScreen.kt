@@ -24,7 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.wbtechnoschoollesson2.Molecules.CustomView.PhoneInput
+import com.example.newUiKit.newInputFields.PhoneInputField.PhoneInput
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbSolidButton
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
@@ -120,16 +120,6 @@ fun LoginScreen(navController: NavController, viewModel: LoginScreenViewModel = 
     }
 }
 
-
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    WBTechnoschoolLesson2Theme {
-//        val navContoller = rememberNavController()
-//        LoginScreen(navController = navContoller)
-//
-//    }
-//}
 
 
 

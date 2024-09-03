@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.Molecules.CustomView
+package com.example.newUiKit.newInputFields.PhoneInputField
 
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping

@@ -33,24 +33,18 @@ fun EventCardWide(
     painter: Painter,
     date: String,
     location: String,
-    isFinished: Boolean,
+//    isFinished: Boolean,
     onClick: () -> Unit
 ) {
     Card(
         onClick = onClick,
-//        modifier = Modifier.padding(4.dp),
         colors = CardDefaults.cardColors(Color.Transparent)
     ) {
-//        Box(
-//            modifier = Modifier
-//                .clip(RoundedCornerShape(8.dp))
-//                .padding(top = 16.dp, bottom = 16.dp)
-//                .wrapContentHeight()
-//        ) {
+
         Column {
             Image(
 //                        painter = rememberAsyncImagePainter(imageUrl),
-                painter = painterResource(id = R.drawable.pythondays),
+                painter = painter,
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -74,24 +68,15 @@ fun EventCardWide(
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
                     SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
-                    Spacer(modifier = Modifier.height(6.dp))
+                    Spacer(modifier = Modifier.width(6.dp))
                     SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
                 }
-//                        Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(6.dp))
                 SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
             }
-//                    Spacer(modifier = Modifier.weight(1f))
-//                    if (isFinished) {
-//                        Text(
-//                            text = "Закончилась",
-//                            style = UiTheme.typography.metadata2,
-//                            color = UiTheme.colors.neutralWeak
-//                        )
-//                    }
         }
     }
 }
-//    }
 
 
 @Preview(showBackground = true)
@@ -104,7 +89,7 @@ fun PreviewMeetingCard() {
             painter = painterResource(id = R.drawable.pythondays),
             date = "10 августа",
             location = "Кожевенная линия, 40",
-            isFinished = true,
+//            isFinished = true,
             onClick = {})
 
     }

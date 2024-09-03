@@ -21,13 +21,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorGradientWhite
+import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun SubscribeButton(
-    SubscribeFalseColor: Brush = multiColorGradientWhite(), // Градиент для состояния невыбранной кнопки
+    SubscribeFalseColor: Brush = multiColorLinearGradientWhite(), // Градиент для состояния невыбранной кнопки
     subscribeTrueColor: Color = MyUiTheme.colors.newBrandDefault, // Цвет из темы для выбранной кнопки
     isSelected: Boolean,
     onClick: () -> Unit,

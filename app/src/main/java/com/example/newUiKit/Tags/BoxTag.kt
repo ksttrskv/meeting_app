@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.newTheme.MyUiTheme
@@ -25,19 +26,21 @@ fun SmallTag(
 ) {
     Box(
         modifier = modifier
-            .padding(4.dp)
+//            .fillMaxWidth()
             .background(
                 color = if (isSelected) MyUiTheme.colors.newBrandDefault else MyUiTheme.colors.newOffWhite,
                 shape = RoundedCornerShape(8.dp)
             )
             .clickable { onSelectedChange(!isSelected) }
-            .padding(8.dp)
+            .padding(horizontal = 6.dp, vertical = 2.dp)
     ) {
         Text(
             text = text,
             style = MyUiTheme.typography.Secondary,
             color = if (isSelected) MyUiTheme.colors.newOffWhite else MyUiTheme.colors.newBrandDefault,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }

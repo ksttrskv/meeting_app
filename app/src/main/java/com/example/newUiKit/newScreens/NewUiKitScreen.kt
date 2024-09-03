@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,24 +24,33 @@ import androidx.navigation.NavController
 import com.example.newUiKit.NewMolecules.CommunityCard
 import com.example.newUiKit.NewMolecules.EventCardThin
 import com.example.newUiKit.NewMolecules.EventCardWide
+import com.example.newUiKit.NewMolecules.Logo
+import com.example.newUiKit.NewMolecules.LogoWithBackground
+import com.example.newUiKit.NewMolecules.PersonCard
 import com.example.newUiKit.NewMolecules.UserAvatar
 import com.example.newUiKit.SwitchItem
 import com.example.newUiKit.Tags.BigTag
 import com.example.newUiKit.Tags.MediumTag
 import com.example.newUiKit.Tags.SmallTag
 import com.example.newUiKit.newInputFields.NewTextInputView
+import com.example.newUiKit.newInputFields.PhoneInputField.PhoneInput
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorGradient
-import com.example.newUiKit.newTheme.multiColorGradientWhite
+import com.example.newUiKit.newTheme.multiColorLinearGradient
+import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
 import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
+import com.example.wbtechnoschoollesson2.screens.ViewModels.LoginScreenViewModel
 import kotlinx.coroutines.delay
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun NewUiKitScreen(modifier: Modifier = Modifier, navController: NavController) {
+fun NewUiKitScreen(
+    modifier: Modifier = Modifier, navController: NavController,
+    viewModel: LoginScreenViewModel = koinViewModel()
+) {
     var isLoading by remember { mutableStateOf(false) }
     var isSwitchChecked by remember { mutableStateOf(true) }
 // Состояния для каждого тега
@@ -48,6 +58,7 @@ fun NewUiKitScreen(modifier: Modifier = Modifier, navController: NavController) 
     var isMediumTagSelected by remember { mutableStateOf(false) }
     var isBigTagSelected by remember { mutableStateOf(false) }
     var isSubscribe by remember { mutableStateOf(false) }
+    val userPhoneInput by viewModel.userPhoneInput.collectAsState()
     // `LaunchedEffect` находится на верхнем уровне
     LaunchedEffect(isLoading) {
         if (isLoading) {
@@ -105,7 +116,7 @@ fun NewUiKitScreen(modifier: Modifier = Modifier, navController: NavController) 
                 NewCustomButton(
                     content = { Text(text = "Оплатить") },
                     textColor = Color.White,
-                    enabledGradient = multiColorGradient(),
+                    enabledGradient = multiColorLinearGradient(),
                     disabledColor = MyUiTheme.colors.newOffWhite,
                     enabled = true,
                     isLoading = isLoading,
@@ -118,7 +129,7 @@ fun NewUiKitScreen(modifier: Modifier = Modifier, navController: NavController) 
                 NewCustomButton(
                     content = { Text(text = "Оплатить") },
                     textColor = MyUiTheme.colors.newBrandDefault,
-                    enabledGradient = multiColorGradientWhite(),
+                    enabledGradient = multiColorLinearGradientWhite(),
                     disabledColor = MyUiTheme.colors.newOffWhite,
                     enabled = true,
                     isLoading = isLoading,
@@ -131,7 +142,7 @@ fun NewUiKitScreen(modifier: Modifier = Modifier, navController: NavController) 
                 NewCustomButton(
                     content = { Text(text = "Оплатить") },
                     textColor = MyUiTheme.colors.newBrandDefault,
-                    enabledGradient = multiColorGradientWhite(),
+                    enabledGradient = multiColorLinearGradientWhite(),
                     disabledColor = MyUiTheme.colors.newOffWhite,
                     enabled = false,
                     isLoading = isLoading,
@@ -144,7 +155,7 @@ fun NewUiKitScreen(modifier: Modifier = Modifier, navController: NavController) 
                 NewCustomButton(
                     content = { Text(text = "Оплатить") },
                     textColor = Color.White,
-                    enabledGradient = multiColorGradient(),
+                    enabledGradient = multiColorLinearGradient(),
                     disabledColor = MyUiTheme.colors.newOffWhite,
                     enabled = true,
                     isLoading = isLoading,
@@ -187,7 +198,6 @@ fun NewUiKitScreen(modifier: Modifier = Modifier, navController: NavController) 
                     painter = painterResource(id = R.drawable.pythondays),
                     date = "10 августа",
                     location = "Кожевенная линия, 40",
-                    isFinished = true,
                     onClick = {})
             }
             item {
@@ -197,7 +207,6 @@ fun NewUiKitScreen(modifier: Modifier = Modifier, navController: NavController) 
                     painter = painterResource(id = R.drawable.pythondays),
                     date = "10 августа",
                     location = "Кожевенная линия, 40",
-                    isFinished = true,
                     onClick = {})
             }
             item {
@@ -207,6 +216,22 @@ fun NewUiKitScreen(modifier: Modifier = Modifier, navController: NavController) 
                 ) {
 
                 }
+            }
+            item {
+                PersonCard(
+                    title = "Крис",
+//            imageUrl = "https://s3-alpha-sig.figma.com/img/5d33/6ebd/e64d2ae58f903a77264a0e3dc0191cfd?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=E30OTDKohz7oxCbx1Dfyao4i0gmlBNLiR7HR2zS05iN2d03GfeU8tsvm6x9ZAlJE~zyWcsrWliYiLVqLoALRP2PyKHpujsfo1BpOpYWcLKc8A8KvaIUoQdw8F6zm9EGZNWi7YBB2eRIoEXVF1mitXxc6S3IISIomeaJsDXZv8yGkwQodiFE~fJsmYRkio944LFqRWjFTZmFvYm5kgXttxRR6IMBOLNbZsggnC93~cdiGIXCvGc~rNpua2NLjnxrK0inq6DvfOJTVXOgRTrQRPfvvzhu8D4tyBN80jhOdVs-7YvsgrquPxlDckENmatUbXs99~eg5DducJspySyCbxg__",
+                    painter = painterResource(id = R.drawable.user_avatar),
+                    onClick = {})
+            }
+            item {
+                PhoneInput(onPhoneChange = viewModel::onPhoneChanged)
+            }
+            item {
+                Logo()
+            }
+            item {
+                LogoWithBackground()
             }
         }
     }

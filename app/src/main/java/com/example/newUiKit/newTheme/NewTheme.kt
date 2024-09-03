@@ -8,6 +8,7 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -80,7 +81,7 @@ data class MyColors(
     val neutralWeak: Color,
     val newNeutralDisabled: Color,
     val neutralLine: Color,
-    val neutralSecondaryBg: Color,
+    val newBg: Color,
     val newBrandWhite: Color,
     val newOffWhite: Color,
 
@@ -104,7 +105,7 @@ val color1 = MyColors(
     newBrandWhite = Color(0xFFF6F6FA),
     newNeutralDisabled = Color(0xFFADB5BD),
     neutralLine = Color(0xFFEDEDED),
-    neutralSecondaryBg = Color(0xFFF7F7FC),
+    newBg = Color(0xFFF5F5F5),
     accentDanger = Color(0xFFE94242),
     accentWarning = Color(0xFFFDCF41),
     accentSuccess = Color(0xFF2CC069),
@@ -113,7 +114,7 @@ val color1 = MyColors(
 )
 
 
-fun multiColorGradient(): Brush {
+fun multiColorLinearGradient(): Brush {
     return Brush.horizontalGradient(
         colors = listOf(
             Color(0xFFED3CCA),
@@ -128,7 +129,7 @@ fun multiColorGradient(): Brush {
     )
 }
 
-fun multiColorGradientWhite(): Brush {
+fun multiColorLinearGradientWhite(): Brush {
     return Brush.horizontalGradient(
         colors = listOf(
             Color(0xFFFEF1FB),
@@ -140,5 +141,33 @@ fun multiColorGradientWhite(): Brush {
             Color(0xFFF6EEFE),
             Color(0xFFF4EDFF),
         )
+    )
+}
+
+fun multiColorComplexGradient(): Brush {
+    return Brush.radialGradient(
+        colors = listOf(
+            Color(0xFFED3CCA),
+            Color(0xFFDF34D2),
+            Color(0xFFD02BD9),
+            Color(0xFFBF22E1),
+            Color(0xFFAE1AE8),
+            Color(0xFF9A10F0),
+            Color(0xFF8306F7),
+            Color(0xFF6600FF),
+        ),
+        center = Offset(0.13f, 0.13f), // Смещение центра радиального градиента в верхний левый угол
+        radius = 800f
+    )
+}
+
+fun combinedGradient(): Brush {
+    return Brush.linearGradient(
+        colors = listOf(
+            Color(0xFF8306F7),
+            Color(0xFF8306F7).copy(alpha = 0f)
+        ),
+        end = Offset(0f, 0f),
+        start = Offset(0f, Float.POSITIVE_INFINITY) // Линейный градиент от верха к низу
     )
 }

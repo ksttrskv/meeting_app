@@ -33,7 +33,7 @@ fun EventCardThin(
     painter: Painter,
     date: String,
     location: String,
-    isFinished: Boolean,
+//    isFinished: Boolean,
     onClick: () -> Unit
 ) {
     Card(
@@ -72,10 +72,9 @@ fun EventCardThin(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
-//                    Spacer(modifier = Modifier.height(6.dp))
+                Spacer(modifier = Modifier.height(6.dp))
                 SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
 
-//                        Spacer(modifier = Modifier.height(8.dp))
             }
         }
     }
@@ -92,7 +91,6 @@ fun PreviewEventCardThin() {
             painter = painterResource(id = R.drawable.pythondays),
             date = "10 августа",
             location = "Кожевенная линия, 40",
-            isFinished = true,
             onClick = {})
 
     }

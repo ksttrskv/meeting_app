@@ -36,7 +36,7 @@ fun CodeInput(modifier: Modifier = Modifier, actionDone: (code: String) -> Unit)
     BasicTextField(
         modifier = modifier.padding(vertical = 16.dp),
         value = pin,
-        onValueChange = {  newValue ->
+        onValueChange = { newValue ->
             when {
                 newValue.length <= CODE_LENGHT -> {
                     pin = newValue

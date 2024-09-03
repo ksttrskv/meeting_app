@@ -23,7 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorGradient
+import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
@@ -62,7 +62,7 @@ fun GradientSwitch(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
-    checkedTrackColor: Brush = multiColorGradient(),
+    checkedTrackColor: Brush = multiColorLinearGradient(),
     uncheckedTrackColor: Brush = Brush.horizontalGradient(
         colors = listOf(
             Color.LightGray, Color.Gray
