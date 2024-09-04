@@ -4,10 +4,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -15,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.google.accompanist.flowlayout.FlowRow
 
 
 @Composable
@@ -97,6 +103,47 @@ fun BigTag(
     }
 }
 
+
+@Composable
+fun BigTagsList(tags: List<String>) {
+    FlowRow(
+        modifier = Modifier.fillMaxWidth(),
+        mainAxisSpacing = 8.dp, // Расстояние между тегами по горизонтали
+        crossAxisSpacing = 8.dp // Расстояние между тегами по вертикали
+    ) {
+        tags.forEach { tag ->
+            var isTagSelected by remember { mutableStateOf(false) }
+
+            BigTag(
+                text = tag,
+                isSelected = isTagSelected,
+                onSelectedChange = { isTagSelected = it }
+            )
+        }
+    }
+}
+
+
+@Composable
+fun SmallTagsList(tags: List<String>) {
+    FlowRow(
+        modifier = Modifier.fillMaxWidth(),
+        mainAxisSpacing = 8.dp, // Расстояние между тегами по горизонтали
+        crossAxisSpacing = 8.dp // Расстояние между тегами по вертикали
+    ) {
+        tags.forEach { tag ->
+            var isTagSelected by remember { mutableStateOf(false) }
+
+            SmallTag(
+                text = tag,
+                isSelected = isTagSelected,
+                onSelectedChange = { isTagSelected = it }
+            )
+        }
+    }
+}
+
+
 @Preview(showBackground = true)
 @Composable
 fun TagsPreview() {
@@ -109,3 +156,5 @@ fun TagsPreview() {
 
     }
 }
+
+

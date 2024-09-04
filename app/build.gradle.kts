@@ -75,6 +75,7 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:1.4.3")
     implementation("io.insert-koin:koin-android:3.4.0")
     implementation("io.insert-koin:koin-androidx-compose:3.4.0")
+    implementation("com.google.accompanist:accompanist-flowlayout:0.30.0")
 
 
 

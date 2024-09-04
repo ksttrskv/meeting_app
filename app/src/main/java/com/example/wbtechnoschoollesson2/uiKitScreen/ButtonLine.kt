@@ -11,11 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.newUiKit.newButtons.WbTextButton
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbOutlineButton
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbOutlineIconButton
 import com.example.wbtechnoschoollesson2.atoms.buttons.WbSolidButton
-import com.example.wbtechnoschoollesson2.atoms.buttons.WbTextButton
 
 @Composable
 fun ButtonLine(color: Color, enabled: Boolean, modifier: Modifier = Modifier) {

@@ -12,5 +12,10 @@ object Screens {
     const val MyMeetings = "my_meetings"
     const val MeetingDetail = "meeting_detail"
     const val CommunityDetail = "community_detail"
+
+
     const val NewUiKitScreen = "new_uikitscreeen"
+    const val OnboardingScreen = "onboarding_screen"
+    const val SplashScreenWb = "splash_screen_wb"
+    const val MainScreen = "main_screen"
 }

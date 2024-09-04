@@ -2,7 +2,6 @@ package com.example.newUiKit.NewMolecules
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,7 +20,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.newUiKit.Tags.SmallTag
+import com.example.newUiKit.Tags.SmallTagsList
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
@@ -36,9 +35,13 @@ fun EventCardWide(
 //    isFinished: Boolean,
     onClick: () -> Unit
 ) {
+    val tags = listOf(
+        "Backend", "Тестирование", "Разработка"
+    )
     Card(
         onClick = onClick,
-        colors = CardDefaults.cardColors(Color.Transparent)
+        colors = CardDefaults.cardColors(Color.Transparent),
+        modifier = Modifier.width(320.dp)
     ) {
 
         Column {
@@ -48,8 +51,9 @@ fun EventCardWide(
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .height(180.dp)
                     .clip(RoundedCornerShape(16.dp)),
-                contentScale = ContentScale.Fit,
+                contentScale = ContentScale.Crop,
                 alignment = Alignment.TopStart
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -66,13 +70,7 @@ fun EventCardWide(
                     color = MyUiTheme.colors.newSecondaryColor,
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Row {
-                    SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
-                    Spacer(modifier = Modifier.width(6.dp))
-                    SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
-                }
-                Spacer(modifier = Modifier.height(6.dp))
-                SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
+                SmallTagsList(tags = tags)
             }
         }
     }

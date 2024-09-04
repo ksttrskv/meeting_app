@@ -6,7 +6,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.newUiKit.newScreens.MainScreen
 import com.example.newUiKit.newScreens.NewUiKitScreen
+import com.example.newUiKit.newScreens.OnboardingScreen
+import com.example.newUiKit.newScreens.SplashScreenWb
 import com.example.wbtechnoschoollesson2.navigation.Screens
 import com.example.wbtechnoschoollesson2.screens.AllMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.CodeInputScreen
@@ -28,7 +31,7 @@ fun NavGraph() {
 
     NavHost(
         navController = navController,
-        startDestination = Screens.Splash,
+        startDestination = Screens.SplashScreenWb,
     ) {
         composable(Screens.Splash) { SplashScreen(navController = navController) }
         composable(Screens.MyMeetings) { MyMeetingScreen(navController = navController) }
@@ -57,7 +60,12 @@ fun NavGraph() {
         composable(Screens.Login) { LoginScreen(navController = navController) }
         composable(Screens.CodeInput) { CodeInputScreen(navController = navController) }
         composable(Screens.ProfileCreate) { ProfileCreateScreen(navController = navController) }
+
+        // New Screens
         composable(Screens.NewUiKitScreen) { NewUiKitScreen(navController = navController) }
+        composable(Screens.OnboardingScreen) { OnboardingScreen(navController = navController) }
+        composable(Screens.SplashScreenWb) { SplashScreenWb(navController = navController) }
+        composable(Screens.MainScreen) { MainScreen(navController = navController) }
     }
 }
 

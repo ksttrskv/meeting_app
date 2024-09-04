@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.newUiKit.Tags.SmallTag
+import com.example.newUiKit.Tags.SmallTagsList
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
@@ -36,6 +36,9 @@ fun EventCardThin(
 //    isFinished: Boolean,
     onClick: () -> Unit
 ) {
+    val tags = listOf(
+        "Тестирование", "Разработка"
+    )
     Card(
         onClick = onClick,
         modifier = Modifier.width(212.dp),
@@ -45,12 +48,13 @@ fun EventCardThin(
         Column {
             Image(
 //                        painter = rememberAsyncImagePainter(imageUrl),
-                painter = painterResource(id = R.drawable.pythondays),
+                painter = painter,
                 contentDescription = null,
                 modifier = Modifier
                     .width(212.dp)
+                    .height(148.dp)
                     .clip(RoundedCornerShape(16.dp)),
-                contentScale = ContentScale.Fit,
+                contentScale = ContentScale.Crop,
                 alignment = Alignment.TopStart
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -71,9 +75,7 @@ fun EventCardThin(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
 
-                SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
-                Spacer(modifier = Modifier.height(6.dp))
-                SmallTag(text = "Тестирование", isSelected = false, onSelectedChange = {})
+                SmallTagsList(tags = tags)
 
             }
         }
