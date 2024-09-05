@@ -24,12 +24,12 @@ val Typography1 = Typography(
 @Immutable
 data class MyTypography(
     val fontFamily: FontFamily = FontFamily(Font(R.font.sf_pro_display_normal)),
-//    val Primary: TextStyle = TextStyle(
-//        fontFamily = fontFamily,
-//        fontWeight = FontWeight.SemiBold,
-//        fontSize = 18.sp,
-//        lineHeight = 22.sp
-//    ),
+    val H2: TextStyle = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 24.sp,
+        lineHeight = 26.sp
+    ),
     val H3: TextStyle = TextStyle(
         fontFamily = fontFamily,
         fontWeight = FontWeight.SemiBold,

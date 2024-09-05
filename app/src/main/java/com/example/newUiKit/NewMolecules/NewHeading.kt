@@ -13,6 +13,6 @@ fun NewHeading(
     Text(
         modifier = modifier,
         text = text,
-        style = MyUiTheme.typography.H3
+        style = MyUiTheme.typography.H2
     )
 }

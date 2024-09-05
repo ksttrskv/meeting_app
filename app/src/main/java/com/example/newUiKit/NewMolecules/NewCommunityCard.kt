@@ -51,7 +51,6 @@ fun CommunityCard(
                 painter = painter,
                 contentDescription = null,
                 modifier = Modifier
-//                    .width(104.dp)
                     .clip(RoundedCornerShape(16.dp)),
                 contentScale = ContentScale.Fit,
                 alignment = Alignment.TopStart
@@ -72,7 +71,7 @@ fun CommunityCard(
 
                 )
 
-//                        Spacer(modifier = Modifier.height(8.dp))
+
             }
         }
     }

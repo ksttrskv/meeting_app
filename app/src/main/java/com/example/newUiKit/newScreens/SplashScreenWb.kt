@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,11 +30,6 @@ fun SplashScreenWb(navController: NavController) {
         }
     }
 
-//    Surface(
-//        color = Color.Transparent,
-////        modifier = Modifier.fillMaxSize()
-//    ) {
-
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -41,7 +37,9 @@ fun SplashScreenWb(navController: NavController) {
         Image(
             painter = painterResource(id = R.drawable.splashscreen),
             contentDescription = "splash screen",
-            Modifier.fillMaxSize()
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize(),
+
         )
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
@@ -56,14 +54,12 @@ fun SplashScreenWb(navController: NavController) {
         }
     }
 }
-//}
 
 @Preview(showBackground = true)
 @Composable
 fun SplashScreenWbPreview() {
     val navController = rememberNavController()
     WBTechnoschoolLesson2Theme {
-
         SplashScreenWb(navController = navController)
     }
 }
