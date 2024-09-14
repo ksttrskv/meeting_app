@@ -1,11 +1,9 @@
 package com.example.newUiKit.newScreens.MainScreenPackage
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,7 +27,6 @@ import com.example.newUiKit.NewMolecules.EventCardWide
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.PersonCard
 import com.example.newUiKit.Tags.BigTagsList
-import com.example.newUiKit.newInputFields.WbSearchView
 import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
@@ -50,19 +47,14 @@ fun MainScreen(navController: NavController) {
             .background(color = Color.White)
     ) {
         LazyColumn(
-            modifier = Modifier.padding(horizontal = 16.dp),
+            modifier = Modifier.padding(start = 16.dp),
             verticalArrangement = Arrangement.spacedBy(40.dp)
         ) {
             item {
                 Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
-                    Row {
-                        WbSearchView()
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Image(
-                            painter = painterResource(id = R.drawable.user_icon),
-                            contentDescription = "user icon"
-                        )
+                    SearchAndIconLine()
                     }
+                Spacer(modifier = Modifier.height(20.dp))
                     LazyRow {
                         item {
                             EventCardWide(
@@ -89,7 +81,7 @@ fun MainScreen(navController: NavController) {
                         }
                     }
                 }
-            }
+
             item {
                 Column {
                     NewHeading(text = "Ближайшие встречи")
@@ -168,13 +160,16 @@ fun MainScreen(navController: NavController) {
             }
 
             item {
+
                 EventCardWide(
                     title = "Как повышать грейд. Лекция Павла Хорикова",
                     painter = painterResource(id = R.drawable.test_image_6),
                     date = "Завтра",
                     location = "Невский проспект, 11",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
 
 
@@ -186,7 +181,9 @@ fun MainScreen(navController: NavController) {
                     date = "Завтра",
                     location = "Невский проспект, 11",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
             }
             item {
@@ -196,11 +193,15 @@ fun MainScreen(navController: NavController) {
                     date = "18 августа",
                     location = "наб. канала Грибоедова, 133",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
             }
             item {
-                Banner()
+                Column(modifier = Modifier.padding(end = 16.dp)) {
+                    Banner()
+                }
             }
             item {
                 EventCardWide(
@@ -209,7 +210,9 @@ fun MainScreen(navController: NavController) {
                     date = "10 августа ",
                     location = "Литейный проспект, 46",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
             }
             item {
@@ -219,7 +222,9 @@ fun MainScreen(navController: NavController) {
                     date = "8 августа ",
                     location = "ул. Улица Марата, 58 / Разъезжая,29",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
             }
             item {
@@ -229,7 +234,9 @@ fun MainScreen(navController: NavController) {
                     date = "8 августа",
                     location = "ул. Малая Садовая, 2",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
             }
             item {
@@ -282,7 +289,9 @@ fun MainScreen(navController: NavController) {
                     date = "Завтра",
                     location = "Невский проспект, 11",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
 
 
@@ -294,7 +303,9 @@ fun MainScreen(navController: NavController) {
                     date = "Завтра",
                     location = "Невский проспект, 11",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
             }
             item {
@@ -304,7 +315,9 @@ fun MainScreen(navController: NavController) {
                     date = "18 августа",
                     location = "наб. канала Грибоедова, 133",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
             }
 
@@ -359,7 +372,9 @@ fun MainScreen(navController: NavController) {
                     date = "Завтра",
                     location = "Невский проспект, 11",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
 
 
@@ -371,7 +386,9 @@ fun MainScreen(navController: NavController) {
                     date = "Завтра",
                     location = "Невский проспект, 11",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
             }
             item {
@@ -381,7 +398,9 @@ fun MainScreen(navController: NavController) {
                     date = "18 августа",
                     location = "наб. канала Грибоедова, 133",
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp)
                 )
             }
 
