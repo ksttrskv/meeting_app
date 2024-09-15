@@ -1,11 +1,10 @@
 package com.example.newUiKit.NewMolecules
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -34,7 +33,6 @@ fun EventCardWide(
     painter: Painter,
     date: String,
     location: String,
-//    isFinished: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -47,7 +45,7 @@ fun EventCardWide(
         modifier = modifier
     ) {
 
-        Column {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Image(
 //                        painter = rememberAsyncImagePainter(imageUrl),
                 painter = painter,
@@ -59,20 +57,17 @@ fun EventCardWide(
                 contentScale = ContentScale.Crop,
                 alignment = Alignment.TopStart
             )
-            Spacer(modifier = Modifier.width(8.dp))
             Column {
                 Text(
                     text = title,
                     style = textStyle,
                     color = MyUiTheme.colors.newBlackColor
                 )
-                Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "$date · $location",
                     style = MyUiTheme.typography.Secondary,
                     color = MyUiTheme.colors.newSecondaryColor,
                 )
-                Spacer(modifier = Modifier.height(8.dp))
                 SmallTagsList(tags = tags)
             }
         }
@@ -90,7 +85,6 @@ fun PreviewMeetingCard() {
             painter = painterResource(id = R.drawable.pythondays),
             date = "10 августа",
             location = "Кожевенная линия, 40",
-//            isFinished = true,
             onClick = {})
 
     }

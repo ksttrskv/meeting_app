@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -51,8 +52,9 @@ fun CommunityCard(
                 painter = painter,
                 contentDescription = null,
                 modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp)),
-                contentScale = ContentScale.Fit,
+                    .clip(RoundedCornerShape(16.dp))
+                    .size(104.dp),
+                contentScale = ContentScale.Crop,
                 alignment = Alignment.TopStart
             )
             Spacer(modifier = Modifier.width(8.dp))

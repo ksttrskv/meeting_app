@@ -40,7 +40,7 @@ fun WbSearchView() {
         placeholderText = "Найти встречи и сообщества",
         searchIconColor = MyUiTheme.colors.newSecondaryColor,
         modifier = Modifier
-            .width(304.dp)
+            .width(380.dp)
             .height(44.dp)
 
     )

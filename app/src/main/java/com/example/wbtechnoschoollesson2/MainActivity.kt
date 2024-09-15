@@ -15,7 +15,6 @@ class MainActivity : ComponentActivity() {
         window.statusBarColor = android.graphics.Color.WHITE
         setContent {
             WBTechnoschoolLesson2Theme {
-
             NavGraph()
             }
         }

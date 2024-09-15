@@ -27,7 +27,6 @@ import com.example.wbtechnoschoollesson2.uiKitScreen.Heading
 
 @Composable
 fun OnboardingScreen(navController: NavController) {
-//    var isBigTagSelected by remember { mutableStateOf(false) }
     val tags = listOf(
         "Дизайн", "Разработка", "Продакт менеджмент", "Проджект менеджмент",
         "Backend", "Frontend", "Mobile", "Тестирование", "Продажи",

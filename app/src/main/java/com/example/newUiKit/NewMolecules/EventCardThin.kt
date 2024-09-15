@@ -33,7 +33,6 @@ fun EventCardThin(
     painter: Painter,
     date: String,
     location: String,
-//    isFinished: Boolean,
     onClick: () -> Unit
 ) {
     val tags = listOf(
@@ -62,7 +61,9 @@ fun EventCardThin(
                 Text(
                     text = title,
                     style = MyUiTheme.typography.H3,
-                    color = MyUiTheme.colors.newBlackColor
+                    color = MyUiTheme.colors.newBlackColor,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
