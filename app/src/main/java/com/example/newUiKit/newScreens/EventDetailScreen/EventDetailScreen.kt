@@ -1,8 +1,6 @@
 package com.example.newUiKit.newScreens.EventDetailScreen
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,27 +13,29 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
-import com.example.newUiKit.NewMolecules.EventCardWide
-import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
+
 
 @Composable
-fun EventDetailScreen(navController: NavController) {
+fun EventDetailScreen(
+    navController: NavController,
+    eventTitle: String,
+    eventDate: String,
+    eventLocation: String,
+    eventImageRes: Int
+) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val title = navBackStackEntry?.arguments?.getString("title") ?: "Сообщество"
+    val eventTitle = navBackStackEntry?.arguments?.getString("eventTitle") ?: "Event"
     Scaffold(
         topBar = {
             NewTopBar(
-                title = "Как повышать грейд. Лекция...",
+                title = eventTitle,
                 navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
                         Icon(
@@ -58,56 +58,46 @@ fun EventDetailScreen(navController: NavController) {
                 }
             )
         },
-        bottomBar = {
-            BottomNavigation(navController = navController)
-        },
         containerColor = Color.White
     ) { contentPadding ->
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(32.dp),
             modifier = Modifier
-                .padding(16.dp)
+                .padding(horizontal = 16.dp)
                 .padding(contentPadding)
         ) {
 
             item {
-                EventCardWide(
-                    title = title,
-                    painter = painterResource(id = R.drawable.test_avatar_user),
-                    date = "11 november",
-                    location = " Berlin",
+                EventDetailCard(
+                    eventTitle = eventTitle,
+                    painter = painterResource(id = eventImageRes),
+                    date = eventDate,
+                    location = eventLocation,
                     onClick = { /*TODO*/ })
             }
             item {
-                Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "Узнайте, как расти в профессии, улучшать навыки и получать повышение. Практические советы и реальные кейсы. \n \nПавел поделится эффективными стратегиями карьерного роста и методикой развития профессиональных навыков в IT.",
                     style = MyUiTheme.typography.Secondary,
                 )
             }
             item {
-                NewHeading(text = "Ведущий")
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = "Павел Хориков",
-                    style = MyUiTheme.typography.H4,
-                )
-                Text(
-                    text = "Ведущий специалист по подбору персонала в одной из крупнейших IT-компаний в ЕС.",
-                    style = MyUiTheme.typography.Secondary,
+                LeadingInfoCard(
+                    heading = stringResource(R.string.leader),
+                    name = "Павел Хориков",
+                    info = "Ведущий специалист по подбору персонала в одной из крупнейших IT-компаний в ЕС.",
+                    avatarImage = painterResource(id = R.drawable.test_image_4)
                 )
             }
-
-
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewEventDetailScreen() {
-    MyMeetingAppTheme {
-        val navController = rememberNavController()
-        EventDetailScreen(navController = navController)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewEventDetailScreen() {
+//    MyMeetingAppTheme {
+//        val navController = rememberNavController()
+//        EventDetailScreen(navController = navController)
+//    }
+//}

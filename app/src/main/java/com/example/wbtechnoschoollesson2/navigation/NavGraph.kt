@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.newUiKit.newScreens.EventDetailScreen.EventDetailScreen
 import com.example.newUiKit.newScreens.MainScreenPackage.MainScreen
 import com.example.newUiKit.newScreens.NewUiKitScreen
 import com.example.newUiKit.newScreens.OnboardingScreen
@@ -66,6 +67,29 @@ fun NavGraph() {
         composable(Screens.OnboardingScreen) { OnboardingScreen(navController = navController) }
         composable(Screens.SplashScreenWb) { SplashScreenWb(navController = navController) }
         composable(Screens.MainScreen) { MainScreen(navController = navController) }
+        composable(
+            route = "${Screens.EventDetailScreen}/{eventTitle}/{eventDate}/{eventLocation}/{eventImage}",
+            arguments = listOf(
+                navArgument("eventTitle") { type = NavType.StringType },
+                navArgument("eventDate") { type = NavType.StringType },
+                navArgument("eventLocation") { type = NavType.StringType },
+                navArgument("eventImage") { type = NavType.IntType } // Если это ID ресурса
+            )
+        ) { backStackEntry ->
+            val eventTitle = backStackEntry.arguments?.getString("eventTitle") ?: ""
+            val eventDate = backStackEntry.arguments?.getString("eventDate") ?: ""
+            val eventLocation = backStackEntry.arguments?.getString("eventLocation") ?: ""
+            val eventImage = backStackEntry.arguments?.getInt("eventImage")
+                ?: R.drawable.wb // Установи изображение по умолчанию
+
+            EventDetailScreen(
+                navController = navController,
+                eventTitle = eventTitle,
+                eventDate = eventDate,
+                eventLocation = eventLocation,
+                eventImageRes = eventImage
+            )
+        }
     }
 }
 

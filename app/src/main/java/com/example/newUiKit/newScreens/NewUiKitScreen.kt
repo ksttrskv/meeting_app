@@ -212,10 +212,9 @@ fun NewUiKitScreen(
             item {
                 CommunityCard(
                     title = "Супер тестировщики",
-                    painter = painterResource(id = R.drawable.zapuskaem_gus)
-                ) {
-
-                }
+                    painter = painterResource(id = R.drawable.zapuskaem_gus),
+                    onClick = {}
+                )
             }
             item {
                 PersonCard(

@@ -107,7 +107,7 @@ fun BigTag(
 @Composable
 fun BigTagsList(tags: List<String>) {
     FlowRow(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.padding(horizontal = 16.dp),
         mainAxisSpacing = 8.dp, // Расстояние между тегами по горизонтали
         crossAxisSpacing = 8.dp // Расстояние между тегами по вертикали
     ) {
@@ -143,6 +143,25 @@ fun SmallTagsList(tags: List<String>) {
     }
 }
 
+
+@Composable
+fun MediumTagsList(tags: List<String>) {
+    FlowRow(
+        modifier = Modifier.fillMaxWidth(),
+//        mainAxisSpacing = 2.dp, // Расстояние между тегами по горизонтали
+//        crossAxisSpacing = 2.dp // Расстояние между тегами по вертикали
+    ) {
+        tags.forEach { tag ->
+            var isTagSelected by remember { mutableStateOf(false) }
+
+            MediumTag(
+                text = tag,
+                isSelected = isTagSelected,
+                onSelectedChange = { isTagSelected = it }
+            )
+        }
+    }
+}
 
 @Preview(showBackground = true)
 @Composable

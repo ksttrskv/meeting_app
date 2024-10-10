@@ -1,9 +1,8 @@
 package com.example.newUiKit.NewMolecules
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -36,17 +35,21 @@ fun CommunityCard(
     title: String,
 //    imageUrl: String,
     painter: Painter,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
 
     var isSubscribe by remember { mutableStateOf(false) }
     Card(
         onClick = onClick,
-        modifier = Modifier.width(104.dp),
-        colors = CardDefaults.cardColors(Color.Transparent)
+        colors = CardDefaults.cardColors(Color.Transparent),
+        modifier = modifier
     ) {
 
-        Column {
+        Column(
+            modifier = Modifier.width(104.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
             Image(
 //                        painter = rememberAsyncImagePainter(imageUrl),
                 painter = painter,
@@ -57,7 +60,7 @@ fun CommunityCard(
                 contentScale = ContentScale.Crop,
                 alignment = Alignment.TopStart
             )
-            Spacer(modifier = Modifier.width(8.dp))
+//            Spacer(modifier = Modifier.height(4.dp))
             Column {
                 Text(
                     text = title,
@@ -66,7 +69,7 @@ fun CommunityCard(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+//                Spacer(modifier = Modifier.height(4.dp))
                 SubscribeButton(
                     onClick = { isSubscribe = !isSubscribe },
                     isSelected = isSubscribe

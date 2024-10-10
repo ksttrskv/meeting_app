@@ -22,7 +22,6 @@ import com.example.newUiKit.Tags.BigTagsList
 import com.example.newUiKit.newTheme.MyMeetingAppTheme
 
 
-
 @Composable
 fun MainScreen(navController: NavController) {
 
@@ -38,70 +37,84 @@ fun MainScreen(navController: NavController) {
             .background(color = Color.White)
     ) {
         LazyColumn(
-            modifier = Modifier.padding(start = 16.dp),
             verticalArrangement = Arrangement.spacedBy(40.dp)
         ) {
             item {
-//                Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
-                    SearchAndIconLine()
-//                }
+
+                SearchAndIconLine()
+
                 Spacer(modifier = Modifier.height(20.dp))
                 EventCardWideLine() //Лайн для укорочения кода
             }
             item {
                 Column {
-                    NewHeading(text = "Ближайшие встречи")
+                    NewHeading(
+                        text = "Ближайшие встречи",
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                     EventCardThinLine() //Лайн для укорочения кода
                 }
             }
             item {
                 Column {
-                    NewHeading(text = "Сообщества для тестировщиков")
+                    NewHeading(
+                        text = "Сообщества для тестировщиков",
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                     CommunityCardLine() //Лайн для укорочения кода
                 }
             }
             item {
                 Column {
-                    NewHeading(text = "Другие встречи")
+                    NewHeading(
+                        text = "Другие встречи",
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                     BigTagsList(tags = tags)
                 }
             }
 
             item {
-                EventCardWideColumn() //Column для укорочения кода
+                EventCardWideColumn(navController = navController) //Column для укорочения кода
             }
 
             item {
-                Column(modifier = Modifier.padding(end = 16.dp)) {
+                Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
                     Banner()
                 }
             }
             item {
-                EventCardWideColumn() //Column для укорочения кода
+                EventCardWideColumn(navController = navController) //Column для укорочения кода
             }
             item {
                 Column {
-                    NewHeading(text = "Вы можете их знать")
+                    NewHeading(
+                        text = "Вы можете их знать",
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                     PersonCardline() //Лайн для укорочения кода
                 }
             }
             item {
-                EventCardWideColumn() //Column для укорочения кода
+                EventCardWideColumn(navController = navController) //Column для укорочения кода
             }
 
             item {
                 Column {
-                    NewHeading(text = "Сообщества для тестировщиков")
+                    NewHeading(
+                        text = "Сообщества для тестировщиков",
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                     CommunityCardLine()
                 }
             }
             item {
-                EventCardWideColumn() //Column для укорочения кода
+                EventCardWideColumn(navController = navController) //Column для укорочения кода
             }
 
         }

@@ -12,7 +12,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars =
             true
-        window.statusBarColor = android.graphics.Color.WHITE
+        window.statusBarColor = android.graphics.Color.TRANSPARENT
         setContent {
             WBTechnoschoolLesson2Theme {
             NavGraph()

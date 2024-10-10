@@ -12,5 +12,6 @@
     <string name="all_meetings_tabrow">ВСЕ ВСТРЕЧИ</string>
     <string name="active_tabrow">АКТИВНЫЕ</string>
     <string name="name_and_lastname">Имя и Фамилия</string>
+    <string name="leader">Ведущий</string>
 
 </resources>

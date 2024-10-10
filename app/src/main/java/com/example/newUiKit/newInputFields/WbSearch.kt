@@ -71,8 +71,8 @@ fun WbSearchBar(
                 modifier = Modifier
                     .padding(vertical = 10.dp)
                     .focusRequester(focusRequester)
-                    .fillMaxWidth()
-                    .height(44.dp),
+                    .fillMaxWidth(0.9f),
+//                    .height(44.dp),
                 onValueChange = { input ->
                     onQueryChange(input)
                 },

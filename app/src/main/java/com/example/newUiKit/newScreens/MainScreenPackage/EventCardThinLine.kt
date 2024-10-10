@@ -1,8 +1,10 @@
 package com.example.newUiKit.newScreens.MainScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.NewMolecules.EventCardThin
@@ -17,7 +19,9 @@ fun EventCardThinLine() {
                 painter = painterResource(id = R.drawable.pythondays),
                 date = "10 августа",
                 location = "Кожевенная линия, 40",
-                onClick = {})
+                onClick = {},
+                modifier = Modifier.padding(start = 16.dp)
+            )
         }
         item {
             EventCardThin(

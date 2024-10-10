@@ -1,6 +1,7 @@
 package com.example.newUiKit.newScreens.MainScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
@@ -13,7 +14,9 @@ import com.example.wbtechnoschoollesson2.R
 
 @Composable
 fun EventCardWideLine() {
-    LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
         item {
             EventCardWide(
                 title = "QA Talks — Global tech forum",
@@ -22,7 +25,10 @@ fun EventCardWideLine() {
                 date = "Завтра",
                 location = "Невский проспект, 11",
                 onClick = {},
-                modifier = Modifier.width(320.dp)
+                modifier = Modifier
+                    .width(320.dp)
+                    .padding(start = 16.dp)
+//                    .fillParentMaxWidth(0.9f) // Контент выходит за экран
             )
         }
         item {

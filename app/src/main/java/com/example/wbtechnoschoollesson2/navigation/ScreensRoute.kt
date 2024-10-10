@@ -18,4 +18,5 @@ object Screens {
     const val OnboardingScreen = "onboarding_screen"
     const val SplashScreenWb = "splash_screen_wb"
     const val MainScreen = "main_screen"
+    const val EventDetailScreen = "event_detail_screen"
 }
