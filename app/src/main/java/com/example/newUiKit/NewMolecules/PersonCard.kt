@@ -39,7 +39,6 @@ fun PersonCard(
 //    var isSubscribe by remember { mutableStateOf(false) }
     Box(
         modifier = modifier.width(104.dp)
-//            .height(156.dp),
     ) {
         Column {
             Box(

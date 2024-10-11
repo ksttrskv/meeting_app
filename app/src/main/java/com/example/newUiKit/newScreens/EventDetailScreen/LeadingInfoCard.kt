@@ -23,10 +23,11 @@ fun LeadingInfoCard(
     heading: String,
     name: String,
     info: String,
-    avatarImage: Painter
+    avatarImage: Painter,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth() // Занимает всю ширину
     ) {
         // Заголовок

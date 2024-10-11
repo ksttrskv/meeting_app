@@ -13,5 +13,9 @@
     <string name="active_tabrow">АКТИВНЫЕ</string>
     <string name="name_and_lastname">Имя и Фамилия</string>
     <string name="leader">Ведущий</string>
+    <string name="members_of_event">Пойдут на встречу</string>
+    <string name="event_organizer">Организатор</string>
+    <string name="other_community_meetings">Другие встречи сообщества</string>
+    <string name="sign_up_for_a_meeting">Записаться на встречу</string>
 
 </resources>

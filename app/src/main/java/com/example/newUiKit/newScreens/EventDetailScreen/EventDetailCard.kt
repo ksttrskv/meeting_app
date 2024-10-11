@@ -34,14 +34,13 @@ fun EventDetailCard(
     painter: Painter,
     date: String,
     location: String,
-    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val tags = listOf(
         "Backend", "Тестирование", "Разработка"
     )
     Card(
-        onClick = onClick,
+
         colors = CardDefaults.cardColors(Color.Transparent),
         modifier = modifier
     ) {
@@ -86,7 +85,7 @@ fun PreviewMeetingCard() {
             painter = painterResource(id = R.drawable.pythondays),
             date = "10 августа",
             location = "Кожевенная линия, 40",
-            onClick = {})
+        )
 
     }
 }
