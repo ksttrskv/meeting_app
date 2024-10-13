@@ -32,7 +32,11 @@ import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun CommunityDetailScreen(communityTitle: String,navController: NavController,  viewModel: CommunityDetailViewModel = koinViewModel()) {
+fun CommunityDetailScreenOldUi(
+    communityTitle: String,
+    navController: NavController,
+    viewModel: CommunityDetailViewModel = koinViewModel()
+) {
     val meetings by viewModel.meetings.collectAsState()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val communityTitle = navBackStackEntry?.arguments?.getString("communityTitle") ?: "Сообщество"

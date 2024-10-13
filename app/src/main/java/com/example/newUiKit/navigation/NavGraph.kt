@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2
+package com.example.newUiKit.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -6,15 +6,17 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.newUiKit.newScreens.CommunityDetailScreen.CommunityDetailScreen
 import com.example.newUiKit.newScreens.EventDetailScreen.EventDetailScreen
 import com.example.newUiKit.newScreens.MainScreenPackage.MainScreen
 import com.example.newUiKit.newScreens.NewUiKitScreen
 import com.example.newUiKit.newScreens.OnboardingScreen
 import com.example.newUiKit.newScreens.SplashScreenWb
-import com.example.wbtechnoschoollesson2.navigation.Screens
+import com.example.wbtechnoschoollesson2.R
+import com.example.wbtechnoschoollesson2.SplashScreen
 import com.example.wbtechnoschoollesson2.screens.AllMeetingScreen
 import com.example.wbtechnoschoollesson2.screens.CodeInputScreen
-import com.example.wbtechnoschoollesson2.screens.CommunityDetailScreen
+import com.example.wbtechnoschoollesson2.screens.CommunityDetailScreenOldUi
 import com.example.wbtechnoschoollesson2.screens.CommunityScreen
 import com.example.wbtechnoschoollesson2.screens.LoginScreen
 import com.example.wbtechnoschoollesson2.screens.MeetingDetailScreen
@@ -45,7 +47,7 @@ fun NavGraph() {
             arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })
         ) { backStackEntry ->
             val communityTitle = backStackEntry.arguments?.getString("communityTitle") ?: ""
-            CommunityDetailScreen(communityTitle, navController)
+            CommunityDetailScreenOldUi(communityTitle, navController)
         }
         composable(
             route = "${Screens.MeetingDetail}/{meeting}",
@@ -80,7 +82,7 @@ fun NavGraph() {
             val eventDate = backStackEntry.arguments?.getString("eventDate") ?: ""
             val eventLocation = backStackEntry.arguments?.getString("eventLocation") ?: ""
             val eventImage = backStackEntry.arguments?.getInt("eventImage")
-                ?: R.drawable.wb // Установи изображение по умолчанию
+                ?: R.drawable.wb // картинка по умолчанию
 
             EventDetailScreen(
                 navController = navController,
@@ -88,6 +90,26 @@ fun NavGraph() {
                 eventDate = eventDate,
                 eventLocation = eventLocation,
                 eventImageRes = eventImage
+            )
+        }
+        composable(
+            route = "${Screens.CommunityDetailScreen}/{communityTitle}/{communityAvatarImage}",
+            arguments = listOf(
+                navArgument("communityTitle") { type = NavType.StringType },
+                navArgument("communityAvatarImage") { type = NavType.IntType },
+//                navArgument("tags") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val communityTitle = backStackEntry.arguments?.getString("communityTitle") ?: ""
+            val communityAvatarImage =
+                backStackEntry.arguments?.getInt("communityAvatarImage") ?: R.drawable.wb
+//            val tags = backStackEntry.arguments?.getString("tags") ?: ""
+
+            CommunityDetailScreen(
+                navController = navController,
+                communityTitle = communityTitle,
+                communityAvatarImage = communityAvatarImage,
+//                tags = tags
             )
         }
     }

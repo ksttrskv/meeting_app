@@ -17,5 +17,10 @@
     <string name="event_organizer">Организатор</string>
     <string name="other_community_meetings">Другие встречи сообщества</string>
     <string name="sign_up_for_a_meeting">Записаться на встречу</string>
+    <string name="text_under_the_subscribe_button">Будем приглашать на встречи сообщества и рекомендовать похожие</string>
+    <string name="subscribe_text">Подписаться</string>
+    <string name="members">Подписаны</string>
+    <string name="events">Встречи</string>
+    <string name="past_events">Прошлые встречи</string>
 
 </resources>

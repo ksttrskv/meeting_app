@@ -17,10 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.newUiKit.navigation.Screens
 import com.example.wbtechnoschoollesson2.Molecules.CommunityCard
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
-import com.example.wbtechnoschoollesson2.navigation.Screens
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.CommunityViewModel
 import com.example.wbtechnoschoollesson2.uiKitScreen.SearchView

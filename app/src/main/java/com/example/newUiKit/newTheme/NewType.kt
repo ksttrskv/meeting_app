@@ -77,13 +77,13 @@ data class MyTypography(
         fontWeight = FontWeight.Medium,
         fontSize = 22.sp,
         lineHeight = 26.sp
+    ),
+    val Huge: TextStyle = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 50.sp,
+        lineHeight = 44.sp
     )
-) {
-//    val body1: TextStyle= TextStyle(
-//        fontFamily = fontFamily,
-//        fontWeight = FontWeight.SemiBold,
-//        fontSize = 14.sp,
-//        lineHeight = 16.sp
-//    )
-}
+
+)
 

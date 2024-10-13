@@ -63,7 +63,7 @@ fun MainScreen(navController: NavController) {
                         modifier = Modifier.padding(start = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    CommunityCardLine() //Лайн для укорочения кода
+                    CommunityCardLine(navController = navController) //Лайн для укорочения кода
                 }
             }
             item {
@@ -110,7 +110,7 @@ fun MainScreen(navController: NavController) {
                         modifier = Modifier.padding(start = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    CommunityCardLine()
+                    CommunityCardLine(navController = navController)
                 }
             }
             item {

@@ -1,7 +1,8 @@
 package com.example.newUiKit.NewMolecules
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -11,7 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
@@ -22,20 +26,26 @@ import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 @Composable
 fun NewTopBar(
     title: String,
+    textAlign: TextAlign = TextAlign.Center,
     onAddClick: (() -> Unit)? = null,
     navigationIcon: (@Composable () -> Unit)? = null,
     actions: @Composable RowScope.() -> Unit = {}
 ) {
     TopAppBar(
         title = {
-            Text(
-                text = title,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                fontSize = 24.sp,
-                color = Color.Black,
-                style = MyUiTheme.typography.primary,
-            )
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = title,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    fontSize = 24.sp,
+                    color = Color.Black,
+                    style = MyUiTheme.typography.primary,
+                )
+            }
         },
         navigationIcon = {
             navigationIcon?.invoke()
@@ -58,12 +68,6 @@ fun NewTopBar(
 @Composable
 fun PreviewTopBar() {
     WBTechnoschoolLesson2Theme {
-        Column {
-
-            com.example.wbtechnoschoollesson2.navigation.TopBar3(title = "Мои встречи") {
-
-            }
-        }
-
+        NewTopBar(title = "Мои встречи")
     }
 }

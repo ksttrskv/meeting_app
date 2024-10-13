@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.example.wbtechnoschoollesson2.navigation.Screens
+import com.example.newUiKit.navigation.Screens
 import kotlinx.coroutines.delay
 
 @Composable

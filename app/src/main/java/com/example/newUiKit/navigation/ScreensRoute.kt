@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2.navigation
+package com.example.newUiKit.navigation
 
 object Screens {
     const val Splash = "splash"
@@ -19,4 +19,5 @@ object Screens {
     const val SplashScreenWb = "splash_screen_wb"
     const val MainScreen = "main_screen"
     const val EventDetailScreen = "event_detail_screen"
+    const val CommunityDetailScreen = "community_detail_screen"
 }

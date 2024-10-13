@@ -33,6 +33,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 
 private const val PHONE_NUMBER_SIZE = 10
@@ -78,8 +79,8 @@ fun CountrySelector(
 ) {
     Row(
         modifier = Modifier
-            .clip(RoundedCornerShape(6.dp))
-            .background(UiTheme.colors.neutralSecondaryBg)
+            .clip(RoundedCornerShape(16.dp))
+            .background(MyUiTheme.colors.newBg)
             .padding(vertical = 16.dp)
             .clickable { onExpandChange(!expanded) },
         verticalAlignment = Alignment.CenterVertically
@@ -92,18 +93,18 @@ fun CountrySelector(
         Text(
             modifier = Modifier.padding(end = 8.dp),
             text = selectedCountry.phoneCode,
-            style = UiTheme.typography.bodyText1,
-            color = UiTheme.colors.neutralDisabled
+            style = MyUiTheme.typography.regular,
+            color = MyUiTheme.colors.newNeutralDisabled
         )
 
         DropdownMenu(
-            modifier = Modifier.background(UiTheme.colors.neutralSecondaryBg),
+            modifier = Modifier.background(MyUiTheme.colors.newNeutralDisabled),
             expanded = expanded,
             onDismissRequest = { onExpandChange(false) }
         ) {
             Country.entries.forEach { country ->
                 DropdownMenuItem(
-                    modifier = Modifier.background(UiTheme.colors.neutralSecondaryBg),
+                    modifier = Modifier.background(MyUiTheme.colors.newNeutralDisabled),
                     text = {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -116,8 +117,8 @@ fun CountrySelector(
                             )
                             Text(
                                 text = country.phoneCode,
-                                style = UiTheme.typography.bodyText1,
-                                color = UiTheme.colors.neutralDisabled
+                                style = MyUiTheme.typography.regular,
+                                color = MyUiTheme.colors.newNeutralDisabled
                             )
                         }
                     },
@@ -139,8 +140,8 @@ fun PhoneNumberInput(
 ) {
     BasicTextField(
         modifier = Modifier
-            .clip(RoundedCornerShape(6.dp))
-            .background(UiTheme.colors.neutralSecondaryBg)
+            .clip(RoundedCornerShape(16.dp))
+            .background(MyUiTheme.colors.newBg)
             .fillMaxWidth()
             .padding(vertical = 8.dp),
         value = phone,
@@ -153,14 +154,14 @@ fun PhoneNumberInput(
                     .fillMaxWidth()
                     .padding(8.dp)
                     .clip(RoundedCornerShape(5.dp))
-                    .background(UiTheme.colors.neutralSecondaryBg)
+                    .background(MyUiTheme.colors.newBg)
             ) {
                 if (phone.isEmpty()) {
                     Text(
                         modifier = Modifier.padding(start = 8.dp),
                         text = "999 999-99-99",
-                        style = UiTheme.typography.bodyText1,
-                        color = UiTheme.colors.neutralDisabled
+                        style = MyUiTheme.typography.regular,
+                        color = MyUiTheme.colors.newNeutralDisabled
                     )
                 }
                 innerTextField()

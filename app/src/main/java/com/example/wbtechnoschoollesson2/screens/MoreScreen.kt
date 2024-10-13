@@ -13,9 +13,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -67,10 +66,10 @@ fun MoreScreen(navController: NavController) {
 
             itemsIndexed(menuItems) { index, item ->
                 if (index == 5) { // Индекс элемента меню для разделителя
-                    Divider(
-                        color = UiTheme.colors.neutralLine,
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 8.dp),
                         thickness = 1.dp,
-                        modifier = Modifier.padding(vertical = 8.dp)
+                        color = UiTheme.colors.neutralLine
                     )
                 }
 
