@@ -1,4 +1,4 @@
-package com.example.newUiKit.newScreens.AppointmentScreen
+package com.example.newUiKit.newScreens.AppointmentScreens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,20 +22,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.newUiKit.newInputFields.PhoneInputField.PhoneInput
+import androidx.navigation.NavController
+import com.example.newUiKit.navigation.Screens
+import com.example.newUiKit.newInputFields.NewCodeInputView
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
-fun AppointmentPhoneInputScreen() {
-
-    var name by remember { mutableStateOf("") }
-
+fun AppointmentCodeInputScreen(navController: NavController) {
+    var code by remember { mutableStateOf("") }
+    val isCodeFilled = code.isNotEmpty()
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -67,33 +66,53 @@ fun AppointmentPhoneInputScreen() {
                 style = MyUiTheme.typography.regular
             )
             Spacer(modifier = Modifier.height(24.dp))
-            PhoneInput {
+            NewCodeInputView {
 
             }
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "Отправили код на +7 999 999-99-99",
+                style = MyUiTheme.typography.Secondary,
+                color = MyUiTheme.colors.newSecondaryColor
+            )
         }
+
+        Text(
+            text = "Получить новый код через 10",
+            style = MyUiTheme.typography.primary,
+            color = MyUiTheme.colors.newSecondaryColor,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 108.dp)
+        )
         NewCustomButton(
             content = {
                 Text(
-                    text = "Продолжить",
+                    text = "Отправить и подтвердить запись",
                     style = MyUiTheme.typography.H3
                 )
             },
-            textColor = Color.White,
+            textColor = MyUiTheme.colors.newGray,
             enabledGradient = multiColorLinearGradient(),
-            disabledColor = Color.Gray,
+            disabledColor = MyUiTheme.colors.newOffWhite,
             enabled = true,
-            onClick = {},
+            onClick = {
+                navController.navigate(Screens.AppointmentFinalScreen) {
+                    launchSingleTop = true
+                }
+            },
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 28.dp)
+                .padding(horizontal = 16.dp)
         )
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewAppointmentScreens() {
-    WBTechnoschoolLesson2Theme {
-        AppointmentPhoneInputScreen()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewAppointmentScreen() {
+//    WBTechnoschoolLesson2Theme {
+//        AppointmentCodeInputScreen()
+//    }
+//}

@@ -1,4 +1,4 @@
-package com.example.newUiKit.newScreens.AppointmentScreen
+package com.example.newUiKit.newScreens.AppointmentScreens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,19 +21,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newInputFields.NewTextInputView
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
-fun AppointmentNameInputScreen() {
+fun AppointmentNameInputScreen(navController: NavController) {
 
     var name by remember { mutableStateOf("") }
+    val isNameFilled = name.isNotEmpty()
 
     Box(
         modifier = Modifier
@@ -77,7 +78,11 @@ fun AppointmentNameInputScreen() {
             enabledGradient = multiColorLinearGradient(),
             disabledColor = Color.Gray,
             enabled = true,
-            onClick = {},
+            onClick = {
+                navController.navigate(Screens.AppointmentPhoneInputScreen) {
+                    launchSingleTop = true
+                }
+            },
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 28.dp)
@@ -85,10 +90,10 @@ fun AppointmentNameInputScreen() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewCommunityDetailCard() {
-    WBTechnoschoolLesson2Theme {
-        AppointmentNameInputScreen()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewCommunityDetailCard() {
+//    WBTechnoschoolLesson2Theme {
+//        AppointmentNameInputScreen()
+//    }
+//}

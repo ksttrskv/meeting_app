@@ -102,7 +102,7 @@ fun EventDetailScreen(
                     .fillMaxWidth()
                     .height(animateDpAsState(if (shouldShowButton.value) 110.dp else 0.dp).value) // Анимация высоты
             ) {
-                PopupButton()
+                PopupButton(navController = navController)
             }
         }
     ) { contentPadding ->

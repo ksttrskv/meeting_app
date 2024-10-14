@@ -14,10 +14,14 @@ object Screens {
     const val CommunityDetail = "community_detail"
 
 
-    const val NewUiKitScreen = "new_uikitscreeen"
+    const val NewUiKitScreen = "new_ui_kit_screen"
     const val OnboardingScreen = "onboarding_screen"
     const val SplashScreenWb = "splash_screen_wb"
     const val MainScreen = "main_screen"
     const val EventDetailScreen = "event_detail_screen"
     const val CommunityDetailScreen = "community_detail_screen"
+    const val AppointmentNameInputScreen = "appointment_name_input_screen"
+    const val AppointmentCodeInputScreen = "appointment_code_input_screen"
+    const val AppointmentPhoneInputScreen = "appointment_phone_input_screen"
+    const val AppointmentFinalScreen = "appointment_final_screen"
 }

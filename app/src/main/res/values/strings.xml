@@ -22,5 +22,8 @@
     <string name="members">Подписаны</string>
     <string name="events">Встречи</string>
     <string name="past_events">Прошлые встречи</string>
+    <string name="placeholder_codefield">0000</string>
+    <string name="enter_to_event">Вход \nи запись \nна встречу</string>
+    <string name="get_code">Получить код</string>
 
 </resources>

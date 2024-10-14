@@ -16,6 +16,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.R
@@ -23,7 +26,7 @@ import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
-fun PopupButton() {
+fun PopupButton(navController: NavController) {
 
     Surface(
         modifier = Modifier
@@ -54,7 +57,11 @@ fun PopupButton() {
                 enabledGradient = multiColorLinearGradient(),
                 disabledColor = Color.Gray,
                 enabled = true,
-                onClick = {},
+                onClick = {
+                    navController.navigate(Screens.AppointmentNameInputScreen) {
+                        launchSingleTop = true
+                    }
+                },
             )
             Spacer(modifier = Modifier.height(24.dp))
         }
@@ -65,6 +72,7 @@ fun PopupButton() {
 @Composable
 fun PreviewPopupButton() {
     WBTechnoschoolLesson2Theme {
-        PopupButton()
+        val navController = rememberNavController()
+        PopupButton(navController = navController)
     }
 }
