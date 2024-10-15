@@ -38,6 +38,7 @@ fun AppointmentNameInputScreen(navController: NavController) {
 
     Box(
         modifier = Modifier
+            .padding(top = 48.dp)
             .fillMaxSize()
             .padding(horizontal = 16.dp)
     ) {
@@ -55,8 +56,9 @@ fun AppointmentNameInputScreen(navController: NavController) {
                 Icon(
                     painter = painterResource(id = R.drawable.close),
                     contentDescription = "Close page",
+
                     tint = MyUiTheme.colors.newGray,
-                    modifier = Modifier.clickable { }
+                    modifier = Modifier.clickable { navController.navigateUp() }
                 )
             }
             Spacer(modifier = Modifier.height(14.dp))

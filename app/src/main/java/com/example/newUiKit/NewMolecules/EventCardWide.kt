@@ -3,6 +3,7 @@ package com.example.newUiKit.NewMolecules
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -63,11 +64,13 @@ fun EventCardWide(
                     style = textStyle,
                     color = MyUiTheme.colors.newBlackColor
                 )
+                Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "$date · $location",
                     style = MyUiTheme.typography.Secondary,
                     color = MyUiTheme.colors.newSecondaryColor,
                 )
+                Spacer(modifier = Modifier.height(8.dp))
                 SmallTagsList(tags = tags)
             }
         }

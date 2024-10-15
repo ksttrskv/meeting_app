@@ -14,7 +14,7 @@ import com.example.newUiKit.newScreens.CommunityDetailScreen.CommunityDetailScre
 import com.example.newUiKit.newScreens.EventDetailScreen.EventDetailScreen
 import com.example.newUiKit.newScreens.MainScreenPackage.MainScreen
 import com.example.newUiKit.newScreens.NewUiKitScreen
-import com.example.newUiKit.newScreens.OnboardingScreen
+import com.example.newUiKit.newScreens.OnboardingScreen.OnboardingScreen
 import com.example.newUiKit.newScreens.SplashScreenWb
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.SplashScreen

@@ -105,9 +105,9 @@ fun BigTag(
 
 
 @Composable
-fun BigTagsList(tags: List<String>) {
+fun BigTagsList(tags: List<String>, modifier: Modifier = Modifier) {
     FlowRow(
-        modifier = Modifier.padding(horizontal = 16.dp),
+        modifier = modifier,
         mainAxisSpacing = 8.dp, // Расстояние между тегами по горизонтали
         crossAxisSpacing = 8.dp // Расстояние между тегами по вертикали
     ) {
@@ -145,9 +145,10 @@ fun SmallTagsList(tags: List<String>) {
 
 
 @Composable
-fun MediumTagsList(tags: List<String>) {
+fun MediumTagsList(tags: List<String>, modifier: Modifier = Modifier) {
     FlowRow(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier
+//        modifier = Modifier.padding(horizontal = 16.dp),
 //        mainAxisSpacing = 2.dp, // Расстояние между тегами по горизонтали
 //        crossAxisSpacing = 2.dp // Расстояние между тегами по вертикали
     ) {

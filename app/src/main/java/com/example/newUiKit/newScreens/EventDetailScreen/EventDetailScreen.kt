@@ -91,9 +91,10 @@ fun EventDetailScreen(
                 }
             )
         },
-        containerColor = Color.White,
+        containerColor = Color.Transparent,
         bottomBar = {
-            // Анимация видимости кнопки и текста
+
+        // Анимация видимости кнопки и текста
             AnimatedVisibility(
                 visible = shouldShowButton.value,
                 enter = slideInVertically { it }, // Анимация появления снизу

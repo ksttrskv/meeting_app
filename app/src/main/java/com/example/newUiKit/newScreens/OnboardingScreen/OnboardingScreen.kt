@@ -1,12 +1,13 @@
-package com.example.newUiKit.newScreens
+package com.example.newUiKit.newScreens.OnboardingScreen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,11 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.Tags.BigTagsList
-import com.example.newUiKit.newButtons.WbTextButton
+import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
-import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import com.example.wbtechnoschoollesson2.uiKitScreen.Heading
 
@@ -34,26 +34,24 @@ fun OnboardingScreen(navController: NavController) {
     )
     Box(
         modifier = Modifier
+            .padding(top = 50.dp)
             .fillMaxSize()
             .background(Color.White),
         contentAlignment = Alignment.TopStart
     ) {
-        LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
-            item {
-                Heading(text = "Интересы")
-            }
-            item {
-                Text(
-                    text = "Выберите интересы, чтобы мы рекомендовали полезные встречи",
-                    style = MyUiTheme.typography.regular
-                )
-            }
-            item {
-                Spacer(modifier = Modifier.height(24.dp))
-                BigTagsList(tags = tags)
-            }
-            item {
-                Spacer(modifier = Modifier.height(100.dp))
+        Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+
+            Heading(text = "Интересы")
+            Text(
+                text = "Выберите интересы, чтобы мы рекомендовали полезные встречи",
+                style = MyUiTheme.typography.regular
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            BigTagsList(tags = tags)
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.BottomCenter
+            ) {
                 NewCustomButton(
                     content = { Text(text = "Сохранить") },
                     textColor = Color.White,
@@ -61,15 +59,22 @@ fun OnboardingScreen(navController: NavController) {
                     disabledColor = MyUiTheme.colors.newOffWhite,
                     enabled = true,
                     onClick = {
-                    }
+                        navController.navigate(Screens.MainScreen) {
+                            launchSingleTop = true
+                        }
+                    },
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(bottom = 66.dp)
                 )
-            }
-            item {
-                WbTextButton(
-                    content = { Text(text = "Расскажу позже") },
-                    btnColor = UiTheme.colors.brandColorDefault,
-                    textColor = UiTheme.colors.brandColorDefault,
-                    onClick = { /*TODO*/ }
+                Text(
+                    text = "Расскажу позже",
+                    style = MyUiTheme.typography.primary,
+                    color = MyUiTheme.colors.newSecondaryColor,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(bottom = 28.dp)
+                        .clickable { }
                 )
             }
         }

@@ -1,6 +1,7 @@
 package com.example.newUiKit.newScreens.AppointmentScreens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,6 +41,7 @@ fun AppointmentFinalScreen(navController: NavController) {
 
     Box(
         modifier = Modifier
+            .padding(top = 48.dp)
             .fillMaxSize()
     ) {
         Image(
@@ -81,6 +83,7 @@ fun AppointmentFinalScreen(navController: NavController) {
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 108.dp)
+                .clickable { }
         )
         NewCustomButton(
             content = {

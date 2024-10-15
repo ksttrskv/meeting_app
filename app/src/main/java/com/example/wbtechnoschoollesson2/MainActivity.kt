@@ -3,20 +3,18 @@ package com.example.wbtechnoschoollesson2
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.core.view.WindowCompat
+import androidx.activity.enableEdgeToEdge
 import com.example.newUiKit.navigation.NavGraph
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars =
-            true
-        window.statusBarColor = android.graphics.Color.TRANSPARENT
+        enableEdgeToEdge()
         setContent {
-            WBTechnoschoolLesson2Theme {
-            NavGraph()
+            MyMeetingAppTheme {
+                NavGraph()
             }
         }
     }

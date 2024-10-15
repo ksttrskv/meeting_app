@@ -1,6 +1,7 @@
 package com.example.newUiKit.NewMolecules
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -46,7 +47,10 @@ fun EventCardThin(
         colors = CardDefaults.cardColors(Color.Transparent)
     ) {
 
-        Column(modifier = Modifier.width(212.dp)) {
+        Column(
+            modifier = Modifier.width(212.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
             Image(
 //                        painter = rememberAsyncImagePainter(imageUrl),
                 painter = painter,
@@ -58,7 +62,6 @@ fun EventCardThin(
                 contentScale = ContentScale.Crop,
                 alignment = Alignment.TopStart
             )
-            Spacer(modifier = Modifier.width(8.dp))
             Column {
                 Text(
                     text = title,
@@ -77,7 +80,6 @@ fun EventCardThin(
                     overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-
                 SmallTagsList(tags = tags)
 
             }

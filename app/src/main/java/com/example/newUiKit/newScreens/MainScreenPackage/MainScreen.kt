@@ -18,7 +18,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.NewMolecules.Banner
 import com.example.newUiKit.NewMolecules.NewHeading
-import com.example.newUiKit.Tags.BigTagsList
+import com.example.newUiKit.Tags.MediumTagsList
 import com.example.newUiKit.newTheme.MyMeetingAppTheme
 
 
@@ -33,6 +33,7 @@ fun MainScreen(navController: NavController) {
 
     Box(
         Modifier
+            .padding(top = 48.dp)
             .fillMaxSize()
             .background(color = Color.White)
     ) {
@@ -73,7 +74,7 @@ fun MainScreen(navController: NavController) {
                         modifier = Modifier.padding(start = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    BigTagsList(tags = tags)
+                    MediumTagsList(tags = tags, modifier = Modifier.padding(horizontal = 16.dp))
                 }
             }
 
@@ -120,6 +121,7 @@ fun MainScreen(navController: NavController) {
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

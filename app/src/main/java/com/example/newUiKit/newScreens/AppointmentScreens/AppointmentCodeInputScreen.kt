@@ -37,8 +37,10 @@ fun AppointmentCodeInputScreen(navController: NavController) {
     val isCodeFilled = code.isNotEmpty()
     Box(
         modifier = Modifier
+            .padding(top = 48.dp)
             .fillMaxSize()
             .background(Color.White)
+
     ) {
         Column(
             modifier = Modifier
@@ -57,7 +59,9 @@ fun AppointmentCodeInputScreen(navController: NavController) {
                     painter = painterResource(id = R.drawable.close),
                     contentDescription = "Close page",
                     tint = MyUiTheme.colors.newGray,
-                    modifier = Modifier.clickable { }
+                    modifier = Modifier.clickable {
+                        navController.navigateUp()
+                    }
                 )
             }
             Spacer(modifier = Modifier.height(14.dp))
@@ -92,7 +96,7 @@ fun AppointmentCodeInputScreen(navController: NavController) {
                     style = MyUiTheme.typography.H3
                 )
             },
-            textColor = MyUiTheme.colors.newGray,
+            textColor = MyUiTheme.colors.newBrandWhite,
             enabledGradient = multiColorLinearGradient(),
             disabledColor = MyUiTheme.colors.newOffWhite,
             enabled = true,

@@ -108,7 +108,7 @@ val color1 = MyColors(
     newBg = Color(0xFFF5F5F5),
     accentDanger = Color(0xFFE94242),
     accentWarning = Color(0xFFFDCF41),
-    accentSuccess = Color(0xFF2CC069),
+    accentSuccess = Color(0xFF00BF59),
     accentSafe = Color(0xFF7BCBCF),
     newOffWhite = Color(0xFFF6F6FA)
 )

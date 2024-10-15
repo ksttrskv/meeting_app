@@ -53,7 +53,7 @@ fun NewCustomButton(
 
 
     Button(
-        modifier = buttonModifier.height(56.dp),
+        modifier = buttonModifier.height(50.dp),
         onClick = {
             if (!isLoading) {
                 onClick()

@@ -11,6 +11,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,10 +24,12 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreenWb(navController: NavController) {
+    val context = LocalContext.current // Получаем контекст
+
     LaunchedEffect(key1 = true) {
         delay(3000)
-        navController.navigate(Screens.MainScreen) {
-            popUpTo("splashwb") { inclusive = true }
+        navController.navigate(Screens.OnboardingScreen) {
+            popUpTo("splashwb") { inclusive = false }
         }
     }
 
@@ -38,8 +41,7 @@ fun SplashScreenWb(navController: NavController) {
             painter = painterResource(id = R.drawable.splashscreen),
             contentDescription = "splash screen",
             contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize(),
-
+            modifier = Modifier.fillMaxSize()
         )
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
