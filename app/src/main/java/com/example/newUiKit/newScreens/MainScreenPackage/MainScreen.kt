@@ -1,6 +1,5 @@
 package com.example.newUiKit.newScreens.MainScreenPackage
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -20,7 +18,6 @@ import com.example.newUiKit.NewMolecules.Banner
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.Tags.MediumTagsList
 import com.example.newUiKit.newTheme.MyMeetingAppTheme
-
 
 @Composable
 fun MainScreen(navController: NavController) {
@@ -35,7 +32,6 @@ fun MainScreen(navController: NavController) {
         Modifier
             .padding(top = 48.dp)
             .fillMaxSize()
-            .background(color = Color.White)
     ) {
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(40.dp)

@@ -1,6 +1,5 @@
 package com.example.newUiKit.newScreens.AppointmentScreens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -42,7 +41,7 @@ fun AppointmentPhoneInputScreen(navController: NavController) {
         modifier = Modifier
             .padding(top = 48.dp)
             .fillMaxSize()
-            .background(Color.White)
+//            .background(Color.White)
     ) {
         Column(
             modifier = Modifier

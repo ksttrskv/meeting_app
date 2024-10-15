@@ -14,45 +14,86 @@ import com.example.wbtechnoschoollesson2.R
 
 @Composable
 fun PersonCardline() {
+//
+//    val members = listOf(
+//        PersonCard(
+//            title = "Мария",
+//            painter = painterResource(id = R.drawable.user_avatar),
+//            modifier = Modifier.padding(start = 16.dp)
+//        ),
+//        PersonCard(
+//            title = "Мария",
+//            painter = painterResource(id = R.drawable.user_avatar),
+//            modifier = Modifier.padding(start = 16.dp)
+//        ),
+//        PersonCard(
+//            title = "Мария",
+//            painter = painterResource(id = R.drawable.user_avatar),
+//            modifier = Modifier.padding(start = 16.dp)
+//        ),
+//        PersonCard(
+//            title = "Мария",
+//            painter = painterResource(id = R.drawable.user_avatar),
+//            modifier = Modifier.padding(start = 16.dp)
+//        ),
+//        PersonCard(
+//            title = "Мария",
+//            painter = painterResource(id = R.drawable.user_avatar),
+//            modifier = Modifier.padding(start = 16.dp)
+//        ),
+//        PersonCard(
+//            title = "Мария",
+//            painter = painterResource(id = R.drawable.user_avatar),
+//            modifier = Modifier.padding(start = 16.dp)
+//        ),
+//        PersonCard(
+//            title = "Мария",
+//            painter = painterResource(id = R.drawable.user_avatar),
+//            modifier = Modifier.padding(start = 16.dp)
+//        ),
+//    )
+//
+
     LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
         item {
             PersonCard(
                 title = "Мария",
                 painter = painterResource(id = R.drawable.user_avatar),
-                onClick = {},
-                modifier = Modifier.padding(start = 16.dp)
+                modifier = Modifier.padding(start = 16.dp),
+                tag = "Developer"
             )
         }
         item {
             PersonCard(
                 title = "Ирина",
                 painter = painterResource(id = R.drawable.user_avatar),
-                onClick = {}
+                tag = "Developer"
             )
         }
         item {
             PersonCard(
                 title = "Никита",
                 painter = painterResource(id = R.drawable.user_avatar),
-                onClick = {}
+                tag = "Developer"
             )
         }
         item {
             PersonCard(
                 title = "Илья",
                 painter = painterResource(id = R.drawable.user_avatar),
-                onClick = {}
+                tag = "Backend"
             )
         }
         item {
             PersonCard(
                 title = "Кутакбах",
                 painter = painterResource(id = R.drawable.user_avatar),
-                onClick = {}
+                tag = "Developer"
             )
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

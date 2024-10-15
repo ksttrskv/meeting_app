@@ -13,6 +13,7 @@ import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentPhoneInputS
 import com.example.newUiKit.newScreens.CommunityDetailScreen.CommunityDetailScreen
 import com.example.newUiKit.newScreens.EventDetailScreen.EventDetailScreen
 import com.example.newUiKit.newScreens.MainScreenPackage.MainScreen
+import com.example.newUiKit.newScreens.MembersScreen.MembersScreen
 import com.example.newUiKit.newScreens.NewUiKitScreen
 import com.example.newUiKit.newScreens.OnboardingScreen.OnboardingScreen
 import com.example.newUiKit.newScreens.SplashScreenWb
@@ -77,6 +78,7 @@ fun NavGraph() {
         composable(Screens.AppointmentNameInputScreen) { AppointmentNameInputScreen(navController = navController) }
         composable(Screens.AppointmentPhoneInputScreen) { AppointmentPhoneInputScreen(navController = navController) }
         composable(Screens.AppointmentFinalScreen) { AppointmentFinalScreen(navController = navController) }
+        composable(Screens.MembersScreen) { MembersScreen(navController = navController) }
         composable(
             route = "${Screens.EventDetailScreen}/{eventTitle}/{eventDate}/{eventLocation}/{eventImage}",
             arguments = listOf(

@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -33,6 +34,7 @@ import com.example.newUiKit.NewMolecules.AvatarMembersRow
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
 import com.example.newUiKit.NewMolecules.members
+import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newScreens.MainScreenPackage.EventCardThinLine
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
@@ -155,7 +157,13 @@ fun EventDetailScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 AvatarMembersRow(
                     avatarResIds = members,
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .clickable {
+                            navController.navigate(Screens.MembersScreen) {
+                                launchSingleTop = true
+                            }
+                        }
                 )
             }
             item {

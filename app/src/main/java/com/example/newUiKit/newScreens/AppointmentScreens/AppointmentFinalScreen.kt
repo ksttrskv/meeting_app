@@ -41,7 +41,7 @@ fun AppointmentFinalScreen(navController: NavController) {
 
     Box(
         modifier = Modifier
-            .padding(top = 48.dp)
+//            .padding(top = 48.dp)
             .fillMaxSize()
     ) {
         Image(
@@ -64,7 +64,7 @@ fun AppointmentFinalScreen(navController: NavController) {
                     text = "Вы записались на встречу",
                     style = MyUiTheme.typography.Huge,
                     color = MyUiTheme.colors.newBrandWhite,
-                    modifier = Modifier.padding(top = 24.dp)
+                    modifier = Modifier.padding(top = 72.dp)
 
                 )
             }

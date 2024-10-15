@@ -39,7 +39,6 @@ import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
-import com.example.wbtechnoschoollesson2.navigation.BottomNavigation
 import com.example.wbtechnoschoollesson2.navigation.TopBar3
 import com.example.wbtechnoschoollesson2.screens.ViewModels.LoginScreenViewModel
 import kotlinx.coroutines.delay
@@ -92,9 +91,6 @@ fun NewUiKitScreen(
                 }
             )
 
-        },
-        bottomBar = {
-            BottomNavigation(navController = navController)
         },
         containerColor = Color.White
 
@@ -221,7 +217,8 @@ fun NewUiKitScreen(
                     title = "Крис",
 //            imageUrl = "https://s3-alpha-sig.figma.com/img/5d33/6ebd/e64d2ae58f903a77264a0e3dc0191cfd?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=E30OTDKohz7oxCbx1Dfyao4i0gmlBNLiR7HR2zS05iN2d03GfeU8tsvm6x9ZAlJE~zyWcsrWliYiLVqLoALRP2PyKHpujsfo1BpOpYWcLKc8A8KvaIUoQdw8F6zm9EGZNWi7YBB2eRIoEXVF1mitXxc6S3IISIomeaJsDXZv8yGkwQodiFE~fJsmYRkio944LFqRWjFTZmFvYm5kgXttxRR6IMBOLNbZsggnC93~cdiGIXCvGc~rNpua2NLjnxrK0inq6DvfOJTVXOgRTrQRPfvvzhu8D4tyBN80jhOdVs-7YvsgrquPxlDckENmatUbXs99~eg5DducJspySyCbxg__",
                     painter = painterResource(id = R.drawable.user_avatar),
-                    onClick = {})
+                    tag = "Developer"
+                )
             }
             item {
                 PhoneInput(onPhoneChange = viewModel::onPhoneChanged)

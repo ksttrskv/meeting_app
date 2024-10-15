@@ -1,6 +1,5 @@
 package com.example.newUiKit.newScreens.OnboardingScreen
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,8 +34,8 @@ fun OnboardingScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .padding(top = 50.dp)
-            .fillMaxSize()
-            .background(Color.White),
+            .fillMaxSize(),
+//            .background(Color.White),
         contentAlignment = Alignment.TopStart
     ) {
         Column(modifier = Modifier.padding(horizontal = 16.dp)) {
