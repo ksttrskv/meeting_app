@@ -16,6 +16,7 @@ import com.example.newUiKit.newScreens.MainScreenPackage.MainScreen
 import com.example.newUiKit.newScreens.MembersScreen.MembersScreen
 import com.example.newUiKit.newScreens.NewUiKitScreen
 import com.example.newUiKit.newScreens.OnboardingScreen.OnboardingScreen
+import com.example.newUiKit.newScreens.ProfileOutsideScreen.ProfileOutsideScreen
 import com.example.newUiKit.newScreens.SplashScreenWb
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.SplashScreen
@@ -79,6 +80,7 @@ fun NavGraph() {
         composable(Screens.AppointmentPhoneInputScreen) { AppointmentPhoneInputScreen(navController = navController) }
         composable(Screens.AppointmentFinalScreen) { AppointmentFinalScreen(navController = navController) }
         composable(Screens.MembersScreen) { MembersScreen(navController = navController) }
+        composable(Screens.ProfileOutsideScreen) { ProfileOutsideScreen(navController = navController) }
         composable(
             route = "${Screens.EventDetailScreen}/{eventTitle}/{eventDate}/{eventLocation}/{eventImage}",
             arguments = listOf(

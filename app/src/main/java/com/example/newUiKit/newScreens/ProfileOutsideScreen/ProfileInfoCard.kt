@@ -20,10 +20,16 @@ import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
 @Composable
-fun ProfileInfoCard(name: String, location: String, info: String, tags: List<String>) {
+fun ProfileInfoCard(
+    modifier: Modifier = Modifier,
+    name: String,
+    location: String,
+    info: String,
+    tags: List<String>
+) {
 
 //    val tags = listOf("Тестирование", "Разработка", "Дизайн", "Продакт менеджер", "Бэкенд")
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = modifier.fillMaxWidth()) {
         Text(
             text = name,
             style = MyUiTheme.typography.Huge

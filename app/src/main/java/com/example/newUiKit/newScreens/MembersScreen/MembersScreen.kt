@@ -48,11 +48,14 @@ fun MembersScreen(navController: NavController) {
                     }
                 },
                 actions = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.more_horizontal),
-                        contentDescription = "",
-                        tint = Color.White
-                    )
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.more_horizontal),
+                            contentDescription = "",
+                            tint = Color.White
+                        )
+                    }
+
                 }
             )
         },
@@ -66,7 +69,7 @@ fun MembersScreen(navController: NavController) {
                     .background(Color.White),
                 verticalArrangement = Arrangement.spacedBy(30.dp)
             ) {
-                item { MembersFlowRow(users = users, onCardClick = {}) }
+                item { MembersColumnRow(users = users, navController = navController) }
 
             }
         }

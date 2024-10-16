@@ -35,7 +35,6 @@ fun OnboardingScreen(navController: NavController) {
         modifier = Modifier
             .padding(top = 50.dp)
             .fillMaxSize(),
-//            .background(Color.White),
         contentAlignment = Alignment.TopStart
     ) {
         Column(modifier = Modifier.padding(horizontal = 16.dp)) {

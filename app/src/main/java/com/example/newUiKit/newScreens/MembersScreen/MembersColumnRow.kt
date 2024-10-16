@@ -1,16 +1,24 @@
 package com.example.newUiKit.newScreens.MembersScreen
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.newUiKit.NewMolecules.PersonCard
+import com.example.newUiKit.navigation.Screens
 import com.example.wbtechnoschoollesson2.R
-import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
-fun MembersFlowRow(users: List<UserData>, onCardClick: (UserData) -> Unit) {
+fun MembersColumnRow(users: List<UserData>, navController: NavController) {
 
     val users = listOf(
         UserData(
@@ -88,27 +96,38 @@ fun MembersFlowRow(users: List<UserData>, onCardClick: (UserData) -> Unit) {
             tag = "Backend"
         ),
 
-        UserData(
-            title = "Илья",
-            painter = R.drawable.test_avatar_user,
-            tag = "Тестирование"
-        ),
+//        UserData(
+//            title = "Илья",
+//            painter = R.drawable.test_avatar_user,
+//            tag = "Тестирование"
+//        ),
 
 
         )
-
-
-    FlowRow(
-        modifier = Modifier.padding(16.dp),
-        mainAxisSpacing = 12.dp, // Расстояние между карточками по главной оси
-        crossAxisSpacing = 25.dp // Расстояние между строками
-    ) {
-        for (user in users) {
-            PersonCard(
-                title = user.title,
-                painter = painterResource(id = user.painter),
-                tag = user.tag
-            )
+    Column(modifier = Modifier.padding(16.dp)) {
+        for (i in users.indices step 3) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween // Чтобы карточки равномерно располагались по ширине
+            ) {
+                for (j in 0 until 3) {
+                    if (i + j < users.size) { // Проверяем, чтобы не выйти за пределы списка
+                        PersonCard(
+                            title = users[i + j].title,
+                            painter = painterResource(users[i + j].painter),
+                            tag = users[i + j].tag,
+                            modifier = Modifier
+//                                .weight(1f)
+                                .clickable {
+                                    navController.navigate(Screens.ProfileOutsideScreen) {
+                                        launchSingleTop = true
+                                    }
+                                },
+                        )
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(25.dp)) // Отступ между рядами
         }
     }
 }
@@ -118,3 +137,4 @@ data class UserData(
     val painter: Int,
     val tag: String
 )
+
