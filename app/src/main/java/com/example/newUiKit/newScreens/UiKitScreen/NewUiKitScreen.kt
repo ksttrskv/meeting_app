@@ -1,4 +1,4 @@
-package com.example.newUiKit.newScreens
+package com.example.newUiKit.newScreens.UiKitScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

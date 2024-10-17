@@ -35,7 +35,7 @@ import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
 import com.example.newUiKit.NewMolecules.members
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newScreens.MainScreenPackage.EventCardThinLine
+import com.example.newUiKit.newScreens.MainScreen.EventCardThinLine
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 

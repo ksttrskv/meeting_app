@@ -12,26 +12,13 @@ import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentNameInputSc
 import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentPhoneInputScreen
 import com.example.newUiKit.newScreens.CommunityDetailScreen.CommunityDetailScreen
 import com.example.newUiKit.newScreens.EventDetailScreen.EventDetailScreen
-import com.example.newUiKit.newScreens.MainScreenPackage.MainScreen
+import com.example.newUiKit.newScreens.MainScreen.MainScreen
 import com.example.newUiKit.newScreens.MembersScreen.MembersScreen
-import com.example.newUiKit.newScreens.NewUiKitScreen
 import com.example.newUiKit.newScreens.OnboardingScreen.OnboardingScreen
 import com.example.newUiKit.newScreens.ProfileOutsideScreen.ProfileOutsideScreen
-import com.example.newUiKit.newScreens.SplashScreenWb
+import com.example.newUiKit.newScreens.SplashScreen.SplashScreenWb
+import com.example.newUiKit.newScreens.UiKitScreen.NewUiKitScreen
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.SplashScreen
-import com.example.wbtechnoschoollesson2.screens.AllMeetingScreen
-import com.example.wbtechnoschoollesson2.screens.CodeInputScreen
-import com.example.wbtechnoschoollesson2.screens.CommunityDetailScreenOldUi
-import com.example.wbtechnoschoollesson2.screens.CommunityScreen
-import com.example.wbtechnoschoollesson2.screens.LoginScreen
-import com.example.wbtechnoschoollesson2.screens.MeetingDetailScreen
-import com.example.wbtechnoschoollesson2.screens.MoreScreen
-import com.example.wbtechnoschoollesson2.screens.MyMeetingScreen
-import com.example.wbtechnoschoollesson2.screens.ProfileCreateScreen
-import com.example.wbtechnoschoollesson2.screens.ProfileScreen
-import com.example.wbtechnoschoollesson2.screens.ViewModels.MeetingViewModel
-import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun NavGraph() {
@@ -42,33 +29,33 @@ fun NavGraph() {
         navController = navController,
         startDestination = Screens.SplashScreenWb,
     ) {
-        composable(Screens.Splash) { SplashScreen(navController = navController) }
-        composable(Screens.MyMeetings) { MyMeetingScreen(navController = navController) }
-        composable(Screens.Profile) { ProfileScreen(navController = navController) }
-        composable(Screens.AllMeetings) { AllMeetingScreen(navController = navController) }
-        composable(Screens.MoreScreen) { MoreScreen(navController = navController) }
-        composable(Screens.Communitites) { CommunityScreen(navController = navController) }
-        composable(
-            route = "${Screens.CommunityDetail}/{communityTitle}",
-            arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })
-        ) { backStackEntry ->
-            val communityTitle = backStackEntry.arguments?.getString("communityTitle") ?: ""
-            CommunityDetailScreenOldUi(communityTitle, navController)
-        }
-        composable(
-            route = "${Screens.MeetingDetail}/{meeting}",
-            arguments = listOf(navArgument("meeting") { type = NavType.StringType })
-        ) { backStackEntry ->
-            val meetingId = backStackEntry.arguments?.getString("meeting") ?: ""
-            val meetingViewModel: MeetingViewModel = getViewModel()
-            val meeting = meetingViewModel.getAllMeetings().find { it.title == meetingId }
-            if (meeting != null) {
-                MeetingDetailScreen(meeting, navController, meetingViewModel)
-            }
-        }
-        composable(Screens.Login) { LoginScreen(navController = navController) }
-        composable(Screens.CodeInput) { CodeInputScreen(navController = navController) }
-        composable(Screens.ProfileCreate) { ProfileCreateScreen(navController = navController) }
+//        composable(Screens.Splash) { SplashScreen(navController = navController) }
+//        composable(Screens.MyMeetings) { MyMeetingScreen(navController = navController) }
+//        composable(Screens.Profile) { ProfileScreen(navController = navController) }
+//        composable(Screens.AllMeetings) { AllMeetingScreen(navController = navController) }
+//        composable(Screens.MoreScreen) { MoreScreen(navController = navController) }
+//        composable(Screens.Communitites) { CommunityScreen(navController = navController) }
+//        composable(
+//            route = "${Screens.CommunityDetail}/{communityTitle}",
+//            arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })
+//        ) { backStackEntry ->
+//            val communityTitle = backStackEntry.arguments?.getString("communityTitle") ?: ""
+//            CommunityDetailScreenOldUi(communityTitle, navController)
+//        }
+//        composable(
+//            route = "${Screens.MeetingDetail}/{meeting}",
+//            arguments = listOf(navArgument("meeting") { type = NavType.StringType })
+//        ) { backStackEntry ->
+//            val meetingId = backStackEntry.arguments?.getString("meeting") ?: ""
+//            val meetingViewModel: MeetingViewModel = getViewModel()
+//            val meeting = meetingViewModel.getAllMeetings().find { it.title == meetingId }
+//            if (meeting != null) {
+//                MeetingDetailScreen(meeting, navController, meetingViewModel)
+//            }
+//        }
+//        composable(Screens.Login) { LoginScreen(navController = navController) }
+//        composable(Screens.CodeInput) { CodeInputScreen(navController = navController) }
+//        composable(Screens.ProfileCreate) { ProfileCreateScreen(navController = navController) }
 
         // New Screens
         composable(Screens.NewUiKitScreen) { NewUiKitScreen(navController = navController) }
@@ -80,7 +67,7 @@ fun NavGraph() {
         composable(Screens.AppointmentPhoneInputScreen) { AppointmentPhoneInputScreen(navController = navController) }
         composable(Screens.AppointmentFinalScreen) { AppointmentFinalScreen(navController = navController) }
         composable(Screens.MembersScreen) { MembersScreen(navController = navController) }
-        composable(Screens.ProfileOutsideScreen) { ProfileOutsideScreen(navController = navController) }
+//        composable(Screens.ProfileOutsideScreen) { ProfileOutsideScreen(navController = navController) }
         composable(
             route = "${Screens.EventDetailScreen}/{eventTitle}/{eventDate}/{eventLocation}/{eventImage}",
             arguments = listOf(
@@ -123,7 +110,28 @@ fun NavGraph() {
                 communityAvatarImage = communityAvatarImage,
 //                tags = tags
             )
+
         }
+        composable(
+            route = "${Screens.ProfileOutsideScreen}/{title}/{painter}",
+            arguments = listOf(
+                navArgument("title") { type = NavType.StringType },
+                navArgument("painter") { type = NavType.IntType },
+//                navArgument("tags") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val title = backStackEntry.arguments?.getString("title") ?: ""
+            val painter =
+                backStackEntry.arguments?.getInt("painter") ?: R.drawable.wb
+//            val tags = backStackEntry.arguments?.getString("tags") ?: ""
+
+            ProfileOutsideScreen(
+                navController = navController,
+                title = title, painter = painter
+            )
+
+        }
+
     }
 }
 

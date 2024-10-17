@@ -33,7 +33,7 @@ fun SubscribeButtonAndText() {
             enabledGradient = multiColorLinearGradient(),
             disabledColor = Color.Gray,
             enabled = true,
-            onClick = {},
+            onClick = { },
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(

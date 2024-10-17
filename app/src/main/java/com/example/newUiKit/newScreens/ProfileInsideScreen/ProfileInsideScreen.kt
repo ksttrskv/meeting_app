@@ -1,4 +1,5 @@
-package com.example.newUiKit.newScreens.ProfileOutsideScreen
+package com.example.newUiKit.newScreens.ProfileInsideScreen
+
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,17 +21,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
 import com.example.newUiKit.newScreens.MainScreen.CommunityCardLine
 import com.example.newUiKit.newScreens.MainScreen.EventCardThinLine
+import com.example.newUiKit.newScreens.ProfileOutsideScreen.ProfileInfoCard
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
 @Composable
-fun ProfileOutsideScreen(navController: NavController, title: String, painter: Int) {
+fun ProfileInsideScreen(navController: NavController) {
     val tags = listOf("Тестирование", "Разработка", "Дизайн", "Продакт менеджер", "Бэкенд")
 
     LazyColumn(
@@ -42,7 +47,7 @@ fun ProfileOutsideScreen(navController: NavController, title: String, painter: I
         item {
             Box {
                 Image(
-                    painter = painterResource(id = painter),
+                    painter = painterResource(id = R.drawable.test_image_4),
                     contentDescription = "",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -64,7 +69,7 @@ fun ProfileOutsideScreen(navController: NavController, title: String, painter: I
                     actions = {
                         IconButton(onClick = { /*TODO*/ }) {
                             Icon(
-                                painter = painterResource(id = R.drawable.share),
+                                painter = painterResource(id = R.drawable.edit_ic),
                                 contentDescription = "",
                                 tint = MyUiTheme.colors.newBrandDefault,
                             )
@@ -78,7 +83,7 @@ fun ProfileOutsideScreen(navController: NavController, title: String, painter: I
         item {
             Spacer(modifier = Modifier.height(20.dp))
             ProfileInfoCard(
-                name = title,
+                name = "Сергей",
                 location = "Москва",
                 info = "Занимаюсь разработкой интерфейсов в eCom. Учу HTML, CSS и JavaScript",
                 tags = tags,
@@ -118,11 +123,11 @@ fun ProfileOutsideScreen(navController: NavController, title: String, painter: I
 }
 
 
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewProfileOutside() {
-//    MyMeetingAppTheme {
-//        val navcontroller = rememberNavController()
-//        ProfileOutsideScreen(navController = navcontroller)
-//    }
-//}
+@Preview(showBackground = true)
+@Composable
+fun PreviewProfileInside() {
+    MyMeetingAppTheme {
+        val navcontroller = rememberNavController()
+        ProfileInsideScreen(navController = navcontroller)
+    }
+}

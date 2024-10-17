@@ -119,7 +119,9 @@ fun MembersColumnRow(users: List<UserData>, navController: NavController) {
                             modifier = Modifier
 //                                .weight(1f)
                                 .clickable {
-                                    navController.navigate(Screens.ProfileOutsideScreen) {
+                                    navController.navigate(
+                                        "${Screens.ProfileOutsideScreen}/${users[i + j].title}/${users[i + j].painter}"
+                                    ) {
                                         launchSingleTop = true
                                     }
                                 },

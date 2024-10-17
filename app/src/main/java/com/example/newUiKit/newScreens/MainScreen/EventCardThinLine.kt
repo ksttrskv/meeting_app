@@ -1,4 +1,4 @@
-package com.example.newUiKit.newScreens.MainScreenPackage
+package com.example.newUiKit.newScreens.MainScreen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding

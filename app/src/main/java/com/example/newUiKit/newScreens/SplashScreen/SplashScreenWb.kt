@@ -1,4 +1,4 @@
-package com.example.newUiKit.newScreens
+package com.example.newUiKit.newScreens.SplashScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
