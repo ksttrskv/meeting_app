@@ -148,9 +148,6 @@ fun SmallTagsList(tags: List<String>) {
 fun MediumTagsList(tags: List<String>, modifier: Modifier = Modifier) {
     FlowRow(
         modifier = modifier
-//        modifier = Modifier.padding(horizontal = 16.dp),
-//        mainAxisSpacing = 2.dp, // Расстояние между тегами по горизонтали
-//        crossAxisSpacing = 2.dp // Расстояние между тегами по вертикали
     ) {
         tags.forEach { tag ->
             var isTagSelected by remember { mutableStateOf(false) }

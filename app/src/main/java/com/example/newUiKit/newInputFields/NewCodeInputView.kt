@@ -10,10 +10,8 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 const val CODE_LENGTH = 4
 
@@ -21,6 +19,9 @@ const val CODE_LENGTH = 4
 fun NewCodeInputView(
     code: Int = 0,
     onCodeChange: (String) -> Unit,
+    placeholderContent: @Composable () -> Unit = {
+        SimplePlaceholder(placeholderText = stringResource(id = R.string.placeholder_codefield))
+    },
 ) {
     val query = remember { mutableStateOf("") }
 
@@ -41,7 +42,7 @@ fun NewCodeInputView(
             query.value = it
             hasError.value = it.length != CODE_LENGTH // Пример валидации
         },
-        placeholderText = stringResource(R.string.placeholder_codefield),
+        placeholderContent = placeholderContent,
         hasError = hasError.value,
         keyboardController = keyboardController,
         localFocusManager = localFocusManager,
@@ -53,10 +54,10 @@ fun NewCodeInputView(
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun NewCodeInputPreview() {
-    WBTechnoschoolLesson2Theme {
-        NewCodeInputView {}
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun NewCodeInputPreview() {
+//    WBTechnoschoolLesson2Theme {
+//        NewCodeInputView {}
+//    }
+//}

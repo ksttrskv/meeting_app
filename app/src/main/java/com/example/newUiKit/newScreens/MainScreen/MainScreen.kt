@@ -38,7 +38,7 @@ fun MainScreen(navController: NavController) {
         ) {
             item {
 
-                SearchAndIconLine()
+                SearchAndIconLine(navController = navController)
 
                 Spacer(modifier = Modifier.height(20.dp))
                 EventCardWideLine() //Лайн для укорочения кода

@@ -26,4 +26,6 @@ object Screens {
     const val AppointmentFinalScreen = "appointment_final_screen"
     const val MembersScreen = "members_screen"
     const val ProfileOutsideScreen = "profile_outside_screen"
+    const val ProfileEditScreen = "profile_edit_screen"
+    const val ProfileInsideScreen = "profile_inside_screen"
 }

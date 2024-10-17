@@ -1,4 +1,4 @@
-package com.example.newUiKit.newInputFields
+package com.example.newUiKit.newScreens.ProfileEditScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -11,7 +11,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -27,21 +26,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.SoftwareKeyboardController
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
-fun NewTextInputField(
+fun AboutMeTextField(
     focusRequester: FocusRequester,
     query: String,
     onQueryChange: (String) -> Unit,
-    placeholderContent: @Composable () -> Unit,
+    placeholderText: String,
     hasError: Boolean = false, // состояние ошибки
     keyboardController: SoftwareKeyboardController? = LocalSoftwareKeyboardController.current,
     localFocusManager: FocusManager = LocalFocusManager.current,
@@ -62,84 +58,61 @@ fun NewTextInputField(
             )
             .padding(start = 12.dp)
             .onFocusChanged { focusState -> isFocused.value = focusState.isFocused },
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.Start
     ) {
-        Row(
-            modifier = Modifier.weight(1f),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-
-            BasicTextField(
-                value = query,
-                modifier = Modifier
-                    .padding(vertical = 10.dp)
-                    .focusRequester(focusRequester)
-                    .fillMaxWidth()
-                    .height(24.dp),
-                onValueChange = { input ->
-                    onQueryChange(input)
-                },
-                singleLine = true,
-                textStyle = MyUiTheme.typography.primary,
-                decorationBox = { innerTextField ->
-                    if (query.isEmpty()) {
-                        placeholderContent()
-                    }
-                    innerTextField()
-                },
-                keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Next,
-                    keyboardType = KeyboardType.Text,
-                ),
-                keyboardActions = KeyboardActions(
-                    onNext = {
-                        keyboardController?.hide()
-                        localFocusManager.clearFocus()
-                    }
+        BasicTextField(
+            value = query,
+            modifier = Modifier
+                .padding(vertical = 10.dp)
+                .focusRequester(focusRequester)
+                .fillMaxWidth()
+                .height(24.dp),
+            onValueChange = { input ->
+                onQueryChange(input)
+            },
+            singleLine = false,
+            textStyle = MyUiTheme.typography.primary,
+            decorationBox = { innerTextField ->
+                Placeholder(
+                    isVisible = query.isEmpty(),
+                    placeholderText = placeholderText
                 )
+                innerTextField()
+            },
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done,
+                keyboardType = KeyboardType.Text,
+            ),
+            keyboardActions = KeyboardActions(
+                onNext = {
+                    keyboardController?.hide()
+                    localFocusManager.clearFocus()
+                }
+            )
+        )
+    }
+}
+
+
+@Composable
+private fun Placeholder(
+    modifier: Modifier = Modifier,
+    isVisible: Boolean,
+    placeholderText: String,
+) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        if (isVisible) {
+            Text(
+                text = placeholderText,
+                color = MyUiTheme.colors.newNeutralDisabled,
+                style = MyUiTheme.typography.primary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         }
-    }
-}
-
-@Composable
-fun SimplePlaceholder(placeholderText: String) {
-    Text(
-        text = placeholderText,
-        color = MyUiTheme.colors.newNeutralDisabled,
-        style = MyUiTheme.typography.primary,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis
-    )
-}
-
-@Composable
-fun IconAndTextPlaceholder(iconRes: Int, placeholderText: String) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        Icon(
-            painter = painterResource(id = iconRes),
-            contentDescription = null,
-            tint = MyUiTheme.colors.newNeutralDisabled
-        )
-        Text(
-            text = placeholderText,
-            color = MyUiTheme.colors.newNeutralDisabled,
-            style = MyUiTheme.typography.primary,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun NewTextInputPreview() {
-    WBTechnoschoolLesson2Theme {
-        NewTextInputView(onNameChange = {})
     }
 }

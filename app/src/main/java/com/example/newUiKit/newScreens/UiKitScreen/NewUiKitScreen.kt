@@ -161,7 +161,7 @@ fun NewUiKitScreen(
                 )
             }
             item {
-                NewTextInputView {}
+                NewTextInputView(onNameChange = {})
             }
             item {
                 MediumTag(

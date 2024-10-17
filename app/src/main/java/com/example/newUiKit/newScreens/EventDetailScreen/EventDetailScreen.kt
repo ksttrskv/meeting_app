@@ -53,6 +53,7 @@ fun EventDetailScreen(
     val lazyListState = rememberLazyListState()
     var previousIndex by remember { mutableStateOf(0) }
     var previousScrollOffset by remember { mutableStateOf(0) }
+    var isRegistered by remember { mutableStateOf(false) }
 
     // Определяем, когда показать кнопку
     val shouldShowButton = remember {
@@ -95,8 +96,7 @@ fun EventDetailScreen(
         },
         containerColor = Color.Transparent,
         bottomBar = {
-
-        // Анимация видимости кнопки и текста
+            // Анимация видимости кнопки и текста
             AnimatedVisibility(
                 visible = shouldShowButton.value,
                 enter = slideInVertically { it }, // Анимация появления снизу
@@ -105,7 +105,11 @@ fun EventDetailScreen(
                     .fillMaxWidth()
                     .height(animateDpAsState(if (shouldShowButton.value) 110.dp else 0.dp).value) // Анимация высоты
             ) {
-                PopupButton(navController = navController)
+                PopupButton(
+                    navController = navController,
+                    isRegistered = isRegistered,
+                    onRegistrationChange = { isRegistered = !isRegistered } // Обновляем состояние
+                )
             }
         }
     ) { contentPadding ->

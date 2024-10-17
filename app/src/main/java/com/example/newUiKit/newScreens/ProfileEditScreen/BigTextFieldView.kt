@@ -1,4 +1,4 @@
-package com.example.newUiKit.newInputFields
+package com.example.newUiKit.newScreens.ProfileEditScreen
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -9,17 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.wbtechnoschoollesson2.R
 
 @Composable
-fun NewTextInputView(
+fun BigTextFieldView(
     name: String = "",
     onNameChange: (String) -> Unit,
-    placeholderContent: @Composable () -> Unit = {
-        SimplePlaceholder(placeholderText = stringResource(id = R.string.name_and_lastname))
-    },
+    placeholderText: String = "Расскажите о себе",
 ) {
     val query = remember { mutableStateOf("") }
 
@@ -33,29 +29,20 @@ fun NewTextInputView(
     val keyboardController = LocalSoftwareKeyboardController.current
     val localFocusManager = LocalFocusManager.current
 
-    NewTextInputField(
+    AboutMeTextField(
         focusRequester = focusRequester,
         query = query.value,
         onQueryChange = {
             query.value = it
             hasError.value = it.length < 1  // Пример валидации
         },
-        placeholderContent = placeholderContent,
+        placeholderText = placeholderText,
         hasError = hasError.value,
         keyboardController = keyboardController,
         localFocusManager = localFocusManager,
         modifier = Modifier
             .fillMaxWidth()
-            .height(56.dp)
+            .height(102.dp)
 
     )
 }
-
-
-//@Preview(showBackground = true)
-//@Composable
-//fun NewTextInputPreview1() {
-//    WBTechnoschoolLesson2Theme {
-//        NewTextInputView {}
-//    }
-//}I

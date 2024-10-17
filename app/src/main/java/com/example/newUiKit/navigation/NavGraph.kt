@@ -15,6 +15,8 @@ import com.example.newUiKit.newScreens.EventDetailScreen.EventDetailScreen
 import com.example.newUiKit.newScreens.MainScreen.MainScreen
 import com.example.newUiKit.newScreens.MembersScreen.MembersScreen
 import com.example.newUiKit.newScreens.OnboardingScreen.OnboardingScreen
+import com.example.newUiKit.newScreens.ProfileEditScreen.ProfileEditScreen
+import com.example.newUiKit.newScreens.ProfileInsideScreen.ProfileInsideScreen
 import com.example.newUiKit.newScreens.ProfileOutsideScreen.ProfileOutsideScreen
 import com.example.newUiKit.newScreens.SplashScreen.SplashScreenWb
 import com.example.newUiKit.newScreens.UiKitScreen.NewUiKitScreen
@@ -67,7 +69,8 @@ fun NavGraph() {
         composable(Screens.AppointmentPhoneInputScreen) { AppointmentPhoneInputScreen(navController = navController) }
         composable(Screens.AppointmentFinalScreen) { AppointmentFinalScreen(navController = navController) }
         composable(Screens.MembersScreen) { MembersScreen(navController = navController) }
-//        composable(Screens.ProfileOutsideScreen) { ProfileOutsideScreen(navController = navController) }
+        composable(Screens.ProfileInsideScreen) { ProfileInsideScreen(navController = navController) }
+        composable(Screens.ProfileEditScreen) { ProfileEditScreen(navController = navController) }
         composable(
             route = "${Screens.EventDetailScreen}/{eventTitle}/{eventDate}/{eventLocation}/{eventImage}",
             arguments = listOf(
@@ -131,6 +134,25 @@ fun NavGraph() {
             )
 
         }
+// composable(
+//            route = "${Screens.ProfileEditScreen}/{title}/{painter}",
+//            arguments = listOf(
+//                navArgument("title") { type = NavType.StringType },
+//                navArgument("painter") { type = NavType.IntType },
+////                navArgument("tags") { type = NavType.StringType }
+//            )
+//        ) { backStackEntry ->
+//            val title = backStackEntry.arguments?.getString("title") ?: ""
+//            val painter =
+//                backStackEntry.arguments?.getInt("painter") ?: R.drawable.wb
+////            val tags = backStackEntry.arguments?.getString("tags") ?: ""
+//
+//     ProfileEditScreen(
+//                navController = navController,
+//                title = title, painter = painter
+//            )
+//
+//        }
 
     }
 }

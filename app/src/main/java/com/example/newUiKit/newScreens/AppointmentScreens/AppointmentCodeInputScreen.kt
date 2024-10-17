@@ -68,9 +68,9 @@ fun AppointmentCodeInputScreen(navController: NavController) {
                 style = MyUiTheme.typography.regular
             )
             Spacer(modifier = Modifier.height(24.dp))
-            NewCodeInputView {
+            NewCodeInputView(onCodeChange = {}
 
-            }
+            )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "Отправили код на +7 999 999-99-99",

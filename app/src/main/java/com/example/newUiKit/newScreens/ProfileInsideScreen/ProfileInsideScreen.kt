@@ -21,16 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
+import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newScreens.MainScreen.CommunityCardLine
 import com.example.newUiKit.newScreens.MainScreen.EventCardThinLine
 import com.example.newUiKit.newScreens.ProfileOutsideScreen.ProfileInfoCard
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
@@ -67,7 +65,13 @@ fun ProfileInsideScreen(navController: NavController) {
                         }
                     },
                     actions = {
-                        IconButton(onClick = { /*TODO*/ }) {
+                        IconButton(onClick = {
+                            navController.navigate(
+                                (Screens.ProfileEditScreen)
+                            ) {
+                                launchSingleTop = true
+                            }
+                        }) {
                             Icon(
                                 painter = painterResource(id = R.drawable.edit_ic),
                                 contentDescription = "",
@@ -123,11 +127,11 @@ fun ProfileInsideScreen(navController: NavController) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewProfileInside() {
-    MyMeetingAppTheme {
-        val navcontroller = rememberNavController()
-        ProfileInsideScreen(navController = navcontroller)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewProfileInside() {
+//    MyMeetingAppTheme {
+//        val navcontroller = rememberNavController()
+//        ProfileInsideScreen(navController = navcontroller)
+//    }
+//}
