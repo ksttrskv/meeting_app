@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
+import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newInputFields.IconAndTextPlaceholder
 import com.example.newUiKit.newInputFields.NewTextInputView
 import com.example.newUiKit.newInputFields.SimplePlaceholder
@@ -64,7 +65,12 @@ fun ProfileEditScreen(navController: NavController) {
                 NewTopBar(
                     title = "",
                     navigationIcon = {
-                        IconButton(onClick = { navController.navigateUp() }) {
+                        IconButton(onClick = {
+                            navController.navigate(Screens.ProfileEditScreen) {
+                                launchSingleTop = true
+                            }
+                        }
+                        ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.close),
                                 contentDescription = "Back",
@@ -108,7 +114,7 @@ fun ProfileEditScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(40.dp))
             NewHeading(text = "Интересы", modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(10.dp))
-            TagsListInsideEditProfile(tags = tags, modifier = Modifier.padding(horizontal = 16.dp))
+            TagsListInsideEditProfile(tags = tags, navController = navController)
         }
         item {
             Spacer(modifier = Modifier.height(40.dp))
@@ -166,7 +172,11 @@ fun ProfileEditScreen(navController: NavController) {
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .padding(bottom = 28.dp)
-                        .clickable { }
+                        .clickable {
+                            navController.navigate(Screens.ProfileDeleteScreen) {
+                                launchSingleTop = true
+                            }
+                        }
                 )
             }
         }

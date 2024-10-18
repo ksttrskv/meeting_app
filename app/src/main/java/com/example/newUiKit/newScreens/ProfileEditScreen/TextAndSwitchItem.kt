@@ -13,7 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.newUiKit.GradientSwitch
+import com.example.newUiKit.NewMolecules.SwitchItem
 import com.example.newUiKit.newTheme.MyUiTheme
 
 @Composable
@@ -31,6 +31,6 @@ fun TextAndSwitchItem(text: String, checked: Boolean, onCheckedChange: (Boolean)
             style = MyUiTheme.typography.primary,
             color = MyUiTheme.colors.newBrandDefault
         )
-        GradientSwitch(checked = checked, onCheckedChange = onCheckedChange)
+        SwitchItem(checked = checked, onCheckedChange = onCheckedChange)
     }
 }

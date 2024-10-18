@@ -15,6 +15,8 @@ import com.example.newUiKit.newScreens.EventDetailScreen.EventDetailScreen
 import com.example.newUiKit.newScreens.MainScreen.MainScreen
 import com.example.newUiKit.newScreens.MembersScreen.MembersScreen
 import com.example.newUiKit.newScreens.OnboardingScreen.OnboardingScreen
+import com.example.newUiKit.newScreens.ProfileDeleteScreen.ProfileDeleteScreen
+import com.example.newUiKit.newScreens.ProfileEditScreen.ChooseInterestsScreen
 import com.example.newUiKit.newScreens.ProfileEditScreen.ProfileEditScreen
 import com.example.newUiKit.newScreens.ProfileInsideScreen.ProfileInsideScreen
 import com.example.newUiKit.newScreens.ProfileOutsideScreen.ProfileOutsideScreen
@@ -71,6 +73,8 @@ fun NavGraph() {
         composable(Screens.MembersScreen) { MembersScreen(navController = navController) }
         composable(Screens.ProfileInsideScreen) { ProfileInsideScreen(navController = navController) }
         composable(Screens.ProfileEditScreen) { ProfileEditScreen(navController = navController) }
+        composable(Screens.ChooseInterestsScreen) { ChooseInterestsScreen(navController = navController) }
+        composable(Screens.ProfileDeleteScreen) { ProfileDeleteScreen(navController = navController) }
         composable(
             route = "${Screens.EventDetailScreen}/{eventTitle}/{eventDate}/{eventLocation}/{eventImage}",
             arguments = listOf(

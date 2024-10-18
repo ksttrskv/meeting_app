@@ -27,8 +27,8 @@ import com.example.newUiKit.NewMolecules.EventCardWide
 import com.example.newUiKit.NewMolecules.Logo
 import com.example.newUiKit.NewMolecules.LogoWithBackground
 import com.example.newUiKit.NewMolecules.PersonCard
+import com.example.newUiKit.NewMolecules.SwitchItem
 import com.example.newUiKit.NewMolecules.UserAvatar
-import com.example.newUiKit.SwitchItem
 import com.example.newUiKit.Tags.BigTag
 import com.example.newUiKit.Tags.MediumTag
 import com.example.newUiKit.Tags.SmallTag

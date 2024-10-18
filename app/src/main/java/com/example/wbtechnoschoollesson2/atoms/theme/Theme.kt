@@ -85,7 +85,7 @@ data class WbColor(
     val accentDanger: Color,
     val accentWarning: Color,
     val accentSuccess: Color,
-    val accentSafe: Color,
+    val neutralGrey: Color,
 
     )
 
@@ -106,7 +106,7 @@ val color = WbColor(
     accentDanger = Color(0xFFE94242),
     accentWarning = Color(0xFFFDCF41),
     accentSuccess = Color(0xFF2CC069),
-    accentSafe = Color(0xFF7BCBCF),
+    neutralGrey = Color(0xFFEFEFEF),
     neutralOffWhite = Color(0xFFF7F7FC)
 )
 
