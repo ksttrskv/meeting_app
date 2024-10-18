@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Switch
@@ -21,6 +22,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradient
@@ -49,7 +51,7 @@ fun SwitchItem(
             Box(
                 modifier = Modifier
                     .clip(CircleShape)
-                    .size(22.dp)
+                    .size(20.dp)
                     .background(UiTheme.colors.neutralOffWhite)
             )
         },
@@ -69,6 +71,9 @@ fun GradientSwitch(
         )
     ),
     thumbColor: Color = Color.White,
+    trackWidth: Dp = 48.dp, // Ширина трека
+    trackHeight: Dp = 24.dp, // Высота трека
+    thumbRadius: Dp = 12.dp // Радиус ползунка
 ) {
     val thumbPosition by animateFloatAsState(targetValue = if (checked) 1f else 0f)
     val circleRadius = remember { 14.dp }
@@ -76,7 +81,7 @@ fun GradientSwitch(
 
     Box(
         modifier = modifier
-            .size(width = 50.dp, height = 30.dp)
+            .size(width = trackWidth, height = trackHeight)
             .background(color = Color.Transparent)
             .clickable(
                 onClick = { onCheckedChange(!checked) },
@@ -94,14 +99,14 @@ fun GradientSwitch(
             )
 
             val thumbOffset = calculateThumbOffset(
-                start = 16.dp.toPx(),
-                stop = size.width - 16.dp.toPx(),
+                start = 13.dp.toPx(),
+                stop = size.width - 13.dp.toPx(),
                 fraction = thumbPosition
             )
 
             drawCircle(
                 color = thumbColor,
-                radius = circleRadius.toPx(),
+                radius = thumbRadius.toPx(),
                 center = Offset(x = thumbOffset, y = size.height / 2)
             )
         }
@@ -125,6 +130,10 @@ internal val buttonCommunityCardGradient = Brush.horizontalGradient(
 @Composable
 fun DefaultPreview() {
     WBTechnoschoolLesson2Theme {
-        SwitchItem(checked = true, onCheckedChange = {})
+        Column {
+            SwitchItem(checked = true, onCheckedChange = {})
+            GradientSwitch(checked = true, onCheckedChange = {})
+        }
+
     }
 }

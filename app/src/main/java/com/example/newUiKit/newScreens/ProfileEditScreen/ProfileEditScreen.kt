@@ -42,7 +42,9 @@ import com.example.wbtechnoschoollesson2.R
 @Composable
 fun ProfileEditScreen(navController: NavController) {
     val tags = listOf("Разработка", "Дизайн", "Продакт менеджер", "Бэкенд")
-    var isSwitchChecked by remember { mutableStateOf(true) }
+    var isSwitchChecked1 by remember { mutableStateOf(true) }
+    var isSwitchChecked2 by remember { mutableStateOf(true) }
+    var isSwitchChecked3 by remember { mutableStateOf(true) }
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -64,18 +66,19 @@ fun ProfileEditScreen(navController: NavController) {
                     navigationIcon = {
                         IconButton(onClick = { navController.navigateUp() }) {
                             Icon(
-                                painter = painterResource(id = R.drawable.back),
+                                painter = painterResource(id = R.drawable.close),
                                 contentDescription = "Back",
                                 modifier = Modifier.size(24.dp),
-                                tint = MyUiTheme.colors.newBrandDefault
+                                tint = MyUiTheme.colors.newSecondaryColor
                             )
                         }
                     },
                     actions = {
                         IconButton(onClick = { /*TODO*/ }) {
                             Icon(
-                                painter = painterResource(id = R.drawable.edit_ic),
+                                painter = painterResource(id = R.drawable.check_ic),
                                 contentDescription = "",
+                                modifier = Modifier.size(24.dp),
                                 tint = MyUiTheme.colors.newBrandDefault,
                             )
                         }
@@ -117,7 +120,6 @@ fun ProfileEditScreen(navController: NavController) {
                     text = "Социальные сети",
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
-                NewTextInputView(onNameChange = {})
                 NewTextInputView(onNameChange = {}, placeholderContent = {
                     IconAndTextPlaceholder(
                         iconRes = R.drawable.habr_icon,
@@ -138,11 +140,20 @@ fun ProfileEditScreen(navController: NavController) {
         }
         item {
             Spacer(modifier = Modifier.height(40.dp))
-            TextAndSwitchItem(text = "Показывать мои сообщества", checked = isSwitchChecked)
+            TextAndSwitchItem(
+                text = "Показывать мои сообщества",
+                checked = isSwitchChecked1,
+                onCheckedChange = { isSwitchChecked1 = it })
             Spacer(modifier = Modifier.height(16.dp))
-            TextAndSwitchItem(text = "Показывать мои встречи", checked = isSwitchChecked)
+            TextAndSwitchItem(
+                text = "Показывать мои встречи",
+                checked = isSwitchChecked2,
+                onCheckedChange = { isSwitchChecked2 = it })
             Spacer(modifier = Modifier.height(32.dp))
-            TextAndSwitchItem(text = "Включить уведомления", checked = isSwitchChecked)
+            TextAndSwitchItem(
+                text = "Включить уведомления",
+                checked = isSwitchChecked3,
+                onCheckedChange = { isSwitchChecked3 = it })
 
         }
         item {

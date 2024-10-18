@@ -96,12 +96,6 @@ fun MembersColumnRow(users: List<UserData>, navController: NavController) {
             tag = "Backend"
         ),
 
-//        UserData(
-//            title = "Илья",
-//            painter = R.drawable.test_avatar_user,
-//            tag = "Тестирование"
-//        ),
-
 
         )
     Column(modifier = Modifier.padding(16.dp)) {
