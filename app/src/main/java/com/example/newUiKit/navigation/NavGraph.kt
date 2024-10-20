@@ -22,7 +22,6 @@ import com.example.newUiKit.newScreens.ProfileInsideScreen.ProfileInsideScreen
 import com.example.newUiKit.newScreens.ProfileOutsideScreen.ProfileOutsideScreen
 import com.example.newUiKit.newScreens.SplashScreen.SplashScreenWb
 import com.example.newUiKit.newScreens.UiKitScreen.NewUiKitScreen
-import com.example.wbtechnoschoollesson2.R
 
 @Composable
 fun NavGraph() {
@@ -81,14 +80,14 @@ fun NavGraph() {
                 navArgument("eventTitle") { type = NavType.StringType },
                 navArgument("eventDate") { type = NavType.StringType },
                 navArgument("eventLocation") { type = NavType.StringType },
-                navArgument("eventImage") { type = NavType.IntType } // Если это ID ресурса
+                navArgument("eventImage") { type = NavType.StringType } // Если это ID ресурса
             )
         ) { backStackEntry ->
             val eventTitle = backStackEntry.arguments?.getString("eventTitle") ?: ""
             val eventDate = backStackEntry.arguments?.getString("eventDate") ?: ""
             val eventLocation = backStackEntry.arguments?.getString("eventLocation") ?: ""
-            val eventImage = backStackEntry.arguments?.getInt("eventImage")
-                ?: R.drawable.wb // картинка по умолчанию
+            val eventImage = backStackEntry.arguments?.getString("eventImage")
+                ?: ""// картинка по умолчанию
 
             EventDetailScreen(
                 navController = navController,
@@ -102,13 +101,13 @@ fun NavGraph() {
             route = "${Screens.CommunityDetailScreen}/{communityTitle}/{communityAvatarImage}",
             arguments = listOf(
                 navArgument("communityTitle") { type = NavType.StringType },
-                navArgument("communityAvatarImage") { type = NavType.IntType },
+                navArgument("communityAvatarImage") { type = NavType.StringType },
 //                navArgument("tags") { type = NavType.StringType }
             )
         ) { backStackEntry ->
             val communityTitle = backStackEntry.arguments?.getString("communityTitle") ?: ""
             val communityAvatarImage =
-                backStackEntry.arguments?.getInt("communityAvatarImage") ?: R.drawable.wb
+                backStackEntry.arguments?.getString("communityAvatarImage") ?: ""
 //            val tags = backStackEntry.arguments?.getString("tags") ?: ""
 
             CommunityDetailScreen(
@@ -120,21 +119,21 @@ fun NavGraph() {
 
         }
         composable(
-            route = "${Screens.ProfileOutsideScreen}/{title}/{painter}",
+            route = "${Screens.ProfileOutsideScreen}/{title}/{image}",
             arguments = listOf(
                 navArgument("title") { type = NavType.StringType },
-                navArgument("painter") { type = NavType.IntType },
+                navArgument("image") { type = NavType.StringType },
 //                navArgument("tags") { type = NavType.StringType }
             )
         ) { backStackEntry ->
             val title = backStackEntry.arguments?.getString("title") ?: ""
-            val painter =
-                backStackEntry.arguments?.getInt("painter") ?: R.drawable.wb
+            val image =
+                backStackEntry.arguments?.getString("image") ?: ""
 //            val tags = backStackEntry.arguments?.getString("tags") ?: ""
 
             ProfileOutsideScreen(
                 navController = navController,
-                title = title, painter = painter
+                title = title, image = image
             )
 
         }

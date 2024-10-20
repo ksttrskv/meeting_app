@@ -10,16 +10,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import com.example.newUiKit.Tags.MediumTagsList
 import com.example.newUiKit.newTheme.MyUiTheme
 
 @Composable
 fun CommunityDetailCard(
     communityTitle: String,
-    communityAvatar: Painter,
+    communityAvatar: String,
     modifier: Modifier = Modifier
 ) {
     val tags = listOf("Разработка", "Карьера", "Тестирование", "Дизайн", "Бизнес")
@@ -28,7 +28,7 @@ fun CommunityDetailCard(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Image(
-            painter = communityAvatar,
+            painter = rememberAsyncImagePainter(model = communityAvatar),
             contentDescription = "Community avatar",
             contentScale = ContentScale.Crop,
             modifier = Modifier

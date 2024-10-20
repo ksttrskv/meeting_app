@@ -1,44 +1,43 @@
 package com.example.newUiKit.newScreens.MainScreen
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.newUiKit.NewMolecules.CommunityCard
 import com.example.newUiKit.navigation.Screens
-import com.example.wbtechnoschoollesson2.R
 
 @Composable
 fun CommunityCardLine(navController: NavController) {
     val communities = listOf(
         CommunityData(
             title = "Супер тестировщики",
-            imageRes = R.drawable.zapuskaem_gus
+            imageRes = "https://itsochi.pro/img/hello/swim.svg"
         ),
         CommunityData(
             title = "The IT Crowd",
-            imageRes = R.drawable.comp_img
+            imageRes = "https://itproger.com/img/main_page/mobile-main.svg"
         ),
         CommunityData(
             title = "Супер тестировщики",
-            imageRes = R.drawable.zapuskaem_gus
+            imageRes = "https://legalacademy.ru/images/lfa/ARTICLE/5752648/COVER_LIST/5752660.jpg"
         ),
         CommunityData(
             title = "Супер тестировщики",
-            imageRes = R.drawable.zapuskaem_gus
+            imageRes = "https://ares.by/uploaded/articles/116/116-1653398415-0-23.jpg"
         ),
         CommunityData(
             title = "Супер тестировщики",
-            imageRes = R.drawable.zapuskaem_gus
+            imageRes = "https://legalacademy.ru/images/lfa/ARTICLE/5752648/COVER_LIST/5752660.jpg"
         ),
         CommunityData(
             title = "Супер тестировщики",
-            imageRes = R.drawable.zapuskaem_gus
+            imageRes = "https://legalacademy.ru/images/lfa/ARTICLE/5752648/COVER_LIST/5752660.jpg"
         ),
 
         )
@@ -47,10 +46,14 @@ fun CommunityCardLine(navController: NavController) {
         itemsIndexed(communities) { index, community ->
             CommunityCard(
                 title = community.title,
-                painter = painterResource(id = community.imageRes),
+                imageRes = community.imageRes,
                 onClick = {
                     navController.navigate(
-                        "${Screens.CommunityDetailScreen}/${community.title}/${community.imageRes}"
+                        "${Screens.CommunityDetailScreen}/${Uri.encode(community.title)}/${
+                            Uri.encode(
+                                community.imageRes
+                            )
+                        }"
                     ) {
                         launchSingleTop = true
                     }
@@ -65,5 +68,5 @@ fun CommunityCardLine(navController: NavController) {
 
 data class CommunityData(
     val title: String,
-    val imageRes: Int,
+    val imageRes: String,
 )

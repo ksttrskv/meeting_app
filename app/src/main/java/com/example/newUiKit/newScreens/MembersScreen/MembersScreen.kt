@@ -28,7 +28,7 @@ fun MembersScreen(navController: NavController) {
     val users = listOf(
         UserData(
             title = "Мария",
-            painter = R.drawable.user_avatar,
+            painter = "https://steamuserimages-a.akamaihd.net/ugc/954095759586959741/5EBE100FD5AB473DBCE04280D14CAC8B1ABE5753/",
             tag = "Developer"
         )
 

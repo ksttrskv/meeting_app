@@ -30,10 +30,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import coil.compose.rememberAsyncImagePainter
 import com.example.newUiKit.NewMolecules.AvatarMembersRow
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
-import com.example.newUiKit.NewMolecules.members
+import com.example.newUiKit.NewMolecules.users
 import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newScreens.MainScreen.EventCardThinLine
 import com.example.newUiKit.newTheme.MyUiTheme
@@ -46,7 +47,7 @@ fun EventDetailScreen(
     eventTitle: String,
     eventDate: String,
     eventLocation: String,
-    eventImageRes: Int
+    eventImageRes: String
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val eventTitle = navBackStackEntry?.arguments?.getString("eventTitle") ?: ""
@@ -67,6 +68,9 @@ fun EventDetailScreen(
 
             isScrollingDown
         }
+    }
+    val avatarPainters = users.map { user ->
+        rememberAsyncImagePainter(model = user.painter)
     }
     Scaffold(
         topBar = {
@@ -123,7 +127,7 @@ fun EventDetailScreen(
             item {
                 EventDetailCard(
                     eventTitle = eventTitle,
-                    painter = painterResource(id = eventImageRes),
+                    imageUrl = eventImageRes,
                     date = eventDate,
                     location = eventLocation,
                     modifier = Modifier.padding(horizontal = 16.dp)
@@ -160,7 +164,7 @@ fun EventDetailScreen(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 AvatarMembersRow(
-                    avatarResIds = members,
+                    avatarPainters = avatarPainters,
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
                         .clickable {
@@ -189,4 +193,5 @@ fun EventDetailScreen(
             }
         }
     }
+
 }

@@ -22,6 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
 import com.example.newUiKit.newScreens.MainScreen.CommunityCardLine
@@ -30,7 +31,7 @@ import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
 @Composable
-fun ProfileOutsideScreen(navController: NavController, title: String, painter: Int) {
+fun ProfileOutsideScreen(navController: NavController, title: String, image: String) {
     val tags = listOf("Тестирование", "Разработка", "Дизайн", "Продакт менеджер", "Бэкенд")
 
     LazyColumn(
@@ -42,7 +43,7 @@ fun ProfileOutsideScreen(navController: NavController, title: String, painter: I
         item {
             Box {
                 Image(
-                    painter = painterResource(id = painter),
+                    painter = rememberAsyncImagePainter(image),
                     contentDescription = "",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier

@@ -1,5 +1,6 @@
 package com.example.newUiKit.newScreens.CommunityDetailScreen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -23,10 +24,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
 import com.example.newUiKit.NewMolecules.AvatarMembersRow
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
-import com.example.newUiKit.NewMolecules.members
+import com.example.newUiKit.NewMolecules.users
+import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newScreens.MainScreen.EventCardThinLine
 import com.example.newUiKit.newScreens.MainScreen.EventCardWideColumn
 import com.example.newUiKit.newTheme.MyUiTheme
@@ -39,10 +42,13 @@ import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
 fun CommunityDetailScreen(
     navController: NavController,
     communityTitle: String,
-    communityAvatarImage: Int,
+    communityAvatarImage: String,
 //    tags: List<String> = listOf("Разработка", "Карьера", "Тестирование", "Дизайн", "Бизнес")
 ) {
     var isRegistered by remember { mutableStateOf(false) }
+    val avatarPainters = users.map { user ->
+        rememberAsyncImagePainter(model = user.painter)
+    }
     Scaffold(
         topBar = {
             NewTopBar(
@@ -80,7 +86,7 @@ fun CommunityDetailScreen(
             item {
                 CommunityDetailCard(
                     communityTitle = communityTitle,
-                    communityAvatar = painterResource(id = communityAvatarImage),
+                    communityAvatar = communityAvatarImage,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }
@@ -113,7 +119,6 @@ fun CommunityDetailScreen(
                             color = MyUiTheme.colors.newBrandDefault
                         )
                     }
-//                SubscribeButtonAndText()
                 }
             }
             item {
@@ -130,8 +135,14 @@ fun CommunityDetailScreen(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 AvatarMembersRow(
-                    avatarResIds = members,
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    avatarPainters = avatarPainters,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .clickable {
+                            navController.navigate(Screens.MembersScreen) {
+                                launchSingleTop = true
+                            }
+                        }
                 )
             }
             item {
