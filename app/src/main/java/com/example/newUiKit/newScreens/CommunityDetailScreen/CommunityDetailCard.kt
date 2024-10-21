@@ -45,10 +45,3 @@ fun CommunityDetailCard(
 
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewCommunityDetailCard() {
-//    WBTechnoschoolLesson2Theme {
-//        CommunityDetailCard(communityTitle = "The IT Crowd", communityAvatar = painterResource(id = R.drawable.zapuskaem_gus))
-//    }
-//}

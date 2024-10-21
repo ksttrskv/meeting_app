@@ -84,12 +84,3 @@ fun PopupButton(
         }
     }
 }
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewPopupButton() {
-//    WBTechnoschoolLesson2Theme {
-//        val navController = rememberNavController()
-//        PopupButton(navController = navController)
-//    }
-//}

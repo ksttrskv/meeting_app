@@ -26,7 +26,6 @@ import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 @Composable
 fun UserAvatar(
     imageUrl: String,
-//    avatarResId: Int,
     isEditing: Boolean,
     size: Dp,
     modifier: Modifier = Modifier
@@ -40,7 +39,6 @@ fun UserAvatar(
     ) {
         Image(
             painter = rememberAsyncImagePainter(imageUrl),
-//            painter = painterResource(id = R.drawable.test_avatar_user),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -76,7 +74,6 @@ fun PreviewProfileAvatar() {
 
             UserAvatar(
                 imageUrl = "https://s3-alpha-sig.figma.com/img/fa6d/f816/18a1e0468b6f5978e2adb058a64935e6?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kVYVZrIPvXSXMi4J8hfzMgICf6N25qN-mDsq4me18K7YjnMoTvONxhNu9LZvfTOqy02wnHmnrbTXCPOCbDQcxq77OnfHJ1SX12V3nGwB20~KY~66k7v8J8pGd06XlGjDOl4KsAsOUQ58B8wqdqaRJO3ddQtbbJVKxDFoMrcCE3Ni~oB-EMot3jldWrncMbiWdAnXCSCOPfwh7emYIUXLPlHcGNCq8Q7kne9dmBE0AAuMFWcs6Hwm8LVcBKiwBNDLoyngHWJqJCKQBLg1iut~t2dLELDk0MRbfFSYCbG~~9RQlaQBlgsfAiFA-KO4gof0~lDvxQ0AuXTD4EZHV26DeA_",
-//                avatarResId = R.drawable.test_avatar_user,
                 isEditing = false,
                 modifier = Modifier.padding(16.dp),
                 size = 100.dp
@@ -85,7 +82,6 @@ fun PreviewProfileAvatar() {
             Spacer(modifier = Modifier.size(16.dp))
             UserAvatar(
                 imageUrl = "https://s3-alpha-sig.figma.com/img/fa6d/f816/18a1e0468b6f5978e2adb058a64935e6?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kVYVZrIPvXSXMi4J8hfzMgICf6N25qN-mDsq4me18K7YjnMoTvONxhNu9LZvfTOqy02wnHmnrbTXCPOCbDQcxq77OnfHJ1SX12V3nGwB20~KY~66k7v8J8pGd06XlGjDOl4KsAsOUQ58B8wqdqaRJO3ddQtbbJVKxDFoMrcCE3Ni~oB-EMot3jldWrncMbiWdAnXCSCOPfwh7emYIUXLPlHcGNCq8Q7kne9dmBE0AAuMFWcs6Hwm8LVcBKiwBNDLoyngHWJqJCKQBLg1iut~t2dLELDk0MRbfFSYCbG~~9RQlaQBlgsfAiFA-KO4gof0~lDvxQ0AuXTD4EZHV26DeA_",
-//                avatarResId = R.drawable.test_avatar_user,
                 isEditing = true,
                 modifier = Modifier.padding(16.dp),
                 size = 100.dp

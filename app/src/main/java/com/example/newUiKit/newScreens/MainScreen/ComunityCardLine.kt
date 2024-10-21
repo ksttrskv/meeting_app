@@ -17,11 +17,11 @@ fun CommunityCardLine(navController: NavController) {
     val communities = listOf(
         CommunityData(
             title = "Супер тестировщики",
-            imageRes = "https://itsochi.pro/img/hello/swim.svg"
+            imageRes = "https://www.cv-library.co.uk/career-advice/wp-content/uploads/2018/06/What-is-it-like-working-in-IT-e1651761435165.jpg"
         ),
         CommunityData(
             title = "The IT Crowd",
-            imageRes = "https://itproger.com/img/main_page/mobile-main.svg"
+            imageRes = "https://www.cv-library.co.uk/career-advice/wp-content/uploads/2018/06/What-is-it-like-working-in-IT-e1651761435165.jpg"
         ),
         CommunityData(
             title = "Супер тестировщики",

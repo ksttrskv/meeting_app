@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.NewMolecules.NewTopBar
+import com.example.newUiKit.NewMolecules.users
 import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
@@ -25,14 +26,6 @@ import com.example.wbtechnoschoollesson2.R
 @Composable
 fun MembersScreen(navController: NavController) {
 
-    val users = listOf(
-        UserData(
-            title = "Мария",
-            painter = "https://steamuserimages-a.akamaihd.net/ugc/954095759586959741/5EBE100FD5AB473DBCE04280D14CAC8B1ABE5753/",
-            tag = "Developer"
-        )
-
-    )
     Scaffold(
         topBar = {
             NewTopBar(

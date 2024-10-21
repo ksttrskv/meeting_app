@@ -88,6 +88,7 @@ fun AppointmentNameInputScreen(navController: NavController) {
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 28.dp)
+                .height(56.dp)
         )
     }
 }

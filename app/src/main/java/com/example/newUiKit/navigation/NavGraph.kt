@@ -32,33 +32,6 @@ fun NavGraph() {
         navController = navController,
         startDestination = Screens.SplashScreenWb,
     ) {
-//        composable(Screens.Splash) { SplashScreen(navController = navController) }
-//        composable(Screens.MyMeetings) { MyMeetingScreen(navController = navController) }
-//        composable(Screens.Profile) { ProfileScreen(navController = navController) }
-//        composable(Screens.AllMeetings) { AllMeetingScreen(navController = navController) }
-//        composable(Screens.MoreScreen) { MoreScreen(navController = navController) }
-//        composable(Screens.Communitites) { CommunityScreen(navController = navController) }
-//        composable(
-//            route = "${Screens.CommunityDetail}/{communityTitle}",
-//            arguments = listOf(navArgument("communityTitle") { type = NavType.StringType })
-//        ) { backStackEntry ->
-//            val communityTitle = backStackEntry.arguments?.getString("communityTitle") ?: ""
-//            CommunityDetailScreenOldUi(communityTitle, navController)
-//        }
-//        composable(
-//            route = "${Screens.MeetingDetail}/{meeting}",
-//            arguments = listOf(navArgument("meeting") { type = NavType.StringType })
-//        ) { backStackEntry ->
-//            val meetingId = backStackEntry.arguments?.getString("meeting") ?: ""
-//            val meetingViewModel: MeetingViewModel = getViewModel()
-//            val meeting = meetingViewModel.getAllMeetings().find { it.title == meetingId }
-//            if (meeting != null) {
-//                MeetingDetailScreen(meeting, navController, meetingViewModel)
-//            }
-//        }
-//        composable(Screens.Login) { LoginScreen(navController = navController) }
-//        composable(Screens.CodeInput) { CodeInputScreen(navController = navController) }
-//        composable(Screens.ProfileCreate) { ProfileCreateScreen(navController = navController) }
 
         // New Screens
         composable(Screens.NewUiKitScreen) { NewUiKitScreen(navController = navController) }
@@ -137,25 +110,6 @@ fun NavGraph() {
             )
 
         }
-// composable(
-//            route = "${Screens.ProfileEditScreen}/{title}/{painter}",
-//            arguments = listOf(
-//                navArgument("title") { type = NavType.StringType },
-//                navArgument("painter") { type = NavType.IntType },
-////                navArgument("tags") { type = NavType.StringType }
-//            )
-//        ) { backStackEntry ->
-//            val title = backStackEntry.arguments?.getString("title") ?: ""
-//            val painter =
-//                backStackEntry.arguments?.getInt("painter") ?: R.drawable.wb
-////            val tags = backStackEntry.arguments?.getString("tags") ?: ""
-//
-//     ProfileEditScreen(
-//                navController = navController,
-//                title = title, painter = painter
-//            )
-//
-//        }
 
     }
 }

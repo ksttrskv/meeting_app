@@ -40,10 +40,3 @@ fun SearchAndIconLine(navController: NavController) {
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun SearchAndIconPreview() {
-//    MyMeetingAppTheme {
-//        SearchAndIconLine()
-//    }
-//}

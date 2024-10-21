@@ -159,7 +159,7 @@ fun CommunityDetailScreen(
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                EventCardThinLine()
+                EventCardThinLine(navController = navController)
             }
         }
     }

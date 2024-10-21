@@ -27,7 +27,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.newUiKit.NewMolecules.NewHeading
@@ -36,7 +35,6 @@ import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newInputFields.IconAndTextPlaceholder
 import com.example.newUiKit.newInputFields.NewTextInputView
 import com.example.newUiKit.newInputFields.SimplePlaceholder
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
@@ -66,7 +64,7 @@ fun ProfileEditScreen(navController: NavController) {
                     title = "",
                     navigationIcon = {
                         IconButton(onClick = {
-                            navController.navigate(Screens.ProfileEditScreen) {
+                            navController.navigate(Screens.ProfileInsideScreen) {
                                 launchSingleTop = true
                             }
                         }
@@ -182,21 +180,4 @@ fun ProfileEditScreen(navController: NavController) {
         }
     }
 
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewProfileEditScreen() {
-    MyMeetingAppTheme {
-//        val navcontroller = rememberNavController()
-//        ProfileEditScreen(navController = navcontroller)
-        NewTextInputView(onNameChange = {}, placeholderContent = {
-            IconAndTextPlaceholder(
-                iconRes = R.drawable.habr_icon,
-                placeholderText = "Хабр"
-            )
-        }
-        )
-    }
 }

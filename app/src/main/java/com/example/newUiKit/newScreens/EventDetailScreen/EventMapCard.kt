@@ -34,9 +34,9 @@ fun EventMapCard(
     metroStation: String,
     modifier: Modifier = Modifier
 ) {
-    val tags = listOf(
-        "Backend", "Тестирование", "Разработка"
-    )
+//    val tags = listOf(
+//        "Backend", "Тестирование", "Разработка"
+//    )
     Card(
         colors = CardDefaults.cardColors(Color.Transparent),
         modifier = modifier

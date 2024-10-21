@@ -29,7 +29,6 @@ fun EventDetailCard(
     eventTitle: String,
     textStyle: TextStyle = MyUiTheme.typography.H1,
     imageUrl: String,
-//    painter: String,
     date: String,
     location: String,
     modifier: Modifier = Modifier
@@ -46,7 +45,6 @@ fun EventDetailCard(
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Image(
                 painter = rememberAsyncImagePainter(imageUrl),
-//                painter = painter,
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -80,7 +78,6 @@ fun PreviewMeetingCard() {
         EventDetailCard(
             eventTitle = "Python days",
             imageUrl = "https://ibb.co/6w71wQW",
-//            painter = painterResource(id = R.drawable.pythondays),
             date = "10 августа",
             location = "Кожевенная линия, 40",
         )

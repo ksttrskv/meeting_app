@@ -93,6 +93,7 @@ fun AppointmentPhoneInputScreen(navController: NavController) {
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 28.dp)
                 .padding(horizontal = 16.dp)
+                .height(56.dp)
         )
     }
 }

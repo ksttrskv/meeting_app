@@ -36,7 +36,7 @@ fun SwitchItem(
     thumbRadius: Dp = 12.dp // Радиус ползунка
 ) {
     val thumbPosition by animateFloatAsState(targetValue = if (checked) 1f else 0f)
-    val circleRadius = remember { 14.dp }
+//    val circleRadius = remember { 14.dp }
     val interactionSource = remember { MutableInteractionSource() }
 
     Box(

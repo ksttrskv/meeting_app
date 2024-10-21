@@ -50,7 +50,7 @@ fun MainScreen(navController: NavController) {
                         modifier = Modifier.padding(start = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    EventCardThinLine() //Лайн для укорочения кода
+                    EventCardThinLine(navController = navController) //Лайн для укорочения кода
                 }
             }
             item {
@@ -80,7 +80,7 @@ fun MainScreen(navController: NavController) {
 
             item {
                 Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
-                    Banner()
+                    Banner(navController = navController)
                 }
             }
             item {
@@ -93,7 +93,7 @@ fun MainScreen(navController: NavController) {
                         modifier = Modifier.padding(start = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    PersonCardline() //Лайн для укорочения кода
+                    PersonCardline(navController = navController) //Лайн для укорочения кода
                 }
             }
             item {

@@ -55,7 +55,13 @@ fun ProfileInsideScreen(navController: NavController) {
                 NewTopBar(
                     title = "",
                     navigationIcon = {
-                        IconButton(onClick = { navController.navigateUp() }) {
+                        IconButton(onClick = {
+                            navController.navigate(
+                                (Screens.MainScreen)
+                            ) {
+                                launchSingleTop = true
+                            }
+                        }) {
                             Icon(
                                 painter = painterResource(id = R.drawable.back),
                                 contentDescription = "Back",
@@ -99,7 +105,7 @@ fun ProfileInsideScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(40.dp))
             NewHeading(text = "Мои встречи", modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(10.dp))
-            EventCardThinLine()
+            EventCardThinLine(navController = navController)
         }
         item {
             Spacer(modifier = Modifier.height(40.dp))
@@ -125,13 +131,3 @@ fun ProfileInsideScreen(navController: NavController) {
     }
 
 }
-
-
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewProfileInside() {
-//    MyMeetingAppTheme {
-//        val navcontroller = rememberNavController()
-//        ProfileInsideScreen(navController = navcontroller)
-//    }
-//}

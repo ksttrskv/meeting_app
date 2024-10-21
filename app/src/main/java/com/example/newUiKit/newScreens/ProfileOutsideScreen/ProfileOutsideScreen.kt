@@ -91,7 +91,7 @@ fun ProfileOutsideScreen(navController: NavController, title: String, image: Str
             Spacer(modifier = Modifier.height(40.dp))
             NewHeading(text = "Мои встречи", modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(10.dp))
-            EventCardThinLine()
+            EventCardThinLine(navController = navController)
         }
         item {
             Spacer(modifier = Modifier.height(40.dp))
