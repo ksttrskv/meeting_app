@@ -10,6 +10,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -18,13 +21,18 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.NewMolecules.NewTopBar
-import com.example.newUiKit.NewMolecules.users
 import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun MembersScreen(navController: NavController) {
+fun MembersScreen(navController: NavController, viewModel: MembersViewModel = getViewModel()) {
+    val users by viewModel.users.observeAsState(emptyList())
+
+    LaunchedEffect(Unit) {
+        viewModel.loadUsers()
+    }
 
     Scaffold(
         topBar = {

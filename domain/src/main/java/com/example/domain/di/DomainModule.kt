@@ -1,6 +1,5 @@
 package com.example.domain.di
 
-//import com.example.domain.stubs.ProfileRepositoryStub
 import MeetingRepository
 import com.example.domain.repository.ProfileRepository
 import com.example.domain.stubs.CommunityStub

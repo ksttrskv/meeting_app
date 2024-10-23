@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newButtons.NewSolidButton
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.combinedGradient
@@ -56,7 +57,9 @@ fun Banner(
                 },
                 enabledGradient = multiColorLinearGradientWhite(),
                 onClick = {
-                    navController.navigateUp()
+                    navController.navigate(Screens.OnboardingScreen) {
+                        launchSingleTop = true
+                    }
 
                 },
             )
