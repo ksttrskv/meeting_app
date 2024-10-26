@@ -27,11 +27,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.navigation.Screens
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun AppointmentFinalScreen(navController: NavController) {
@@ -113,7 +113,7 @@ fun AppointmentFinalScreen(navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewAppointmentScreens() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         val navController = rememberNavController()
         AppointmentFinalScreen(navController = navController)
     }

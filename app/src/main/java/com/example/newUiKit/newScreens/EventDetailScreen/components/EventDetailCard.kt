@@ -21,8 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.newUiKit.NewMolecules.MediumTagsList
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun EventDetailCard(
@@ -74,7 +74,7 @@ fun EventDetailCard(
 @Preview(showBackground = true)
 @Composable
 fun PreviewMeetingCard() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         EventDetailCard(
             eventTitle = "Python days",
             imageUrl = "https://ibb.co/6w71wQW",

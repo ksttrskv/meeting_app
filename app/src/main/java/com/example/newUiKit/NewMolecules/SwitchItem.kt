@@ -19,8 +19,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 
 @Composable
@@ -83,7 +83,7 @@ private fun calculateThumbOffset(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         Column {
             SwitchItem(checked = true, onCheckedChange = {})
         }

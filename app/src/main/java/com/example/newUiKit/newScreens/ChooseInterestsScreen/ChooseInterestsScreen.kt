@@ -17,11 +17,11 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.NewMolecules.BigTagsList
 import com.example.newUiKit.navigation.Screens
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
-import com.example.wbtechnoschoollesson2.uiKitScreen.Heading
+
 
 @Composable
 fun ChooseInterestsScreen(navController: NavController) {
@@ -38,7 +38,10 @@ fun ChooseInterestsScreen(navController: NavController) {
     ) {
         Column(modifier = Modifier.padding(horizontal = 16.dp)) {
 
-            Heading(text = "Интересы")
+            Text(
+                text = "Интересы",
+                style = MyUiTheme.typography.Huge
+            )
             Text(
                 text = "Выберите интересы, чтобы мы рекомендовали полезные встречи",
                 style = MyUiTheme.typography.regular
@@ -76,7 +79,7 @@ fun ChooseInterestsScreen(navController: NavController) {
 @Composable
 fun OnboardingScreenPreview() {
     val navController = rememberNavController()
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         ChooseInterestsScreen(navController = navController)
     }
 }

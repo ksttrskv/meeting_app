@@ -24,8 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.newUiKit.newButtons.SubscribeButton
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 
 @Composable
@@ -80,7 +80,7 @@ fun CommunityCard(
 @Preview(showBackground = true)
 @Composable
 fun PreviewCommunityCard() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         CommunityCard(
             title = "Супер тестировщики",
             imageRes = "",

@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2
+package com.example
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

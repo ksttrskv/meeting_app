@@ -22,8 +22,8 @@ import androidx.compose.ui.zIndex
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import com.example.models.UserData
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 const val MAX_VISIBLE_AVATARS = 5
 
@@ -157,7 +157,7 @@ val users = listOf(
 @Preview(showBackground = true)
 @Composable
 fun PreviewAvatarRows() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         val avatarPainters = users.map { user ->
             rememberAsyncImagePainter(model = user.painter)
         }

@@ -19,9 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
+import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun UserAvatar(
@@ -34,7 +34,7 @@ fun UserAvatar(
         modifier = modifier
             .size(size)
             .clip(CircleShape)
-            .background(color = UiTheme.colors.neutralOffWhite, shape = CircleShape),
+            .background(color = MyUiTheme.colors.neutralActive, shape = CircleShape),
         contentAlignment = Alignment.Center
     ) {
         Image(
@@ -57,7 +57,7 @@ fun UserAvatar(
                 Icon(
                     painter = painterResource(id = R.drawable.edit_plus_ic),
                     contentDescription = null,
-                    tint = UiTheme.colors.neutralActive,
+                    tint = MyUiTheme.colors.neutralActive,
                     modifier = Modifier.size(24.dp)
                 )
             }
@@ -69,7 +69,7 @@ fun UserAvatar(
 @Preview(showBackground = true)
 @Composable
 fun PreviewProfileAvatar() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         Row(verticalAlignment = Alignment.CenterVertically) {
 
             UserAvatar(

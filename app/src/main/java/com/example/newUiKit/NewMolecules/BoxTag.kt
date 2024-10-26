@@ -18,8 +18,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import com.google.accompanist.flowlayout.FlowRow
 
 
@@ -164,7 +164,7 @@ fun MediumTagsList(tags: List<String>, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun TagsPreview() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         Column {
             MediumTag(text = "Subscribe", isSelected = false, onSelectedChange = {})
             BigTag(text = "Дизайн", isSelected = true, onSelectedChange = {})

@@ -19,9 +19,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 
 @Composable
@@ -40,7 +39,7 @@ fun PersonCard(
                 modifier = Modifier
                     .size(104.dp)
                     .clip(CircleShape)
-                    .background(color = UiTheme.colors.neutralOffWhite, shape = CircleShape),
+                    .background(color = MyUiTheme.colors.neutralActive, shape = CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
@@ -71,7 +70,7 @@ fun PersonCard(
 @Preview(showBackground = true)
 @Composable
 fun PreviewPersonCard() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         PersonCard(
             title = "Крис",
             imageUrl = "https://www.fonvirtual.com/en/wp-content/uploads/2020/03/telecommuting-opt.jpg",

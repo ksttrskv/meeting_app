@@ -10,20 +10,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.wbtechnoschoollesson2.atoms.buttons.DefaultButtonContent
-import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
+import com.example.newUiKit.newTheme.MyUiTheme
 
 @Composable
 fun WbTextButton(
-    content: @Composable () -> Unit = { DefaultButtonContent() },
-    btnColor: Color,
+    content: @Composable () -> Unit = { },
+//    btnColor: Color,
     textColor: Color,
     enabled: Boolean = false,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-//    val disabledTextColor = textColor.copy(alpha = 0.5f)
     Button(
         modifier = modifier
             .height(52.dp)
@@ -43,12 +41,12 @@ fun WbTextButton(
 @Preview(showBackground = true)
 @Composable
 fun GreetingTextPreview() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
 
         WbTextButton(
             content = { Text(text = "Button") },
-            btnColor = UiTheme.colors.brandColorDefault,
-            textColor = UiTheme.colors.brandColorDefault,
+//            btnColor = MyUiTheme.colors.newBrandDefault,
+            textColor = MyUiTheme.colors.newBrandDefault,
             onClick = { /*TODO*/ }
         )
 

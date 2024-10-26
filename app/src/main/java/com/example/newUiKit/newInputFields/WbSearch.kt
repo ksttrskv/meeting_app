@@ -30,9 +30,9 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun WbSearchBar(
@@ -128,7 +128,7 @@ private fun Placeholder(
 @Preview(showBackground = true)
 @Composable
 fun PreviewWbSearch() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         WbSearchView()
     }
 }

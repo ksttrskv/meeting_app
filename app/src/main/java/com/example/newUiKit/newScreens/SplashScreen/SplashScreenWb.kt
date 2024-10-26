@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.navigation.Screens
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 import kotlinx.coroutines.delay
 
 @Composable
@@ -61,7 +61,7 @@ fun SplashScreenWb(navController: NavController) {
 @Composable
 fun SplashScreenWbPreview() {
     val navController = rememberNavController()
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         SplashScreenWb(navController = navController)
     }
 }

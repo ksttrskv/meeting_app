@@ -11,7 +11,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,6 +27,7 @@ import com.example.newUiKit.NewMolecules.EventCardWide
 import com.example.newUiKit.NewMolecules.Logo
 import com.example.newUiKit.NewMolecules.LogoWithBackground
 import com.example.newUiKit.NewMolecules.MediumTag
+import com.example.newUiKit.NewMolecules.NewTopBar
 import com.example.newUiKit.NewMolecules.PersonCard
 import com.example.newUiKit.NewMolecules.SmallTag
 import com.example.newUiKit.NewMolecules.SwitchItem
@@ -39,16 +39,12 @@ import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
-import com.example.wbtechnoschoollesson2.navigation.TopBar3
-import com.example.wbtechnoschoollesson2.screens.ViewModels.LoginScreenViewModel
 import kotlinx.coroutines.delay
-import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun NewUiKitScreen(
     modifier: Modifier = Modifier, navController: NavController,
-    viewModel: LoginScreenViewModel = koinViewModel()
 ) {
     var isLoading by remember { mutableStateOf(false) }
     var isSwitchChecked by remember { mutableStateOf(true) }
@@ -57,7 +53,6 @@ fun NewUiKitScreen(
     var isMediumTagSelected by remember { mutableStateOf(false) }
     var isBigTagSelected by remember { mutableStateOf(false) }
     var isSubscribe by remember { mutableStateOf(false) }
-    val userPhoneInput by viewModel.userPhoneInput.collectAsState()
     // `LaunchedEffect` находится на верхнем уровне
     LaunchedEffect(isLoading) {
         if (isLoading) {
@@ -67,7 +62,7 @@ fun NewUiKitScreen(
     }
     Scaffold(
         topBar = {
-            TopBar3(
+            NewTopBar(
                 title = "Как повышать грейд. Лекция...",
                 navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
@@ -217,7 +212,7 @@ fun NewUiKitScreen(
                 )
             }
             item {
-                PhoneInput(onPhoneChange = viewModel::onPhoneChanged)
+                PhoneInput(onPhoneChange = {})
             }
             item {
                 Logo()

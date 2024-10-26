@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun Logo(
@@ -31,7 +31,7 @@ fun Logo(
 @Preview(showBackground = true)
 @Composable
 fun PreviewLogo() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         Logo()
     }
 }

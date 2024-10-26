@@ -22,11 +22,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 
 @Composable
@@ -81,7 +81,7 @@ fun NewCustomButton(
 @Preview(showBackground = true)
 @Composable
 fun CustomButtonPreview() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         var isLoading by remember { mutableStateOf(false) }
         Column {
             NewCustomButton(

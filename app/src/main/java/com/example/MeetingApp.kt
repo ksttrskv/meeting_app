@@ -1,4 +1,4 @@
-package com.example.wbtechnoschoollesson2
+package com.example
 
 import android.app.Application
 import com.example.domain.di.domainModule

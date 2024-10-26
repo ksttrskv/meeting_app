@@ -13,10 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.atoms.buttons.DefaultButtonContent1
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun NewSolidButton(
@@ -45,7 +45,7 @@ fun NewSolidButton(
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         NewSolidButton(
             content = {
                 Text(

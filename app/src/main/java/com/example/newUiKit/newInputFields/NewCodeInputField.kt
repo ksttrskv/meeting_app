@@ -31,8 +31,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
 @Composable
 fun NewCodeInputField(
@@ -128,7 +128,7 @@ private fun Placeholder(
 @Preview(showBackground = true)
 @Composable
 fun NewCodeInputPreview1() {
-    WBTechnoschoolLesson2Theme {
+    MyMeetingAppTheme {
         NewCodeInputView(onCodeChange = {})
     }
 }

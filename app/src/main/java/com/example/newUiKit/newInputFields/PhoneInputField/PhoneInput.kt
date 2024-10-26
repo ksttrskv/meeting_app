@@ -1,6 +1,5 @@
 package com.example.newUiKit.newInputFields.PhoneInputField
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -34,11 +33,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.wbtechnoschoollesson2.atoms.theme.UiTheme
 
 private const val PHONE_NUMBER_SIZE = 10
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PhoneInput(modifier: Modifier = Modifier, onPhoneChange: (String) -> Unit) {
     var selectedCountry by remember { mutableStateOf(Country.Russia) }
@@ -146,7 +143,7 @@ fun PhoneNumberInput(
             .padding(vertical = 8.dp),
         value = phone,
         onValueChange = onPhoneChange,
-        textStyle = UiTheme.typography.bodyText1,
+        textStyle = MyUiTheme.typography.regular,
         decorationBox = { innerTextField ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
