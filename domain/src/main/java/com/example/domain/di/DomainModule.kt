@@ -10,7 +10,7 @@ import com.example.domain.stubs.UpdateCommunityUseCaseStub
 import com.example.domain.usecases.implementation.GetCommunityDetailUseCaseImpl
 import com.example.domain.usecases.implementation.GetMeetingsByCommunityUseCaseImpl
 import com.example.domain.usecases.implementation.MeetingRepositoryImpl
-import com.example.domain.usecases.interfaces.GetCommunityDetailUseCase
+import com.example.domain.usecases.interfaces.GetCommunityDetailUseCaseOld
 import com.example.domain.usecases.interfaces.GetCommunityUseCase
 import com.example.domain.usecases.interfaces.GetMeetingsByCommunityUseCase
 import com.example.domain.usecases.interfaces.GetUserProfileUseCase
@@ -24,7 +24,7 @@ val domainModule = module {
     single<SaveCommunityUseCase> { SaveCommunityUseCaseStub() }
     single<UpdateCommunityUseCase> { UpdateCommunityUseCaseStub() }
     single<MeetingRepository> { MeetingRepositoryStub() }
-    single<GetCommunityDetailUseCase> { GetCommunityDetailUseCaseImpl() }
+    single<GetCommunityDetailUseCaseOld> { GetCommunityDetailUseCaseImpl() }
     single<GetMeetingsByCommunityUseCase> { GetMeetingsByCommunityUseCaseImpl(get()) }
 
 

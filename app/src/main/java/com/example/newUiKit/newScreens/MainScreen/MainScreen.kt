@@ -15,8 +15,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.newUiKit.NewMolecules.Banner
+import com.example.newUiKit.NewMolecules.MediumTagsList
 import com.example.newUiKit.NewMolecules.NewHeading
-import com.example.newUiKit.Tags.MediumTagsList
+import com.example.newUiKit.newScreens.MainScreen.components.CommunityCardLine
+import com.example.newUiKit.newScreens.MainScreen.components.EventCardThinLine
+import com.example.newUiKit.newScreens.MainScreen.components.EventCardWideColumn
+import com.example.newUiKit.newScreens.MainScreen.components.EventCardWideLine
+import com.example.newUiKit.newScreens.MainScreen.components.PersonCardline
+import com.example.newUiKit.newScreens.MainScreen.components.SearchAndIconLine
 import com.example.newUiKit.newTheme.MyMeetingAppTheme
 
 @Composable

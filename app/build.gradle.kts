@@ -76,6 +76,7 @@ dependencies {
     implementation("io.insert-koin:koin-android:3.4.0")
     implementation("io.insert-koin:koin-androidx-compose:3.4.0")
     implementation("com.google.accompanist:accompanist-flowlayout:0.30.0")
+    implementation("com.google.code.gson:gson:2.8.8")
 
 
 

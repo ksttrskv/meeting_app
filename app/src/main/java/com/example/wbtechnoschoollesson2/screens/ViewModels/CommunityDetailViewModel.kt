@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Community
 import com.example.domain.model.Meeting
-import com.example.domain.usecases.interfaces.GetCommunityDetailUseCase
+import com.example.domain.usecases.interfaces.GetCommunityDetailUseCaseOld
 import com.example.domain.usecases.interfaces.GetMeetingsByCommunityUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 
 class CommunityDetailViewModel(
-    private val getCommunityDetailUseCase: GetCommunityDetailUseCase,
+    private val getCommunityDetailUseCaseOld: GetCommunityDetailUseCaseOld,
     private val getMeetingsByCommunityUseCase: GetMeetingsByCommunityUseCase
 ) : ViewModel(), KoinComponent {
 
@@ -24,7 +24,7 @@ class CommunityDetailViewModel(
 
     fun loadCommunityDetail(communityTitle: String) {
         viewModelScope.launch {
-            getCommunityDetailUseCase.execute(communityTitle).collect { communityDetail ->
+            getCommunityDetailUseCaseOld.execute(communityTitle).collect { communityDetail ->
                 _community.value = communityDetail
             }
         }

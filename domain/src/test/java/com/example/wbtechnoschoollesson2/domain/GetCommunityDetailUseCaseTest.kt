@@ -1,7 +1,7 @@
 package com.example.wbtechnoschoollesson2.domain
 
 import com.example.domain.usecases.implementation.GetCommunityDetailUseCaseImpl
-import com.example.domain.usecases.interfaces.GetCommunityDetailUseCase
+import com.example.domain.usecases.interfaces.GetCommunityDetailUseCaseOld
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
@@ -14,7 +14,7 @@ import kotlin.test.assertTrue
 @ExperimentalCoroutinesApi
 class GetCommunityDetailUseCaseTest {
 
-    private lateinit var getCommunityDetailUseCase: GetCommunityDetailUseCase
+    private lateinit var getCommunityDetailUseCase: GetCommunityDetailUseCaseOld
 
     @Before
     fun setUp() {

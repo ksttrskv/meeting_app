@@ -35,6 +35,9 @@ import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newInputFields.IconAndTextPlaceholder
 import com.example.newUiKit.newInputFields.NewTextInputView
 import com.example.newUiKit.newInputFields.SimplePlaceholder
+import com.example.newUiKit.newScreens.ProfileEditScreen.components.BigTextFieldView
+import com.example.newUiKit.newScreens.ProfileEditScreen.components.TagsListInsideEditProfile
+import com.example.newUiKit.newScreens.ProfileEditScreen.components.TextAndSwitchItem
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 

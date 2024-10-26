@@ -17,10 +17,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.newUiKit.Tags.SmallTagsList
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.atoms.theme.WBTechnoschoolLesson2Theme
 
@@ -57,12 +57,16 @@ fun EventCardWide(
             Column {
                 Text(
                     text = title,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                     style = textStyle,
                     color = MyUiTheme.colors.newBlackColor
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "$date · $location",
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                     style = MyUiTheme.typography.Secondary,
                     color = MyUiTheme.colors.newSecondaryColor,
                 )

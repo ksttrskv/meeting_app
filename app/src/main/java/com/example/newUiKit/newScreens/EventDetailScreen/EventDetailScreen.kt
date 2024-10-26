@@ -29,14 +29,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import coil.compose.rememberAsyncImagePainter
 import com.example.newUiKit.NewMolecules.AvatarMembersRow
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
 import com.example.newUiKit.NewMolecules.users
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newScreens.MainScreen.EventCardThinLine
+import com.example.newUiKit.newScreens.EventDetailScreen.components.EventDetailCard
+import com.example.newUiKit.newScreens.EventDetailScreen.components.EventMapCard
+import com.example.newUiKit.newScreens.EventDetailScreen.components.LeadingInfoCard
+import com.example.newUiKit.newScreens.EventDetailScreen.components.PopupButton
+import com.example.newUiKit.newScreens.MainScreen.components.EventCardThinLine
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
@@ -49,8 +52,8 @@ fun EventDetailScreen(
     eventLocation: String,
     eventImageRes: String
 ) {
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val eventTitle = navBackStackEntry?.arguments?.getString("eventTitle") ?: ""
+//    val navBackStackEntry by navController.currentBackStackEntryAsState()
+//    val eventTitle = navBackStackEntry?.arguments?.getString("eventTitle") ?: ""
     val lazyListState = rememberLazyListState()
     var previousIndex by remember { mutableStateOf(0) }
     var previousScrollOffset by remember { mutableStateOf(0) }

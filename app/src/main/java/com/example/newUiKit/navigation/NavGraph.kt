@@ -10,13 +10,13 @@ import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentCodeInputSc
 import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentFinalScreen
 import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentNameInputScreen
 import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentPhoneInputScreen
+import com.example.newUiKit.newScreens.ChooseInterestsScreen.ChooseInterestsScreen
 import com.example.newUiKit.newScreens.CommunityDetailScreen.CommunityDetailScreen
 import com.example.newUiKit.newScreens.EventDetailScreen.EventDetailScreen
 import com.example.newUiKit.newScreens.MainScreen.MainScreen
 import com.example.newUiKit.newScreens.MembersScreen.MembersScreen
 import com.example.newUiKit.newScreens.OnboardingScreen.OnboardingScreen
 import com.example.newUiKit.newScreens.ProfileDeleteScreen.ProfileDeleteScreen
-import com.example.newUiKit.newScreens.ProfileEditScreen.ChooseInterestsScreen
 import com.example.newUiKit.newScreens.ProfileEditScreen.ProfileEditScreen
 import com.example.newUiKit.newScreens.ProfileInsideScreen.ProfileInsideScreen
 import com.example.newUiKit.newScreens.ProfileOutsideScreen.ProfileOutsideScreen

@@ -14,7 +14,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -28,26 +30,32 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.newUiKit.NewMolecules.AvatarMembersRow
 import com.example.newUiKit.NewMolecules.NewHeading
 import com.example.newUiKit.NewMolecules.NewTopBar
-import com.example.newUiKit.NewMolecules.users
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newScreens.MainScreen.EventCardThinLine
-import com.example.newUiKit.newScreens.MainScreen.EventCardWideColumn
+import com.example.newUiKit.newScreens.CommunityDetailScreen.components.CommunityDetailCard
+import com.example.newUiKit.newScreens.MainScreen.components.EventCardThinLine
+import com.example.newUiKit.newScreens.MainScreen.components.EventCardWideColumn
 import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun CommunityDetailScreen(
     navController: NavController,
     communityTitle: String,
     communityAvatarImage: String,
+    viewModel: CommunityDetailViewModel = getViewModel()
 //    tags: List<String> = listOf("Разработка", "Карьера", "Тестирование", "Дизайн", "Бизнес")
 ) {
+    val communityDetails by viewModel.communityDetails.observeAsState()
+    val communityMembers by viewModel.communityMembers.observeAsState(emptyList())
     var isRegistered by remember { mutableStateOf(false) }
-    val avatarPainters = users.map { user ->
-        rememberAsyncImagePainter(model = user.painter)
+
+    LaunchedEffect(Unit) {
+        viewModel.loadCommunityDetails()
+        viewModel.loadCommunityMembers()
     }
     Scaffold(
         topBar = {
@@ -83,12 +91,20 @@ fun CommunityDetailScreen(
             modifier = Modifier
                 .padding(contentPadding)
         ) {
-            item {
-                CommunityDetailCard(
-                    communityTitle = communityTitle,
-                    communityAvatar = communityAvatarImage,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
+            communityDetails?.let { details ->
+                item {
+//                CommunityDetailCard(
+//                    communityTitle = communityTitle,
+//                    communityAvatar = communityAvatarImage,
+//                    modifier = Modifier.padding(horizontal = 16.dp)
+//                )
+
+                    CommunityDetailCard(
+                        communityTitle = details.communityTitle,
+                        communityAvatar = communityAvatarImage,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
             }
             item {
                 Column(
@@ -121,45 +137,50 @@ fun CommunityDetailScreen(
                     }
                 }
             }
-            item {
-                Text(
-                    text = "Сообщество профессионалов в сфере IT. Объединяем специалистов разных направлений для обмена опытом, знаниями и идеями.",
-                    style = MyUiTheme.typography.Secondary,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-            }
-            item {
-                NewHeading(
-                    text = stringResource(R.string.members),
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                AvatarMembersRow(
-                    avatarPainters = avatarPainters,
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .clickable {
-                            navController.navigate(Screens.MembersScreen) {
-                                launchSingleTop = true
+            communityDetails?.let { details ->
+                item {
+
+                    Text(
+                        text = details.description,
+                        style = MyUiTheme.typography.Secondary,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
+                item {
+                    NewHeading(
+                        text = stringResource(R.string.members),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    AvatarMembersRow(
+                        avatarPainters = communityMembers.map {
+                            rememberAsyncImagePainter(model = it.painter)
+                        },
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .clickable {
+                                navController.navigate(Screens.MembersScreen) {
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                )
-            }
-            item {
-                NewHeading(
-                    text = stringResource(R.string.events),
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                EventCardWideColumn(navController = navController)
-            }
-            item {
-                NewHeading(
-                    text = stringResource(R.string.past_events),
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                EventCardThinLine(navController = navController)
+                    )
+                }
+                item {
+                    NewHeading(
+                        text = stringResource(R.string.events),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    EventCardWideColumn(navController = navController)
+                }
+                item {
+                    NewHeading(
+                        text = stringResource(R.string.past_events),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    EventCardThinLine(navController = navController)
+                }
             }
         }
     }
