@@ -2,6 +2,7 @@ package com.example.newUiKit.newScreens.MainScreen
 
 import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
@@ -78,6 +79,7 @@ fun EventCardWideLine(navController: NavController) {
                 },
                 modifier = Modifier
                     .width(320.dp)
+                    .height(305.dp)
                     .padding(start = if (index == 0) 16.dp else 0.dp) // Паддинг для первого элемента
             )
         }

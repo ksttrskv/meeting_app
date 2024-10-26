@@ -1,4 +1,4 @@
-package com.example.newUiKit.newScreens.UseCases
+package com.example.newUiKit.newScreens.MembersScreen.UseCases
 
 import com.example.newUiKit.newScreens.MembersScreen.UserData
 import com.example.newUiKit.newScreens.Repo.UserRepository
