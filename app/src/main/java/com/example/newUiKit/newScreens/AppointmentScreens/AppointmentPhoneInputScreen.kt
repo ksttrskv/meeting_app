@@ -24,12 +24,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
+import com.example.newUiKit.inputFields.PhoneInputField.PhoneInput
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newInputFields.PhoneInputField.PhoneInput
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 
 @Composable
 fun AppointmentPhoneInputScreen(navController: NavController) {
@@ -73,7 +73,7 @@ fun AppointmentPhoneInputScreen(navController: NavController) {
 
             }
         }
-        NewCustomButton(
+        CustomButton(
             content = {
                 Text(
                     text = stringResource(R.string.get_code),

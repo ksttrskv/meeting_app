@@ -27,18 +27,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
-import com.example.newUiKit.NewMolecules.AvatarMembersRow
-import com.example.newUiKit.NewMolecules.NewHeading
-import com.example.newUiKit.NewMolecules.NewTopBar
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
+import com.example.newUiKit.Theme.multiColorLinearGradientWhite
+import com.example.newUiKit.molecules.AvatarMembersRow
+import com.example.newUiKit.molecules.Heading
+import com.example.newUiKit.molecules.TopBar
 import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newScreens.CommunityDetailScreen.components.CommunityDetailCard
 import com.example.newUiKit.newScreens.MainScreen.components.EventCardThinLine
 import com.example.newUiKit.newScreens.MainScreen.components.EventCardWideColumn
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
-import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -59,7 +59,7 @@ fun CommunityDetailScreen(
     }
     Scaffold(
         topBar = {
-            NewTopBar(
+            TopBar(
                 title = communityTitle,
                 navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
@@ -67,7 +67,7 @@ fun CommunityDetailScreen(
                             painter = painterResource(id = R.drawable.back),
                             contentDescription = "Back",
                             modifier = Modifier.size(24.dp),
-                            tint = MyUiTheme.colors.newBrandDefault
+                            tint = MyUiTheme.colors.brandDefault
                         )
                     }
                 },
@@ -77,7 +77,7 @@ fun CommunityDetailScreen(
                             painter = painterResource(id = R.drawable.share),
                             contentDescription = "Share",
                             modifier = Modifier.size(24.dp),
-                            tint = MyUiTheme.colors.newBrandDefault
+                            tint = MyUiTheme.colors.brandDefault
                         )
                     }
                 }
@@ -112,12 +112,12 @@ fun CommunityDetailScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp)
                 ) {
-                    NewCustomButton(
+                    CustomButton(
                         content = {
                             // Изменяем текст в зависимости от состояния подписки
                             Text(text = if (isRegistered) "Вы подписаны" else "Подписаться")
                         },
-                        textColor = if (isRegistered) MyUiTheme.colors.newBrandDefault else Color.White,
+                        textColor = if (isRegistered) MyUiTheme.colors.brandDefault else Color.White,
                         enabledGradient = if (isRegistered) multiColorLinearGradientWhite() else multiColorLinearGradient(),
                         disabledColor = Color.Gray,
                         enabled = true,
@@ -132,7 +132,7 @@ fun CommunityDetailScreen(
                         Text(
                             text = stringResource(R.string.text_under_the_subscribe_button),
                             style = MyUiTheme.typography.Secondary,
-                            color = MyUiTheme.colors.newBrandDefault
+                            color = MyUiTheme.colors.brandDefault
                         )
                     }
                 }
@@ -147,7 +147,7 @@ fun CommunityDetailScreen(
                     )
                 }
                 item {
-                    NewHeading(
+                    Heading(
                         text = stringResource(R.string.members),
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
@@ -166,7 +166,7 @@ fun CommunityDetailScreen(
                     )
                 }
                 item {
-                    NewHeading(
+                    Heading(
                         text = stringResource(R.string.events),
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
@@ -174,7 +174,7 @@ fun CommunityDetailScreen(
                     EventCardWideColumn(navController = navController)
                 }
                 item {
-                    NewHeading(
+                    Heading(
                         text = stringResource(R.string.past_events),
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )

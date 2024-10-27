@@ -23,12 +23,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
+import com.example.newUiKit.inputFields.TextInputView
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newInputFields.NewTextInputView
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 
 @Composable
 fun AppointmentNameInputScreen(navController: NavController) {
@@ -67,9 +67,9 @@ fun AppointmentNameInputScreen(navController: NavController) {
                 style = MyUiTheme.typography.regular
             )
             Spacer(modifier = Modifier.height(24.dp))
-            NewTextInputView(name = name, onNameChange = {})
+            TextInputView(name = name, onNameChange = {})
         }
-        NewCustomButton(
+        CustomButton(
             content = {
                 Text(
                     text = "Продолжить",

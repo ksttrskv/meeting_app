@@ -30,7 +30,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.newUiKit.newTheme.MyUiTheme
+import com.example.newUiKit.Theme.MyUiTheme
 
 @Composable
 fun BigTextField(
@@ -50,10 +50,10 @@ fun BigTextField(
         modifier = modifier
             .height(36.dp)
             .clip(RoundedCornerShape(16.dp))
-            .background(if (hasError) MyUiTheme.colors.newErrorBgColor else MyUiTheme.colors.newOffWhite)
+            .background(if (hasError) MyUiTheme.colors.errorBgColor else MyUiTheme.colors.offWhite)
             .border(
                 width = 1.dp,
-                color = if (isFocused.value) MyUiTheme.colors.newBorderColor else Color.Transparent, // Обводка при фокусе
+                color = if (isFocused.value) MyUiTheme.colors.borderColor else Color.Transparent, // Обводка при фокусе
                 shape = RoundedCornerShape(16.dp)
             )
             .padding(start = 12.dp)
@@ -108,7 +108,7 @@ private fun Placeholder(
         if (isVisible) {
             Text(
                 text = placeholderText,
-                color = MyUiTheme.colors.newNeutralDisabled,
+                color = MyUiTheme.colors.neutralDisabled,
                 style = MyUiTheme.typography.primary,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis

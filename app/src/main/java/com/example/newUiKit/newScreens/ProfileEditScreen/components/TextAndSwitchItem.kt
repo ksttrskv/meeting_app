@@ -13,8 +13,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.newUiKit.NewMolecules.SwitchItem
-import com.example.newUiKit.newTheme.MyUiTheme
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.molecules.SwitchItem
 
 @Composable
 fun TextAndSwitchItem(text: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
@@ -29,7 +29,7 @@ fun TextAndSwitchItem(text: String, checked: Boolean, onCheckedChange: (Boolean)
         Text(
             text = text,
             style = MyUiTheme.typography.primary,
-            color = MyUiTheme.colors.newBrandDefault
+            color = MyUiTheme.colors.brandDefault
         )
         SwitchItem(checked = checked, onCheckedChange = onCheckedChange)
     }

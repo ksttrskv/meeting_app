@@ -12,11 +12,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
+import com.example.newUiKit.Theme.MyMeetingAppTheme
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 
 @Composable
 fun SubscribeButtonAndText() {
@@ -25,7 +25,7 @@ fun SubscribeButtonAndText() {
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
-        NewCustomButton(
+        CustomButton(
             content = {
                 Text(text = stringResource(R.string.subscribe_text))
             },
@@ -39,7 +39,7 @@ fun SubscribeButtonAndText() {
         Text(
             text = stringResource(R.string.text_under_the_subscribe_button),
             style = MyUiTheme.typography.Secondary,
-            color = MyUiTheme.colors.newBrandDefault,
+            color = MyUiTheme.colors.brandDefault,
         )
     }
 }

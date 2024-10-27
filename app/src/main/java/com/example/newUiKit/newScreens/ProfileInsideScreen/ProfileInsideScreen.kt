@@ -23,13 +23,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.newUiKit.NewMolecules.NewHeading
-import com.example.newUiKit.NewMolecules.NewTopBar
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.molecules.Heading
+import com.example.newUiKit.molecules.TopBar
 import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newScreens.MainScreen.components.CommunityCardLine
 import com.example.newUiKit.newScreens.MainScreen.components.EventCardThinLine
 import com.example.newUiKit.newScreens.ProfileOutsideScreen.components.ProfileInfoCard
-import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
 @Composable
@@ -52,7 +52,7 @@ fun ProfileInsideScreen(navController: NavController) {
                         .fillMaxWidth()
                         .height(374.dp)
                 )
-                NewTopBar(
+                TopBar(
                     title = "",
                     navigationIcon = {
                         IconButton(onClick = {
@@ -66,7 +66,7 @@ fun ProfileInsideScreen(navController: NavController) {
                                 painter = painterResource(id = R.drawable.back),
                                 contentDescription = "Back",
                                 modifier = Modifier.size(24.dp),
-                                tint = MyUiTheme.colors.newBrandDefault
+                                tint = MyUiTheme.colors.brandDefault
                             )
                         }
                     },
@@ -81,7 +81,7 @@ fun ProfileInsideScreen(navController: NavController) {
                             Icon(
                                 painter = painterResource(id = R.drawable.edit_ic),
                                 contentDescription = "",
-                                tint = MyUiTheme.colors.newBrandDefault,
+                                tint = MyUiTheme.colors.brandDefault,
                             )
                         }
 
@@ -103,13 +103,13 @@ fun ProfileInsideScreen(navController: NavController) {
         }
         item {
             Spacer(modifier = Modifier.height(40.dp))
-            NewHeading(text = "Мои встречи", modifier = Modifier.padding(horizontal = 16.dp))
+            Heading(text = "Мои встречи", modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(10.dp))
             EventCardThinLine(navController = navController)
         }
         item {
             Spacer(modifier = Modifier.height(40.dp))
-            NewHeading(text = "Мои сообщества", modifier = Modifier.padding(horizontal = 16.dp))
+            Heading(text = "Мои сообщества", modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(10.dp))
             CommunityCardLine(navController = navController)
         }
@@ -119,7 +119,7 @@ fun ProfileInsideScreen(navController: NavController) {
                 Text(
                     text = "Выйти",
                     style = MyUiTheme.typography.primary,
-                    color = MyUiTheme.colors.newSecondaryColor,
+                    color = MyUiTheme.colors.secondaryColor,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .padding(bottom = 28.dp)

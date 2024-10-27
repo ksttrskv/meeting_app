@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.newUiKit.NewMolecules.EventCardThin
+import com.example.newUiKit.molecules.EventCardThin
 import com.example.newUiKit.navigation.Screens
 
 @Composable

@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.models.UserData
-import com.example.newUiKit.NewMolecules.PersonCard
+import com.example.newUiKit.molecules.PersonCard
 import com.example.newUiKit.navigation.Screens
 
 const val MAX_USERS_IN_ROW = 3

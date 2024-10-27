@@ -20,25 +20,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.newUiKit.NewMolecules.BigTag
-import com.example.newUiKit.NewMolecules.CommunityCard
-import com.example.newUiKit.NewMolecules.EventCardThin
-import com.example.newUiKit.NewMolecules.EventCardWide
-import com.example.newUiKit.NewMolecules.Logo
-import com.example.newUiKit.NewMolecules.LogoWithBackground
-import com.example.newUiKit.NewMolecules.MediumTag
-import com.example.newUiKit.NewMolecules.NewTopBar
-import com.example.newUiKit.NewMolecules.PersonCard
-import com.example.newUiKit.NewMolecules.SmallTag
-import com.example.newUiKit.NewMolecules.SwitchItem
-import com.example.newUiKit.NewMolecules.UserAvatar
-import com.example.newUiKit.newInputFields.NewTextInputView
-import com.example.newUiKit.newInputFields.PhoneInputField.PhoneInput
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
-import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
+import com.example.newUiKit.Theme.multiColorLinearGradientWhite
+import com.example.newUiKit.inputFields.PhoneInputField.PhoneInput
+import com.example.newUiKit.inputFields.TextInputView
+import com.example.newUiKit.molecules.BigTag
+import com.example.newUiKit.molecules.CommunityCard
+import com.example.newUiKit.molecules.EventCardThin
+import com.example.newUiKit.molecules.EventCardWide
+import com.example.newUiKit.molecules.Logo
+import com.example.newUiKit.molecules.LogoWithBackground
+import com.example.newUiKit.molecules.MediumTag
+import com.example.newUiKit.molecules.PersonCard
+import com.example.newUiKit.molecules.SmallTag
+import com.example.newUiKit.molecules.SwitchItem
+import com.example.newUiKit.molecules.TopBar
+import com.example.newUiKit.molecules.UserAvatar
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 import kotlinx.coroutines.delay
 
 
@@ -62,7 +62,7 @@ fun NewUiKitScreen(
     }
     Scaffold(
         topBar = {
-            NewTopBar(
+            TopBar(
                 title = "Как повышать грейд. Лекция...",
                 navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
@@ -70,7 +70,7 @@ fun NewUiKitScreen(
                             painter = painterResource(id = R.drawable.back),
                             contentDescription = "Back",
                             modifier = Modifier.size(24.dp),
-                            tint = MyUiTheme.colors.newBrandDefault
+                            tint = MyUiTheme.colors.brandDefault
                         )
                     }
                 },
@@ -80,7 +80,7 @@ fun NewUiKitScreen(
                             painter = painterResource(id = R.drawable.share),
                             contentDescription = "Share",
                             modifier = Modifier.size(24.dp),
-                            tint = MyUiTheme.colors.newBrandDefault
+                            tint = MyUiTheme.colors.brandDefault
                         )
                     }
                 }
@@ -104,11 +104,11 @@ fun NewUiKitScreen(
                 )
             }
             item {
-                NewCustomButton(
+                CustomButton(
                     content = { Text(text = "Оплатить") },
                     textColor = Color.White,
                     enabledGradient = multiColorLinearGradient(),
-                    disabledColor = MyUiTheme.colors.newOffWhite,
+                    disabledColor = MyUiTheme.colors.offWhite,
                     enabled = true,
                     isLoading = isLoading,
                     onClick = {
@@ -117,11 +117,11 @@ fun NewUiKitScreen(
                 )
             }
             item {
-                NewCustomButton(
+                CustomButton(
                     content = { Text(text = "Оплатить") },
-                    textColor = MyUiTheme.colors.newBrandDefault,
+                    textColor = MyUiTheme.colors.brandDefault,
                     enabledGradient = multiColorLinearGradientWhite(),
-                    disabledColor = MyUiTheme.colors.newOffWhite,
+                    disabledColor = MyUiTheme.colors.offWhite,
                     enabled = true,
                     isLoading = isLoading,
                     onClick = {
@@ -130,11 +130,11 @@ fun NewUiKitScreen(
                 )
             }
             item {
-                NewCustomButton(
+                CustomButton(
                     content = { Text(text = "Оплатить") },
-                    textColor = MyUiTheme.colors.newBrandDefault,
+                    textColor = MyUiTheme.colors.brandDefault,
                     enabledGradient = multiColorLinearGradientWhite(),
-                    disabledColor = MyUiTheme.colors.newOffWhite,
+                    disabledColor = MyUiTheme.colors.offWhite,
                     enabled = false,
                     isLoading = isLoading,
                     onClick = {
@@ -143,11 +143,11 @@ fun NewUiKitScreen(
                 )
             }
             item {
-                NewCustomButton(
+                CustomButton(
                     content = { Text(text = "Оплатить") },
                     textColor = Color.White,
                     enabledGradient = multiColorLinearGradient(),
-                    disabledColor = MyUiTheme.colors.newOffWhite,
+                    disabledColor = MyUiTheme.colors.offWhite,
                     enabled = true,
                     isLoading = isLoading,
                     onClick = {
@@ -156,7 +156,7 @@ fun NewUiKitScreen(
                 )
             }
             item {
-                NewTextInputView(onNameChange = {})
+                TextInputView(onNameChange = {})
             }
             item {
                 MediumTag(

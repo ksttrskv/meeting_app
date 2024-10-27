@@ -22,12 +22,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
+import com.example.newUiKit.inputFields.CodeInputView
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newInputFields.NewCodeInputView
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 
 @Composable
 fun AppointmentCodeInputScreen(navController: NavController) {
@@ -66,35 +66,35 @@ fun AppointmentCodeInputScreen(navController: NavController) {
                 style = MyUiTheme.typography.regular
             )
             Spacer(modifier = Modifier.height(24.dp))
-            NewCodeInputView(onCodeChange = {}
+            CodeInputView(onCodeChange = {}
 
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "Отправили код на +7 999 999-99-99",
                 style = MyUiTheme.typography.Secondary,
-                color = MyUiTheme.colors.newSecondaryColor
+                color = MyUiTheme.colors.secondaryColor
             )
         }
 
         Text(
             text = "Получить новый код через 10",
             style = MyUiTheme.typography.primary,
-            color = MyUiTheme.colors.newSecondaryColor,
+            color = MyUiTheme.colors.secondaryColor,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 108.dp)
         )
-        NewCustomButton(
+        CustomButton(
             content = {
                 Text(
                     text = "Отправить и подтвердить запись",
                     style = MyUiTheme.typography.H3
                 )
             },
-            textColor = MyUiTheme.colors.newBrandWhite,
+            textColor = MyUiTheme.colors.brandWhite,
             enabledGradient = multiColorLinearGradient(),
-            disabledColor = MyUiTheme.colors.newOffWhite,
+            disabledColor = MyUiTheme.colors.offWhite,
             enabled = true,
             onClick = {
                 navController.navigate(Screens.AppointmentFinalScreen) {

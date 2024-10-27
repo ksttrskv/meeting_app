@@ -26,12 +26,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.newUiKit.Theme.MyMeetingAppTheme
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 
 @Composable
 fun AppointmentFinalScreen(navController: NavController) {
@@ -63,7 +63,7 @@ fun AppointmentFinalScreen(navController: NavController) {
                 Text(
                     text = "Вы записались на встречу",
                     style = MyUiTheme.typography.Huge,
-                    color = MyUiTheme.colors.newBrandWhite,
+                    color = MyUiTheme.colors.brandWhite,
                     modifier = Modifier.padding(top = 72.dp)
 
                 )
@@ -72,20 +72,20 @@ fun AppointmentFinalScreen(navController: NavController) {
             Text(
                 text = "Супертестировщики \n12 августа \nНевский проспект, 11 ",
                 style = MyUiTheme.typography.regular,
-                color = MyUiTheme.colors.newBrandWhite
+                color = MyUiTheme.colors.brandWhite
             )
             Spacer(modifier = Modifier.height(24.dp))
         }
         Text(
             text = "Мои встречи",
             style = MyUiTheme.typography.primary,
-            color = MyUiTheme.colors.newBrandDefault,
+            color = MyUiTheme.colors.brandDefault,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 108.dp)
                 .clickable { }
         )
-        NewCustomButton(
+        CustomButton(
             content = {
                 Text(
                     text = "Найти новые встречи",

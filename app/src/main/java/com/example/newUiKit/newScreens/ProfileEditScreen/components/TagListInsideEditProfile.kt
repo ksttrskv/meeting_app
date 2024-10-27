@@ -13,10 +13,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.newUiKit.NewMolecules.MediumTag
+import com.example.newUiKit.Theme.MyMeetingAppTheme
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.molecules.MediumTag
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
-import com.example.newUiKit.newTheme.MyUiTheme
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
@@ -42,7 +42,7 @@ fun TagsListInsideEditProfile(
             modifier = modifier
                 .padding(4.dp)
                 .background(
-                    color = MyUiTheme.colors.newOffWhite,
+                    color = MyUiTheme.colors.offWhite,
                     shape = RoundedCornerShape(8.dp)
                 )
                 .clickable {
@@ -55,7 +55,7 @@ fun TagsListInsideEditProfile(
             Text(
                 text = "+ Добавить",
                 style = MyUiTheme.typography.H5,
-                color = MyUiTheme.colors.newBrandDefault,
+                color = MyUiTheme.colors.brandDefault,
                 textAlign = TextAlign.Center
             )
         }

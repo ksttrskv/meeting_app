@@ -22,8 +22,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
-import com.example.newUiKit.newTheme.MyUiTheme
+import com.example.newUiKit.Theme.MyMeetingAppTheme
+import com.example.newUiKit.Theme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
 @Composable
@@ -46,7 +46,7 @@ fun EventMapCard(
             Text(
                 text = title,
                 style = textStyle,
-                color = MyUiTheme.colors.newBlackColor
+                color = MyUiTheme.colors.blackColor
             )
             Spacer(modifier = Modifier.height(2.dp))
             Row {

@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.newUiKit.NewMolecules.PersonCard
-import com.example.newUiKit.NewMolecules.users
+import com.example.newUiKit.molecules.PersonCard
+import com.example.newUiKit.molecules.users
 import com.example.newUiKit.navigation.Screens
 
 @Composable

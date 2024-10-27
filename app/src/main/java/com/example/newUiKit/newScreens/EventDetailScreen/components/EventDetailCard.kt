@@ -20,9 +20,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.newUiKit.NewMolecules.MediumTagsList
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
-import com.example.newUiKit.newTheme.MyUiTheme
+import com.example.newUiKit.Theme.MyMeetingAppTheme
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.molecules.MediumTagsList
 
 @Composable
 fun EventDetailCard(
@@ -57,12 +57,12 @@ fun EventDetailCard(
                 Text(
                     text = eventTitle,
                     style = textStyle,
-                    color = MyUiTheme.colors.newBlackColor
+                    color = MyUiTheme.colors.blackColor
                 )
                 Text(
                     text = "$date · $location",
                     style = MyUiTheme.typography.Secondary,
-                    color = MyUiTheme.colors.newSecondaryColor,
+                    color = MyUiTheme.colors.secondaryColor,
                 )
                 MediumTagsList(tags = tags)
             }

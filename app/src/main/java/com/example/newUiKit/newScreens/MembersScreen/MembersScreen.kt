@@ -20,10 +20,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.newUiKit.NewMolecules.NewTopBar
+import com.example.newUiKit.Theme.MyMeetingAppTheme
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.molecules.TopBar
 import com.example.newUiKit.newScreens.MembersScreen.components.MembersColumnRow
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
-import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 import org.koin.androidx.compose.getViewModel
 
@@ -37,7 +37,7 @@ fun MembersScreen(navController: NavController, viewModel: MembersViewModel = ge
 
     Scaffold(
         topBar = {
-            NewTopBar(
+            TopBar(
                 title = "Пойдут на встречу",
                 navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
@@ -45,7 +45,7 @@ fun MembersScreen(navController: NavController, viewModel: MembersViewModel = ge
                             painter = painterResource(id = R.drawable.back),
                             contentDescription = "Back",
                             modifier = Modifier.size(24.dp),
-                            tint = MyUiTheme.colors.newBrandDefault
+                            tint = MyUiTheme.colors.brandDefault
                         )
                     }
                 },

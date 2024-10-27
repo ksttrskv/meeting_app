@@ -29,16 +29,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.newUiKit.NewMolecules.NewHeading
-import com.example.newUiKit.NewMolecules.NewTopBar
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.inputFields.IconAndTextPlaceholder
+import com.example.newUiKit.inputFields.SimplePlaceholder
+import com.example.newUiKit.inputFields.TextInputView
+import com.example.newUiKit.molecules.Heading
+import com.example.newUiKit.molecules.TopBar
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newInputFields.IconAndTextPlaceholder
-import com.example.newUiKit.newInputFields.NewTextInputView
-import com.example.newUiKit.newInputFields.SimplePlaceholder
 import com.example.newUiKit.newScreens.ProfileEditScreen.components.BigTextFieldView
 import com.example.newUiKit.newScreens.ProfileEditScreen.components.TagsListInsideEditProfile
 import com.example.newUiKit.newScreens.ProfileEditScreen.components.TextAndSwitchItem
-import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
 @Composable
@@ -63,7 +63,7 @@ fun ProfileEditScreen(navController: NavController) {
                         .fillMaxWidth()
                         .height(374.dp)
                 )
-                NewTopBar(
+                TopBar(
                     title = "",
                     navigationIcon = {
                         IconButton(onClick = {
@@ -76,7 +76,7 @@ fun ProfileEditScreen(navController: NavController) {
                                 painter = painterResource(id = R.drawable.close),
                                 contentDescription = "Back",
                                 modifier = Modifier.size(24.dp),
-                                tint = MyUiTheme.colors.newSecondaryColor
+                                tint = MyUiTheme.colors.secondaryColor
                             )
                         }
                     },
@@ -86,7 +86,7 @@ fun ProfileEditScreen(navController: NavController) {
                                 painter = painterResource(id = R.drawable.check_ic),
                                 contentDescription = "",
                                 modifier = Modifier.size(24.dp),
-                                tint = MyUiTheme.colors.newBrandDefault,
+                                tint = MyUiTheme.colors.brandDefault,
                             )
                         }
 
@@ -101,11 +101,11 @@ fun ProfileEditScreen(navController: NavController) {
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Spacer(modifier = Modifier.height(40.dp))
-                NewTextInputView(onNameChange = {})
-                NewTextInputView(
+                TextInputView(onNameChange = {})
+                TextInputView(
                     onNameChange = {},
                     placeholderContent = { SimplePlaceholder(placeholderText = "+7 000 000-00-00") })
-                NewTextInputView(
+                TextInputView(
                     onNameChange = {},
                     placeholderContent = { SimplePlaceholder(placeholderText = "Город") })
                 BigTextFieldView(onNameChange = {})
@@ -113,7 +113,7 @@ fun ProfileEditScreen(navController: NavController) {
         }
         item {
             Spacer(modifier = Modifier.height(40.dp))
-            NewHeading(text = "Интересы", modifier = Modifier.padding(horizontal = 16.dp))
+            Heading(text = "Интересы", modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(10.dp))
             TagsListInsideEditProfile(tags = tags, navController = navController)
         }
@@ -123,18 +123,18 @@ fun ProfileEditScreen(navController: NavController) {
                 modifier = Modifier.padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                NewHeading(
+                Heading(
                     text = "Социальные сети",
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
-                NewTextInputView(onNameChange = {}, placeholderContent = {
+                TextInputView(onNameChange = {}, placeholderContent = {
                     IconAndTextPlaceholder(
                         iconRes = R.drawable.habr_icon,
                         placeholderText = "Хабр"
                     )
                 }
                 )
-                NewTextInputView(onNameChange = {}, placeholderContent = {
+                TextInputView(onNameChange = {}, placeholderContent = {
                     IconAndTextPlaceholder(
                         iconRes = R.drawable.telegram_icon,
                         placeholderText = "Телеграм"

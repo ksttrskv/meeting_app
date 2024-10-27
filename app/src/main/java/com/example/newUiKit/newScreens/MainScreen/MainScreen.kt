@@ -14,16 +14,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.newUiKit.NewMolecules.Banner
-import com.example.newUiKit.NewMolecules.MediumTagsList
-import com.example.newUiKit.NewMolecules.NewHeading
+import com.example.newUiKit.Theme.MyMeetingAppTheme
+import com.example.newUiKit.molecules.Banner
+import com.example.newUiKit.molecules.Heading
+import com.example.newUiKit.molecules.MediumTagsList
 import com.example.newUiKit.newScreens.MainScreen.components.CommunityCardLine
 import com.example.newUiKit.newScreens.MainScreen.components.EventCardThinLine
 import com.example.newUiKit.newScreens.MainScreen.components.EventCardWideColumn
 import com.example.newUiKit.newScreens.MainScreen.components.EventCardWideLine
 import com.example.newUiKit.newScreens.MainScreen.components.PersonCardline
 import com.example.newUiKit.newScreens.MainScreen.components.SearchAndIconLine
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
 
 @Composable
 fun MainScreen(navController: NavController) {
@@ -51,7 +51,7 @@ fun MainScreen(navController: NavController) {
             }
             item {
                 Column {
-                    NewHeading(
+                    Heading(
                         text = "Ближайшие встречи",
                         modifier = Modifier.padding(start = 16.dp)
                     )
@@ -61,7 +61,7 @@ fun MainScreen(navController: NavController) {
             }
             item {
                 Column {
-                    NewHeading(
+                    Heading(
                         text = "Сообщества для тестировщиков",
                         modifier = Modifier.padding(start = 16.dp)
                     )
@@ -71,7 +71,7 @@ fun MainScreen(navController: NavController) {
             }
             item {
                 Column {
-                    NewHeading(
+                    Heading(
                         text = "Другие встречи",
                         modifier = Modifier.padding(start = 16.dp)
                     )
@@ -94,7 +94,7 @@ fun MainScreen(navController: NavController) {
             }
             item {
                 Column {
-                    NewHeading(
+                    Heading(
                         text = "Вы можете их знать",
                         modifier = Modifier.padding(start = 16.dp)
                     )
@@ -108,7 +108,7 @@ fun MainScreen(navController: NavController) {
 
             item {
                 Column {
-                    NewHeading(
+                    Heading(
                         text = "Сообщества для тестировщиков",
                         modifier = Modifier.padding(start = 16.dp)
                     )

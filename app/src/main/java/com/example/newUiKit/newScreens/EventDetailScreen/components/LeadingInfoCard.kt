@@ -16,7 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.example.newUiKit.newTheme.MyUiTheme
+import com.example.newUiKit.Theme.MyUiTheme
 
 @Composable
 fun LeadingInfoCard(

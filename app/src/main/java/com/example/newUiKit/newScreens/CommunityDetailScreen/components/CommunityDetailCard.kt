@@ -13,8 +13,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.newUiKit.NewMolecules.MediumTagsList
-import com.example.newUiKit.newTheme.MyUiTheme
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.molecules.MediumTagsList
 
 @Composable
 fun CommunityDetailCard(

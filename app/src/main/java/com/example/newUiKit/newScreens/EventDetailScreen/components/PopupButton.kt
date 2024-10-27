@@ -16,12 +16,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
+import com.example.newUiKit.Theme.multiColorLinearGradientWhite
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
-import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 
 @Composable
 fun PopupButton(
@@ -46,7 +46,7 @@ fun PopupButton(
                 Text(
                     text = "Всего 30 мест. Если передумаете — отпишитесь",
                     style = MyUiTheme.typography.Secondary,
-                    color = MyUiTheme.colors.newBrandDefault,
+                    color = MyUiTheme.colors.brandDefault,
                     modifier = Modifier
                         .padding(top = 10.dp)
                         .align(Alignment.CenterHorizontally)
@@ -62,14 +62,14 @@ fun PopupButton(
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
-            NewCustomButton(
+            CustomButton(
                 content = {
                     Text(
                         text = if (isRegistered) "Не смогу пойти" else stringResource(R.string.sign_up_for_a_meeting),
                         style = MyUiTheme.typography.primary
                     )
                 },
-                textColor = if (isRegistered) MyUiTheme.colors.newBrandDefault else Color.White,
+                textColor = if (isRegistered) MyUiTheme.colors.brandDefault else Color.White,
                 enabledGradient = if (isRegistered) multiColorLinearGradientWhite() else multiColorLinearGradient(),
                 disabledColor = Color.Gray,
                 enabled = true,

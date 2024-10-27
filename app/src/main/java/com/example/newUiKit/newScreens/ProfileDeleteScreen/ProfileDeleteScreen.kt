@@ -18,12 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
+import com.example.newUiKit.Theme.multiColorLinearGradientWhite
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
-import com.example.newUiKit.newTheme.multiColorLinearGradientWhite
 import com.example.wbtechnoschoollesson2.R
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 
 @Composable
 fun ProfileDeleteScreen(navController: NavController) {
@@ -66,16 +66,16 @@ fun ProfileDeleteScreen(navController: NavController) {
 
         }
 
-        NewCustomButton(
+        CustomButton(
             content = {
                 Text(
                     text = "Удалить",
                     style = MyUiTheme.typography.H3
                 )
             },
-            textColor = MyUiTheme.colors.newBrandDefault,
+            textColor = MyUiTheme.colors.brandDefault,
             enabledGradient = multiColorLinearGradientWhite(),
-            disabledColor = MyUiTheme.colors.newOffWhite,
+            disabledColor = MyUiTheme.colors.offWhite,
             enabled = true,
             onClick = {},
             modifier = Modifier
@@ -84,16 +84,16 @@ fun ProfileDeleteScreen(navController: NavController) {
                 .padding(horizontal = 16.dp)
                 .height(56.dp)
         )
-        NewCustomButton(
+        CustomButton(
             content = {
                 Text(
                     text = "Не надо",
                     style = MyUiTheme.typography.H3
                 )
             },
-            textColor = MyUiTheme.colors.newBrandWhite,
+            textColor = MyUiTheme.colors.brandWhite,
             enabledGradient = multiColorLinearGradient(),
-            disabledColor = MyUiTheme.colors.newOffWhite,
+            disabledColor = MyUiTheme.colors.offWhite,
             enabled = true,
             onClick = {
                 navController.navigate(Screens.ProfileEditScreen) {

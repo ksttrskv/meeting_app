@@ -41,17 +41,17 @@ import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
-import com.example.newUiKit.NewMolecules.AvatarMembersRow
-import com.example.newUiKit.NewMolecules.NewHeading
-import com.example.newUiKit.NewMolecules.NewTopBar
-import com.example.newUiKit.NewMolecules.users
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.molecules.AvatarMembersRow
+import com.example.newUiKit.molecules.Heading
+import com.example.newUiKit.molecules.TopBar
+import com.example.newUiKit.molecules.users
 import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newScreens.EventDetailScreen.components.EventDetailCard
 import com.example.newUiKit.newScreens.EventDetailScreen.components.EventMapCard
 import com.example.newUiKit.newScreens.EventDetailScreen.components.LeadingInfoCard
 import com.example.newUiKit.newScreens.EventDetailScreen.components.PopupButton
 import com.example.newUiKit.newScreens.MainScreen.components.EventCardThinLine
-import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
 
@@ -88,7 +88,7 @@ fun EventDetailScreen(
     }
     Scaffold(
         topBar = {
-            NewTopBar(
+            TopBar(
                 title = eventTitle,
                 navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
@@ -96,7 +96,7 @@ fun EventDetailScreen(
                             painter = painterResource(id = R.drawable.back),
                             contentDescription = "Back",
                             modifier = Modifier.size(24.dp),
-                            tint = MyUiTheme.colors.newBrandDefault
+                            tint = MyUiTheme.colors.brandDefault
                         )
                     }
                 },
@@ -106,7 +106,7 @@ fun EventDetailScreen(
                             painter = painterResource(id = R.drawable.share),
                             contentDescription = "Share",
                             modifier = Modifier.size(24.dp),
-                            tint = MyUiTheme.colors.newBrandDefault
+                            tint = MyUiTheme.colors.brandDefault
                         )
                     }
                 }
@@ -172,7 +172,7 @@ fun EventDetailScreen(
                 )
             }
             item {
-                NewHeading(
+                Heading(
                     text = stringResource(R.string.members_of_event),
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
@@ -198,7 +198,7 @@ fun EventDetailScreen(
                 )
             }
             item {
-                NewHeading(
+                Heading(
                     text = stringResource(R.string.other_community_meetings),
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )

@@ -17,8 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.newUiKit.Theme.MyMeetingAppTheme
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
 import com.example.wbtechnoschoollesson2.R
 import kotlinx.coroutines.delay
 

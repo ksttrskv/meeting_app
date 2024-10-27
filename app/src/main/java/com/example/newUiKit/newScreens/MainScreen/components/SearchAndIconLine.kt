@@ -13,9 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.inputFields.SearchView
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newInputFields.WbSearchView
-import com.example.newUiKit.newTheme.MyUiTheme
 import com.example.wbtechnoschoollesson2.R
 
 @Composable
@@ -25,12 +25,12 @@ fun SearchAndIconLine(navController: NavController) {
         .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        WbSearchView(modifier = Modifier.weight(1f))
+        SearchView(modifier = Modifier.weight(1f))
         IconButton(onClick = { /*TODO*/ }) {
             Icon(
                 painter = painterResource(id = R.drawable.user_icon),
                 contentDescription = "user icon",
-                tint = MyUiTheme.colors.newBrandDefault,
+                tint = MyUiTheme.colors.brandDefault,
                 modifier = Modifier
                     .size(44.dp)
                     .clickable { navController.navigate(Screens.ProfileInsideScreen) }

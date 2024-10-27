@@ -15,12 +15,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.newUiKit.NewMolecules.BigTagsList
+import com.example.newUiKit.Theme.MyMeetingAppTheme
+import com.example.newUiKit.Theme.MyUiTheme
+import com.example.newUiKit.Theme.multiColorLinearGradient
+import com.example.newUiKit.molecules.BigTagsList
 import com.example.newUiKit.navigation.Screens
-import com.example.newUiKit.newTheme.MyMeetingAppTheme
-import com.example.newUiKit.newTheme.MyUiTheme
-import com.example.newUiKit.newTheme.multiColorLinearGradient
-import com.example.wbtechnoschoollesson2.atoms.buttons.NewCustomButton
+import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 
 
 @Composable
@@ -52,11 +52,11 @@ fun ChooseInterestsScreen(navController: NavController) {
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.BottomCenter
             ) {
-                NewCustomButton(
+                CustomButton(
                     content = { Text(text = "Сохранить") },
                     textColor = Color.White,
                     enabledGradient = multiColorLinearGradient(),
-                    disabledColor = MyUiTheme.colors.newOffWhite,
+                    disabledColor = MyUiTheme.colors.offWhite,
                     enabled = true,
                     onClick = {
                         navController.navigate(Screens.ProfileEditScreen) {
