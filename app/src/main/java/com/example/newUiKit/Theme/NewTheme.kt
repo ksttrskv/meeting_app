@@ -63,7 +63,7 @@ fun MyMeetingAppTheme(
 object MyUiTheme {
     val colors: MyColors
         @Composable
-        get() = color1
+        get() = color
 
     val typography: MyTypography = MyTypography()
 }
@@ -76,22 +76,17 @@ data class MyColors(
     val blackColor: Color,
     val neutralActive: Color,
     val newGray: Color,
-//    val neutralBody: Color,
-//    val neutralWeak: Color,
     val neutralDisabled: Color,
-//    val neutralLine: Color,
     val bgColor: Color,
     val brandWhite: Color,
     val offWhite: Color,
-
     val accentDanger: Color,
-//    val accentWarning: Color,
     val accentSuccess: Color,
     val neutralGrey: Color,
 
     )
 
-val color1 = MyColors(
+val color = MyColors(
     brandDefault = Color(0xFF9A10F0),
     borderColor = Color(0xFF9A41FE),
     errorBgColor = Color(0xFFFFEEF4),
@@ -99,20 +94,16 @@ val color1 = MyColors(
     blackColor = Color(0xFF000000),
     neutralActive = Color(0xFF29183B),
     newGray = Color(0xFF9797AF),
-//    neutralBody = Color(0xFF1D0835),
-//    neutralWeak = Color(0xFFA4A4A4),
     brandWhite = Color(0xFFFFFFFF),
     neutralDisabled = Color(0xFFADB5BD),
-//    neutralLine = Color(0xFFEDEDED),
     bgColor = Color(0xFFF5F5F5),
     accentDanger = Color(0xFFFF0000),
-//    accentWarning = Color(0xFFFDCF41),
     accentSuccess = Color(0xFF00BF59),
     neutralGrey = Color(0xFFEFEFEF),
     offWhite = Color(0xFFF6F6FA)
 )
 
-
+// Градиент цветной
 fun multiColorLinearGradient(): Brush {
     return Brush.horizontalGradient(
         colors = listOf(
@@ -128,6 +119,7 @@ fun multiColorLinearGradient(): Brush {
     )
 }
 
+// Градиент белый
 fun multiColorLinearGradientWhite(): Brush {
     return Brush.horizontalGradient(
         colors = listOf(
@@ -143,6 +135,7 @@ fun multiColorLinearGradientWhite(): Brush {
     )
 }
 
+// Градиент для баннера
 fun multiColorComplexGradient(): Brush {
     return Brush.radialGradient(
         colors = listOf(

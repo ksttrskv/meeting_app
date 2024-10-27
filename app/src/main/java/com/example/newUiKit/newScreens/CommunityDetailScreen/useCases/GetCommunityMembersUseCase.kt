@@ -1,10 +1,10 @@
 package com.example.newUiKit.newScreens.CommunityDetailScreen.useCases
 
 import com.example.models.UserData
-import com.example.newUiKit.newScreens.CommunityDetailScreen.repo.CommunityRepository
+import com.example.newUiKit.newScreens.CommunityDetailScreen.repo.CommunityDetailRepository
 
-class GetCommunityMembersUseCase(private val communityRepository: CommunityRepository) {
+class GetCommunityMembersUseCase(private val communityDetailRepository: CommunityDetailRepository) {
     fun execute(): List<UserData> {
-        return communityRepository.getCommunityMembers()
+        return communityDetailRepository.getCommunityMembers()
     }
 }

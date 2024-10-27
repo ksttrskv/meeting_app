@@ -9,12 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.models.CommunityData
 import com.example.newUiKit.molecules.CommunityCard
 import com.example.newUiKit.navigation.Screens
 
 @Composable
-fun CommunityCardLine(navController: NavController) {
-    val communities = listOf(
+fun CommunityCardLine(
+    navController: NavController, communities: List<CommunityData> = listOf(
         CommunityData(
             title = "Супер тестировщики",
             imageRes = "https://www.cv-library.co.uk/career-advice/wp-content/uploads/2018/06/What-is-it-like-working-in-IT-e1651761435165.jpg"
@@ -26,21 +27,10 @@ fun CommunityCardLine(navController: NavController) {
         CommunityData(
             title = "Супер тестировщики",
             imageRes = "https://legalacademy.ru/images/lfa/ARTICLE/5752648/COVER_LIST/5752660.jpg"
-        ),
-        CommunityData(
-            title = "Супер тестировщики",
-            imageRes = "https://ares.by/uploaded/articles/116/116-1653398415-0-23.jpg"
-        ),
-        CommunityData(
-            title = "Супер тестировщики",
-            imageRes = "https://legalacademy.ru/images/lfa/ARTICLE/5752648/COVER_LIST/5752660.jpg"
-        ),
-        CommunityData(
-            title = "Супер тестировщики",
-            imageRes = "https://legalacademy.ru/images/lfa/ARTICLE/5752648/COVER_LIST/5752660.jpg"
-        ),
-
         )
+    )
+) {
+
     LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
 
         itemsIndexed(communities) { index, community ->
@@ -66,7 +56,3 @@ fun CommunityCardLine(navController: NavController) {
     }
 }
 
-data class CommunityData(
-    val title: String,
-    val imageRes: String,
-)

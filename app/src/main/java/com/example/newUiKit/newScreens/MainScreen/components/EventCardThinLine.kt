@@ -10,51 +10,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.models.EventData
 import com.example.newUiKit.molecules.EventCardThin
 import com.example.newUiKit.navigation.Screens
 
 @Composable
-fun EventCardThinLine(navController: NavController) {
+fun EventCardThinLine(
+    navController: NavController, events: List<EventData> = listOf(
+        EventData(
+            title = "Python days",
+            imageRes = "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1272/cached.offlinehbpl.hbpl.co.uk/news/OMP/GettyImages-1217856040-.jpg",
+            date = "Завтра",
+            location = "Невский проспект, 11"
+        ),
+        EventData(
+            title = "QA Talks — Global tech forum",
+            imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
+            date = "Завтра",
+            location = "Невский проспект, 11",
+        )
+    )
+) {
     LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-        val events = listOf(
-            EventData(
-                title = "Python days",
-                imageRes = "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1272/cached.offlinehbpl.hbpl.co.uk/news/OMP/GettyImages-1217856040-.jpg",
-                date = "Завтра",
-                location = "Невский проспект, 11"
-            ),
-            EventData(
-                title = "QA Talks — Global tech forum",
-                imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
-                date = "Завтра",
-                location = "Невский проспект, 11",
-            ),
-            EventData(
-                title = "QA Talks — Global tech forum",
-                imageRes = "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1272/cached.offlinehbpl.hbpl.co.uk/news/OMP/GettyImages-1217856040-.jpg",
-                date = "Завтра",
-                location = "Невский проспект, 11",
-            ),
-            EventData(
-                title = "QA Talks — Global tech forum",
-                imageRes = "https://www.cv-library.co.uk/career-advice/wp-content/uploads/2018/06/What-is-it-like-working-in-IT-e1651761435165.jpg",
-                date = "Завтра",
-                location = "Невский проспект, 11",
-            ),
-            EventData(
-                title = "QA Talks — Global tech forum",
-                imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
-                date = "Завтра",
-                location = "Невский проспект, 11",
-            ),
-            EventData(
-                title = "QA Talks — Global tech forum",
-                imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
-                date = "Завтра",
-                location = "Невский проспект, 11",
-            ),
-
-            )
 
 
         itemsIndexed(events) { index, event ->
@@ -81,3 +58,44 @@ fun EventCardThinLine(navController: NavController) {
         }
     }
 }
+
+
+//        val eventsGay = listOf(
+//            EventData(
+//                title = "Python days",
+//                imageRes = "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1272/cached.offlinehbpl.hbpl.co.uk/news/OMP/GettyImages-1217856040-.jpg",
+//                date = "Завтра",
+//                location = "Невский проспект, 11"
+//            ),
+//            EventData(
+//                title = "QA Talks — Global tech forum",
+//                imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
+//                date = "Завтра",
+//                location = "Невский проспект, 11",
+//            ),
+//            EventData(
+//                title = "QA Talks — Global tech forum",
+//                imageRes = "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1272/cached.offlinehbpl.hbpl.co.uk/news/OMP/GettyImages-1217856040-.jpg",
+//                date = "Завтра",
+//                location = "Невский проспект, 11",
+//            ),
+//            EventData(
+//                title = "QA Talks — Global tech forum",
+//                imageRes = "https://www.cv-library.co.uk/career-advice/wp-content/uploads/2018/06/What-is-it-like-working-in-IT-e1651761435165.jpg",
+//                date = "Завтра",
+//                location = "Невский проспект, 11",
+//            ),
+//            EventData(
+//                title = "QA Talks — Global tech forum",
+//                imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
+//                date = "Завтра",
+//                location = "Невский проспект, 11",
+//            ),
+//            EventData(
+//                title = "QA Talks — Global tech forum",
+//                imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
+//                date = "Завтра",
+//                location = "Невский проспект, 11",
+//            ),
+//
+//            )

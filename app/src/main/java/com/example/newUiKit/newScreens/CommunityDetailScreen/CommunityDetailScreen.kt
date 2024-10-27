@@ -51,11 +51,16 @@ fun CommunityDetailScreen(
 ) {
     val communityDetails by viewModel.communityDetails.observeAsState()
     val communityMembers by viewModel.communityMembers.observeAsState(emptyList())
+    val upcomingCommunityEvents by viewModel.upcomingCommunityEvents.observeAsState(emptyList())
+    val pastCommunityEvents by viewModel.pastCommunityEvents.observeAsState(emptyList())
     var isRegistered by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         viewModel.loadCommunityDetails()
         viewModel.loadCommunityMembers()
+        viewModel.loadUpcomingCommunityEvents()
+        viewModel.loadPastCommunityEvents()
+
     }
     Scaffold(
         topBar = {
@@ -93,14 +98,8 @@ fun CommunityDetailScreen(
         ) {
             communityDetails?.let { details ->
                 item {
-//                CommunityDetailCard(
-//                    communityTitle = communityTitle,
-//                    communityAvatar = communityAvatarImage,
-//                    modifier = Modifier.padding(horizontal = 16.dp)
-//                )
-
                     CommunityDetailCard(
-                        communityTitle = details.communityTitle,
+                        communityTitle = communityTitle,
                         communityAvatar = communityAvatarImage,
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
@@ -171,7 +170,10 @@ fun CommunityDetailScreen(
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    EventCardWideColumn(navController = navController)
+                    EventCardWideColumn(
+                        navController = navController,
+                        events = upcomingCommunityEvents
+                    )
                 }
                 item {
                     Heading(
@@ -179,7 +181,7 @@ fun CommunityDetailScreen(
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    EventCardThinLine(navController = navController)
+                    EventCardThinLine(navController = navController, events = pastCommunityEvents)
                 }
             }
         }

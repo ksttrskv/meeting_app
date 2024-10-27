@@ -1,22 +1,18 @@
 package com.example.newUiKit.newScreens.EventDetailScreen
 
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -28,19 +24,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
-import coil.size.Size
 import com.example.newUiKit.Theme.MyUiTheme
 import com.example.newUiKit.molecules.AvatarMembersRow
 import com.example.newUiKit.molecules.Heading
@@ -63,8 +52,6 @@ fun EventDetailScreen(
     eventLocation: String,
     eventImageRes: String
 ) {
-//    val navBackStackEntry by navController.currentBackStackEntryAsState()
-//    val eventTitle = navBackStackEntry?.arguments?.getString("eventTitle") ?: ""
     val lazyListState = rememberLazyListState()
     var previousIndex by remember { mutableStateOf(0) }
     var previousScrollOffset by remember { mutableStateOf(0) }
@@ -166,7 +153,7 @@ fun EventDetailScreen(
             item {
                 EventMapCard(
                     title = "Севкабель Порт, Кожевенная линия, 40 ",
-                    painter = painterResource(id = R.drawable.map),
+//                    painter = painterResource(id = R.drawable.map),
                     metroStation = "Приморская",
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
@@ -220,63 +207,63 @@ fun EventDetailScreen(
 //}
 
 
-@Composable
-fun FullScreenImageDialog(
-    imageUrl: String,
-    onDismiss: () -> Unit,
-
-    ) {
-    Dialog(onDismissRequest = onDismiss) {
-        val painter: Painter = rememberAsyncImagePainter(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(imageUrl)
-                .size(Size.ORIGINAL)
-                .build()
-        )
-
-        Image(
-            painter = painter,
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxSize()
-                .clickable { onDismiss() }
-        )
-    }
-}
-
-@Composable
-fun ImageWithFullScreenPreview(
-    imageUrl: String,
-    placeholderResId: Int,
-) {
-    var showDialog by remember { mutableStateOf(false) }
-
-    if (showDialog) {
-        FullScreenImageDialog(imageUrl = imageUrl) {
-            showDialog = false
-        }
-    }
-
-    val painter = rememberAsyncImagePainter(
-        model = ImageRequest.Builder(LocalContext.current)
-            .data(imageUrl)
-            .placeholder(placeholderResId)
-            .error(placeholderResId)
-            .build(),
-        contentScale = ContentScale.Crop
-    )
-
-    Image(
-        painter = painter,
-        contentDescription = null,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(175.dp)
-            .clip(shape = RoundedCornerShape(30.dp))
-            .clickable {
-                Log.d("ImageWithFullScreenPreview", "Image clicked")
-                showDialog = true
-            },
-        contentScale = ContentScale.Crop
-    )
-}
+//@Composable
+//fun FullScreenImageDialog(
+//    imageUrl: String,
+//    onDismiss: () -> Unit,
+//
+//    ) {
+//    Dialog(onDismissRequest = onDismiss) {
+//        val painter: Painter = rememberAsyncImagePainter(
+//            model = ImageRequest.Builder(LocalContext.current)
+//                .data(imageUrl)
+//                .size(Size.ORIGINAL)
+//                .build()
+//        )
+//
+//        Image(
+//            painter = painter,
+//            contentDescription = null,
+//            modifier = Modifier
+//                .fillMaxSize()
+//                .clickable { onDismiss() }
+//        )
+//    }
+//}
+//
+//@Composable
+//fun ImageWithFullScreenPreview(
+//    imageUrl: String,
+//    placeholderResId: Int,
+//) {
+//    var showDialog by remember { mutableStateOf(false) }
+//
+//    if (showDialog) {
+//        FullScreenImageDialog(imageUrl = imageUrl) {
+//            showDialog = false
+//        }
+//    }
+//
+//    val painter = rememberAsyncImagePainter(
+//        model = ImageRequest.Builder(LocalContext.current)
+//            .data(imageUrl)
+//            .placeholder(placeholderResId)
+//            .error(placeholderResId)
+//            .build(),
+//        contentScale = ContentScale.Crop
+//    )
+//
+//    Image(
+//        painter = painter,
+//        contentDescription = null,
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .height(175.dp)
+//            .clip(shape = RoundedCornerShape(30.dp))
+//            .clickable {
+//                Log.d("ImageWithFullScreenPreview", "Image clicked")
+//                showDialog = true
+//            },
+//        contentScale = ContentScale.Crop
+//    )
+//}

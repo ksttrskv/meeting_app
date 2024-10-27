@@ -3,13 +3,13 @@ package com.example.newUiKit.newScreens.CommunityDetailScreen.repo
 import com.example.models.CommunityDetailData
 import com.example.models.UserData
 
-class CommunityRepositoryImpl : CommunityRepository {
+class CommunityDetailRepositoryImpl : CommunityDetailRepository {
     override fun getCommunityDetails(): CommunityDetailData {
         // Заглушка данных или реальная реализация получения данных
         return CommunityDetailData(
             communityTitle = "Сообщество профессионалов в сфере IT",
             communityAvatar = "",
-            description = "Объединяем специалистов разных направлений для обмена опытом, знаниями и идеями.",
+            description = "Сообщество профессионалов в сфере IT.\nОбъединяем специалистов разных направлений для обмена опытом, знаниями и идеями.",
             isRegistered = true
 
         )

@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,9 +26,12 @@ import com.example.newUiKit.newScreens.MainScreen.components.EventCardWideColumn
 import com.example.newUiKit.newScreens.MainScreen.components.EventCardWideLine
 import com.example.newUiKit.newScreens.MainScreen.components.PersonCardline
 import com.example.newUiKit.newScreens.MainScreen.components.SearchAndIconLine
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun MainScreen(navController: NavController) {
+fun MainScreen(navController: NavController, viewModel: MainScreenViewModel = getViewModel()) {
+    val events by viewModel.events.observeAsState(emptyList())
+    val communities by viewModel.communities.observeAsState(emptyList())
 
     val tags = listOf(
         "Дизайн", "Разработка", "Продакт менеджмент", "Проджект менеджмент",
@@ -47,7 +52,10 @@ fun MainScreen(navController: NavController) {
                 SearchAndIconLine(navController = navController)
 
                 Spacer(modifier = Modifier.height(20.dp))
-                EventCardWideLine(navController = navController) //Лайн для укорочения кода
+                EventCardWideLine(
+                    navController = navController,
+                    events = events
+                ) //Лайн для укорочения кода
             }
             item {
                 Column {
@@ -56,7 +64,10 @@ fun MainScreen(navController: NavController) {
                         modifier = Modifier.padding(start = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    EventCardThinLine(navController = navController) //Лайн для укорочения кода
+                    EventCardThinLine(
+                        navController = navController,
+                        events = events
+                    ) //Лайн для укорочения кода
                 }
             }
             item {
@@ -66,7 +77,10 @@ fun MainScreen(navController: NavController) {
                         modifier = Modifier.padding(start = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    CommunityCardLine(navController = navController) //Лайн для укорочения кода
+                    CommunityCardLine(
+                        navController = navController,
+                        communities = communities
+                    ) //Лайн для укорочения кода
                 }
             }
             item {
@@ -81,7 +95,10 @@ fun MainScreen(navController: NavController) {
             }
 
             item {
-                EventCardWideColumn(navController = navController) //Column для укорочения кода
+                EventCardWideColumn(
+                    navController = navController,
+                    events = events
+                ) //Column для укорочения кода
             }
 
             item {
@@ -90,7 +107,10 @@ fun MainScreen(navController: NavController) {
                 }
             }
             item {
-                EventCardWideColumn(navController = navController) //Column для укорочения кода
+                EventCardWideColumn(
+                    navController = navController,
+                    events = events
+                ) //Column для укорочения кода
             }
             item {
                 Column {
@@ -103,7 +123,10 @@ fun MainScreen(navController: NavController) {
                 }
             }
             item {
-                EventCardWideColumn(navController = navController) //Column для укорочения кода
+                EventCardWideColumn(
+                    navController = navController,
+                    events = events
+                ) //Column для укорочения кода
             }
 
             item {
@@ -113,11 +136,14 @@ fun MainScreen(navController: NavController) {
                         modifier = Modifier.padding(start = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    CommunityCardLine(navController = navController)
+                    CommunityCardLine(navController = navController, communities = communities)
                 }
             }
             item {
-                EventCardWideColumn(navController = navController) //Column для укорочения кода
+                EventCardWideColumn(
+                    navController = navController,
+                    events = events
+                ) //Column для укорочения кода
             }
 
         }

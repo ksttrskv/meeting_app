@@ -4,20 +4,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,7 +24,7 @@ import com.example.wbtechnoschoollesson2.R
 fun EventMapCard(
     title: String,
     textStyle: TextStyle = MyUiTheme.typography.H2,
-    painter: Painter,
+//    painter: Painter,
     metroStation: String,
     modifier: Modifier = Modifier
 ) {
@@ -61,16 +55,21 @@ fun EventMapCard(
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
-            Image(
-                painter = painter,
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
-                    .clip(RoundedCornerShape(24.dp)),
-                contentScale = ContentScale.Crop,
-                alignment = Alignment.TopStart
+//            Image(
+//                painter = painter,
+//                contentDescription = null,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(180.dp)
+//                    .clip(RoundedCornerShape(24.dp)),
+//                contentScale = ContentScale.Crop,
+//                alignment = Alignment.TopStart
+//            )
+            ImageWithFullScreenPreview(
+                imageUrl = "https://i.postimg.cc/GmsT4jPq/map-image.png",
+                placeholderResId = R.drawable.map
             )
+            Spacer(modifier = Modifier.height(20.dp))
 
         }
     }
@@ -83,7 +82,7 @@ fun PreviewEventMapCard() {
     MyMeetingAppTheme {
         EventMapCard(
             title = "Севкабель Порт, Кожевенная линия, 40 ",
-            painter = painterResource(id = R.drawable.map),
+//            painter = painterResource(id = R.drawable.map),
             metroStation = "Приморская",
         )
     }
