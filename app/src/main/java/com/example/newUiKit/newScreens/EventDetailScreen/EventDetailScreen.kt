@@ -18,8 +18,11 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -34,7 +37,6 @@ import com.example.newUiKit.Theme.MyUiTheme
 import com.example.newUiKit.molecules.AvatarMembersRow
 import com.example.newUiKit.molecules.Heading
 import com.example.newUiKit.molecules.TopBar
-import com.example.newUiKit.molecules.users
 import com.example.newUiKit.navigation.Screens
 import com.example.newUiKit.newScreens.EventDetailScreen.components.EventDetailCard
 import com.example.newUiKit.newScreens.EventDetailScreen.components.EventMapCard
@@ -42,6 +44,7 @@ import com.example.newUiKit.newScreens.EventDetailScreen.components.LeadingInfoC
 import com.example.newUiKit.newScreens.EventDetailScreen.components.PopupButton
 import com.example.newUiKit.newScreens.MainScreen.components.EventCardThinLine
 import com.example.wbtechnoschoollesson2.R
+import org.koin.androidx.compose.getViewModel
 
 
 @Composable
@@ -50,13 +53,25 @@ fun EventDetailScreen(
     eventTitle: String,
     eventDate: String,
     eventLocation: String,
-    eventImageRes: String
+    eventImageRes: String,
+    viewModel: EventDetailViewModel = getViewModel()
 ) {
     val lazyListState = rememberLazyListState()
     var previousIndex by remember { mutableStateOf(0) }
     var previousScrollOffset by remember { mutableStateOf(0) }
-    var isRegistered by remember { mutableStateOf(false) }
+//    var isRegistered by remember { mutableStateOf(false) }
 
+    val eventDetails by viewModel.eventDetails.observeAsState()
+    val eventMembers by viewModel.eventMembers.observeAsState(emptyList())
+    val communityEvents by viewModel.communityEvents.observeAsState(emptyList())
+    val isRegistered by viewModel.isRegistered.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.loadEventDetail()
+        viewModel.loadEventMembers()
+        viewModel.loadCommunityEvents()
+
+    }
     // Определяем, когда показать кнопку
     val shouldShowButton = remember {
         derivedStateOf {
@@ -69,9 +84,6 @@ fun EventDetailScreen(
 
             isScrollingDown
         }
-    }
-    val avatarPainters = users.map { user ->
-        rememberAsyncImagePainter(model = user.painter)
     }
     Scaffold(
         topBar = {
@@ -113,7 +125,7 @@ fun EventDetailScreen(
                 PopupButton(
                     navController = navController,
                     isRegistered = isRegistered,
-                    onRegistrationChange = { isRegistered = !isRegistered } // Обновляем состояние
+                    onRegistrationChange = { viewModel.toggleRegistration() } // Обновляем состояние
                 )
             }
         }
@@ -134,136 +146,68 @@ fun EventDetailScreen(
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }
-            item {
-                Text(
-                    text = "Узнайте, как расти в профессии, улучшать навыки и получать повышение. Практические советы и реальные кейсы.  \nПавел поделится эффективными стратегиями карьерного роста и методикой развития профессиональных навыков в IT.",
-                    style = MyUiTheme.typography.Secondary,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-            }
-            item {
-                LeadingInfoCard(
-                    heading = stringResource(R.string.leader),
-                    name = "Павел Хориков",
-                    info = "Ведущий специалист по подбору персонала в одной из крупнейших IT-компаний в ЕС.",
-                    avatarImage = painterResource(id = R.drawable.test_image_4),
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-            }
-            item {
-                EventMapCard(
-                    title = "Севкабель Порт, Кожевенная линия, 40 ",
+            eventDetails?.let { details ->
+                item {
+                    Text(
+                        text = details.eventDescription,
+                        style = MyUiTheme.typography.Secondary,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
+                item {
+                    LeadingInfoCard(
+                        heading = stringResource(R.string.leader),
+                        name = details.presenterName,
+                        info = details.presenterInfo,
+                        avatarImage = painterResource(id = R.drawable.test_image_4),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
+                item {
+                    EventMapCard(
+                        title = "Севкабель Порт, Кожевенная линия, 40 ",
 //                    painter = painterResource(id = R.drawable.map),
-                    metroStation = "Приморская",
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-            }
-            item {
-                Heading(
-                    text = stringResource(R.string.members_of_event),
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                AvatarMembersRow(
-                    avatarPainters = avatarPainters,
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .clickable {
-                            navController.navigate(Screens.MembersScreen) {
-                                launchSingleTop = true
+                        metroStation = "Приморская",
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
+                item {
+                    Heading(
+                        text = stringResource(R.string.members_of_event),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    AvatarMembersRow(
+                        avatarPainters = eventMembers.map {
+                            rememberAsyncImagePainter(model = it.painter)
+                        },
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .clickable {
+                                navController.navigate(Screens.MembersScreen) {
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                )
-            }
-            item {
-                LeadingInfoCard(
-                    heading = stringResource(R.string.event_organizer),
-                    name = "The IT-Crowd",
-                    info = "Сообщество профессионалов в сфере IT. Объединяем специалистов разных направлений для обмена опытом, знаниями и идеями.",
-                    avatarImage = painterResource(id = R.drawable.test_image_3),
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-            }
-            item {
-                Heading(
-                    text = stringResource(R.string.other_community_meetings),
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                EventCardThinLine(navController = navController)
+                    )
+                }
+                item {
+                    LeadingInfoCard(
+                        heading = stringResource(R.string.event_organizer),
+                        name = details.organizerName,
+                        info = details.organizerDescription,
+                        avatarImage = painterResource(id = R.drawable.test_image_3),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
+                item {
+                    Heading(
+                        text = stringResource(R.string.other_community_meetings),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    EventCardThinLine(navController = navController, events = communityEvents)
+                }
             }
         }
     }
-
 }
-
-
-//item {
-//    ImageWithFullScreenPreview(
-//        imageUrl = "https://i.postimg.cc/GmsT4jPq/map-image.png",
-//        placeholderResId = R.drawable.map_image
-//    )
-//    Spacer(modifier = Modifier.height(20.dp))
-//}
-
-
-//@Composable
-//fun FullScreenImageDialog(
-//    imageUrl: String,
-//    onDismiss: () -> Unit,
-//
-//    ) {
-//    Dialog(onDismissRequest = onDismiss) {
-//        val painter: Painter = rememberAsyncImagePainter(
-//            model = ImageRequest.Builder(LocalContext.current)
-//                .data(imageUrl)
-//                .size(Size.ORIGINAL)
-//                .build()
-//        )
-//
-//        Image(
-//            painter = painter,
-//            contentDescription = null,
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .clickable { onDismiss() }
-//        )
-//    }
-//}
-//
-//@Composable
-//fun ImageWithFullScreenPreview(
-//    imageUrl: String,
-//    placeholderResId: Int,
-//) {
-//    var showDialog by remember { mutableStateOf(false) }
-//
-//    if (showDialog) {
-//        FullScreenImageDialog(imageUrl = imageUrl) {
-//            showDialog = false
-//        }
-//    }
-//
-//    val painter = rememberAsyncImagePainter(
-//        model = ImageRequest.Builder(LocalContext.current)
-//            .data(imageUrl)
-//            .placeholder(placeholderResId)
-//            .error(placeholderResId)
-//            .build(),
-//        contentScale = ContentScale.Crop
-//    )
-//
-//    Image(
-//        painter = painter,
-//        contentDescription = null,
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .height(175.dp)
-//            .clip(shape = RoundedCornerShape(30.dp))
-//            .clickable {
-//                Log.d("ImageWithFullScreenPreview", "Image clicked")
-//                showDialog = true
-//            },
-//        contentScale = ContentScale.Crop
-//    )
-//}

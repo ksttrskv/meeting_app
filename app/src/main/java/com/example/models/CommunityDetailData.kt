@@ -6,4 +6,3 @@ data class CommunityDetailData(
     val isRegistered: Boolean,
     val description: String
 )
-

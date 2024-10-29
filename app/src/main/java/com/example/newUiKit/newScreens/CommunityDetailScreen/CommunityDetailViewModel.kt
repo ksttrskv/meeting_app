@@ -32,7 +32,6 @@ class CommunityDetailViewModel(
 
     fun loadCommunityDetails() {
         _communityDetails.value = getCommunityDetailsUseCase.execute()
-
     }
 
     fun loadUpcomingCommunityEvents() {

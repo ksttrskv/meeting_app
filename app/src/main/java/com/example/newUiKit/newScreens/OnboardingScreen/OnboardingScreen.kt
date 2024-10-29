@@ -9,9 +9,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -21,16 +24,18 @@ import com.example.newUiKit.Theme.MyUiTheme
 import com.example.newUiKit.Theme.multiColorLinearGradient
 import com.example.newUiKit.molecules.BigTagsList
 import com.example.newUiKit.navigation.Screens
+import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
+import org.koin.androidx.compose.getViewModel
 
 
 @Composable
-fun OnboardingScreen(navController: NavController) {
-    val tags = listOf(
-        "Дизайн", "Разработка", "Продакт менеджмент", "Проджект менеджмент",
-        "Backend", "Frontend", "Mobile", "Тестирование", "Продажи",
-        "Бизнес", "Безопасность", "Web", "Девопс", "Маркетинг", "Аналитика"
-    )
+fun OnboardingScreen(
+    navController: NavController,
+    viewModel: OnboardingViewModel = getViewModel()
+) {
+//    val tags =
+    val tags by viewModel.allTags.observeAsState(emptyList())
     Box(
         modifier = Modifier
             .padding(top = 50.dp)
@@ -40,11 +45,11 @@ fun OnboardingScreen(navController: NavController) {
         Column(modifier = Modifier.padding(horizontal = 16.dp)) {
 
             Text(
-                text = "Интересы",
+                text = stringResource(R.string.interests),
                 style = MyUiTheme.typography.Huge
             )
             Text(
-                text = "Выберите интересы, чтобы мы рекомендовали полезные встречи",
+                text = stringResource(R.string.choose_interests),
                 style = MyUiTheme.typography.regular
             )
             Spacer(modifier = Modifier.height(24.dp))
@@ -54,7 +59,7 @@ fun OnboardingScreen(navController: NavController) {
                 contentAlignment = Alignment.BottomCenter
             ) {
                 CustomButton(
-                    content = { Text(text = "Сохранить") },
+                    content = { Text(text = stringResource(R.string.save_button)) },
                     textColor = Color.White,
                     enabledGradient = multiColorLinearGradient(),
                     disabledColor = MyUiTheme.colors.offWhite,
@@ -69,7 +74,7 @@ fun OnboardingScreen(navController: NavController) {
                         .padding(bottom = 66.dp)
                 )
                 Text(
-                    text = "Расскажу позже",
+                    text = stringResource(R.string.later),
                     style = MyUiTheme.typography.primary,
                     color = MyUiTheme.colors.secondaryColor,
                     modifier = Modifier

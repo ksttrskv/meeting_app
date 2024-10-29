@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,15 +23,20 @@ import com.example.newUiKit.Theme.multiColorLinearGradient
 import com.example.newUiKit.molecules.BigTagsList
 import com.example.newUiKit.navigation.Screens
 import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
+import org.koin.androidx.compose.getViewModel
 
 
 @Composable
-fun ChooseInterestsScreen(navController: NavController) {
-    val tags = listOf(
-        "Дизайн", "Разработка", "Продакт менеджмент", "Проджект менеджмент",
-        "Backend", "Frontend", "Mobile", "Тестирование", "Продажи",
-        "Бизнес", "Безопасность", "Web", "Девопс", "Маркетинг", "Аналитика"
-    )
+fun ChooseInterestsScreen(
+    navController: NavController,
+    viewModel: ChooseInterestsViewModel = getViewModel()
+) {
+//    val tags = listOf(
+//        "Дизайн", "Разработка", "Продакт менеджмент", "Проджект менеджмент",
+//        "Backend", "Frontend", "Mobile", "Тестирование", "Продажи",
+//        "Бизнес", "Безопасность", "Web", "Девопс", "Маркетинг", "Аналитика"
+//    )
+    val tags by viewModel.allTags.observeAsState(emptyList())
     Box(
         modifier = Modifier
             .padding(top = 50.dp)

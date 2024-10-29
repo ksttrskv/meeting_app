@@ -25,5 +25,8 @@
     <string name="placeholder_codefield">0000</string>
     <string name="enter_to_event">Вход \nи запись \nна встречу</string>
     <string name="get_code">Получить код</string>
+    <string name="later">Расскажу позже</string>
+    <string name="interests">Интересы</string>
+    <string name="choose_interests">Выберите интересы, чтобы мы рекомендовали полезные встречи</string>
 
 </resources>
