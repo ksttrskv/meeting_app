@@ -1,7 +1,0 @@
-# pack-refs with: peeled fully-peeled sorted 
-f3ccc8aebf661e11048aaf4b90e020722b840923 refs/heads/main
-00b56ea1d0ae96059ab2cbd2b3d3a5e6ae7b5d1a refs/heads/treskov-konstantin-week_1_2
-b77ff0443becf82c76c199d922450780f4437d4a refs/heads/week_1_2
-185fb0ad47e16905b351e44623fff59a91fffeb8 refs/heads/week_4_task1
-6dcf12b364c7730b0e232a52e0983c54ae91c823 refs/merge-requests/17/head
-6a57c0ff3469d2824ecb4c83813042dd7db1c6bb refs/merge-requests/17/merge
