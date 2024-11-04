@@ -109,7 +109,7 @@ fun SimplePlaceholder(placeholderText: String) {
     Text(
         text = placeholderText,
         color = MyUiTheme.colors.neutralDisabled,
-        style = MyUiTheme.typography.primary,
+        style = MyUiTheme.typography.regular,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis
     )
@@ -129,7 +129,7 @@ fun IconAndTextPlaceholder(iconRes: Int, placeholderText: String) {
         Text(
             text = placeholderText,
             color = MyUiTheme.colors.neutralDisabled,
-            style = MyUiTheme.typography.primary,
+            style = MyUiTheme.typography.regular,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )

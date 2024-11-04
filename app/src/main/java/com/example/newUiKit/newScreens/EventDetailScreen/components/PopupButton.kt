@@ -27,7 +27,8 @@ import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
 fun PopupButton(
     navController: NavController,
     isRegistered: Boolean,
-    onRegistrationChange: () -> Unit
+    onRegistrationChange: () -> Unit,
+
 ) {
     Surface(
         modifier = Modifier

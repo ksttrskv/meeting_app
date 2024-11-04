@@ -21,7 +21,7 @@ fun TextInputView(
         SimplePlaceholder(placeholderText = stringResource(id = R.string.name_and_lastname))
     },
 ) {
-    val query = remember { mutableStateOf("") }
+    val query = remember { mutableStateOf(name) }
 
     // Состояние ошибки
     val hasError = remember { mutableStateOf(false) }
@@ -36,9 +36,9 @@ fun TextInputView(
     InputField(
         focusRequester = focusRequester,
         query = query.value,
-        onQueryChange = {
-            query.value = it
-            hasError.value = it.length < 1  // Пример валидации
+        onQueryChange = { newQuery ->
+            query.value = newQuery
+            onNameChange(newQuery)
         },
         placeholderContent = placeholderContent,
         hasError = hasError.value,

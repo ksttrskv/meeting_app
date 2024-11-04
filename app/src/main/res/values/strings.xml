@@ -28,5 +28,6 @@
     <string name="later">Расскажу позже</string>
     <string name="interests">Интересы</string>
     <string name="choose_interests">Выберите интересы, чтобы мы рекомендовали полезные встречи</string>
+    <string name="entrance_and_recording_to_the_meeting">Вход \nи запись \nна встречу</string>
 
 </resources>

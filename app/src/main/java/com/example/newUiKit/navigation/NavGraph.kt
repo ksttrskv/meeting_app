@@ -8,7 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentCodeInputScreen
 import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentFinalScreen
-import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentNameInputScreen
+import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentNameInputScreen.AppointmentNameInputScreen
 import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentPhoneInputScreen
 import com.example.newUiKit.newScreens.ChooseInterestsScreen.ChooseInterestsScreen
 import com.example.newUiKit.newScreens.CommunityDetailScreen.CommunityDetailScreen
@@ -47,6 +47,31 @@ fun NavGraph() {
         composable(Screens.ProfileEditScreen) { ProfileEditScreen(navController = navController) }
         composable(Screens.ChooseInterestsScreen) { ChooseInterestsScreen(navController = navController) }
         composable(Screens.ProfileDeleteScreen) { ProfileDeleteScreen(navController = navController) }
+//        composable(
+//            route = "${Screens.AppointmentNameInputScreen}/{eventTitle}/{eventDate}/{eventLocation}",
+//            arguments = listOf(
+//                navArgument("eventTitle") { type = NavType.StringType },
+//                navArgument("eventDate") { type = NavType.StringType },
+//                navArgument("eventLocation") { type = NavType.StringType },
+//            )
+//        ) { backStackEntry ->
+//            val eventTitle = backStackEntry.arguments?.getString("eventTitle") ?: ""
+//            val eventDate = backStackEntry.arguments?.getString("eventDate") ?: ""
+//            val eventLocation = backStackEntry.arguments?.getString("eventLocation") ?: ""
+//            val eventImage = backStackEntry.arguments?.getString("eventImage")
+//                ?: ""// картинка по умолчанию
+////            val viewModel: AppointmentNameInputViewModel = getViewModel()
+////            viewModel.setEventData(eventTitle, eventDate, eventLocation)
+//
+//            AppointmentNameInputScreen(
+//                navController = navController,
+//                eventTitle = eventTitle,
+//                eventDate = eventDate,
+//                eventLocation = eventLocation,
+//                eventImageRes = eventImage
+////                viewModel = viewModel
+//            )
+//        }
         composable(
             route = "${Screens.EventDetailScreen}/{eventTitle}/{eventDate}/{eventLocation}/{eventImage}",
             arguments = listOf(

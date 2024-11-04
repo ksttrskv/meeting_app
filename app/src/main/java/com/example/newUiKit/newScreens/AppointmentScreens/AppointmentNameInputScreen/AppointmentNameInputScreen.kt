@@ -1,4 +1,4 @@
-package com.example.newUiKit.newScreens.AppointmentScreens
+package com.example.newUiKit.newScreens.AppointmentScreens.AppointmentNameInputScreen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,13 +14,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.newUiKit.Theme.MyUiTheme
@@ -29,12 +28,22 @@ import com.example.newUiKit.inputFields.TextInputView
 import com.example.newUiKit.navigation.Screens
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun AppointmentNameInputScreen(navController: NavController) {
-
-    var name by remember { mutableStateOf("") }
-    val isNameFilled = name.isNotEmpty()
+fun AppointmentNameInputScreen(
+    navController: NavController,
+//    eventTitle: String,
+//    eventDate:String,
+//    eventLocation:String,
+//    eventImageRes: String,
+    viewModel: AppointmentNameInputViewModel = getViewModel()
+) {
+//    val eventTitle by viewModel.eventTitle.observeAsState("")
+//    val eventDate by viewModel.eventDate.observeAsState("")
+//    val eventLocation by viewModel.eventLocation.observeAsState("")
+    val name by viewModel.name.observeAsState("")
+    val isButtonEnabled by viewModel.isButtonEnabled.observeAsState(false)
 
     Box(
         modifier = Modifier
@@ -50,7 +59,7 @@ fun AppointmentNameInputScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween // Размещаем элементы по краям
             ) {
                 Text(
-                    text = "Вход \nи запись \nна встречу",
+                    text = stringResource(R.string.entrance_and_recording_to_the_meeting),
                     style = MyUiTheme.typography.Huge
                 )
                 Icon(
@@ -63,11 +72,12 @@ fun AppointmentNameInputScreen(navController: NavController) {
             }
             Spacer(modifier = Modifier.height(14.dp))
             Text(
-                text = "Супертестировщики · 12 августа · Невский проспект, 11 ",
+//                text = "$eventTitle  · $eventDate · $eventLocation ",
+                text = "Cergdfg  · 12 123 · spb nevskiy ",
                 style = MyUiTheme.typography.regular
             )
             Spacer(modifier = Modifier.height(24.dp))
-            TextInputView(name = name, onNameChange = {})
+            TextInputView(name = name, onNameChange = { viewModel.onNameChange(it) })
         }
         CustomButton(
             content = {
@@ -78,8 +88,8 @@ fun AppointmentNameInputScreen(navController: NavController) {
             },
             textColor = Color.White,
             enabledGradient = multiColorLinearGradient(),
-            disabledColor = Color.Gray,
-            enabled = true,
+            disabledColor = MyUiTheme.colors.offWhite,
+            enabled = isButtonEnabled,
             onClick = {
                 navController.navigate(Screens.AppointmentPhoneInputScreen) {
                     launchSingleTop = true
@@ -92,11 +102,3 @@ fun AppointmentNameInputScreen(navController: NavController) {
         )
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewCommunityDetailCard() {
-//    WBTechnoschoolLesson2Theme {
-//        AppointmentNameInputScreen()
-//    }
-//}

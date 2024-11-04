@@ -2,6 +2,7 @@ package com.example
 
 import android.app.Application
 import com.example.domain.di.domainModule
+import com.example.newUiKit.newScreens.AppointmentScreens.di.appointmentModule
 import com.example.newUiKit.newScreens.ChooseInterestsScreen.di.chooseInterestsModule
 import com.example.newUiKit.newScreens.CommunityDetailScreen.di.communityDetailModule
 import com.example.newUiKit.newScreens.EventDetailScreen.di.eventDetailModule
@@ -26,7 +27,8 @@ class MeetingApp : Application() {
                     mainScreenModule,
                     eventDetailModule,
                     onboardingModule,
-                    chooseInterestsModule
+                    chooseInterestsModule,
+                    appointmentModule
                 )
             )
         }

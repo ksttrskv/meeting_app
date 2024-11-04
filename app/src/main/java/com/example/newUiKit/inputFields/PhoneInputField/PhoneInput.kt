@@ -77,7 +77,7 @@ fun CountrySelector(
     Row(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
-            .background(MyUiTheme.colors.bgColor)
+            .background(MyUiTheme.colors.offWhite)
             .padding(vertical = 16.dp)
             .clickable { onExpandChange(!expanded) },
         verticalAlignment = Alignment.CenterVertically
@@ -138,7 +138,7 @@ fun PhoneNumberInput(
     BasicTextField(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
-            .background(MyUiTheme.colors.bgColor)
+            .background(MyUiTheme.colors.offWhite)
             .fillMaxWidth()
             .padding(vertical = 8.dp),
         value = phone,
@@ -151,7 +151,7 @@ fun PhoneNumberInput(
                     .fillMaxWidth()
                     .padding(8.dp)
                     .clip(RoundedCornerShape(5.dp))
-                    .background(MyUiTheme.colors.bgColor)
+                    .background(MyUiTheme.colors.offWhite)
             ) {
                 if (phone.isEmpty()) {
                     Text(

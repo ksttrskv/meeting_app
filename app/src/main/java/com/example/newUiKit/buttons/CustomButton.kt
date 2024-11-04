@@ -33,6 +33,7 @@ import com.example.wbtechnoschoollesson2.R
 fun CustomButton(
     content: @Composable () -> Unit = { DefaultButtonContent1() },
     textColor: Color,
+    disabledTextColor: Color = MyUiTheme.colors.newGray,
     enabledGradient: Brush,
     disabledColor: Color,
     enabled: Boolean = true,
@@ -41,7 +42,6 @@ fun CustomButton(
     modifier: Modifier = Modifier
 ) {
     val buttonModifier = modifier
-//        .padding(8.dp)
         .fillMaxWidth()
         .let {
             if (enabled) {
@@ -62,7 +62,7 @@ fun CustomButton(
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = Color.Transparent,
             contentColor = textColor,
-            disabledContentColor = textColor.copy(alpha = 0.5f),
+            disabledContentColor = disabledTextColor,
         ),
         enabled = enabled
     ) {
@@ -70,7 +70,6 @@ fun CustomButton(
             CircularProgressIndicator(
                 color = textColor,
                 strokeWidth = 2.dp,
-//                modifier = Modifier.size(24.dp)
             )
         } else {
             content()
@@ -93,6 +92,7 @@ fun CustomButtonPreview() {
                     )
                 },
                 textColor = Color.White,
+                disabledTextColor = MyUiTheme.colors.newGray,
                 enabledGradient = multiColorLinearGradient(),
                 disabledColor = Color.Gray,
                 enabled = true,
