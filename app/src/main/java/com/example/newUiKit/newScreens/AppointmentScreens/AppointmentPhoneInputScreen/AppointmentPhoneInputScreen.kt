@@ -1,4 +1,4 @@
-package com.example.newUiKit.newScreens.AppointmentScreens
+package com.example.newUiKit.newScreens.AppointmentScreens.AppointmentPhoneInputScreen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -13,30 +13,36 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.newUiKit.Theme.MyUiTheme
 import com.example.newUiKit.Theme.multiColorLinearGradient
-import com.example.newUiKit.inputFields.CodeInputView
+import com.example.newUiKit.inputFields.PhoneInputField.PhoneInput
 import com.example.newUiKit.navigation.Screens
 import com.example.wbtechnoschoollesson2.R
 import com.example.wbtechnoschoollesson2.atoms.buttons.CustomButton
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun AppointmentCodeInputScreen(navController: NavController) {
-    var code by remember { mutableStateOf("") }
-    val isCodeFilled = code.isNotEmpty()
+fun AppointmentPhoneInputScreen(
+    navController: NavController,
+    viewModel: AppointmentPhoneInputViewModel = getViewModel()
+) {
+
+    val isButtonEnabled by viewModel.isButtonEnabled.collectAsState()
+
     Box(
         modifier = Modifier
             .padding(top = 48.dp)
             .fillMaxSize()
+//            .background(Color.White)
     ) {
         Column(
             modifier = Modifier
@@ -48,16 +54,14 @@ fun AppointmentCodeInputScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween // Размещаем элементы по краям
             ) {
                 Text(
-                    text = "Вход \nи запись \nна встречу",
+                    text = stringResource(R.string.enter_to_event),
                     style = MyUiTheme.typography.Huge
                 )
                 Icon(
                     painter = painterResource(id = R.drawable.close),
                     contentDescription = "Close page",
                     tint = MyUiTheme.colors.newGray,
-                    modifier = Modifier.clickable {
-                        navController.navigateUp()
-                    }
+                    modifier = Modifier.clickable { navController.navigateUp() }
                 )
             }
             Spacer(modifier = Modifier.height(14.dp))
@@ -66,38 +70,23 @@ fun AppointmentCodeInputScreen(navController: NavController) {
                 style = MyUiTheme.typography.regular
             )
             Spacer(modifier = Modifier.height(24.dp))
-            CodeInputView(onCodeChange = {}
-
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "Отправили код на +7 999 999-99-99",
-                style = MyUiTheme.typography.Secondary,
-                color = MyUiTheme.colors.secondaryColor
-            )
+            PhoneInput { phone ->
+                viewModel.updatePhoneNumber(phone)
+            }
         }
-
-        Text(
-            text = "Получить новый код через 10",
-            style = MyUiTheme.typography.primary,
-            color = MyUiTheme.colors.secondaryColor,
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 108.dp)
-        )
         CustomButton(
             content = {
                 Text(
-                    text = "Отправить и подтвердить запись",
+                    text = stringResource(R.string.get_code),
                     style = MyUiTheme.typography.H3
                 )
             },
-            textColor = MyUiTheme.colors.brandWhite,
+            textColor = Color.White,
             enabledGradient = multiColorLinearGradient(),
             disabledColor = MyUiTheme.colors.offWhite,
             enabled = true,
             onClick = {
-                navController.navigate(Screens.AppointmentFinalScreen) {
+                navController.navigate(Screens.AppointmentCodeInputScreen) {
                     launchSingleTop = true
                 }
             },
@@ -109,3 +98,4 @@ fun AppointmentCodeInputScreen(navController: NavController) {
         )
     }
 }
+

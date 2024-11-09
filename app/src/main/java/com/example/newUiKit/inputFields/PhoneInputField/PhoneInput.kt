@@ -25,6 +25,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -37,7 +40,10 @@ import com.example.newUiKit.Theme.MyUiTheme
 private const val PHONE_NUMBER_SIZE = 10
 
 @Composable
-fun PhoneInput(modifier: Modifier = Modifier, onPhoneChange: (String) -> Unit) {
+fun PhoneInput(
+    modifier: Modifier = Modifier,
+    onPhoneChange: (String) -> Unit,
+) {
     var selectedCountry by remember { mutableStateOf(Country.Russia) }
     var phone by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
@@ -56,8 +62,12 @@ fun PhoneInput(modifier: Modifier = Modifier, onPhoneChange: (String) -> Unit) {
         PhoneNumberInput(
             phone = phone,
             onPhoneChange = {
-                phone = it.take(PHONE_NUMBER_SIZE)
-                onPhoneChange(selectedCountry.phoneCode + phone)
+//                phone = it.take(PHONE_NUMBER_SIZE)
+//                onPhoneChange(selectedCountry.phoneCode + phone)
+                val newPhone = it.take(PHONE_NUMBER_SIZE)
+                val fullPhoneNumber = selectedCountry.phoneCode + newPhone
+                phone = newPhone
+                onPhoneChange(fullPhoneNumber)
             },
             onImeAction = {
                 focusManager.clearFocus()
@@ -101,11 +111,11 @@ fun CountrySelector(
         ) {
             Country.entries.forEach { country ->
                 DropdownMenuItem(
-                    modifier = Modifier.background(MyUiTheme.colors.neutralDisabled),
+                    modifier = Modifier.background(MyUiTheme.colors.offWhite),
                     text = {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(4.dp),
                         ) {
                             Icon(
                                 painter = painterResource(id = country.flagPainterId),
@@ -135,12 +145,16 @@ fun PhoneNumberInput(
     onPhoneChange: (String) -> Unit,
     onImeAction: () -> Unit
 ) {
+
+    val focusRequester = FocusRequester()
+    val focusManager = LocalFocusManager.current
     BasicTextField(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
             .background(MyUiTheme.colors.offWhite)
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(vertical = 8.dp)
+            .focusRequester(focusRequester),
         value = phone,
         onValueChange = onPhoneChange,
         textStyle = MyUiTheme.typography.regular,
@@ -167,9 +181,12 @@ fun PhoneNumberInput(
         visualTransformation = PhoneNumberTransformation(),
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Number,
-            imeAction = ImeAction.Go
+            imeAction = ImeAction.Next
         ),
-        keyboardActions = KeyboardActions(onNext = { onImeAction() })
+        keyboardActions = KeyboardActions(onNext = {
+            focusManager.moveFocus(FocusDirection.Down) // Перемещаем фокус вниз
+            onImeAction()
+        })
     )
 }
 

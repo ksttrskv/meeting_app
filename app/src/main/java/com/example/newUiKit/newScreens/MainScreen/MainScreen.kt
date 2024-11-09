@@ -32,6 +32,7 @@ import org.koin.androidx.compose.getViewModel
 fun MainScreen(navController: NavController, viewModel: MainScreenViewModel = getViewModel()) {
     val events by viewModel.events.observeAsState(emptyList())
     val communities by viewModel.communities.observeAsState(emptyList())
+    val upComingCommunityEvents by viewModel.upComingCommunityEvents.observeAsState(emptyList())
 
     val tags = listOf(
         "Дизайн", "Разработка", "Продакт менеджмент", "Проджект менеджмент",
@@ -126,7 +127,7 @@ fun MainScreen(navController: NavController, viewModel: MainScreenViewModel = ge
                 EventCardWideColumn(
                     navController = navController,
                     events = events
-                ) //Column для укорочения кода
+                )
             }
 
             item {
@@ -143,13 +144,12 @@ fun MainScreen(navController: NavController, viewModel: MainScreenViewModel = ge
                 EventCardWideColumn(
                     navController = navController,
                     events = events
-                ) //Column для укорочения кода
+                )
             }
 
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

@@ -6,10 +6,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentCodeInputScreen
-import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentFinalScreen
+import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentCodeInputScreen.AppointmentCodeInputScreen
+import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentFinalScreen.AppointmentFinalScreen
 import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentNameInputScreen.AppointmentNameInputScreen
-import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentPhoneInputScreen
+import com.example.newUiKit.newScreens.AppointmentScreens.AppointmentPhoneInputScreen.AppointmentPhoneInputScreen
 import com.example.newUiKit.newScreens.ChooseInterestsScreen.ChooseInterestsScreen
 import com.example.newUiKit.newScreens.CommunityDetailScreen.CommunityDetailScreen
 import com.example.newUiKit.newScreens.EventDetailScreen.EventDetailScreen

@@ -33,15 +33,11 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun AppointmentNameInputScreen(
     navController: NavController,
-//    eventTitle: String,
-//    eventDate:String,
-//    eventLocation:String,
-//    eventImageRes: String,
     viewModel: AppointmentNameInputViewModel = getViewModel()
 ) {
-//    val eventTitle by viewModel.eventTitle.observeAsState("")
-//    val eventDate by viewModel.eventDate.observeAsState("")
-//    val eventLocation by viewModel.eventLocation.observeAsState("")
+    val eventTitle by viewModel.eventTitle.observeAsState("")
+    val eventDate by viewModel.eventDate.observeAsState("")
+    val eventLocation by viewModel.eventLocation.observeAsState("")
     val name by viewModel.name.observeAsState("")
     val isButtonEnabled by viewModel.isButtonEnabled.observeAsState(false)
 
@@ -72,8 +68,8 @@ fun AppointmentNameInputScreen(
             }
             Spacer(modifier = Modifier.height(14.dp))
             Text(
-//                text = "$eventTitle  · $eventDate · $eventLocation ",
-                text = "Cergdfg  · 12 123 · spb nevskiy ",
+                text = "$eventTitle  · $eventDate · $eventLocation ",
+//                text = "Cergdfg  · 12 123 · spb nevskiy ",
                 style = MyUiTheme.typography.regular
             )
             Spacer(modifier = Modifier.height(24.dp))

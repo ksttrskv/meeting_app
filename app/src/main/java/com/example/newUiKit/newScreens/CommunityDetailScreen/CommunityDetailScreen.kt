@@ -104,39 +104,37 @@ fun CommunityDetailScreen(
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
                 }
-            }
-            item {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                ) {
-                    CustomButton(
-                        content = {
-                            // Изменяем текст в зависимости от состояния подписки
-                            Text(text = if (isRegistered) "Вы подписаны" else "Подписаться")
-                        },
-                        textColor = if (isRegistered) MyUiTheme.colors.brandDefault else Color.White,
-                        enabledGradient = if (isRegistered) multiColorLinearGradientWhite() else multiColorLinearGradient(),
-                        disabledColor = Color.Gray,
-                        enabled = true,
-                        onClick = {
-                            // Изменение состояния при нажатии
-                            isRegistered = !isRegistered
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    // Показать дополнительный текст только если не подписан
-                    if (!isRegistered) {
-                        Text(
-                            text = stringResource(R.string.text_under_the_subscribe_button),
-                            style = MyUiTheme.typography.Secondary,
-                            color = MyUiTheme.colors.brandDefault
+                item {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
+                    ) {
+                        CustomButton(
+                            content = {
+                                // Изменяем текст в зависимости от состояния подписки
+                                Text(text = if (isRegistered) "Вы подписаны" else "Подписаться")
+                            },
+                            textColor = if (isRegistered) MyUiTheme.colors.brandDefault else Color.White,
+                            enabledGradient = if (isRegistered) multiColorLinearGradientWhite() else multiColorLinearGradient(),
+                            disabledColor = Color.Gray,
+                            enabled = true,
+                            onClick = {
+                                // Изменение состояния при нажатии
+                                isRegistered = !isRegistered
+                            }
                         )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        // Показать дополнительный текст только если не подписан
+                        if (!isRegistered) {
+                            Text(
+                                text = stringResource(R.string.text_under_the_subscribe_button),
+                                style = MyUiTheme.typography.Secondary,
+                                color = MyUiTheme.colors.brandDefault
+                            )
+                        }
                     }
                 }
-            }
-            communityDetails?.let { details ->
                 item {
 
                     Text(

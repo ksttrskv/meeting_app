@@ -31,6 +31,7 @@ fun EventCardWide(
     imageUrl: String,
     date: String,
     location: String,
+    eventId: String = "",
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {

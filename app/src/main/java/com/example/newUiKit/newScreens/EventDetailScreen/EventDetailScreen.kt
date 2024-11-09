@@ -59,7 +59,6 @@ fun EventDetailScreen(
     val lazyListState = rememberLazyListState()
     var previousIndex by remember { mutableStateOf(0) }
     var previousScrollOffset by remember { mutableStateOf(0) }
-//    var isRegistered by remember { mutableStateOf(false) }
 
     val eventDetails by viewModel.eventDetails.observeAsState()
     val eventMembers by viewModel.eventMembers.observeAsState(emptyList())
@@ -70,7 +69,6 @@ fun EventDetailScreen(
         viewModel.loadEventDetail()
         viewModel.loadEventMembers()
         viewModel.loadCommunityEvents()
-
     }
     // Определяем, когда показать кнопку
     val shouldShowButton = remember {
@@ -166,7 +164,6 @@ fun EventDetailScreen(
                 item {
                     EventMapCard(
                         title = "Севкабель Порт, Кожевенная линия, 40 ",
-//                    painter = painterResource(id = R.drawable.map),
                         metroStation = "Приморская",
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
@@ -205,7 +202,10 @@ fun EventDetailScreen(
                         modifier = Modifier.padding(horizontal = 16.dp)
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    EventCardThinLine(navController = navController, events = communityEvents)
+                    EventCardThinLine(
+                        navController = navController,
+                        events = communityEvents
+                    )
                 }
             }
         }

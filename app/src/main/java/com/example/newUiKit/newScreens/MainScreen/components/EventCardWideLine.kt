@@ -18,45 +18,6 @@ import com.example.newUiKit.navigation.Screens
 @Composable
 fun EventCardWideLine(navController: NavController, events: List<EventData>) {
 
-//    val events = listOf(
-//        EventData(
-//            title = "Как повышать грейд. Лекция Павла Хорикова",
-//            imageRes = "https://lh3.googleusercontent.com/proxy/xErRF_3h-YgrklQQf7CSbwfzHDa43aexzr9JtquT6kzpEKgTDdLY39h0DAbBMtIqZ3HXC4JMT8lIeSVCXekPgi3vF4dpypL_9FjvQRitqtBe9VMSJr-cMibn2a8eTe7krOU",
-//            date = "Завтра",
-//            location = "Невский проспект, 11"
-//        ),
-//        EventData(
-//            title = "QA Talks — Global tech forum",
-//            imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
-//            date = "Завтра",
-//            location = "Невский проспект, 11",
-//        ),
-//        EventData(
-//            title = "QA Talks — Global tech forum",
-//            imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
-//            date = "Завтра",
-//            location = "Невский проспект, 11",
-//        ),
-//        EventData(
-//            title = "QA Talks — Global tech forum",
-//            imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
-//            date = "Завтра",
-//            location = "Невский проспект, 11",
-//        ),
-//        EventData(
-//            title = "QA Talks — Global tech forum",
-//            imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
-//            date = "Завтра",
-//            location = "Невский проспект, 11",
-//        ),
-//        EventData(
-//            title = "QA Talks — Global tech forum",
-//            imageRes = "https://aif-s3.aif.ru/images/031/407/9386b82829ced1e10f1d769aa4542e52.jpg",
-//            date = "Завтра",
-//            location = "Невский проспект, 11",
-//        ),
-//
-//        )
 
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(10.dp)

@@ -45,6 +45,10 @@ fun InputField(
     hasError: Boolean = false, // состояние ошибки
     keyboardController: SoftwareKeyboardController? = LocalSoftwareKeyboardController.current,
     localFocusManager: FocusManager = LocalFocusManager.current,
+    keyboardOptions: KeyboardOptions = KeyboardOptions(
+        imeAction = ImeAction.Next,
+        keyboardType = KeyboardType.Text,
+    ),
     modifier: Modifier = Modifier
 ) {
     // Состояние фокуса
@@ -89,10 +93,7 @@ fun InputField(
                     }
                     innerTextField()
                 },
-                keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Next,
-                    keyboardType = KeyboardType.Text,
-                ),
+                keyboardOptions = keyboardOptions,
                 keyboardActions = KeyboardActions(
                     onNext = {
                         keyboardController?.hide()

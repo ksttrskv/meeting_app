@@ -35,8 +35,8 @@ fun CommunityCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-
     var isSubscribe by remember { mutableStateOf(false) }
+
     Card(
         onClick = onClick,
         colors = CardDefaults.cardColors(Color.Transparent),
